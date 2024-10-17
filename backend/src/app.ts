@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/DB'
+import userRoute from './routes/user/userRoues'
 
 dotenv.config() 
 
@@ -11,9 +12,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.get('/',(req,res)=>{
-    res.send('backend running')
-})
+app.use('/Luxbid',userRoute)
 
 
 const PORT = process.env.PORT_NO || 5001;
