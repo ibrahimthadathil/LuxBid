@@ -27,6 +27,7 @@ export const sendOTPMail = async( email:string ,matter:string , otp:string )=>{
          <h3 style=" padding: 25px; display: inline-block; border: 2px solid #5B4BAE; border-radius: 8px;">
         Verification: ${otp}
         </h3>
+        <p style="color:#f8b878">expires after 90 sec</p>
         </div>
         <p style="font-size: 14px;">Thank you for joining us!</p>
         <p style="font-size: 14px;">
