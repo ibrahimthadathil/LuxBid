@@ -8,8 +8,8 @@ class UserController {
     try {
       const userData: Iuser = req.body;
       const { message, token } = await userService.createUser(userData);
-      if (!token) res.status(409).json({ sstatus: message });
-      else res.status(200).json({ token: token, status: message });
+      if (!token) res.status(409).json({ response: message });
+      else res.status(200).json({ token: token, response: message });
     } catch (error) {
       console.log((error as Error).message);
     }

@@ -6,6 +6,7 @@ import { sendOTPMail } from "../utils/Gmail_utils";
 import { generateAccessToken, verifyToken } from "../utils/jwt_util";
 import { OTP_repository } from "../repositories/implimentation/otpRepository";
 import { Iopt } from "../models/otpModel";
+import { JwtPayload } from "jsonwebtoken";
 
 
 class UserService{
@@ -28,7 +29,7 @@ class UserService{
        
         try {
 
-            let {email} = verifyToken(token) as any 
+            let {email} = verifyToken(token) as JwtPayload 
             if(email){
                 const checkUser = await OTP_repository.findOTPByMail(otp,email)
                 if (!checkUser) return false;
@@ -46,7 +47,7 @@ class UserService{
 
     async registerUser(userDetails:Iuser , token :string){
         try {
-            let {email} = verifyToken(token) as any
+            let {email} = verifyToken(token) as JwtPayload
             const hashedPass =await hashPassword(userDetails.password)
             userDetails.email = email
             userDetails.password = hashedPass
