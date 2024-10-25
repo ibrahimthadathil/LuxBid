@@ -1,6 +1,6 @@
 import mongoose,{Document, Schema} from "mongoose";
 
-interface Iadmin extends Document{
+export interface Iadmin extends Document{
 
     fullName:string;
     email:string;

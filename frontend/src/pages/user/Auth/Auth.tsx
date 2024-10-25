@@ -3,12 +3,17 @@ import NavBar from "../../../components/global/NavBar"
 
 const Auth = () => {
   return (
-   <>
-   <div className="bg-black  min-h-screen w-full">
-            <NavBar/>
-            <Outlet/>
-   </div>
-   </>
+    <>
+      <div className="flex flex-col h-screen w-full bg-black">
+        <div className="flex-shrink-0">
+          <NavBar />
+        </div>
+        
+        <div className="flex-grow overflow-auto">
+          <Outlet />
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,11 +1,15 @@
+import { useLocation } from 'react-router-dom';
 import Logo from '../../../public/Logo.png';
 import IconBar from './IconBar';
 import Language from './Language';
 import Mode from './Mode';
 
 const Navbar = () => {
+  const location = useLocation();
+  const showIconBar = location.pathname !== '/auth/signup' && location.pathname !== '/auth/signin';
+
   return (
-    <nav className="bg-black  flex ">
+    <nav className=" flex ">
 
       {/* Left Section: Logo */}
       <div className='ps-8 w-[10%]  '>
@@ -14,7 +18,7 @@ const Navbar = () => {
 
       {/* icons bar*/ }
       <div className="w-[70%] p-6 relative">
-        <IconBar/>
+        {showIconBar && <IconBar />}
       </div> 
 
       {/* End section  */}

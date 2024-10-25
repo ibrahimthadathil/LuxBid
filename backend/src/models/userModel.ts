@@ -12,7 +12,9 @@ export interface Iuser extends Document{
     address : mongoose.Types.ObjectId ;
     isActive : boolean ;
     createdAt? : Date ;
-    profile : string
+    profile : string;
+    isVerified : boolean
+
 }
 
 const userSchema = new Schema({
@@ -25,7 +27,8 @@ const userSchema = new Schema({
     role : { type: String , enum :[ 'Buyer' , 'Seller','Guest'] , default :'Guest'},
     address : { type : mongoose.Schema.Types.ObjectId , ref : 'Address'},
     isActive : {type : Boolean , default : true},
-    profile:{ type : String , default:''} 
+    profile:{ type : String , default:''},
+    isVerified : { type : Boolean , default:false} 
 
 },{timestamps:true})
 

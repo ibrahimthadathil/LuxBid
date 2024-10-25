@@ -7,11 +7,13 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(135deg, rgba(0,0,0,1) 40%, rgba(91,75,174,0.85) 100%)',
+        'custom-gradient': 'linear-gradient(174.785deg, rgba(0, 0, 0, 1) 80%, rgba(91, 75, 174, 0.65) 100%)',
+        'text-gradient':'linear-gradient(31deg, rgba(66,109,159,1) 20%, rgba(167,83,78,1) 99%)'
       },
       
     },
   },
+
   plugins: [],
 }
 

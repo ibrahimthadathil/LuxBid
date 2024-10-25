@@ -11,6 +11,7 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
     try {
 
         let Accesstoken = req.headers.authorization
+        
         if(!Accesstoken){
             throw new Error("UnAuthorized user...user don't have token")
         }else{

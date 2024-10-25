@@ -11,7 +11,7 @@ const Language = () => {
 
     return (
         <div
-            className={`h-[3.5rem] w-[50%] rounded-lg ps-4 pe-4 flex items-center justify-between transition-all duration-300 ease-in-out ${isActive ? ' shadow-lg shadow-[#5b4bae25]' : 'bg-[#4241414b] shadow-inner'}`}
+            className={`h-[3rem] w-[50%] rounded-lg ps-4 pe-4 flex items-center justify-between transition-all duration-300 ease-in-out ${isActive ? ' shadow-lg shadow-[#5b4bae25]' : 'bg-[#15131386] shadow-inner'}`}
             onClick={handleToggle}
         >
             <WorldIcon color={isActive ? '#5B4BAE' : 'white'} />
