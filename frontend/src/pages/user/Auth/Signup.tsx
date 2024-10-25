@@ -1,16 +1,17 @@
 import { useState } from "react";
-import GoogleIcon from "../../../assets/icons/Google";
-import axios from "axios";
 import { toast } from "sonner";
+import GoogleAuth from "./GoogleAuth";
+import { signInRequest } from "../../../service/userApi";
 
 const Signup = () => {
+  
   const  [email, setemail] = useState('')
   const handleSubmit =async()=>{
     try {
       
       if(email.trim()){
-        const res= await axios.post('http://localhost:4001/LuxBid/signup',{email})
-        localStorage.setItem('otptoken',res.data.token)
+        const res= await signInRequest(email) 
+
         toast.success(res.data.response)
         
         
@@ -35,13 +36,11 @@ const Signup = () => {
       </div>
       
       {/* Right section */}
-      <div className="w-[50%] flex justify-center pt-[8rem] ps-[4rem]">
+      <div className="w-[50%] flex justify-center pt-[7rem] ps-[4rem]">
         <div className="w-[50%] h-[50%]  flex flex-col items-center  text-[#7b7575] text-center">
-          <h1 className="text-[2.5rem] font-thin text-zinc-300">Welcome to LuxBid</h1><br />
-          <h1>Sign up with your Gmail.</h1>
-          <button className="mt-3 flex gap-3 text-white p-2 px-5 rounded-md items-center border border-x-sky-800">
-            <GoogleIcon /> Continue with Google
-          </button>
+          <h1 className="text-[2.2rem] font-thin bg-text-gradient bg-clip-text text-transparent">Welcome to LuxBid</h1><br />
+          <h3>Sign up with your Gmail.</h3>
+          <GoogleAuth/>
           {/* <hr className=" mt-3 w-[50%] h-[.2px]"/> */}
           <input
           value={email}
