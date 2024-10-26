@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import GoogleAuth from "./GoogleAuth";
-import { signInRequest } from "../../../service/userApi";
+import { signUpRequest } from "../../../service/Api/userApi";
 
 const Signup = () => {
   
@@ -10,7 +10,7 @@ const Signup = () => {
     try {
       
       if(email.trim()){
-        const res= await signInRequest(email) 
+        const res= await signUpRequest(email) 
 
         toast.success(res.data.response)
         

@@ -1,14 +1,15 @@
+import { Service } from "typedi";
 import { Iopt, otpModel } from "../../models/otpModel";
 import { BasRepository } from "./basre_repository";
 
-
-class otpRepository extends BasRepository<Iopt>{
+@Service()
+export class otpRepository extends BasRepository<Iopt>{
     
     constructor(){
         super(otpModel)
     }
 
-   async send_OTP( email:string , otp:string ){
+   async create_OTP( email:string , otp:string ){
         try {
 
              await this.create({email,otp})
@@ -33,4 +34,4 @@ class otpRepository extends BasRepository<Iopt>{
     }
 }
 
-export const OTP_repository = new otpRepository()
+// export const OTP_repository = new otpRepository()

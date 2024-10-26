@@ -1,14 +1,17 @@
 import GoogleIcon from "../../../assets/icons/Google"
 import { GoogleAuthProvider, signInWithPopup ,getAuth} from "@firebase/auth";
 import { app } from "../../../config/firebase";
+import {  googleAuthSignIn } from "../../../service/Api/userApi";
 const GoogleAuth = () => {
 
     const handleGoogleAuth=async()=>{
         try {
             const provider = new GoogleAuthProvider()
             const auth = getAuth(app)
-            const result = await signInWithPopup(auth,provider)
-            console.log(result);
+            const {user} = await signInWithPopup(auth,provider)
+            console.log(user);
+            
+            await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})
             
         } catch (error) {
             

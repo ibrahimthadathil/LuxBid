@@ -3,7 +3,7 @@ import mongoose,{ Document , Schema } from "mongoose";
 export interface Iuser extends Document{
 
     firstName : string ;
-    lastName : string ;
+    lastName ?: string ;
     email : string ;
     phone : string ;
     gender : 'Male' | 'Female' ;
@@ -19,11 +19,11 @@ export interface Iuser extends Document{
 
 const userSchema = new Schema({
     email :{ type : String , required : true , unique : true },
-    password:{ type: String , required : true},
-    phone :{ type : String , required : true },
+    password:{ type: String },
+    phone :{ type : String },
     firstName : { type :String , required : true},
-    lastName : { type : String, required : true} ,
-    gender : { type : String , enum :[ 'Male' , 'Female' ], required : true },
+    lastName : { type : String} ,
+    gender : { type : String , enum :[ 'Male' , 'Female' ],  },
     role : { type: String , enum :[ 'Buyer' , 'Seller','Guest'] , default :'Guest'},
     address : { type : mongoose.Schema.Types.ObjectId , ref : 'Address'},
     isActive : {type : Boolean , default : true},
