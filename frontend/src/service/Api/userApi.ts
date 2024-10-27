@@ -3,7 +3,12 @@ import axios from "axios";
 type Tuser = {
     email:string,
     firstName:string,
-    profile:string
+    profile:string,
+    lastName:string,
+    phone:string,
+    gender:string,
+    password:string
+
 }
 
 const api = axios.create({
@@ -11,10 +16,20 @@ const api = axios.create({
 })
 
 export const signUpRequest= async(email:string)=>{
-      return  await api.post('/signup',{email})
+      const res =  await api.post('/signup',{email})
+      return res
 }
 
-export const googleAuthSignIn = async (userDetails : Tuser)=>{
+export const registration = async (datas:Partial<Tuser>,token:string)=>{
+       return await api.post('/register',datas,{headers:{Authorization:token}})
+      
+}
+
+export const otpVerification = async (otp:string,token:string)=>{
+    return await api.post('/otpverify',{otp},{headers:{Authorization:token}})
+}
+
+export const googleAuthSignIn = async (userDetails :Partial<Tuser>)=>{
     
     return await api.post('/auth/google',userDetails)
 }

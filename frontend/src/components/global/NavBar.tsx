@@ -6,7 +6,7 @@ import Mode from './Mode';
 
 const Navbar = () => {
   const location = useLocation();
-  const showIconBar = location.pathname !== '/auth/signup' && location.pathname !== '/auth/signin';
+  const showIconBar = location.pathname !== '/auth/signup' && location.pathname !== '/auth/signin' && location.pathname  !== '/auth/otp/verify' && location.pathname !== '/auth/registration'        ;
 
   return (
     <nav className=" flex ">

@@ -28,7 +28,7 @@ export class UserService{
             const token = generateAccessToken<Iuser>( {email,id:existUser._id} )
             await sendOTPMail(email , 'Registration' , OTP)
             await this.otpRepo.create_OTP( email , OTP )
-            return { token, success : false , message : 'email hasbeen send'} 
+            return { token, success : false , message : 'OTP hasbeen send'} 
         } 
         let Accesstoken = generateAccessToken<Iuser>({email})
         return { token:Accesstoken , success : true , message: 'Complete details' } 
@@ -39,7 +39,7 @@ export class UserService{
         try {
 
             let {email ,id} = verifyToken(token) as JwtPayload 
-
+            
             if(email){
                 const checkUser = await this.otpRepo.findOTPByMail(otp,email)
                 if (!checkUser) return {success : false ,message:'invalid OTP' };
@@ -59,25 +59,30 @@ export class UserService{
     async registerUser(userDetails:Iuser , token :string){
         try {
             let {email} = verifyToken(token) as JwtPayload 
-            const hashedPass =await hashPassword(userDetails.password)
-            userDetails.email = email
-            userDetails.password = hashedPass
-            const newUser = await this.userRepo.create(userDetails)
-            if(newUser){
-                const Accesstoken = generateAccessToken<Iuser>({id:newUser._id,email})
-                const OTP = generate_OTP()
-                console.log('Register OTp :- ', OTP )     //   otp consoled here
-                await sendOTPMail(email , 'Registration' , OTP)
-                await this.otpRepo.create_OTP( email , OTP )
-                return {message:'Email hasbeen send...',token:Accesstoken}
+            if(email){
 
+                const hashedPass =await hashPassword(userDetails.password)
+                userDetails.email = email
+                userDetails.password = hashedPass
+                const newUser = await this.userRepo.create(userDetails)
+                if(newUser){
+                    const Accesstoken = generateAccessToken<Iuser>({id:newUser._id,email})
+                    const OTP = generate_OTP()
+                    console.log('Register OTp :- ', OTP )     //   otp consoled here
+                    await sendOTPMail(email , 'Registration' , OTP)
+                    await this.otpRepo.create_OTP( email , OTP )
+                    return {success:true,message:'Email hasbeen send...',token:Accesstoken}
+                    
+                }else{
+                    throw new Error("couldn't save user")
+                }
             }else{
-                throw new Error("couldn't save user")
+                return {success:false , message :'invalid token'}
             }
 
         } catch (error) {
-            console.log(error)
-            throw new Error("couldn't register a user")
+            console.log((error as Error).message)
+            return {success:false,message:(error as Error).message}
         }
     }
 

@@ -18,24 +18,27 @@ class UserController {
       const { message, token, success } = await this.userservice.createUser(
         userData.email
       );
-      if (!token) {
+      if (!token&&!success) {
+
         res.status(409).json({ response: message });
       } else {
         res.status(200).json({ token: token, response: message, success });
       }
     } catch (error) {
       console.log((error as Error).message);
+      res.status(500).json({ response: 'Internal server error', error: (error as Error).message });
+
     }
   }
 
   async verifyOTP(req: Request, res: Response) {
     try {
-      const { OTP } = req.body;
+      const { otp } = req.body;
       const token = req.headers.authorization as string;
-      const response = await this.userservice.verifyotp(OTP, token);
+      const response = await this.userservice.verifyotp(otp, token);
       if (!response.success)
         res.status(401).json({ message: response.message });
-      else res.status(200).json({ token: response, message: response.message });
+      else res.status(200).json({success:true, token: response.token, message: response.message });
     } catch (error) {
       console.log((error as Error).message);
       if ((error as Error).message == "Token verification failed") {
@@ -49,11 +52,12 @@ class UserController {
       const userDetails: Iuser = req.body;
       const token = req.headers.authorization as string;
       const response = await this.userservice.registerUser(userDetails, token);
-      if (response)
+      if (response.success){
         res
           .status(200)
           .json({ token: response.token, message: response.message });
-      else res.status(500).json({ message: "couldn't save the user" });
+      }else {
+        res.status(500).json({ message: response.message });}
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +128,7 @@ class UserController {
 
   async resetPassword(req: Request, res: Response) {
     try {
-      console.log('assas');
+      
       
       const { password, confirmPassword } = req.body;
       const Token = req.headers.authorization as string
