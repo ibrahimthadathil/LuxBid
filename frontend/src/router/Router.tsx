@@ -8,6 +8,9 @@ import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
 import Dashboard from "../pages/admin/Home/Dashboard";
+import PublicRoute from "../service/PublicRoute";
+import Profile from "../pages/user/Home/Profile";
+import NotFoundPage from "../components/global/NotFoundPage";
 
 
 export const Router = createBrowserRouter([
@@ -22,11 +25,11 @@ export const Router = createBrowserRouter([
               },
               {
                 path: 'signup', 
-                element: <Signup />
+                element: <PublicRoute element={<Signup />}/>
               },
               {
                 path :'signin',
-                element : <SignIn/>
+                element : <PublicRoute element={<SignIn/>}/>
               },
               {
                 path:'otp/verify',
@@ -48,6 +51,11 @@ export const Router = createBrowserRouter([
             }
            ]
           },
+          {
+            path :'/user/profile',
+            element:<ProtectedRoute element={<Profile/>} store="access-token" />            
+             
+          },
 
   // ADMIN ROUTE
     {
@@ -60,7 +68,10 @@ export const Router = createBrowserRouter([
       element: <ProtectedRoute element={<Dashboard/> } store="accessToken"/>,
       
     },
-
+    {
+      path:'*',
+      element :<NotFoundPage/>
+    }
 
 
 

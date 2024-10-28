@@ -2,7 +2,7 @@ import { Iuser } from "../models/userModel";
 import { comparePassword, hashPassword, RandomPassword } from "../utils/hash_utils";
 import { generate_OTP } from "../utils/otp_util";
 import { sendOTPMail } from "../utils/Gmail_utils";
-import { generateAccessToken, verifyToken } from "../utils/jwt_util";
+import { generateAccessToken, generateRefreshToken, verifyToken } from "../utils/jwt_util";
 import  {otpRepository}  from "../repositories/implimentation/otpRepository";
 import { Iopt } from "../models/otpModel";
 import { JwtPayload } from "jsonwebtoken";
@@ -34,7 +34,7 @@ export class UserService{
         return { token:Accesstoken , success : true , message: 'Complete details' } 
     }
 
-    async verifyotp (otp:string,token:string):Promise<{success:boolean,token?:string ,message?:string}>{    
+    async verifyotp (otp:string,token:string):Promise<{success:boolean,token?:string ,message?:string,refresh?:string}>{    
        
         try {
 
@@ -44,8 +44,9 @@ export class UserService{
                 const checkUser = await this.otpRepo.findOTPByMail(otp,email)
                 if (!checkUser) return {success : false ,message:'invalid OTP' };
                 await this.userRepo.update(id,{isVerified:true})
-                const Accesstoken = generateAccessToken<Iopt>({email:checkUser?.email ,id}) 
-                return {success:true ,token:Accesstoken ,message:'otp verification completed'}
+                const Accesstoken = generateAccessToken<Iopt>({email:checkUser?.email ,id})
+                const RefreshToken = generateRefreshToken<Iuser>({email:checkUser?.email,id})
+                return {success:true ,token:Accesstoken,refresh :RefreshToken ,message:'otp verification completed'}
 
             }else return {success:false , message:'Access denied '}
 
@@ -95,7 +96,8 @@ export class UserService{
                 return {success:false , message:'Invalid password...!'}
                }else{
                 const Accesstoken = generateAccessToken<Iuser>({email:exist.email,id:exist._id})
-                return {success:true , message: 'succesfully logged In..!',token:Accesstoken}
+                const RefreshToken = generateRefreshToken<Iuser>({email:exist.email,id:exist._id})
+                return {success:true ,refresh:RefreshToken ,message: 'succesfully logged In..!',token:Accesstoken ,email : exist.email ,name:exist.firstName }
                }     
 
             }else{

@@ -4,10 +4,14 @@ import { app } from "../../../config/firebase";
 import {  googleAuthSignIn } from "../../../service/Api/userApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { loaginSuccess } from "../../../redux/slice/authSlice";
+import { AppDispatch } from "../../../redux/store/store";
 
 
 const GoogleAuth = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
     const handleGoogleAuth=async()=>{
         try {
             const provider = new GoogleAuthProvider()
@@ -17,8 +21,10 @@ const GoogleAuth = () => {
             
             if(data.success){
               localStorage.setItem('access-token',data.AccessToken)
-              navigate('/')
+              localStorage.setItem('user',JSON.stringify({name:user.displayName,email:user.email})) 
               toast.success(data.message)
+              dispatch(loaginSuccess({userName:String(user.displayName),email:String(user.email)}))
+              navigate('/')
             }
             
         } catch (error) {

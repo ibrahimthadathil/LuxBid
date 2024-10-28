@@ -68,16 +68,12 @@ class UserController {
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      console.log(email,password);
-      
-      const response = await this.userservice.verifySignIn(email, password);
-
-      console.log(response);
-      
+      const response = await this.userservice.verifySignIn(email, password)
       if (response?.success) {
         res
+          .cookie('refresh',response.refresh,{httpOnly:true,secure:true,maxAge:7*24*60*60*1000})
           .status(200)
-          .json({ token: response.token,success:true, message: response.message });
+          .json({ token: response.token,success:true, message: response.message ,email :response.email ,name:response.name});
       } else {
         
         console.log('check');
@@ -139,7 +135,6 @@ class UserController {
 
   async resetPassword(req: Request, res: Response) {
     try {
-      
       
       const { password, confirmPassword } = req.body;
       const Token = req.headers.authorization as string

@@ -4,18 +4,24 @@ import { Link, useNavigate } from "react-router-dom";
 import SideTextSection from "../../../components/global/SideTextSection";
 import { signInRequest } from "../../../service/Api/userApi";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store/store";
+import { loaginSuccess } from "../../../redux/slice/authSlice";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
   const handleSubmit =async(e:React.ChangeEvent<HTMLFormElement>)=>{
     e.preventDefault()
     try {
       const {data} = await signInRequest({email,password})
       if(data.success){
         localStorage.setItem('access-token',data.token)
+        localStorage.setItem('user',JSON.stringify({name:data.name,email:data.email}))
         toast.success(data.message)
+        dispatch(loaginSuccess({userName:data.name , email :data.email}))
         navigate('/')
       }else{
         toast.error(data.message)
