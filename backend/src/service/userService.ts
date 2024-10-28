@@ -92,14 +92,14 @@ export class UserService{
             if(exist){
                const passwordCheck =await comparePassword(password,exist.password)
                if(!passwordCheck){
-                return {success:false , status:'Invalid password...!'}
+                return {success:false , message:'Invalid password...!'}
                }else{
                 const Accesstoken = generateAccessToken<Iuser>({email:exist.email,id:exist._id})
-                return {success:true , status: 'succesfully logged In..!',token:Accesstoken}
+                return {success:true , message: 'succesfully logged In..!',token:Accesstoken}
                }     
 
             }else{
-                return {success:false , status:'Not a verified user'}
+                return {success:false , message:'Not a verified user'}
             }
             
         } catch (error) {

@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
-import Logo from '../../../public/Logo.png'
+import Logo from '../../../../public/Logo.png'
+import { adminSignin } from '../../../service/Api/adminApi';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 const SignInAdmin = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = async(e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
-  };
+   try {
+    const {data} = await adminSignin({email,password})
+    if(data.success){
+      localStorage.setItem('accessToken',data.token)
+      navigate('/api/admin/dashboard')
+      toast.success(data.message)
+      }else{
+        toast.error('invalid credential')
+      }
+    
+   } catch (error) {
+    toast.error((error as Error).message)
+   }
+      
+    
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black p-4">

@@ -34,3 +34,10 @@ export const googleAuthSignIn = async (userDetails :Partial<Tuser>)=>{
     return await api.post('/auth/google',userDetails)
 }
 
+export const  signInRequest = async(userDetails:Partial<Tuser>)=>{ 
+    console.log(userDetails);
+    const response = await api.post('/signin',userDetails)
+    console.log(response);
+    return response
+    
+}

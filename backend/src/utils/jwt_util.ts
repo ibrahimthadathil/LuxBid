@@ -23,3 +23,12 @@ let skey = process.env.JWT_KEY as string
 
 }
 
+
+export const generateRefreshToken =<T>(data:Partial<T>):string =>{
+
+        let skey = process.env.JWT_KEY as string
+
+        return jwt.sign(data,skey,{expiresIn:'7d'})
+
+}
+

@@ -2,21 +2,27 @@ import GoogleIcon from "../../../assets/icons/Google"
 import { GoogleAuthProvider, signInWithPopup ,getAuth} from "@firebase/auth";
 import { app } from "../../../config/firebase";
 import {  googleAuthSignIn } from "../../../service/Api/userApi";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 
 const GoogleAuth = () => {
-
+  const navigate = useNavigate()
     const handleGoogleAuth=async()=>{
         try {
             const provider = new GoogleAuthProvider()
             const auth = getAuth(app)
             const {user} = await signInWithPopup(auth,provider)
-            console.log(user);
+            const {data} = await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})
             
-            await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})
+            if(data.success){
+              localStorage.setItem('access-token',data.AccessToken)
+              navigate('/')
+              toast.success(data.message)
+            }
             
         } catch (error) {
-            
+            toast.error( (error as Error).message)
         }
     }
   return (

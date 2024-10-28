@@ -5,8 +5,9 @@ import Home from "../pages/user/Home/Home";
 import SignIn from "../pages/user/Auth/SignIn";
 import OTP from "../pages/user/Auth/OTP";
 import Registration from "../pages/user/Auth/Registration";
-import SignInAdmin from "../pages/admin/Signup";
+import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
+import Dashboard from "../pages/admin/Home/Dashboard";
 
 
 export const Router = createBrowserRouter([
@@ -51,6 +52,16 @@ export const Router = createBrowserRouter([
   // ADMIN ROUTE
     {
       path :'/api/admin/auth',
-      element:<SignInAdmin  />
-    }
+      element:<SignInAdmin/>,
+      
+    },
+    {
+      path :'/api/admin/dashboard',
+      element: <ProtectedRoute element={<Dashboard/> } store="accessToken"/>,
+      
+    },
+
+
+
+
 ]) 

@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import GoogleAuth from "./GoogleAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SideTextSection from "../../../components/global/SideTextSection";
+import { signInRequest } from "../../../service/Api/userApi";
+import { toast } from "sonner";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit =(e:React.ChangeEvent<HTMLFormElement>)=>{
+  const navigate = useNavigate()
+  const handleSubmit =async(e:React.ChangeEvent<HTMLFormElement>)=>{
     e.preventDefault()
-    
-
+    try {
+      const {data} = await signInRequest({email,password})
+      if(data.success){
+        localStorage.setItem('access-token',data.token)
+        toast.success(data.message)
+        navigate('/')
+      }else{
+        toast.error(data.message)
+      }
+      
+    } catch (error) {
+      toast.error((error as Error).message)
+    }
   }
   return (
     <div className="flex flex-col lg:flex-row h-full w-full">

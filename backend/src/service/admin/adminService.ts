@@ -1,8 +1,40 @@
+import { Service } from "typedi";
+import { adminRepository } from "../../repositories/implimentation/admin/admin_Repository";
+import { comparePassword, hashPassword } from "../../utils/hash_utils";
+import { generateAccessToken, generateRefreshToken } from "../../utils/jwt_util";
 
 
+@Service()
+export class admin_Service{
 
-class admin_Service{
+    constructor(private adminRepo : adminRepository){}
+
+    async admin_signin(email:string,Password:string){
+       try {
+        const exist = await this.adminRepo.findByEmail(email)
+        if(exist){
+          const password = comparePassword(Password,exist.password) 
+          if(!password) return { success:false , message :'Invalid Credentials'}
+          const AccessToken = generateAccessToken({id:exist._id,email:exist.email})
+          const RefreshToken = generateRefreshToken({id:exist._id,email:exist.email})
+          return { success:true , refresh : RefreshToken ,access:AccessToken,message :'Logged in successfully' }
+          
+        }else{
+
+          return { success : false , message :'Invalid Credentials'}
+
+        }
+
+        
+       } catch (error) {
+        
+        console.log(error);
+        throw new Error((error as Error).message)        
+       }
+        
+    }
+
 
 }
 
-export const adminService = new admin_Service()
+

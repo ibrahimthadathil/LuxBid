@@ -6,10 +6,10 @@ import { UserService } from "../../service/userService";
 
 @Service()
 class UserController {
-  private userservice: UserService;
+  
 
-  constructor() {
-    this.userservice = Container.get(UserService);
+  constructor(private userservice: UserService) {
+    // this.userservice = Container.get(UserService);
   }
 
   async Signup(req: Request, res: Response) {
@@ -21,6 +21,8 @@ class UserController {
       if (!token&&!success) {
 
         res.status(409).json({ response: message });
+        console.log(message);
+        
       } else {
         res.status(200).json({ token: token, response: message, success });
       }
@@ -66,16 +68,23 @@ class UserController {
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
+      console.log(email,password);
+      
       const response = await this.userservice.verifySignIn(email, password);
+
+      console.log(response);
+      
       if (response?.success) {
         res
           .status(200)
-          .json({ token: response.token, status: response.status });
+          .json({ token: response.token,success:true, message: response.message });
       } else {
-        res.status(401).json({ status: response?.status });
+        
+        console.log('check');
+        res.status(401).json(response);
       }
     } catch (error) {
-      res.status(500).json({ status: (error as Error).message });
+      res.status(500).json({ message: (error as Error).message });
     }
   }
 
@@ -86,9 +95,11 @@ class UserController {
         userDetails
       );
       if (success) {
-        res.status(200).json({ AccessToken: token, message: message });
+        res.status(200).json({ AccessToken: token, message: message ,success:true });
+      }else{
+
+        res.status(500).json({ message: message });
       }
-      res.status(500).json({ message: message });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: (error as Error).message });
