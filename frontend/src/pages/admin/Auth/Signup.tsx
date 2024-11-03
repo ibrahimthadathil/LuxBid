@@ -3,10 +3,14 @@ import Logo from '../../../../public/Logo.png'
 import { adminSignin } from '../../../service/Api/adminApi';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store/store';
+import { signInSuccess } from '../../../redux/slice/adminSlice';
 const SignInAdmin = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const disaptch = useDispatch<AppDispatch>()
 
   const handleSignIn = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +18,9 @@ const SignInAdmin = () => {
     const {data} = await adminSignin({email,password})
     if(data.success){
       localStorage.setItem('accessToken',data.token)
-      navigate('/api/admin/dashboard')
+      localStorage.setItem('admin',JSON.stringify({email:data.email,name:data.name}))
+      disaptch(signInSuccess({adminName:String(data.name) ,email:String(data.email)}))
+      navigate('/api/admin/users')
       toast.success(data.message)
       }else{
         toast.error('invalid credential')

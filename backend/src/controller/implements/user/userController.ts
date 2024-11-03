@@ -1,15 +1,17 @@
 import { Request, Response } from "express";
-import { Iuser } from "../../models/userModel";
-import { Iopt } from "../../models/otpModel";
+import { Iuser } from "../../../models/userModel";
+import { Iopt } from "../../../models/otpModel";
 import { Container, Service } from "typedi";
-import { UserService } from "../../service/userService";
+import { authService } from "../../../service/implements/user/authService";
+import { IUserController } from "../../interface/controller_Interface";
 
 @Service()
-class UserController {
+class UserController implements IUserController{
   
+  constructor(
+    private userservice: authService
 
-  constructor(private userservice: UserService) {
-    // this.userservice = Container.get(UserService);
+  ) {
   }
 
   async Signup(req: Request, res: Response) {
@@ -20,7 +22,7 @@ class UserController {
       );
       if (!token&&!success) {
 
-        res.status(409).json({ response: message });
+        res.status(409).json({ response: message ,success:false});
         console.log(message);
         
       } else {
@@ -40,7 +42,7 @@ class UserController {
       const response = await this.userservice.verifyotp(otp, token);
       if (!response.success)
         res.status(401).json({ message: response.message });
-      else res.status(200).json({success:true, token: response.token, message: response.message });
+      else res.status(200).json({success:true, token: response.token, message: response.message ,name:response.name , email:response.email});
     } catch (error) {
       console.log((error as Error).message);
       if ((error as Error).message == "Token verification failed") {
@@ -138,11 +140,8 @@ class UserController {
       
       const { password, confirmPassword } = req.body;
       const Token = req.headers.authorization as string
-      if (password !== confirmPassword) {
-        res.status(401).json({ message: "password is not same" });
-        return;
-      }
-       const {message,success,token} =  await this.userservice.reset_Password(password,Token);
+      
+       const {message,success,token} =  await this.userservice.reset_Password(password,confirmPassword,Token);
       if(success){
         res.status(200).json({})
       }

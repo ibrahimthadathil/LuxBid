@@ -11,7 +11,6 @@ export class otpRepository extends BasRepository<Iopt>{
 
    async create_OTP( email:string , otp:string ){
         try {
-
              await this.create({email,otp})
             
             } catch (error) {

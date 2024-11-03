@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store/store";
 import { loaginSuccess } from "../../../redux/slice/authSlice";
+import { AxiosError } from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +29,9 @@ const SignIn = () => {
       }
       
     } catch (error) {
-      toast.error((error as Error).message)
+      console.log(error);
+
+      toast.error((((error as AxiosError).response?.data as Record<string,any>).message))
     }
   }
   return (

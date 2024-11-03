@@ -12,3 +12,13 @@ const api = axios.create({
 export const adminSignin=async(adminDetails :Tadmin)=>{
    return await api.post('/auth/signin',adminDetails)
 }
+
+
+export const FetchUsers= async()=>{
+   const {data}= await api.get('/users')
+   return data
+}
+
+export const UserStatus =async(email:string)=>{
+  return  await api.put(`/updateuser/${email}`)
+}

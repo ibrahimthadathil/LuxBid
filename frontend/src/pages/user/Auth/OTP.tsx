@@ -5,25 +5,31 @@ import SideTextSection from "../../../components/global/SideTextSection";
 import { otpVerification } from "../../../service/Api/userApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../redux/store/store";
+import { loaginSuccess } from "../../../redux/slice/authSlice";
+import { AxiosError } from "axios";
 
 const OTP = () => {
   const navigate = useNavigate()
   const[otp,setOTP]=useState('')
+  const dispatch = useDispatch<AppDispatch>()
   const handleClick =async()=>{
     try {
       const token = localStorage.getItem('otp-token') as string
     const {data}=await otpVerification(otp,token)
     if(data.success){
-      console.log(data);
       localStorage.setItem('access-token',data.token)
       toast.success(data.message)
       localStorage.removeItem('otp-token')
+      localStorage.setItem('user',JSON.stringify({name:data.name,email:data.email}))
+      dispatch(loaginSuccess({userName:String(data.name),email:String(data.email)}))
       navigate('/')
     }else{
       toast.error(data.message)
     }
     } catch (error) {
-      toast.error((error as Error ).message)
+      toast.error((((error as AxiosError).response?.data as Record<string,any>).message))
     }
   }
   
@@ -39,7 +45,7 @@ const OTP = () => {
           </h1>
           <h3 className="mt-4">Enter Verification code send to your email.</h3><br />
           <OTPInput onChange ={setOTP}/><br />
-        <p className="text-slate-400 mb-4">Remaining time : 90 sec</p>
+        {/* <p className="text-slate-400 mb-4">Remaining time : 90 sec</p> */}
           <button type="submit" className="w-[75%] sm:w-[50%] text-white p-2 rounded-md bg-zinc-800" onClick={handleClick}>
             Verify
           </button>

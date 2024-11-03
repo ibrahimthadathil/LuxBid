@@ -13,10 +13,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => (
       <User />
       {isSidebarOpen && <span className="ml-4">Users</span>}
     </Link>
-    <Link to="" className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+    {/* <Link to="" className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
       <FaTachometerAlt />
       {isSidebarOpen && <span className="ml-4">Dashboard</span>}
-    </Link>
+    </Link> */}
     {/* <Link to="" className="flex items-center px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
       <FaFileAlt />
       {isSidebarOpen && <span className="ml-4">Auction Request</span>}

@@ -1,22 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toggle from '../../../assets/icons/toggle';
 import Logo from '../../../../public/Logo.png'
 import Sidebar from '../../../components/admin/Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, Rootstate } from '../../../redux/store/store';
+import { Logout } from '../../../redux/slice/adminSlice';
+import { useNavigate } from 'react-router-dom';
+import Table from '../../../components/admin/Table';
+import { FetchUsers } from '../../../service/Api/adminApi';
+import { Iuser } from '../../../types/user';
 
 interface AppProps {}
 
 const Dashboard: React.FC<AppProps> = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const name = useSelector((state:Rootstate)=>state.admin.adminName)
+  const dispatch =useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+  const [users,setUsers]=useState<Iuser | {}[]>([{}])
+  const [fetching,setFetching]=useState(false)
+  const [loading, setLoading] = useState(true);
 
+  useEffect(()=>{
+    (async()=>{
+      try {
+       const users =  await FetchUsers()
+       setUsers(users.data)
+       setLoading(false)
+       
+      } catch (error) {
+        
+      }
+      finally{
+        setLoading(false)
+      }
+    })()
+  },[fetching])
+
+  const setFetch=()=>{
+    setFetching(!fetching)
+  }
+
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const logout =()=>{ 
+    dispatch(Logout())
+    navigate('/api/admin/auth')
+    
+  }
+
   return (
     <div className="flex flex-col md:flex-row">
-        <p></p>
       <div className={`sidebar ${isSidebarOpen ? 'w-full md:w-1/4' : 'w-16'} h-screen p-4 bg-black text-white `}>
-      <p className='text-end text-red-600'>{isSidebarOpen ? "LOGOUT" : ''}</p>
+        <p className='text-white'>{isSidebarOpen ? name : ''}</p>
+      
+      <p className='text-end text-red-600' onClick={logout}>{isSidebarOpen ? "LOGOUT" : ''}</p>
         <div className="mb-8 flex justify-between items-center">
           {isSidebarOpen && (
             <div className="flex items-center">
@@ -29,50 +70,20 @@ const Dashboard: React.FC<AppProps> = () => {
         </div>
        <Sidebar isSidebarOpen={isSidebarOpen}/>
       </div>
-      <div className={`w-full ${isSidebarOpen ? 'md:w-3/4' : 'md:w-full'} p-8`}>
+      <div className={`w-full ${isSidebarOpen ? 'md:w-3/4' : 'md:w-full'} bg-zinc-900 p-8`}>
         <div className="mb-4">
-          <button className="tab-button bg-gray-700 text-white rounded-md px-4 py-2 mr-2">Buyer</button>
-          <button className="tab-button bg-gray-700 text-white rounded-md px-4 py-2">Seller</button>
+          {/* <button className="tab-button bg-gray-700 text-white rounded-md px-4 py-2 mr-2">Buyer</button>
+          <button className="tab-button bg-gray-700 text-white rounded-md px-4 py-2">Seller</button> */}
         </div>
         <div className="table-container bg-gray-800 text-white rounded-md p-4 overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr>
-                <th className="p-3 bg-gray-700">No</th>
-                <th className="p-3 bg-gray-700">User name</th>
-                <th className="p-3 bg-gray-700">Email</th>
-                <th className="p-3 bg-gray-700">Created At</th>
-                <th className="p-3 bg-gray-700">Status</th>
-                <th className="p-3 bg-gray-700">Participants</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-gray-800">
-                <td className="p-3">LB01</td>
-                <td className="p-3"><a className="text-blue-500" href="#">John Samuel</a></td>
-                <td className="p-3">john@gmail.com</td>
-                <td className="p-3">12/03/2023</td>
-                <td className="p-3 text-green-500">Active</td>
-                <td className="p-3"><button className="participants-button bg-gray-700 text-white rounded-md px-4 py-2">View</button></td>
-              </tr>
-              <tr className="bg-gray-700">
-                <td className="p-3">LB02</td>
-                <td className="p-3"><a className="text-blue-500" href="#">Peter Orlam</a></td>
-                <td className="p-3">peter@gmail.com</td>
-                <td className="p-3">12/03/2023</td>
-                <td className="p-3 text-red-500">Blocked</td>
-                <td className="p-3"><button className="participants-button bg-gray-700 text-white rounded-md px-4 py-2">View</button></td>
-              </tr>
-              <tr className="bg-gray-800">
-                <td className="p-3">LB03</td>
-                <td className="p-3"><a className="text-blue-500" href="#">Abraham Philip</a></td>
-                <td className="p-3">abraham@gmail.com</td>
-                <td className="p-3">12/03/2023</td>
-                <td className="p-3 text-green-500">Active</td>
-                <td className="p-3"><button className="participants-button bg-gray-700 text-white rounded-md px-4 py-2">View</button></td>
-              </tr>
-            </tbody>
-          </table>
+          {loading ?
+            <div className="spinner-container">
+            <div className="spinner" />
+            Loading...
+          </div> :
+          <Table fetch={setFetch} datas={users as Iuser[]}/> 
+
+          }
         </div>
       </div>
     </div>

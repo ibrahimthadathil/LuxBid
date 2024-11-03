@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signUpRequest } from "../../../service/Api/userApi";
 import { toast } from "sonner";
 import SideTextSection from "../../../components/global/SideTextSection";
+import { AxiosError } from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,8 @@ const SignIn = () => {
     try {
       if (email.trim()) {
         const {data} = await signUpRequest(email);
+        console.log(data);
+        
         if(data.success){
           localStorage.setItem('registration-token',data.token)
           navigate('/auth/registration')
@@ -26,7 +29,9 @@ const SignIn = () => {
         toast.error("Enter email");
       }
     } catch (error) {
-      toast.error((error as Error).message);
+      console.log(error);
+      
+      toast.error((((error as AxiosError).response?.data as Record<string,any>).response))
     }
   }
   return (
