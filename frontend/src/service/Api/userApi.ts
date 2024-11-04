@@ -26,8 +26,8 @@ export const registration = async (datas:Partial<Tuser>,token:string)=>{
 }
 
 export const otpVerification = async (otp:string,token:string)=>{
-    return await api.post('/otpverify',{otp},{headers:{Authorization:token}})
-}
+    return await api.post('/otpverify',{otp},{headers:{Authorization:token},withCredentials:true})
+} 
 
 export const googleAuthSignIn = async (userDetails :Partial<Tuser>)=>{
     

@@ -19,7 +19,7 @@ export class authService implements IauthService{
         private emailservice : emailService
 
      ){
-        
+    
     }
     
     async createUser( email : string ){    
@@ -125,7 +125,8 @@ export class authService implements IauthService{
             userDetails.isVerified = true
             const response = await this.userRepo.create(userDetails)
             const Accesstoken = generateAccessToken<Iuser>({id:response._id,email:response.email})
-            return {success:true , token :Accesstoken , message:'Google Authentication successful'}
+            const RefreshToken = this.tokenservice.generate_RefreshToken({id:response._id,email:response.email})
+            return {success:true , token :Accesstoken ,refresh :RefreshToken, message:'Google Authentication successful'}
             
         } catch (error) {
             console.log(error);

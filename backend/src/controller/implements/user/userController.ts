@@ -4,6 +4,8 @@ import { Iopt } from "../../../models/otpModel";
 import { Container, Service } from "typedi";
 import { authService } from "../../../service/implements/user/authService";
 import { IUserController } from "../../interface/controller_Interface";
+import { setCookie } from "../../../utils/cookie_utils";
+import { set } from "mongoose";
 
 @Service()
 class UserController implements IUserController{
@@ -40,9 +42,9 @@ class UserController implements IUserController{
       const { otp } = req.body;
       const token = req.headers.authorization as string;
       const response = await this.userservice.verifyotp(otp, token);
-      if (!response.success)
-        res.status(401).json({ message: response.message });
-      else res.status(200).json({success:true, token: response.token, message: response.message ,name:response.name , email:response.email});
+      if (!response.success)res.status(401).json({ message: response.message });
+         setCookie(res , 'rftn' ,response.refresh as string)
+         res.status(200).json({success:true, token: response.token, message: response.message ,name:response.name , email:response.email});
     } catch (error) {
       console.log((error as Error).message);
       if ((error as Error).message == "Token verification failed") {
@@ -72,8 +74,8 @@ class UserController implements IUserController{
       const { email, password } = req.body;
       const response = await this.userservice.verifySignIn(email, password)
       if (response?.success) {
+        setCookie(res,'rftn',response.refresh as string)
         res
-          .cookie('refresh',response.refresh,{httpOnly:true,secure:true,maxAge:7*24*60*60*1000})
           .status(200)
           .json({ token: response.token,success:true, message: response.message ,email :response.email ,name:response.name});
       } else {
@@ -89,10 +91,11 @@ class UserController implements IUserController{
   async googleAuth(req: Request, res: Response) {
     const userDetails: Iuser = req.body;
     try {
-      const { success, message, token } = await this.userservice.verifyGoogle(
+      const { success, message, token,refresh } = await this.userservice.verifyGoogle(
         userDetails
       );
       if (success) {
+        setCookie(res,'rftn',refresh as string)
         res.status(200).json({ AccessToken: token, message: message ,success:true });
       }else{
 
