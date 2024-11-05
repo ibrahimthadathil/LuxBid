@@ -35,9 +35,19 @@ export const googleAuthSignIn = async (userDetails :Partial<Tuser>)=>{
 }
 
 export const  signInRequest = async(userDetails:Partial<Tuser>)=>{ 
-    console.log(userDetails);
     const response = await api.post('/signin',userDetails)
-    console.log(response);
     return response
     
+}
+
+export const forgetRequest = async(email:string)=>{
+  return await api.post('/forget/password',{email})
+}
+
+export const resetOTP = async(otp:string,token:string)=>{
+    return await api.post('/reset/otp',{otp },{headers:{Authorization:token}})
+}
+
+export const resetPassword = async(password:string,newPassword:string , token :string)=>{
+    return await api.post('/reset/password',{password,newPassword},{headers:{Authorization:token}})
 }

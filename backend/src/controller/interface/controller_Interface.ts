@@ -12,4 +12,15 @@ export interface IUserController {
   resetPassword(req: Request, res: Response): Promise<void>;
 }
 
+export interface IadminController {
+  adminSignIn(req:Request , res:Response):Promise<void>;
+  fetchUsers(req:Request , res:Response):Promise<void>;
+  updateUser(req:Request , res:Response):Promise<void>;
+}
+
+export interface Iusermangament{
+    findAllUsers():Promise<{success:boolean , data:Iuser[]}>
+    update_user(email:string):Promise<{ success:boolean , message :string}>
+}
+
 

@@ -8,13 +8,8 @@ import { setCookie } from "../../../utils/cookie_utils";
 import { set } from "mongoose";
 
 @Service()
-class UserController implements IUserController{
-  
-  constructor(
-    private userservice: authService
-
-  ) {
-  }
+class UserController implements IUserController {
+  constructor(private userservice: authService) {}
 
   async Signup(req: Request, res: Response) {
     try {
@@ -22,18 +17,20 @@ class UserController implements IUserController{
       const { message, token, success } = await this.userservice.createUser(
         userData.email
       );
-      if (!token&&!success) {
-
-        res.status(409).json({ response: message ,success:false});
+      if (!token && !success) {
+        res.status(409).json({ response: message, success: false });
         console.log(message);
-        
       } else {
         res.status(200).json({ token: token, response: message, success });
       }
     } catch (error) {
       console.log((error as Error).message);
-      res.status(500).json({ response: 'Internal server error', error: (error as Error).message });
-
+      res
+        .status(500)
+        .json({
+          response: "Internal server error",
+          error: (error as Error).message,
+        });
     }
   }
 
@@ -42,9 +39,18 @@ class UserController implements IUserController{
       const { otp } = req.body;
       const token = req.headers.authorization as string;
       const response = await this.userservice.verifyotp(otp, token);
-      if (!response.success)res.status(401).json({ message: response.message });
-         setCookie(res , 'rftn' ,response.refresh as string)
-         res.status(200).json({success:true, token: response.token, message: response.message ,name:response.name , email:response.email});
+      if (!response.success)
+        res.status(401).json({ message: response.message });
+      setCookie(res, "rftn", response.refresh as string);
+      res
+        .status(200)
+        .json({
+          success: true,
+          token: response.token,
+          message: response.message,
+          name: response.name,
+          email: response.email,
+        });
     } catch (error) {
       console.log((error as Error).message);
       if ((error as Error).message == "Token verification failed") {
@@ -58,12 +64,13 @@ class UserController implements IUserController{
       const userDetails: Iuser = req.body;
       const token = req.headers.authorization as string;
       const response = await this.userservice.registerUser(userDetails, token);
-      if (response.success){
+      if (response.success) {
         res
           .status(200)
           .json({ token: response.token, message: response.message });
-      }else {
-        res.status(500).json({ message: response.message });}
+      } else {
+        res.status(500).json({ message: response.message });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -72,15 +79,20 @@ class UserController implements IUserController{
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      const response = await this.userservice.verifySignIn(email, password)
+      const response = await this.userservice.verifySignIn(email, password);
       if (response?.success) {
-        setCookie(res,'rftn',response.refresh as string)
+        setCookie(res, "rftn", response.refresh as string);
         res
           .status(200)
-          .json({ token: response.token,success:true, message: response.message ,email :response.email ,name:response.name});
+          .json({
+            token: response.token,
+            success: true,
+            message: response.message,
+            email: response.email,
+            name: response.name,
+          });
       } else {
-        
-        console.log('check');
+        console.log("check");
         res.status(401).json(response);
       }
     } catch (error) {
@@ -91,14 +103,14 @@ class UserController implements IUserController{
   async googleAuth(req: Request, res: Response) {
     const userDetails: Iuser = req.body;
     try {
-      const { success, message, token,refresh } = await this.userservice.verifyGoogle(
-        userDetails
-      );
+      const { success, message, token, refresh } =
+        await this.userservice.verifyGoogle(userDetails);
       if (success) {
-        setCookie(res,'rftn',refresh as string)
-        res.status(200).json({ AccessToken: token, message: message ,success:true });
-      }else{
-
+        setCookie(res, "rftn", refresh as string);
+        res
+          .status(200)
+          .json({ AccessToken: token, message: message, success: true });
+      } else {
         res.status(500).json({ message: message });
       }
     } catch (error) {
@@ -112,8 +124,9 @@ class UserController implements IUserController{
       const { email } = req.body;
       const { success, message, token } =
         await this.userservice.forget_Password(email);
-      if (!success) res.status(500).json({ message });
-      res.status(200).json({ message, token });
+      console.log(success);
+      if (!success) res.status(401).json({ message });
+      else res.status(200).json({ message, token });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: (error as Error).message });
@@ -140,19 +153,21 @@ class UserController implements IUserController{
 
   async resetPassword(req: Request, res: Response) {
     try {
-      
-      const { password, confirmPassword } = req.body;
-      const Token = req.headers.authorization as string
-      
-       const {message,success,token} =  await this.userservice.reset_Password(password,confirmPassword,Token);
-      if(success){
-        res.status(200).json({})
+      const { password, newPassword } = req.body;
+      const Token = req.headers.authorization as string;
+      const { message, success} = await this.userservice.reset_Password(
+        password,
+        newPassword,
+        Token
+      );
+      if (success) {
+        res.status(200).json({ success :true, message:message,});
+      }else{
+        res.status(401).json({ success:false,message:message})
       }
-      
-      
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error, try again later' });
+      console.error(error);
+      res.status(500).json({ message: "Server error, try again later" });
     }
   }
 }

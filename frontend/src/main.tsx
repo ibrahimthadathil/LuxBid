@@ -9,6 +9,7 @@ import store from './redux/store/store'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
+      {/* <PersistGate></PersistGate> */}
       <Toaster richColors position='top-right'/>
       <RouterProvider router={Router}/>
     </Provider>

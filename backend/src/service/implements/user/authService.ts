@@ -137,7 +137,11 @@ export class authService implements IauthService{
 
     async forget_Password(email:string){
         try {
+            console.log(email,'12345');
+            
             const existUser = await this.userRepo.findUserByEmail(email)
+            console.log(existUser , 'us');
+            
             if(!existUser)return { success : false , message : 'you are not a verified user'}
             const OTP = await this.otpService.createOTP(email)
             const AccessToken =this.tokenservice.generate_AccessToken({id:existUser._id,email:existUser.email})
@@ -180,8 +184,7 @@ export class authService implements IauthService{
                 const user = await this.userRepo.findUserByEmail(email);
                 if(!user) return {success:false,message:'Invalid user email'}
                 await this.userRepo.update((user?._id as string),{password:hashedPass})
-                const AccessToken =this.tokenservice.generate_AccessToken({id:user._id,email:user.email})
-                return {success:true ,token:AccessToken ,message:'password hasbeen changed'}
+                return {success:true ,message:'password hasbeen changed'}
             }
             return {success:false,message:'Invalid access'}
         } catch (error) {

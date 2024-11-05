@@ -11,6 +11,9 @@ import Dashboard from "../pages/admin/Home/Dashboard";
 import PublicRoute ,{AdminPublicRoute}from "../service/PublicRoute";
 import Profile from "../pages/user/Home/Profile";
 import NotFoundPage from "../components/global/NotFoundPage";
+import Forgetpassword from "../pages/user/Auth/Forgetpassword";
+import SideTextSection from "../components/global/SideTextSection";
+import ResetPassword from "../pages/user/Auth/ResetPassword";
 
 
 export const Router = createBrowserRouter([
@@ -18,8 +21,15 @@ export const Router = createBrowserRouter([
         {
             path: '/auth',
             element: <Auth />,
-            children: [
+            children: [{
+
+                path :'registration',
+                element :<ProtectedRoute element={<Registration/>} store='registration-token'/>
+              }
+              ,
               {
+              element:<SideTextSection/>,
+              children:[ {
                 path: '', 
                 element: <Navigate to="/auth/signup" />
               },
@@ -35,10 +45,19 @@ export const Router = createBrowserRouter([
                 path:'otp/verify',
                 element :<ProtectedRoute element={<OTP/>} store="otp-token"/>
               },
+             
               {
-                path :'registration',
-                element :<ProtectedRoute element={<Registration/>} store='registration-token'/>
+                path : 'forgetpassword',
+                element : <PublicRoute route="/" element={<Forgetpassword/>}/>
+              },
+              {
+                path : 'resetpassword',
+                element : <ProtectedRoute store="rptkn" element={<ResetPassword/>} />
+
               }
+            ]
+            }
+
             ]
           },
           {
