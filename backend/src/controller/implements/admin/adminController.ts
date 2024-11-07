@@ -14,7 +14,7 @@ class AdminController implements IadminController{
     try {
       const { email, password } = req.body;
       
-      const { success, access, refresh, message,adminEmail,name } = await this.adminService.admin_signin(email, password);
+      const { success, access, message,adminEmail,name } = await this.adminService.admin_signin(email, password);
       if (success) {
         res
           .status(200)

@@ -15,7 +15,7 @@ export class admin_Service {
     try {
       const exist = await this.adminRepo.findByEmail(email);
       if (exist) {
-        const password = comparePassword(Password, exist.password);
+        const password = await comparePassword(Password, exist.password);        
         if (!password)
           return { success: false, message: "Invalid Credentials" };
         const AccessToken = generateAccessToken({

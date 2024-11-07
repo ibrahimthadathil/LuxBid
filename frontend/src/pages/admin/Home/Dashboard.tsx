@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Toggle from '../../../assets/icons/toggle';
 import Logo from '../../../../public/Logo.png'
-import Sidebar from '../../../components/admin/Sidebar';
+import Sidebar from '../../../components/admin/Sidebar1';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Rootstate } from '../../../redux/store/store';
 import { Logout } from '../../../redux/slice/adminSlice';

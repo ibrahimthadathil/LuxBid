@@ -4,7 +4,7 @@ import Deals from '../../assets/icons/Deals';
 import GuideIcon from '../../assets/icons/Guide';
 import HomeIcon from '../../assets/icons/Home';
 import CommunityIcon from '../../assets/icons/Pepole';
-import CustomButton from '../ui/Button';
+import CustomButton from '@/components/ux/customButon';
 
 const IconBar = () => {
   const [activeIcon, setActiveIcon] = useState<string>('home');

@@ -14,6 +14,7 @@ import NotFoundPage from "../components/global/NotFoundPage";
 import Forgetpassword from "../pages/user/Auth/Forgetpassword";
 import SideTextSection from "../components/global/SideTextSection";
 import ResetPassword from "../pages/user/Auth/ResetPassword";
+import AdminHome from "@/pages/admin/Home/home";
 
 
 export const Router = createBrowserRouter([
@@ -85,6 +86,11 @@ export const Router = createBrowserRouter([
     {
       path :'/api/admin/users',
       element: <ProtectedRoute element={<Dashboard/> } store="accessToken"/>,
+      
+    },
+    {
+      path :'/api/admin/',
+      element: <AdminHome/>,
       
     },
     {
