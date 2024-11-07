@@ -21,6 +21,8 @@ export const signUpRequest= async(email:string)=>{
 }
 
 export const registration = async (datas:Partial<Tuser>,token:string)=>{
+    console.log(datas);
+    
        return await api.post('/register',datas,{headers:{Authorization:token}})
       
 }

@@ -80,3 +80,7 @@
     @apply bg-background text-foreground;
   }
 }
+.errInput{
+  border: 1px solid red !important;
+  outline: 0px transparent;
+}

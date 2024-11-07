@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store/store";
 import { signInSuccess } from "../../../redux/slice/adminSlice";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { adminSignIn, TsignupSchem } from "@/utils/validation/admin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";

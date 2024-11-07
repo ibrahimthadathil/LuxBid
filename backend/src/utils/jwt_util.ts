@@ -17,8 +17,9 @@ let skey = process.env.JWT_KEY as string
         return jwt.verify(token,skey)
         
         } catch (error) {
-                console.log('error from jwt');
-                throw new Error('Invalid token')
+         console.log('error from jwt' , 'invalid token');
+         return 'invalid token'
+         throw new Error('Invalid token')
         }
 
 }

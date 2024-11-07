@@ -3,17 +3,18 @@ import GoogleAuth from "./GoogleAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpRequest } from "../../../service/Api/userApi";
 import { toast } from "sonner";
-import SideTextSection from "../../../components/global/SideTextSection";
 import { AxiosError } from "axios";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FieldValues, useForm } from "react-hook-form";
+import { TzsignUp, ZsignUp } from "@/utils/validation/user";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
+  const {register,handleSubmit,formState:{errors},reset}=useForm<TzsignUp>({resolver:zodResolver(ZsignUp)})
   const navigate = useNavigate();
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  
+  const handleSignUpSubmit = async (datas : TzsignUp) => {
     try {
-      if (email.trim()) {
-        const { data } = await signUpRequest(email);
+        const { data } = await signUpRequest(datas.email);
         console.log(data);
 
         if (data.success) {
@@ -25,9 +26,7 @@ const SignIn = () => {
           navigate("/auth/otp/verify");
           toast.success(data.response);
         }
-      } else {
-        toast.error("Enter email");
-      }
+     
     } catch (error) {
       console.log(error);
 
@@ -44,22 +43,22 @@ const SignIn = () => {
         </h1>
         <h3 className="mt-4">Sign In with your Gmail.</h3>
         <GoogleAuth />
-        <form onSubmit={handleSubmit}>
+          {errors.email && (<p className="text-red-500">{`${errors.email.message}`}</p>)}
+        <form onSubmit={handleSubmit(handleSignUpSubmit)}>
           <input
-            value={email}
             type="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
+            // onChange={(e) => setEmail(e.target.value)}
             className="mt-3 p-2 w-[85%] sm:w-[95%] mb-3 bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
           />
-
           <button
             type="submit"
             className="w-[85%] sm:w-[95%] text-white p-2 rounded-md bg-zinc-800"
-          >
+            >
             Continue
           </button>
-        </form>
+            </form>
         <br />
         <h6>
           Already have an account?

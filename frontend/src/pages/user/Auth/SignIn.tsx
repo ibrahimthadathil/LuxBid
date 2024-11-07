@@ -7,16 +7,19 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store/store";
 import { loaginSuccess } from "../../../redux/slice/authSlice";
 import { AxiosError } from "axios";
+import { useForm } from "react-hook-form";
+import { TzsignIn, zsignIn } from "@/utils/validation/user";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const {handleSubmit,register,formState:{errors},reset} = useForm<TzsignIn>({resolver:zodResolver(zsignIn)})
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignInSubmit = async (datas : TzsignIn) => {
+    
     try {
-      const { data } = await signInRequest({ email, password });
+      const { data } = await signInRequest(datas)
       if (data.success) {
         localStorage.setItem("access-token", data.token);
         localStorage.setItem(
@@ -45,19 +48,18 @@ const SignIn = () => {
         </h1>
         <h3 className="mt-4">Sign In with your Gmail.</h3>
         <GoogleAuth />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(handleSignInSubmit)}>
+          {errors.email && (<p className="text-red-500">{`${errors.email.message}`}</p>) || errors.password && (<p className="text-red-500">{`${errors.password.message}`}</p>)}
           <input
-            value={email}
             type="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
             className="mt-3 p-2 w-[85%] sm:w-[65%] mb-3 bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
-          />
+            />
           <input
-            value={password}
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            {...register('password')}
             className=" p-2 w-[85%] sm:w-[65%] mb-1 placeholder-zinc-500 bg-zinc-900 border-white rounded-md focus:outline-none focus:ring-1 focus:ring-neutral-700"
           />
           <p className="">

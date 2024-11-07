@@ -69,7 +69,7 @@ class UserController implements IUserController {
           .status(200)
           .json({ token: response.token, message: response.message });
       } else {
-        res.status(500).json({ message: response.message });
+        res.status(403).json({ message: response.message });
       }
     } catch (error) {
       console.log(error);
