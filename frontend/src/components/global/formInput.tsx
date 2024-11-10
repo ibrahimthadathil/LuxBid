@@ -1,4 +1,3 @@
-import { error } from "console";
 import React from "react";
 import { FieldError, FieldValues, useForm, UseFormRegister } from "react-hook-form";
 

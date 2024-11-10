@@ -36,21 +36,29 @@ class UserController implements IUserController {
 
   async verifyOTP(req: Request, res: Response) {
     try {
+      
       const { otp } = req.body;
-      const token = req.headers.authorization as string;
-      const response = await this.userservice.verifyotp(otp, token);
-      if (!response.success)
-        res.status(401).json({ message: response.message });
-      setCookie(res, "rftn", response.refresh as string);
-      res
-        .status(200)
-        .json({
-          success: true,
-          token: response.token,
-          message: response.message,
-          name: response.name,
-          email: response.email,
-        });
+      console.log('dfgh' , otp);
+      const token = req.headers.authorization as string; 
+      if(otp){
+        const response = await this.userservice.verifyotp(otp, token);
+        if (!response.success){
+          res.status(401).json({ message: response.message });
+  
+        }else{
+          setCookie(res, "rftn", response.refresh as string);
+          res
+            .status(200)
+            .json({
+              success: true,
+              token: response.token,
+              message: response.message,
+              name: response.name,
+              email: response.email,
+            });
+  
+        }
+      }else res.status(401).json({ message: "OTP Required..!" });
     } catch (error) {
       console.log((error as Error).message);
       if ((error as Error).message == "Token verification failed") {
@@ -137,14 +145,18 @@ class UserController implements IUserController {
     try {
       const { otp } = req.body;
       const Token = req.headers.authorization as string;
-      const { success, message, token } = await this.userservice.reset_otp(
-        Token,
-        otp
-      );
-      if (!success) {
-        res.status(401).json({ message });
-      }
-      res.status(200).json({ message, token });
+      
+      if(otp){
+        const { success, message, token } = await this.userservice.reset_otp(
+          Token,
+          otp
+        );
+        if (!success) {
+          res.status(401).json({ message });
+        }else{
+          res.status(200).json({ message, token });
+        }
+      }else res.status(401).json({message :'OTP is required'})      
     } catch (error) {
       console.log(error, "from reset password");
       res.status(500).json({ message: "server error , try after some time" });

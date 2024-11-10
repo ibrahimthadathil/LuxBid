@@ -1,4 +1,3 @@
-import { useState } from "react";
 import FormInput from "../../../components/global/formInput";
 import { forgetRequest } from "../../../service/Api/userApi";
 import { toast } from "sonner";
@@ -10,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const Zemail = z.object({ email: z.string().email() });
 type Tzemail = z.infer<typeof Zemail>;
 const Forgetpassword = () => {
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const {
     register,
@@ -18,25 +16,28 @@ const Forgetpassword = () => {
     formState: { errors },
   } = useForm<Tzemail>({ resolver: zodResolver(Zemail) });
   const handleVerify = async (datas: Tzemail) => {
+    console.log('llll');
+    
     console.log(datas);
-
-    // try {
-    //   const { data } = await forgetRequest(email);
-    //   if (data) {
-    //     localStorage.setItem("rpotp", data.token);
-    //     toast.success(data.message);
-    //     navigate("/auth/otp/verify");
-    //   } else {
-    //     throw new Error("Error in email verification");
-    //   }
-    // } catch (error) {
-    //   toast.error(
-    //     ((error as AxiosError).response?.data as Record<string, any>).message
-    //   );
-    // }
+    
+    try {
+      const { data } = await forgetRequest(datas.email);
+      if (data) {
+        localStorage.setItem("rpotp", data.token);
+        toast.success(data.message);
+        navigate("/auth/otp/verify");
+      } else {
+        throw new Error("Error in email verification");
+      }
+    } catch (error) {
+      toast.error(
+        ((error as AxiosError).response?.data as Record<string, any>).message
+      );
+    }
   };
   const errorFn: SubmitErrorHandler<Tzemail> = (err) => {
     Object.values(err).forEach((e) => {
+      
       toast.error(e.message);
     });
   };

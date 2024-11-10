@@ -1,4 +1,6 @@
 import { Phone } from "lucide-react";
+import { SubmitErrorHandler } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import errorMap from "zod/locales/en.js";
 
@@ -27,4 +29,22 @@ export const zsignIn = z.object({
   email : z.string().min(1,'Email is required').email(),
   password: z.string().min(6,'Minimum 6 character')
 })
-export type TzsignIn = z.infer<typeof zsignIn>
+export type TzsignIn = z.infer<typeof zsignIn>  
+
+
+// for reset password 
+
+export const ZresetPass = z.object({
+  password : z.string().min(6,' minimum 6 character password').regex(passwordValidation,'Password not in valid formate'),
+  confirmPassword : z.string().min(6,' minimum 6 character password').regex(passwordValidation,'Password not in valid formate')
+}).refine(data => data.password===data.confirmPassword ,{
+  message:'Password not match'
+})
+
+export  type TZresetPass = z.infer<typeof ZresetPass>
+
+export const errorFn: SubmitErrorHandler<any> = (err) => {
+  Object.values(err).forEach((e:any) => {
+    toast.error(e.message);
+  });
+};

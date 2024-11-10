@@ -179,13 +179,17 @@ export class authService implements IauthService{
         try {
             if(password !==confirmPassword)return {success : false ,message :'password not match'}
             const hashedPass = await hashPassword(password)
-            const {email} = this.tokenservice.verify_Token(Token) as JwtPayload
+            const {email,success} = this.tokenservice.verify_Token(Token) as JwtPayload
+            
             if(email){
+
                 const user = await this.userRepo.findUserByEmail(email);
                 if(!user) return {success:false,message:'Invalid user email'}
                 await this.userRepo.update((user?._id as string),{password:hashedPass})
                 return {success:true ,message:'password hasbeen changed'}
             }
+            console.log('jjj');
+            
             return {success:false,message:'Invalid access'}
         } catch (error) {
             console.log(error);
