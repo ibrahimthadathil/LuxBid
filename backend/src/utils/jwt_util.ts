@@ -1,6 +1,5 @@
 
 import jwt from "jsonwebtoken";
-import { Iuser } from "../models/userModel";
 
 export const generateAccessToken =<T>(data:Partial<T>):string =>{
 
@@ -16,10 +15,21 @@ let skey = process.env.JWT_KEY as string
         try {
                 
         return jwt.verify(token,skey)
+        
         } catch (error) {
-                console.log('error from jwt');
-                throw new Error('Invalid token')
+         console.log('error from jwt' , 'invalid token');
+         return {success : false , message:'invalid token'}
+         throw new Error('Invalid token')
         }
+
+}
+
+
+export const generateRefreshToken =<T>(data:Partial<T>):string =>{
+
+        let skey = process.env.JWT_KEY as string
+
+        return jwt.sign(data,skey,{expiresIn:'7d'})
 
 }
 

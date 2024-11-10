@@ -1,15 +1,17 @@
+import { Service } from "typedi";
 import { User , Iuser } from "../../models/userModel";
-import { userService } from "../../service/userService";
 import { BasRepository } from "./basre_repository";
-// import
-  class userRepository extends BasRepository<Iuser>{
+
+
+@Service()
+export class userRepository extends BasRepository<Iuser>{
     
     constructor(){
         super(User)
     }
 
     async findUserByEmail(email:string):Promise<Iuser | null>{
-    try {
+        try {
             
             return await User.findOne({email})
 
@@ -22,4 +24,6 @@ import { BasRepository } from "./basre_repository";
     }
 }
 
-export const userRepo = new userRepository()
+
+
+

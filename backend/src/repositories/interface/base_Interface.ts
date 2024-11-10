@@ -1,3 +1,4 @@
+import { Iuser } from "../../models/userModel";
 
 
 export interface IBaseRepository<T>{
@@ -7,3 +8,5 @@ export interface IBaseRepository<T>{
     update(id:string ,data:Partial<T>) : Promise<T | null>;
     delete(id:string):Promise<void>
 }
+
+
