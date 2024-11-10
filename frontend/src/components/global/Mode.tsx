@@ -33,7 +33,7 @@
 
 
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ToggleSwitch = () => {
