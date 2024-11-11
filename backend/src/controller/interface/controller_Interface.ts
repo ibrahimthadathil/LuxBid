@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Iuser } from "../../models/userModel";
 
-export interface IUserController {
+export interface IAuthController {
   Signup(req: Request, res: Response): Promise<void>;
   verifyOTP(req: Request, res: Response): Promise<void>;
   register(req: Request, res: Response): Promise<void>;
@@ -23,4 +23,8 @@ export interface Iusermangament{
     update_user(email:string):Promise<{ success:boolean , message :string}>
 }
 
+
+export interface IuserContrller {
+  findUser():Promise<{success:boolean , data :Iuser}>
+}
 

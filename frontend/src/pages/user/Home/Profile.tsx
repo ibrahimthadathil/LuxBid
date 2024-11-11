@@ -1,11 +1,20 @@
-import React from 'react'
+import Loader from "@/components/global/Loader";
+import ProfileCards from "@/components/global/ProfileCards";
+import { useAuth } from "@/hooks/useAuth";
+import { Rootstate } from "@/redux/store/store";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  useAuth();
+  const role = useSelector((state: Rootstate) => state.user.role);
+
   return (
-      <>
-      <div className="flex-1 p-5 bg-[#2a2a2d9a] m-3  rounded-3xl  shadow-slate-950">
-        <h1 className="text-2xl font-bold mb-4 text-gray-200">User Profile</h1>
-        <div className="bg-gray-300 p-4 rounded-lg shadow">
+    <>
+      <div className="flex-1 flex flex-col  p-5 bg-[#0f0f0fd9] m-4  rounded-3xl shadow-inner ">
+        <h1 className="text-2xl font-semibold mb-4 text-gray-200">
+          User Profile
+        </h1>
+        {/* <div className="bg-gray-300 p-4 rounded-lg shadow">
           <h2 className="text-lg font-bold my-2 text-gray-800">John Doe</h2>
           <p className="text-sm text-gray-600">Web Developer</p>
           <p className="text-sm my-2 text-gray-700">
@@ -21,10 +30,13 @@ const Profile = () => {
               Message
             </button>
           </div>
-        </div>
+        </div> */}
+        
+        {role=='Guest' ? <ProfileCards/> : <Loader/>}
+        
       </div>
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default Profile
+export default Profile;

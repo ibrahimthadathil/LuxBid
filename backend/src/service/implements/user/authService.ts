@@ -8,6 +8,7 @@ import { IauthService } from "../../interface/service_Interface";
 import { otpService } from "./otpService";
 import { tokenService } from "./tokenService";
 import { emailService } from "./emailService";
+import { log } from "console";
   
 @Service()
 export class authService implements IauthService{
@@ -118,7 +119,9 @@ export class authService implements IauthService{
             const existUser = await this.userRepo.findUserByEmail(userDetails.email)
             if(existUser){
                 const Accesstoken = generateAccessToken({id:existUser._id,email:existUser.email})
-                return {success:true ,token:Accesstoken ,message:'Google Authentication successful'}
+                const RefreshToken = this.tokenservice.generate_RefreshToken({id:existUser._id,email:existUser.email})
+
+                return {success:true ,token:Accesstoken ,refresh :RefreshToken ,message:'Google Authentication successful'}
             }
             const randomPassword = await RandomPassword()
             userDetails.password = randomPassword
@@ -126,6 +129,8 @@ export class authService implements IauthService{
             const response = await this.userRepo.create(userDetails)
             const Accesstoken = generateAccessToken<Iuser>({id:response._id,email:response.email})
             const RefreshToken = this.tokenservice.generate_RefreshToken({id:response._id,email:response.email})
+            
+            
             return {success:true , token :Accesstoken ,refresh :RefreshToken, message:'Google Authentication successful'}
             
         } catch (error) {

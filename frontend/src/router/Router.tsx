@@ -77,17 +77,15 @@ export const Router = createBrowserRouter([
     ],
   },
   {
-    path: "/user/profile",
+    path: "/user",
     element: <ProtectedRoute element={<UserProfile />} store="access-token" />,
     children: [
+      
       {
-        path :'/user',
-        element:<Navigate to='/user/profile'/> 
+        path: "profile",
+        element:<ProtectedRoute element={<Profile />} store="access-token"/>,
       },
-      {
-        path: "",
-        element: <Profile />,
-      },
+     
     ],
   },
 

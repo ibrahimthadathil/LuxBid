@@ -1,16 +1,19 @@
 import  { Router } from 'express'
-import { userController } from "../../controller/implements/user/userController";
+import { authController } from "../../controller/implements/user/authController";
+import { AuthMiddleWare } from '../../middleware/AuthMiddleware';
+import { userController } from '../../controller/implements/user/userController';
 
 const userRoute = Router()
+userRoute.post('/signup',authController.Signup.bind(authController))
+userRoute.post('/register',authController.register.bind(authController))
+userRoute.post('/otpverify',authController.verifyOTP.bind(authController))
+userRoute.post('/signin',authController.signIn.bind(authController))
+userRoute.post('/auth/google',authController.googleAuth.bind(authController))
+userRoute.post('/forget/password',authController.forgetPassword.bind(authController))
+userRoute.post('/reset/otp',authController.resetOTP.bind(authController))
+userRoute.post('/reset/password',authController.resetPassword.bind(authController))
 
-userRoute.post('/signup',userController.Signup.bind(userController))
-userRoute.post('/register',userController.register.bind(userController))
-userRoute.post('/otpverify',userController.verifyOTP.bind(userController))
-userRoute.post('/signin',userController.signIn.bind(userController))
-userRoute.post('/auth/google',userController.googleAuth.bind(userController))
-userRoute.post('/forget/password',userController.forgetPassword.bind(userController))
-userRoute.post('/reset/otp',userController.resetOTP.bind(userController))
-userRoute.post('/reset/password',userController.resetPassword.bind(userController))
+userRoute.get('/user',AuthMiddleWare,userController.findUser.bind(userController))
 
 export default userRoute
 

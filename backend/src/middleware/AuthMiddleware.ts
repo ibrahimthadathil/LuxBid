@@ -9,23 +9,26 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
 
     try {
 
-        let Accesstoken = req.headers.authorization
-        // let refreshToken
+        let Accesstoken = req.cookies.rftn
+        // console.log(Accesstoken);
+        
         if(!Accesstoken){
             throw new Error("UnAuthorized user...user don't have token")
         }else{
             const {email} = verifyToken(Accesstoken) as JwtPayload
-            const currentUser = await User.findOne(email)
-            // if(!currentUser?.isActive){
-            //     throw new Error('User Access denied By the Authority')
-            // }
-            // req.user = currentUser as Iuser
-            // next()
+            const currentUser = await User.findOne({email},'-password')
+            if(!currentUser?.isActive){
+                throw new Error('User Access denied By the Authority')
+            }
+            req.user = currentUser as Iuser            
+            next()
 
         }
 
         
     } catch (error) {
+        console.log('error from middleware');
+        
         res.status(400).json({message:(error as Error).message})
     }
 

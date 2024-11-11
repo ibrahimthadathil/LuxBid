@@ -27,9 +27,7 @@ const UserProfile = () => {
         <div className="bg-z flex-1">
           <Sidebars/>
         </div>
-        {/* <button className="p-4 text-red-300 rounded-xl" onClick={handleClick}>
-          Logout
-        </button> */}
+      
         
       </div>
     </>
