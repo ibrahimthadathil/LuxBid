@@ -1,12 +1,35 @@
 import Loader from "@/components/global/Loader";
 import ProfileCards from "@/components/global/ProfileCards";
+import SellerProfile from "@/components/global/sellerProfile";
 import { useAuth } from "@/hooks/useAuth";
-import { Rootstate } from "@/redux/store/store";
-import { useSelector } from "react-redux";
+import { setRole } from "@/redux/slice/authSlice";
+import { AppDispatch, Rootstate } from "@/redux/store/store";
+import { setRoll } from "@/service/Api/userApi";
+import { AxiosError } from "axios";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 const Profile = () => {
   useAuth();
   const role = useSelector((state: Rootstate) => state.user.role);
+  const [loading, setloading] = useState(false)
+  const dispatch = useDispatch<AppDispatch>()
+  const setBuyer=async()=>{
+    try {
+      setloading(true)
+      const {data} = await setRoll()
+      if(data.success){        
+        dispatch(setRole('Buyer'))
+        setloading(state=>!state)
+      }else{
+        throw new Error(data.message)
+      }
+    } catch (error) {
+      console.log('eroor from cards',error);
+      toast.error(((error as AxiosError).response?.data as Record<string,string>).message)
+    }
+  }
 
   return (
     <>
@@ -31,9 +54,8 @@ const Profile = () => {
             </button>
           </div>
         </div> */}
-        
-        {role=='Guest' ? <ProfileCards/> : <Loader/>}
-        
+        {loading ? <Loader/> : role=='Guest' ? <ProfileCards buyer={setBuyer}/> : role=='Buyer'? <SellerProfile/> :<Loader/> }
+         
       </div>
     </>
   );
