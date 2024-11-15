@@ -20,10 +20,6 @@ const SignInAdmin = () => {
         const { data } = await adminSignin({ email:datas.email, password:datas.password });
         if (data.success) {
             localStorage.setItem("accessToken", data.token);
-            localStorage.setItem(
-                "admin",
-                JSON.stringify({ email: data.email, name: data.name })
-              );
               disaptch(
                   signInSuccess({
                       adminName: String(data.name),

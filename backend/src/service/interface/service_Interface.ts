@@ -27,3 +27,7 @@ export interface ITokenService {
     generate_RefreshToken(payload: JwtPayload): string;
     verify_Token(token: string): JwtPayload;
 }
+
+export interface IBuyerService{
+    set_Buyer(userId:string):Promise<{ success:boolean , message:string }>
+}

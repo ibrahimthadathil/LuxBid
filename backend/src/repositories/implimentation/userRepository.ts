@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import { User , Iuser } from "../../models/userModel";
-import { BasRepository } from "./base_repository";
+import { BasRepository } from "./baseRepository";
 
 
 @Service()

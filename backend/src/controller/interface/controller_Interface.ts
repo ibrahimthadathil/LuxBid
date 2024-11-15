@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Iuser } from "../../models/userModel";
+import { AuthRequest } from "../../types/api";
 
 export interface IAuthController {
   Signup(req: Request, res: Response): Promise<void>;
@@ -25,6 +26,13 @@ export interface Iusermangament{
 
 
 export interface IuserContrller {
-  findUser():Promise<{success:boolean , data :Iuser}>
+  findUser(req:AuthRequest,res:Response):Promise<void>
 }
 
+export interface IbuyerContoller {
+  setBuyer(req:AuthRequest,res:Response):Promise<void>
+}
+
+export interface IsellerController{
+  setOrganizer(req:AuthRequest,res:Response):Promise<void>
+}

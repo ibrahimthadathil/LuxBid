@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import { Buyer, IBuyer } from "../../models/buyerModel";
-import { BasRepository } from "./base_repository";
+import { BasRepository } from "./baseRepository";
 
 @Service()
 export class BuyerRepository extends BasRepository<IBuyer>{
@@ -8,7 +8,6 @@ export class BuyerRepository extends BasRepository<IBuyer>{
     constructor(){
         super(Buyer)
     }
-
     async findByUserId(id:string){
         try {
 
@@ -21,5 +20,4 @@ export class BuyerRepository extends BasRepository<IBuyer>{
         }
 
     }
-
 }

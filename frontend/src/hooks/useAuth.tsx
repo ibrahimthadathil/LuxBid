@@ -13,7 +13,6 @@ export const useAuth=()=>{
         (async () => {
           try {
             const {data} = await fetchuser()
-            localStorage.setItem('rl',data.data.role)
             dispatch(setRole(data.data.role))
           } catch (error) {
             console.log('from middle auth');

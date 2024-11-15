@@ -1,6 +1,6 @@
-import Logo from "../../../../public/Logo.png";
-import Mode from "../../../components/global/Mode";
-import Sidebars from "../../../components/global/UserSidebar";
+import Logo from "../../../../../public/Logo.png";
+import Mode from "../../../../components/global/Mode";
+import Sidebars from "../../../../components/global/UserSidebar";
 const UserProfile = () => {
   
   return (

@@ -21,7 +21,6 @@ const GoogleAuth = () => {
             
             if(data.success){
               localStorage.setItem('access-token',data.AccessToken)
-              localStorage.setItem('user',JSON.stringify({name:user.displayName,email:user.email})) 
               toast.success(data.message)
               dispatch(loaginSuccess({userName:String(user.displayName),email:String(user.email)}))
               navigate('/')

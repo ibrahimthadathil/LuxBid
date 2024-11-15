@@ -11,7 +11,6 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
 
         let Accesstoken = req.cookies.rftn
         // console.log(Accesstoken);
-        
         if(!Accesstoken){
             throw new Error("UnAuthorized user...user don't have token")
         }else{
@@ -25,10 +24,8 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
 
         }
 
-        
     } catch (error) {
         console.log('error from middleware');
-        
         res.status(400).json({message:(error as Error).message})
     }
 

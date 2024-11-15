@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import GoogleAuth from "./GoogleAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { signInRequest } from "../../../service/Api/userApi";
@@ -13,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const SignIn = () => {
   
-  const {handleSubmit,register,formState:{errors},reset} = useForm<TzsignIn>({resolver:zodResolver(zsignIn)})
+  const {handleSubmit,register,formState:{errors}} = useForm<TzsignIn>({resolver:zodResolver(zsignIn)})
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const handleSignInSubmit = async (datas : TzsignIn) => {
@@ -22,10 +21,6 @@ const SignIn = () => {
       const { data } = await signInRequest(datas)
       if (data.success) {
         localStorage.setItem("access-token", data.token);
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ name: data.name, email: data.email })
-        );
         toast.success(data.message);
         dispatch(loaginSuccess({ userName: data.name, email: data.email }));
         navigate("/");
@@ -54,13 +49,13 @@ const SignIn = () => {
             type="email"
             placeholder="Email"
             {...register('email')}
-            className="mt-3 p-2 w-[85%] sm:w-[65%] mb-3 bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            className="mt-3 p-2 w-[85%] sm:w-[65%] mb-3 text-white bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
             />
           <input
             type="password"
             placeholder="Password"
             {...register('password')}
-            className=" p-2 w-[85%] sm:w-[65%] mb-1 placeholder-zinc-500 bg-zinc-900 border-white rounded-md focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            className=" p-2 w-[85%] sm:w-[65%] mb-1 text-white placeholder-zinc-500 bg-zinc-900 border-white rounded-md focus:outline-none focus:ring-1 focus:ring-neutral-700"
           />
           <p className="">
             <Link

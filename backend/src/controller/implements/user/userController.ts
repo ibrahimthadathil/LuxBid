@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 import { AuthRequest } from "../../../types/api";
 
 @Service()
- class user_Controller{
+ class user_Controller implements IuserContrller{
 
     constructor(
         private userServide : userService

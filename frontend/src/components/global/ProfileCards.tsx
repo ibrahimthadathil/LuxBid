@@ -1,13 +1,5 @@
-import { useState } from "react"
-import Loader from "./Loader"
-import {  setRoll } from "@/service/Api/userApi"
-import { toast } from "sonner"
-import { AxiosError } from "axios"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/redux/store/store"
-import { setRole } from "@/redux/slice/authSlice"
 
-const ProfileCards = ({buyer}:{buyer:Function}) => {
+const ProfileCards = ({buyer ,seller}:{buyer:Function,seller:Function}) => {
  
   return (
    <>
@@ -26,7 +18,7 @@ const ProfileCards = ({buyer}:{buyer:Function}) => {
                <li>✔ Can create a post</li>
                <li>✔ Can place a bid</li>
              </ul>
-             <button className="mt-4 border py-2 px-4 rounded hover:bg-[#5b4bae]" >
+             <button className="mt-4 border py-2 px-4 rounded hover:bg-[#5b4bae]" onClick={()=>seller()}>
                Proceed
              </button>
            </div>

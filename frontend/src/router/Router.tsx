@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import React, { Suspense } from "react";
 import Auth from "../pages/user/Auth/Auth";
 import Signup from "../pages/user/Auth/Signup";
 import Home from "../pages/user/Home/Home";
@@ -9,13 +10,15 @@ import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
 import Dashboard from "../pages/admin/Home/Dashboard";
 import PublicRoute, { AdminPublicRoute } from "../service/PublicRoute";
-import UserProfile from "../pages/user/Home/UserProfile";
+import UserProfile from "../pages/user/Home/profile/UserProfile";
 import NotFoundPage from "../components/global/NotFoundPage";
 import Forgetpassword from "../pages/user/Auth/Forgetpassword";
 import SideTextSection from "../components/global/SideTextSection";
 import ResetPassword from "../pages/user/Auth/ResetPassword";
 import AdminHome from "@/pages/admin/Home/home";
-import Profile from "@/pages/user/Home/Profile";
+import Loader from "@/components/global/Loader";
+// import Profile from "@/pages/user/Home/profile/SetRole";
+const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
   // USER ROUTE
@@ -78,14 +81,27 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/user",
-    element: <ProtectedRoute element={<UserProfile />} store="access-token" />,
+    element: (
+      <ProtectedRoute
+        element={
+          <Suspense
+            fallback={
+              <div className="bg-black h-screen items-center flex justify-center text-white">
+               <Loader/>
+              </div>
+            }
+          >
+            <UserProfile />
+          </Suspense>
+        }
+        store="access-token"
+      />
+    ),
     children: [
-      
       {
         path: "profile",
-        element:<ProtectedRoute element={<Profile />} store="access-token"/>,
+        element: <ProtectedRoute element={<Profile />} store="access-token" />,
       },
-     
     ],
   },
 

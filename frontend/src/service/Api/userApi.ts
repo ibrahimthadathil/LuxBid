@@ -84,7 +84,12 @@ export const fetchuser = async () => {
   }
 };
 
-export const setRoll = async()=>{
+export const setupBuyer = async()=>{
         return await api.post('/setbuyer')
-    
+}
+
+export const setupSeller = async()=>{
+      let res =await api.post('/setseller')
+      return res
+      
 }

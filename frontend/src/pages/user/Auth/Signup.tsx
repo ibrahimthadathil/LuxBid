@@ -5,11 +5,11 @@ import { signUpRequest } from "../../../service/Api/userApi";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { TzsignUp, ZsignUp } from "@/utils/validation/user";
 
 const SignIn = () => {
-  const {register,handleSubmit,formState:{errors},reset}=useForm<TzsignUp>({resolver:zodResolver(ZsignUp)})
+  const {register,handleSubmit,formState:{errors}}=useForm<TzsignUp>({resolver:zodResolver(ZsignUp)})
   const navigate = useNavigate();
   
   const handleSignUpSubmit = async (datas : TzsignUp) => {

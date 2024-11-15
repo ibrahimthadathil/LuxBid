@@ -2,9 +2,10 @@ import Container, { Service } from "typedi";
 import { buyer_service } from "../../../service/implements/user/buyerService";
 import { AuthRequest } from "../../../types/api";
 import { Response } from "express";
+import { IbuyerContoller } from "../../interface/controller_Interface";
 
 @Service()
-class BuyerController{
+class BuyerController implements IbuyerContoller{
 
     constructor(private buyerService : buyer_service){}
     

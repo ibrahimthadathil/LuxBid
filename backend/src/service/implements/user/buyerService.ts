@@ -1,9 +1,10 @@
 import { Service } from "typedi";
 import { BuyerRepository } from "../../../repositories/implimentation/buyerRepository";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
+import { IBuyerService } from "../../interface/service_Interface";
 
 @Service()
-export class buyer_service {
+export class buyer_service implements IBuyerService{
   constructor(
     private buyerRepo: BuyerRepository,
     private userRepo: userRepository

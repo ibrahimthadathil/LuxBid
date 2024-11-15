@@ -5,14 +5,12 @@ interface userState {
     email:string |null ,
     role:string |null ,
 }
-const userString = localStorage.getItem('user'); 
-const user = userString ? JSON.parse(userString) : null; 
-const role = localStorage.getItem('rl') 
+
 
 const initialState:userState ={
-    userName:user?.name || null, 
-    email:user?.email || null,
-    role : role? role : null
+    userName: null, 
+    email: null,
+    role :  null
 }
 const userSlice = createSlice({
     name: 'user',
@@ -25,7 +23,7 @@ const userSlice = createSlice({
         logout :(state)=>{
             state.email = null
             state.userName = null 
-            localStorage.removeItem('user')
+            // localStorage.removeItem('user')
         },
         setRole :(state , action :PayloadAction<string>)=>{
             state.role = action.payload

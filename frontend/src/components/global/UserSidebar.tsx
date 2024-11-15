@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { MdSpaceDashboard ,} from "react-icons/md";
 import { VscThreeBars } from "react-icons/vsc";
 import { FaRegUser } from "react-icons/fa";import Logo from "../../../public/Logo.png";
@@ -45,7 +45,7 @@ const sidebarItems = [
     <div className="flex h-full">
       {/* Sidebar */}
       <div
-        className={` rounded-3xl flex flex-col relative transition-all bg-[#0f0f0fd9] duration-300 m-4 ${
+        className={` rounded-3xl flex flex-col relative transition-all bg-[#1a191996]  duration-300 m-4 ${
           isCollapsed ? "w-16" : "w-64"
         }`}
       >
@@ -81,4 +81,4 @@ const sidebarItems = [
   );
 };
 
-export default Sidebars;
+export default React.memo(Sidebars)

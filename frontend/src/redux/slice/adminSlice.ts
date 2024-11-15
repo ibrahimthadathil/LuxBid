@@ -5,13 +5,9 @@ interface adminState{
     email:string | null
 }
 
-const adminString = localStorage.getItem('admin')
-const admin = adminString ? JSON.parse(adminString) : null
-console.log(admin , '`1234');
-
 const initialState:adminState={
-    adminName : admin?.name || null,
-    email:admin?.email || null 
+    adminName :null,
+    email: null 
 }
 
 const adminSlice = createSlice({

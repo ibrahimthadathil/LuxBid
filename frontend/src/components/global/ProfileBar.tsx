@@ -1,8 +1,9 @@
 import { Gavel, Star, Trophy } from 'lucide-react'
+import React from 'react'
 
 const ProfileBar = () => {
   return (
-    <div className="bg-black shadow-xl text-gray-200 py-6 rounded-2xl">
+    <div className="bg-black shadow-xl   text-gray-200 py-6 rounded-2xl">
         <div className="px-6">
           <div className="flex items-center justify-between">
             <div className="flex flex-col items-start">
@@ -12,7 +13,7 @@ const ProfileBar = () => {
             </div>
             
             <div className="flex items-center space-x-8">
-              <div className="flex items-center space-x-2 border rounded-xl border-[#5b4baec2] p-3">
+              <div className="flex items-center space-x-2 border rounded-xl border-[#5b4baea2] p-3">
                 <Gavel className="w-5 h-5 text-purple-500" />
                 <div>
                   <span className="font-semibold">23</span>
@@ -20,7 +21,7 @@ const ProfileBar = () => {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-2 border rounded-xl border-[#5b4baeb2] p-3">
+              <div className="flex items-center space-x-2 border rounded-xl border-[#5b4baeb7] p-3">
                 <Trophy className="w-5 h-5 text-purple-500" />
                 <div>
                   <span className="font-semibold">51</span>
@@ -50,4 +51,4 @@ const ProfileBar = () => {
   )
 }
 
-export default ProfileBar
+export default React.memo(ProfileBar)

@@ -22,10 +22,6 @@ const OTP = () => {
         localStorage.setItem("access-token", data.token) 
         toast.success(data.message)
         localStorage.removeItem("otp-token");
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ name: data.name, email: data.email })
-        );
         dispatch(
           loaginSuccess({
             userName: String(data.name),
