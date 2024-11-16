@@ -21,6 +21,7 @@ const Profile = () => {
       setloading(true)
       const {data}= await setupBuyer()
       if(data.success){        
+        
         dispatch(setRole('Buyer'))
         setloading(state=>!state)
       }else{
@@ -38,6 +39,7 @@ const Profile = () => {
      const {data} = await setupSeller()
      console.log('@@@',data);
      if(data.success){        
+      
       dispatch(setRole('Seller'))
       setloading(state=>!state)
     }else{
@@ -48,7 +50,9 @@ const Profile = () => {
       toast.error(((error as AxiosError).response?.data as Record<string,string>).message)
     }
   }
-
+  // const{isLoading,data}=useRQ(fetchuser,selected)
+  //  if(isLoading)return <div className="bg-[#1a191996]  m-4  rounded-3xl shadow-inner"><Loader/> </div>
+    
   return (
     <>
       <div className="flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4  rounded-3xl shadow-inner ">
@@ -72,7 +76,7 @@ const Profile = () => {
             </button>
           </div>
         </div> */}
-        {loading ? <Loader/> : role=='Guest' ? <ProfileCards buyer={setBuyer} seller={setSeller}/> : role=='Buyer'? <BuyerProfile/> : role=='Seller'?<SellerProfile/>:<Loader/> }
+        {loading ? <Loader/> : role=='Guest' ? <ProfileCards buyer={setBuyer} seller={setSeller}/> : role=='Buyer'? <BuyerProfile  /> : role=='Seller'?<SellerProfile/>:<Loader/> }
       </div>
     </>
   );

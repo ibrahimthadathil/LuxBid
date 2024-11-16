@@ -23,7 +23,13 @@ const reducer = combineReducers({
 const PersisitedReducer = persistReducer(persistconfig,reducer)
 
 const store = configureStore({  
-    reducer:PersisitedReducer
+    reducer:PersisitedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+          serializableCheck: {
+            ignoredActions: ['persist/PERSIST'], // Ignore persist actions in middleware
+          },
+        }),
 })
 
 export type Rootstate = ReturnType <typeof store.getState>

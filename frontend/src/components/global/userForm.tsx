@@ -1,6 +1,8 @@
-import React from 'react'
+import { Iuser } from '@/types/user'
 
-const UserForm = () => {
+const UserForm = ({user}:{user:Iuser}) => {
+  console.log(user);
+  
   return (
     <>
     <div className="col-span-2 bg-black shadow-xl rounded-2xl p-4">
@@ -10,14 +12,16 @@ const UserForm = () => {
           <div>
             <label className="block text-sm text-gray-400 mb-1">First name</label>
             <input
+            value={user.firstName }
               type="text"
-              defaultValue="John"
+              // defaultValue="John"
               className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
             />
           </div>
           <div>
             <label className="block text-sm text-gray-400 mb-1">Last name</label>
             <input
+              value={user.lastName?user.lastName:'(optional)'}
               type="text"
               defaultValue="Samuel"
               className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
@@ -28,6 +32,7 @@ const UserForm = () => {
           <div>
             <label className="block text-sm text-gray-400 mb-1">Email</label>
             <input
+              value={user.email}
               type="email"
               defaultValue="John@gmail.com"
               className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
@@ -36,6 +41,7 @@ const UserForm = () => {
           <div>
             <label className="block text-sm text-gray-400 mb-1">Phone ( IND )</label>
             <input
+              value={user.phone?user.phone:'Add Number'}
               type="text"
               defaultValue="+91 8943647459"
               className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
