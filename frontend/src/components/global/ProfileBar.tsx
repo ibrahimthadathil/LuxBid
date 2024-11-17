@@ -3,6 +3,7 @@ import { Gavel, Star, Trophy } from "lucide-react";
 import React from "react";
 
 const ProfileBar = ({ user,bids }: { user: Iuser,bids:Tbuyer }) => {
+  console.log('+++++',user);
   
   return (
     <div className="bg-black shadow-xl   text-gray-200 py-6 rounded-2xl">

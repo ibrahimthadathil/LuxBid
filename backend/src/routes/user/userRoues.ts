@@ -10,6 +10,7 @@ userRoute.get('/user',AuthMiddleWare,userController.findUser.bind(userController
 userRoute.post('/setbuyer',AuthMiddleWare,buyer_controller.setBuyer.bind(buyer_controller))
 userRoute.post('/setseller',AuthMiddleWare,Organizer_Controller.setOrganizer.bind(Organizer_Controller))
 userRoute.get('/buyer',AuthMiddleWare,buyer_controller.getBuyer.bind(buyer_controller))
+userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.getSeller.bind(Organizer_Controller))
 
 export default userRoute
 

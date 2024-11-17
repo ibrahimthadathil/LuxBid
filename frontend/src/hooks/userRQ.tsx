@@ -4,9 +4,9 @@ export const useRQ = (fetchuser:Function,dependecy?:any) => {
     queryKey: ["user"],
     queryFn: async () => {
       const { data } = await fetchuser();
-      return data.data;
+      return data.data
     },
- 
+    
     enabled:dependecy,
     
   });

@@ -5,6 +5,7 @@ const api = axios.create({
     withCredentials: true,
   });
 
+  // fetch seller
   export const fetchSeller=async()=>{
     try {
       return  await api.get('/seller')

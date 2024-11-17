@@ -24,6 +24,21 @@ import { IsellerController } from "../../interface/controller_Interface";
             
         }
     }
+    async getSeller(req:AuthRequest,res:Response){
+        try {
+
+            const user = req.user
+           if(user){
+            const {success,message,buyer,seller}= await this.orgService.get_Seller(user?._id as string)
+           if(success){
+            res.status(200).json({data:[seller,buyer]})
+           }else res.status(400).json({ message })
+           }else res.status(403).json({message:'Access Denied'})
+        } catch (error) {
+            console.log((error as Error).message);
+            res.status(500).json({message:'Internal error ,Try after'})
+        }
+    }
 
 }
 

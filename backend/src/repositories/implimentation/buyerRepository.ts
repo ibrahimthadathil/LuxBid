@@ -11,7 +11,7 @@ export class BuyerRepository extends BasRepository<IBuyer>{
     async findByUserId(id:string){
         try {
 
-           return await Buyer.findOne({user:id}).populate('user')
+           return await Buyer.findOne({user:id}).populate({path:'user',select:'-password'})
             
         } catch (error) {
             console.log((error as Error).message);
