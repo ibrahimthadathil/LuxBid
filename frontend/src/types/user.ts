@@ -13,3 +13,12 @@ export interface Iuser extends Document{
     isVerified : boolean
 
 }
+
+export type Tbuyer= {
+    CommittedBids:[{
+        Auction:string,
+        bidAmt :number,
+        bidDate:Date ,
+        bisStatus: string ,
+    }],
+}

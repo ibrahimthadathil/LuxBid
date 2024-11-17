@@ -20,7 +20,7 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
         return this.model.create(data)
     }
     
-    async findById(id: string): Promise<T | null> {
+    async findById(id: string , populator?:string): Promise<T | null> {
         return this.model.findById(id)
     }
     async update(id: string, data: Partial<T>): Promise<T | null> {

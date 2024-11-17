@@ -6,6 +6,7 @@ import { authService } from "../../../service/implements/user/authService";
 import { IAuthController } from "../../interface/controller_Interface";
 import { setCookie } from "../../../utils/cookie_utils";
 import { set } from "mongoose";
+import { AuthRequest } from "../../../types/api";
 
 @Service()
 class AuthController implements IAuthController {
@@ -183,6 +184,18 @@ class AuthController implements IAuthController {
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Server error, try again later" });
+    }
+  }
+
+  async logoutUser(req:AuthRequest,res:Response){
+    try {
+      console.log('kkkk')
+      res.clearCookie('rftn', { httpOnly: true, secure: true, path: '/',  });
+      console.log(req.cookies.rftn);
+      
+    } catch (error) {
+      console.log((error as Error).message)
+      throw new Error('from logout user')
     }
   }
 }

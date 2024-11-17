@@ -3,18 +3,20 @@ import { MdSpaceDashboard ,} from "react-icons/md";
 import { VscThreeBars } from "react-icons/vsc";
 import { FaRegUser } from "react-icons/fa";import Logo from "../../../public/Logo.png";
 import { CiLogout } from "react-icons/ci";
-import { Navigate, Outlet, useNavigate } from "react-router";
+import {  Outlet, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/slice/authSlice";
+import { userLogout } from "@/service/Api/userApi";
 
 const Sidebars = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => setIsCollapsed((prev) => !prev);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleClick = () => {
+  const handleClick = async() => {
     localStorage.removeItem("access-token");
     dispatch(logout())
+    // await userLogout()
     navigate("/");
   };
 const sidebarItems = [

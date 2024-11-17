@@ -10,12 +10,16 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
     try {
 
         let Accesstoken = req.cookies.rftn
+        console.log(Accesstoken);
+        
         // console.log(Accesstoken);
         if(!Accesstoken){
             throw new Error("UnAuthorized user...user don't have token")
         }else{
             const {email} = verifyToken(Accesstoken) as JwtPayload
             const currentUser = await User.findOne({email},'-password')
+            console.log(currentUser);
+            
             if(!currentUser?.isActive){
                 throw new Error('User Access denied By the Authority')
             }

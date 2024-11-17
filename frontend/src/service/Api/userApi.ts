@@ -93,3 +93,11 @@ export const setupSeller = async()=>{
       return res
       
 }
+
+export const userLogout =async()=>{
+  try {
+    await api.post('/logout')
+  } catch (error) {
+    throw new Error('Logout failed')
+  }
+}

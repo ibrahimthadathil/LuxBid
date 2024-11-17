@@ -6,6 +6,7 @@ import userRoute from "./routes/user/userRoues";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import adminRoute from "./routes/admin/adminRoutes";
+import authRoute from "./routes/user/authRoutes";
 
 dotenv.config();
 connectDB();
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use("/Luxbid", authRoute);
 app.use("/Luxbid", userRoute);
 app.use("/LB/api", adminRoute);
 
