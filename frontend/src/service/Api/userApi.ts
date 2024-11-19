@@ -106,6 +106,8 @@ export const userLogout =async()=>{
 export const uploadProfile = async(image:File)=>{
   const data=new FormData();
   data.append("image",image)
+  console.log('===',data);
+  
   return await api.post('/uploadprofile',data)
 
 }

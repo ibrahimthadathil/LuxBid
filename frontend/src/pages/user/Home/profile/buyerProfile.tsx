@@ -6,7 +6,7 @@ import { fetchBuyer } from "@/service/Api/buyerApi";
 
 
 const ProfileDashboard = () => {
-  const{isLoading,data,isSuccess}= useRQ(fetchBuyer)  
+  const{isLoading,data,isSuccess}= useRQ(fetchBuyer,'user')  
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
     isSuccess?<div className="p-3 space-y-6  ">

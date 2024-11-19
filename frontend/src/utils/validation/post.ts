@@ -9,24 +9,28 @@ export const ZPost = z.object({
     description: z.string()
     .min(10, { message: "Description must be at least 10 characters" })
     .max(300, { message: "Description cannot exceed 500 characters" }),
-    file:z
+    file: z
     .custom<FileList>((val) => val instanceof FileList && val.length > 0, {
-      message: "File is required.",
+        message: "At least one image is required.",
     })
     .refine(
+        (fileList) => fileList.length <= 5, // Limit to 5 files
+        { message: "Maximum 5 images allowed." }
+    )
+    .refine(
         (fileList) => {
-          const allowedTypes = ["image/png", "image/jpeg", "application/pdf"];
-          return Array.from(fileList).every((file) =>
-            allowedTypes.includes(file.type)
-          );
+            const allowedTypes = ["image/png", "image/jpeg", "image/webp", "image/gif"];
+            return Array.from(fileList).every((file) =>
+                allowedTypes.includes(file.type)
+            );
         },
-        { message: "Only PNG, JPEG, and PDF files are allowed." }
-      )
-      .refine(
+        { message: "Only PNG, JPEG, WebP, and GIF images are allowed." }
+    )
+    .refine(
         (fileList) =>
-          Array.from(fileList).every((file) => file.size <= 5 * 1024 * 1024),
-        { message: "Each file must be less than 5MB." }
-      ),
+            Array.from(fileList).every((file) => file.size <= 2 * 1024 * 1024),
+        { message: "Each image must be less than 2MB." }
+    ),
 })
 
 export type TZpost= z.infer<typeof ZPost>

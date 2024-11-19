@@ -27,7 +27,9 @@ import { AuthRequest } from "../../../types/api";
 
     async uploadProfile(req:AuthRequest,res:Response){
         try {
-            const currentUser = req.user
+            const currentUser = req.user 
+            console.log(req.file);
+            
             if(req.file && currentUser){
              const {message,success}= await this.userServide.upload_Profile(currentUser._id as string,req.file)  
              if(success)res.status(200).json({success,message})
@@ -43,6 +45,7 @@ import { AuthRequest } from "../../../types/api";
     async editProfile(req:AuthRequest, res:Response){
         try {
             const user = req.user
+            
             if(user){
                const { message , success }= await this.userServide.editProfile(req.body,user._id as string)
                if(success){

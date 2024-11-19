@@ -5,7 +5,7 @@ import { fetchSeller } from "@/service/Api/sellerApi";
 import Loader from "@/components/global/Loader";
 
 const SellerProfile = () => {
-  const {data,isLoading,isSuccess}=useRQ(fetchSeller)  
+  const {data,isLoading,isSuccess}=useRQ(fetchSeller,'user')  
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
       isSuccess ? <div className="p-3 space-y-6">

@@ -4,6 +4,7 @@ import { userController } from '../../controller/implements/user/userController'
 import { buyer_controller } from '../../controller/implements/user/buyerController';
 import { Organizer_Controller } from '../../controller/implements/user/organizerController';
 import { upload } from '../../utils/multer_Utils';
+import { product_Controller } from '../../controller/implements/product/productController';
 
 const userRoute = Router()
 
@@ -14,5 +15,6 @@ userRoute.get('/buyer',AuthMiddleWare,buyer_controller.getBuyer.bind(buyer_contr
 userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.getSeller.bind(Organizer_Controller))
 userRoute.post('/uploadprofile',AuthMiddleWare,upload.single('image'),userController.uploadProfile.bind(userController))
 userRoute.post('/editprofile',AuthMiddleWare,userController.editProfile.bind(userController))
+userRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),product_Controller.create_Post.bind(product_Controller))
 export default userRoute
 

@@ -22,3 +22,9 @@ export type Tbuyer= {
         bisStatus: string ,
     }],
 }
+
+export type Tcategory ={
+    _id:string,
+    name:string,
+    isActive:boolean,
+}
