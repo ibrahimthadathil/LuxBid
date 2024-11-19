@@ -8,7 +8,6 @@ import { IauthService } from "../../interface/service_Interface";
 import { otpService } from "./otpService";
 import { tokenService } from "./tokenService";
 import { emailService } from "./emailService";
-import { log } from "console";
   
 @Service()
 export class authService implements IauthService{

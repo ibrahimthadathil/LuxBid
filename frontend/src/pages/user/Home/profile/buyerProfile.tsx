@@ -9,7 +9,7 @@ const ProfileDashboard = () => {
   const{isLoading,data,isSuccess}= useRQ(fetchBuyer)  
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
-    isSuccess&&<div className="p-3 space-y-6  ">
+    isSuccess?<div className="p-3 space-y-6  ">
       {/* {profile bar}     */}
 
       <ProfileBar user={data?.user} bids={data?.committedBids}/>
@@ -26,7 +26,7 @@ const ProfileDashboard = () => {
           </button>
         </div>
       </div>
-    </div> 
+    </div> : <Loader/>
     
   );
 };

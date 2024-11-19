@@ -17,7 +17,7 @@ import SideTextSection from "../components/global/SideTextSection";
 import ResetPassword from "../pages/user/Auth/ResetPassword";
 import AdminHome from "@/pages/admin/Home/home";
 import Loader from "@/components/global/Loader";
-// import Profile from "@/pages/user/Home/profile/SetRole";
+import Products from "@/pages/user/Home/products/Products";
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
@@ -100,8 +100,12 @@ export const Router = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element: <ProtectedRoute element={<Profile />} store="access-token" />,
+        element:<Profile /> ,
       },
+      {
+        path:'product',
+        element:<Products/>
+      }
     ],
   },
 

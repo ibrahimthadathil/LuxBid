@@ -50,8 +50,7 @@ const Profile = () => {
       toast.error(((error as AxiosError).response?.data as Record<string,string>).message)
     }
   }
-  // const{isLoading,data}=useRQ(fetchuser,selected)
-  //  if(isLoading)return <div className="bg-[#1a191996]  m-4  rounded-3xl shadow-inner"><Loader/> </div>
+  
     
   return (
     <>

@@ -4,33 +4,38 @@ import { VscThreeBars } from "react-icons/vsc";
 import { FaRegUser } from "react-icons/fa";import Logo from "../../../public/Logo.png";
 import { CiLogout } from "react-icons/ci";
 import {  Outlet, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/redux/slice/authSlice";
-import { userLogout } from "@/service/Api/userApi";
+import { AiFillProduct } from "react-icons/ai";
+import { Rootstate } from "@/redux/store/store";
 
 const Sidebars = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => setIsCollapsed((prev) => !prev);
+  const role = useSelector((state:Rootstate)=>state.user.role)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleClick = async() => {
-    localStorage.removeItem("access-token");
-    dispatch(logout())
-    // await userLogout()
-    navigate("/");
+  
+  const handleClick = (route:string) => {
+    if(route=='logout'){
+      localStorage.removeItem("access-token");
+      dispatch(logout())
+      navigate("/");
+    }else if(route=='product')navigate('/user/product')
+    else if(route=='profile')navigate('/user/profile')
   };
 const sidebarItems = [
-  { icon: <FaRegUser/>, label: "Profile" , onClick :()=> console.log('hi')
-  },
-  { icon: <CiLogout size={23}/>, label: "Logout" , onClick :()=> handleClick()}, 
+  { icon: <FaRegUser/>, label: "Profile" , clickFn :()=> handleClick('profile') },
+  { icon:<AiFillProduct size={20}/>,label:'Products',clickFn:()=> handleClick('product')},
+  { icon: <CiLogout size={20}/>, label: "Logout" , clickFn :()=> handleClick('logout')}, 
 ];
 
   const sidebarContent = useMemo(
     () => (
       <ul className="space-y-4 w-full ">
-        {sidebarItems.map(({ icon, label ,onClick}) => (
+        {sidebarItems.map(({ icon, label ,clickFn }) => (
           <li
-          onClick={()=>onClick()}
+            onClick={()=>clickFn()}
             key={label}
             className="flex items-center py-2 cursor-pointer hover:shadow-lg rounded-xl hover:text-[#5B4BAE] px-2"
           >

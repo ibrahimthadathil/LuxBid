@@ -1,3 +1,4 @@
+import { TZprofile } from "@/utils/validation/user";
 import axios from "axios";
 
 type Tuser = {
@@ -100,4 +101,16 @@ export const userLogout =async()=>{
   } catch (error) {
     throw new Error('Logout failed')
   }
+}
+
+export const uploadProfile = async(image:File)=>{
+  const data=new FormData();
+  data.append("image",image)
+  return await api.post('/uploadprofile',data)
+
+}
+
+// profile update
+export const saveEdit = async(data:TZprofile)=>{
+return await api.post('/editprofile',data)
 }

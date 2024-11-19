@@ -1,8 +1,6 @@
-import { Phone } from "lucide-react";
 import { SubmitErrorHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import errorMap from "zod/locales/en.js";
 
 // for signup
 export const ZsignUp =z.object({email:z.string().min(1,'Email is required').email('Enter valid format')}) 
@@ -48,3 +46,15 @@ export const errorFn: SubmitErrorHandler<any> = (err) => {
     toast.error(e.message);
   });
 };
+
+// for edit form 
+
+
+export const ZeditProfile = z.object({
+  firstName : z.string().min(3,'Minimum 3 character is required'),
+  lastName:z.string().optional(),
+  phone : z.string().min(10,'Enter valid phone number').max(10,'Not a valid number'),
+  email : z.string().min(1,'Email is required').email(),
+})
+
+export type TZprofile = z.infer<typeof ZeditProfile> 
