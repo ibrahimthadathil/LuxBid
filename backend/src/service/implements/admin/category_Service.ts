@@ -28,4 +28,11 @@ export class categoryService {
             return {success:false,message:(error as Error).message}
         }
     }
+    async findCategory(name:string){
+        try {
+           return await this.cateRepo.findByName(name)
+        } catch (error) {
+           throw new Error('error from finding category') 
+        }
+    }
 }

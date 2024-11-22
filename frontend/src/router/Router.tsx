@@ -18,6 +18,7 @@ import ResetPassword from "../pages/user/Auth/ResetPassword";
 import AdminHome from "@/pages/admin/Home/home";
 import Loader from "@/components/global/Loader";
 import Products from "@/pages/user/Home/products/Products";
+import RollProtected from "@/service/rolleProtected";
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
@@ -104,7 +105,7 @@ export const Router = createBrowserRouter([
       },
       {
         path:'product',
-        element:<Products/>
+        element:<RollProtected element={<Products/>} />
       }
     ],
   },

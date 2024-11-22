@@ -17,8 +17,14 @@ export const fetchCategory=async()=>{
     return await cateApi.get('/getcategory')
 }
 
-
+// add post
 export const createPost = async(data:any)=>{
    
    return  await api.post('/addpost',data) 
+}
+
+// fetch post 
+
+export const fetchPost=async()=>{
+    return await api.get('/getpost')
 }

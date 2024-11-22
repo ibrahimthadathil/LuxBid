@@ -28,3 +28,15 @@ export type Tcategory ={
     name:string,
     isActive:boolean,
 }
+
+export type Tproduct ={
+    _id:string,
+    seller:string,
+    price:number,
+    images:string[],
+    category:string,
+    description:string,
+    title:string,
+    isApproved:boolean,
+    location:string
+}

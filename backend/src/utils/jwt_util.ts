@@ -19,7 +19,6 @@ let skey = process.env.JWT_KEY as string
         } catch (error) {
          console.log('error from jwt' , 'invalid token');
          return {success : false , message:'invalid token'}
-         throw new Error('Invalid token')
         }
 
 }

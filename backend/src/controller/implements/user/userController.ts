@@ -27,9 +27,7 @@ import { AuthRequest } from "../../../types/api";
 
     async uploadProfile(req:AuthRequest,res:Response){
         try {
-            const currentUser = req.user 
-            console.log(req.file);
-            
+            const currentUser = req.user             
             if(req.file && currentUser){
              const {message,success}= await this.userServide.upload_Profile(currentUser._id as string,req.file)  
              if(success)res.status(200).json({success,message})

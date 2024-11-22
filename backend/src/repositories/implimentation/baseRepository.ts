@@ -16,7 +16,8 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
     }
 
     async create(data: Partial<T>): Promise<T> {
-
+        console.log(data);
+        
         return this.model.create(data)
     }
     

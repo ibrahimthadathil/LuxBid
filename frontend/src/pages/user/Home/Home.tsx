@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import Navbar from "../../../components/global/NavBar";
-import axios from "axios";
 
 const Home = () => {
 

@@ -2,10 +2,9 @@ import Logo from "../../../../../public/Logo.png";
 import Mode from "../../../../components/global/Mode";
 import Sidebars from "../../../../components/global/UserSidebar";
 const UserProfile = () => {
-  
   return (
     <>
-      <div className="flex w-full flex-col bg-gradient-to-b   h-screen from-black via-black to-[#201c346c]">
+      <div className="flex w-full flex-col bg-gradient-to-b h-screen from-black via-black to-[#201c346c]">
         <div className=" w-full h-[18.5%] flex justify-between ">
           <img
             src={Logo}

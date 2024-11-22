@@ -23,6 +23,7 @@ const userSlice = createSlice({
         logout :(state)=>{
             state.email = null
             state.userName = null 
+            state.role=null
             // localStorage.removeItem('user')
         },
         setRole :(state , action :PayloadAction<string>)=>{

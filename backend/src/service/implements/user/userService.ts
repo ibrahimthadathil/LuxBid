@@ -12,10 +12,12 @@ export class userService {
     try {
       const currentUser = await this.userRepo.findById(userId)
       if(currentUser){
-       const {success ,Location} = await this.s3Services.upload_File(file,'Profile')
-       if(success){
-       this.userRepo.update(currentUser._id as string,{profile:Location})
-       return {success:true , message:'Profile updated'}
+       const response = await this.s3Services.upload_File(file,'Profile')
+       if(!Array.isArray(response)){
+        if(response.success){
+          this.userRepo.update(currentUser._id as string,{profile:response.Location})
+          return {success:true , message:'Profile updated'}
+       }else throw new Error('error occured in file upload')
        }else return {success: false , message:'updation failed'}  
       }else throw new Error('User not found')
     } catch (error) {

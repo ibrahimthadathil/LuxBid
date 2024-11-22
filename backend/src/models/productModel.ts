@@ -15,7 +15,7 @@ export interface Iproduct extends Document{
 const productSchema = new Schema({
     seller:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},
     price:{type:Number,required:true},
-    Images:[{type:String ,required:true}],
+    images:[{type:String ,required:true}],
     category:{type:mongoose.Schema.Types.ObjectId , ref :'Category',required:true},
     description:{type:String},
     title:{type:String, required:true},

@@ -24,11 +24,18 @@ const Sidebars = () => {
     }else if(route=='product')navigate('/user/product')
     else if(route=='profile')navigate('/user/profile')
   };
-const sidebarItems = [
+const sellerBarItems = [
   { icon: <FaRegUser/>, label: "Profile" , clickFn :()=> handleClick('profile') },
   { icon:<AiFillProduct size={20}/>,label:'Products',clickFn:()=> handleClick('product')},
   { icon: <CiLogout size={20}/>, label: "Logout" , clickFn :()=> handleClick('logout')}, 
 ];
+const buyerBarItyems = [
+  { icon: <FaRegUser/>, label: "Profile" , clickFn :()=> handleClick('profile') },
+  { icon: <CiLogout size={20}/>, label: "Logout" , clickFn :()=> handleClick('logout')}, 
+
+]
+
+const sidebarItems = role=='Seller' ? sellerBarItems :buyerBarItyems
 
   const sidebarContent = useMemo(
     () => (
