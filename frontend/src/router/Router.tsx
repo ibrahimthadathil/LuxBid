@@ -8,7 +8,7 @@ import OTP from "../pages/user/Auth/OTP";
 import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
-import Dashboard from "../pages/admin/Home/Dashboard";
+import User from "../pages/admin/Home/User";
 import PublicRoute, { AdminPublicRoute } from "../service/PublicRoute";
 import UserProfile from "../pages/user/Home/profile/UserProfile";
 import NotFoundPage from "../components/global/NotFoundPage";
@@ -19,6 +19,8 @@ import AdminHome from "@/pages/admin/Home/home";
 import Loader from "@/components/global/Loader";
 import Products from "@/pages/user/Home/products/Products";
 import RollProtected from "@/service/rolleProtected";
+import Dashboard from "@/pages/admin/Home/Dashboard";
+import DataTable from "@/components/global/dataTable";
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
@@ -88,7 +90,7 @@ export const Router = createBrowserRouter([
           <Suspense
             fallback={
               <div className="bg-black h-screen items-center flex justify-center text-white">
-               <Loader/>
+                <Loader />
               </div>
             }
           >
@@ -101,28 +103,68 @@ export const Router = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element:<Profile /> ,
+        element: <Profile />,
       },
       {
-        path:'product',
-        element:<RollProtected element={<Products/>} />
-      }
+        path: "product",
+        element: <RollProtected element={<Products />} />,
+      },
     ],
   },
 
   // ADMIN ROUTE
   {
-    path: "/api/admin/auth",
-    element: <AdminPublicRoute element={<SignInAdmin />} />,
+    path:'/api/admin',
+    children: [
+      {
+        path: '',
+        element: <Navigate to="auth" replace />, 
+      },
+      {
+        path: 'auth',
+        element: <AdminPublicRoute element={<SignInAdmin/>}/>,
+        index:true
+      },
+      {
+        path:'LB',
+        element : <ProtectedRoute element={<AdminHome/>} store="accessToken" />,
+        children:[
+          {
+            path:'dashboard',
+            element:<Dashboard/>
+          },
+          {
+           path:'users' ,
+           
+          }
+        ]
+      }
+    ]
   },
+
+  // {
+  //   path: "/api/admin/auth",
+  //   element: <AdminPublicRoute element={<SignInAdmin />} />,
+  // },
+  
   {
     path: "/api/admin/users",
-    element: <ProtectedRoute element={<Dashboard />} store="accessToken" />,
+    element: <ProtectedRoute element={<User />} store="accessToken" />,
   },
-  {
-    path: "/api/admin/",
-    element: <AdminHome />,
-  },
+  // {
+  //   path: "/api/admin",
+  //   element: <AdminHome />,
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       element: <Dash />,
+  //     },
+  //     {
+  //       path: "us",
+  //       element: <DataTable />,
+  //     },
+  //   ],
+  // },
   {
     path: "*",
     element: <NotFoundPage />,
