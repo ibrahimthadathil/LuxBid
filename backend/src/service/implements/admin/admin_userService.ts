@@ -7,9 +7,9 @@ export class userManagement implements Iusermangament{
     constructor(private userRepo : userRepository){
 
     }
-    async findAllUsers (){
+    async findAllUsers(role:string){
         try {
-            const users = await this.userRepo.findAll()
+            const users = await this.userRepo.finduserByRole(role)            
             if(users){
                 return {success :true , data :users}
             }else{
@@ -30,7 +30,7 @@ export class userManagement implements Iusermangament{
             user.isActive=!user.isActive;
              await user?.save()
             return {success: true , message:' status changed'}
-          }else{
+          }else{            
             return {success : false ,message :'action failed'}  
           }
         } catch (error) {

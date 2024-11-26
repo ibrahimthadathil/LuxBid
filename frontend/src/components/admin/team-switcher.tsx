@@ -1,13 +1,10 @@
 import * as React from "react"
 import { ChevronsUpDown, Plus } from "lucide-react"
-
+import { Logout } from "@/redux/slice/adminSlice"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
@@ -16,6 +13,10 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { useDispatch } from "react-redux"
+import { AppDispatch } from "@/redux/store/store"
+import { Navigate, useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 export function TeamSwitcher({
   teams,
@@ -26,7 +27,13 @@ export function TeamSwitcher({
   }[]
 }) {
   const { isMobile } = useSidebar()
-
+ const dispatch = useDispatch<AppDispatch>() 
+ const navigate = useNavigate()
+ const logoutAdmin =()=>{
+  dispatch(Logout())
+  navigate('/api/admin/auth')
+  toast.success("Logged Out")
+ }
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -59,7 +66,7 @@ export function TeamSwitcher({
             {teams.map((team, index) => (
               <DropdownMenuItem
                 key={team.name}
-                // onClick={() => setActiveTeam(team)}
+                onClick={logoutAdmin}
                 className="gap-2 p-2"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border">

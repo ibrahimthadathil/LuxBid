@@ -8,7 +8,7 @@ const PublicRoute = ({element,route}:{element:JSX.Element,route:string}) => {
 
 export const AdminPublicRoute =({element}:{element:JSX.Element})=>{
   const token = localStorage.getItem('accessToken')
-  if(token) return <Navigate to={'/api/admin/users'} replace={true}/>
+  if(token) return <Navigate to={'/api/admin/LB/dashboard'} replace={true}/>
   return element
 }
 

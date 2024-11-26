@@ -22,6 +22,13 @@ export class userRepository extends BasRepository<Iuser>{
         }
 
     }
+    async finduserByRole(role:string){
+        try {
+            return await User.find({role:role},'-password')
+        } catch (error) {
+            throw new Error('caught error from find by role ')
+        }
+    }
 }
 
 

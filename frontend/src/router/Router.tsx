@@ -8,7 +8,6 @@ import OTP from "../pages/user/Auth/OTP";
 import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
-import User from "../pages/admin/Home/User";
 import PublicRoute, { AdminPublicRoute } from "../service/PublicRoute";
 import UserProfile from "../pages/user/Home/profile/UserProfile";
 import NotFoundPage from "../components/global/NotFoundPage";
@@ -20,7 +19,9 @@ import Loader from "@/components/global/Loader";
 import Products from "@/pages/user/Home/products/Products";
 import RollProtected from "@/service/rolleProtected";
 import Dashboard from "@/pages/admin/Home/Dashboard";
-import DataTable from "@/components/global/dataTable";
+import Users from "@/pages/admin/Home/Users";
+import Category from "@/pages/admin/Home/Category";
+import Posts from "@/pages/admin/Home/Posts";
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
@@ -134,37 +135,23 @@ export const Router = createBrowserRouter([
             element:<Dashboard/>
           },
           {
-           path:'users' ,
-           
-          }
+           path:'users/:userRole' ,
+           element:<Users/>
+          },
+          {
+            path:'category',
+            element:<Category/>
+          },
+          {
+            path:'Posts',
+            element:<Posts/>
+          },
         ]
       }
     ]
   },
 
-  // {
-  //   path: "/api/admin/auth",
-  //   element: <AdminPublicRoute element={<SignInAdmin />} />,
-  // },
-  
-  {
-    path: "/api/admin/users",
-    element: <ProtectedRoute element={<User />} store="accessToken" />,
-  },
-  // {
-  //   path: "/api/admin",
-  //   element: <AdminHome />,
-  //   children: [
-  //     {
-  //       path: "dashboard",
-  //       element: <Dash />,
-  //     },
-  //     {
-  //       path: "us",
-  //       element: <DataTable />,
-  //     },
-  //   ],
-  // },
+ 
   {
     path: "*",
     element: <NotFoundPage />,

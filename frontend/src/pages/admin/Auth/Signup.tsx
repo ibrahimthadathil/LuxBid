@@ -29,7 +29,7 @@ const SignInAdmin = () => {
                     })
                   );
                   reset()
-        navigate("/api/admin/users");
+        navigate("/api/admin/LB/dashboard");
         toast.success(data.message);
       } else {
         toast.error("invalid credential");

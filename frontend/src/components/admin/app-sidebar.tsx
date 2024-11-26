@@ -1,16 +1,11 @@
 import * as React from "react"
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
+  Layers3,
+  User,
   LogOut,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
+
   SquareTerminal,
+  StickyNote,
 } from "lucide-react"
 
 import { NavMain } from "@/components/admin/nav-main"
@@ -21,6 +16,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { title } from "process"
 
 // This is sample data.
 const data = {
@@ -36,86 +32,62 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/api/admin/LB/dashboard",
       icon: SquareTerminal,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+      // items: [
+      //   {
+      //     title: "History",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Starred",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Settings",
+      //     url: "#",
+      //   },
+      // ],
     },
     {
       title: "Users",
-      url: "#",
-      icon: Bot,
+      url: "/api/admin/LB/users/Buyer",
+      icon: User,
       items: [
         {
           title: "Organizer",
-          url: "#",
+          url: "/api/admin/LB/users/Seller",
+          // icon : 
         },
         {
           title: "Buyer",
-          url: "#",
+          url: "/api/admin/LB/users/Buyer",
         },
         
       ],
     },
     {
-      title: "Posts",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      title : 'Category',
+      url:'/api/admin/LB/category',
+      icon :Layers3
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
+      title : 'Posts',
+      url:'/api/admin/LB/Posts',
+      icon :StickyNote,
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+            {
+              title: "Approved",
+              url: "#",
+            },
+            {
+              title: "Requestes",
+              url: "#",
+            },
+      ]
+    }
+  
   ],
   
 }

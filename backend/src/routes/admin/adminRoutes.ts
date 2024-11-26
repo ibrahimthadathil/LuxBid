@@ -10,5 +10,6 @@ adminRoute.get('/users',adminController.fetchUsers.bind(adminController))
 adminRoute.put('/updateuser/:id',adminController.updateUser.bind(adminController))
 adminRoute.post('/addcategory',categoryController.add_Category.bind(categoryController))
 adminRoute.get('/getcategory',categoryController.get_category.bind(categoryController))
+adminRoute.get('/findByRole/:role',adminController.fetchUsers.bind(adminController))
 
 export default adminRoute

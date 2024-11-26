@@ -28,20 +28,20 @@ class AdminController implements IadminController{
   }
   async fetchUsers(req:Request,res:Response){
     try {
-      const response = await this.userService.findAllUsers()
-      if(response){
-        res.status(200).json({data:response.data})
+      const role = req.params.role
+      const {data,success} = await this.userService.findAllUsers(role)
+      if(success){
+        res.status(200).json({data})
       }else{
         throw new Error('failed to  fetch user')
       }
-      
     } catch (error) {
       res.status(500).json({message: (error as Error ).message})
     }
   }
   async updateUser (req:Request , res:Response){
     try {
-        const email = req.params.id
+        const email = req.params.id        
         if(email){
          const response = await this.userService.update_user(email)
          if(response.success){

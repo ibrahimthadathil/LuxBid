@@ -1,5 +1,5 @@
 export interface Iuser extends Document{
-
+    _id:string,
     firstName : string ;
     lastName ?: string ;
     email : string ;
@@ -40,3 +40,4 @@ export type Tproduct ={
     isApproved:boolean,
     location:string
 }
+

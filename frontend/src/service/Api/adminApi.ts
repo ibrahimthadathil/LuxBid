@@ -22,3 +22,8 @@ export const FetchUsers= async()=>{
 export const UserStatus =async(email:string)=>{
   return  await api.put(`/updateuser/${email}`)
 }
+
+export const findAllUserByRole =async(role:string)=>{  
+  console.log(role,'@@@')
+  return await api.get(`/findByRole/${role}`)
+}

@@ -20,7 +20,7 @@ export interface IadminController {
 }
 
 export interface Iusermangament{
-    findAllUsers():Promise<{success:boolean , data:Iuser[]}>
+    findAllUsers(role:string):Promise<{success:boolean , data:Iuser[]}>
     update_user(email:string):Promise<{ success:boolean , message :string}>
 }
 
