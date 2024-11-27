@@ -11,9 +11,18 @@ export class categoryRepository extends BasRepository<Icategory>{
     }
     async findByName(name:string){
         try {
-            return await Category.findOne({name})
+            return await Category.findOne({name: { $regex: new RegExp("^" + name + "$", "i") },}
+        )
         } catch (error) {
             throw new Error('Failed to find')
+        }
+    }
+    async listAndUnlist(id:string){
+        try {
+            const category =await this.findById(id) as Icategory
+            return await Category.findByIdAndUpdate(id,{isActive:!category.isActive})
+        } catch (error) {
+            throw new Error('Failed to update category')
         }
     }
 }

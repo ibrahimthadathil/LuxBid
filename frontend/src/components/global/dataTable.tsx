@@ -32,20 +32,26 @@ export default function DataTable<T extends Record<string ,any>>({data,columns}:
           </TableRow>
         </TableHeader>
         <TableBody className="text-center">
-          {data.map((item,i) => (
-            <TableRow
-              key={(item as T)._id || i}
-              className="bg-card hover:bg-muted/50 dark:hover:bg-muted/50"
-            >
-              {
-                columns.map((e,i)=>(
-                  <TableCell key={i} className="font-medium">{e.render ? e.render(item,i):e.key?item[e.key]:'Not found'}</TableCell>
-
-                ))
-              }
-              
-            </TableRow>
-          ))}
+          {
+            data.length ? data.map((item,i) => (
+              <TableRow
+                key={(item as T)._id || i}
+                className="bg-card hover:bg-muted/50 dark:hover:bg-muted/50"
+              >
+                {
+                  columns.map((e,i)=>(
+                    <TableCell key={i} className="font-medium">{e.render ? e.render(item,i):e.key?item[e.key]:'Not found'}</TableCell>
+  
+                  ))
+                }
+                
+              </TableRow>
+            )) : <TableRow>
+            <TableCell colSpan={columns.length} className="h-14 text-center text-yellow-800 ">
+             No data available
+            </TableCell>
+          </TableRow>
+          }
         </TableBody>
       </Table>
     </div>

@@ -8,11 +8,11 @@ export class categoryService {
         private cateRepo:categoryRepository
     ){}
 
-    async addCategory(name:string){
+    async addCategory(name:string , status:boolean){
         try {
             const exist = await this.cateRepo.findByName(name)
             if(exist) return { success:false , message:'Already exist'}
-          const response = await this.cateRepo.create({name})
+          const response = await this.cateRepo.create({name,isActive:status})
           if(response) return {success:true , message:'Created succesfully'}
           else throw new Error('Failed to Add category')
         } catch (error) {
@@ -33,6 +33,25 @@ export class categoryService {
            return await this.cateRepo.findByName(name)
         } catch (error) {
            throw new Error('error from finding category') 
+        }
+    }
+    async removeCategory(id:string){
+        
+        try {
+           const response = await this.cateRepo.delete(id)
+            if(response)return {success:true,message:'Deleted succesfully'}
+            else throw new Error('failed to delete')
+        } catch (error) {
+            throw new Error('Error from category Deletion')
+        }
+    }
+    async categoryUpdate(id:string){
+        try {
+          const response = await this.cateRepo.listAndUnlist(id)
+          if(response)return {success:true,message:response.isActive ? 'Item Blocked':'Item listed'}
+          else return {success:false , message:'failed to update'}
+        } catch (error) {
+            return {success:false , message:'Internal Error, Try Later'}
         }
     }
 }

@@ -28,7 +28,7 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
         return this.model.findByIdAndUpdate(id,data,{new:true})     
     }
 
-    async delete(id: string): Promise<void> {
-        this.model.findByIdAndDelete(id)
+    async delete(id: string): Promise<void | any> {
+       return this.model.findByIdAndDelete(id)
     }
 }

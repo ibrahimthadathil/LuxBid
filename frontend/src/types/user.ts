@@ -27,6 +27,7 @@ export type Tcategory ={
     _id:string,
     name:string,
     isActive:boolean,
+    createdAt?:Date
 }
 
 export type Tproduct ={

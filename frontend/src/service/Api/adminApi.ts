@@ -1,3 +1,4 @@
+import { Tcategory } from '@/types/user'
 import axios from 'axios'
 
 type Tadmin = {
@@ -24,6 +25,22 @@ export const UserStatus =async(email:string)=>{
 }
 
 export const findAllUserByRole =async(role:string)=>{  
-  console.log(role,'@@@')
   return await api.get(`/findByRole/${role}`)
+}
+
+export const AddCategory = async(values:Partial<Tcategory>)=>{
+  return await api.post('/addcategory',values)
+}
+
+export const getCategory = async()=>{
+  return await api.get('/getcategory')
+}
+
+export const removeCategory =async(id:string)=>{
+  
+return await api.delete(`/categoryremove/${id}`)
+}
+
+export const categoryAction =async(id:string)=>{
+  return await api.put(`/categoryupdate/${id}`)
 }

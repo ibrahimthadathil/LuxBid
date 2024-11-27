@@ -10,9 +10,12 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
   import { Button } from "@/components/ui/Button"
+import { Tcategory } from "@/types/user"
 import React from "react"
-  
-  export function AlertModal({contents,style}:{contents:string|React.ReactNode[],style?:string}) {
+interface categoryProps{
+  contents:string|React.ReactNode[],category:Tcategory,style?:string,action:Function
+}  
+  export function AlertModal({contents,style,action,category}:categoryProps) {
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
@@ -27,7 +30,7 @@ import React from "react"
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className="bg-red-500 hover:cursor-pointer">Cancel</AlertDialogCancel>
-            <AlertDialogAction>Proceed</AlertDialogAction>
+            <AlertDialogAction onClick={()=>action(category._id)}>Proceed</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
