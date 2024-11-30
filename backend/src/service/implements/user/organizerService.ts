@@ -2,16 +2,17 @@ import { Service } from "typedi";
 import { organizerRepository } from "../../../repositories/implimentation/organizerRepository";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { BuyerRepository } from "../../../repositories/implimentation/buyerRepository";
+import { IorgaizerService } from "../../interface/organizerService_Interface";
 
 @Service()
-export class organizerService {
+export class organizerService implements IorgaizerService{
   constructor(
     private sellerRepo: organizerRepository,
     private userRepo: userRepository,
     private buyerRepo : BuyerRepository
   ) {}
 
-  async set_organizer(userId: string) {
+  async set_Organizer(userId: string) {
     try {
       const exist = await this.sellerRepo.findById(userId);
       if (!exist) {

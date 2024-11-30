@@ -1,8 +1,9 @@
 import mongoose, { Document, ObjectId, Schema } from "mongoose";
+import { Iuser } from "./userModel";
 
 export interface IBuyer extends Document{
     _id : ObjectId ,
-    user : mongoose.Types.ObjectId |string ,
+    user :string |Iuser,
     CommittedBids:[{
         Auction:string,
         bidAmt :number,

@@ -1,7 +1,7 @@
 import { Service } from "typedi";
 import { BuyerRepository } from "../../../repositories/implimentation/buyerRepository";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
-import { IBuyerService } from "../../interface/service_Interface";
+import { IBuyerService } from "../../interface/buyerService_Interface";
 import { Iuser } from "../../../models/userModel";
 
 @Service()

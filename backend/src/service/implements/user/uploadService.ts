@@ -8,7 +8,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { log } from "console";
 
 @Service()
-export class s3Service {
+export class s3Service implements s3Service{
   private s3Service: S3Client;
   constructor() {
     this.s3Service = new S3Client({
@@ -19,7 +19,7 @@ export class s3Service {
       region: process.env.BUCKET_REGION || "",
     });
   }
-  private validateFiles(file:Express.Multer.File){
+  private validate_Files(file:Express.Multer.File){
     if (file.size > 2 * 1024 * 1024)
       throw new Error("File size too large. Maximum size is 2MB");
     const allowedTypes = [
@@ -35,7 +35,7 @@ export class s3Service {
     try {
 
       const images = Array.isArray(file) ?file : [file]
-      images.forEach(img => this.validateFiles(img));
+      images.forEach(img => this.validate_Files(img));
       const results = await Promise.all(
         images.map(async (img) => {
           const params = {

@@ -3,7 +3,7 @@ import { Iuser } from "../../../models/userModel";
 import { Iopt } from "../../../models/otpModel";
 import { Container, Service } from "typedi";
 import { authService } from "../../../service/implements/user/authService";
-import { IAuthController } from "../../interface/controller_Interface";
+import { IAuthController } from "../../interface/authController_Interface"
 import { setCookie } from "../../../utils/cookie_utils";
 import { set } from "mongoose";
 import { AuthRequest } from "../../../types/api";
@@ -17,7 +17,7 @@ class AuthController implements IAuthController {
   async Signup(req: Request, res: Response) {
     try {
       const userData: Iuser = req.body;
-      const { message, token, success } = await this.authService.createUser(
+      const { message, token, success } = await this.authService.create_User(
         userData.email
       );
       if (!token && !success) {
@@ -44,7 +44,7 @@ class AuthController implements IAuthController {
       console.log('dfgh' , otp);
       const token = req.headers.authorization as string; 
       if(otp){
-        const response = await this.authService.verifyotp(otp, token);
+        const response = await this.authService.verify_otp(otp, token);
         if (!response.success){
           res.status(401).json({ message: response.message });
   
@@ -74,7 +74,7 @@ class AuthController implements IAuthController {
     try {
       const userDetails: Iuser = req.body;
       const token = req.headers.authorization as string;
-      const response = await this.authService.registerUser(userDetails, token);
+      const response = await this.authService.register_User(userDetails, token);
       if (response.success) {
         res
           .status(200)
@@ -90,7 +90,7 @@ class AuthController implements IAuthController {
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      const response = await this.authService.verifySignIn(email, password);
+      const response = await this.authService.verify_SignIn(email, password);
       if (response?.success) {
         setCookie(res, "rftn", response.refresh as string);
         res
@@ -115,7 +115,7 @@ class AuthController implements IAuthController {
     const userDetails: Iuser = req.body;
     try {
       const { success, message, token, refresh } =
-        await this.authService.verifyGoogle(userDetails);
+        await this.authService.verify_Google(userDetails);
       if (success) {
         
         setCookie(res, "rftn", refresh as string);

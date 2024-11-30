@@ -1,7 +1,7 @@
 import { JwtPayload } from "jsonwebtoken";
 import { generateAccessToken, generateRefreshToken, verifyToken } from "../../../utils/jwt_util";
 import { Service } from "typedi";
-import { ITokenService } from "../../interface/service_Interface";
+import { ITokenService } from "../../interface/utilService_Interface";
 
 @Service()
 export class tokenService implements ITokenService{

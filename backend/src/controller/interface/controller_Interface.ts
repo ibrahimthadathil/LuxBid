@@ -2,22 +2,6 @@ import { Request, Response } from "express";
 import { Iuser } from "../../models/userModel";
 import { AuthRequest } from "../../types/api";
 
-export interface IAuthController {
-  Signup(req: Request, res: Response): Promise<void>;
-  verifyOTP(req: Request, res: Response): Promise<void>;
-  register(req: Request, res: Response): Promise<void>;
-  signIn(req: Request, res: Response): Promise<void>;
-  googleAuth(req: Request, res: Response): Promise<void>;
-  forgetPassword(req: Request, res: Response): Promise<void>;
-  resetOTP(req: Request, res: Response): Promise<void>;
-  resetPassword(req: Request, res: Response): Promise<void>;
-}
-
-export interface IadminController {
-  adminSignIn(req:Request , res:Response):Promise<void>;
-  fetchUsers(req:Request , res:Response):Promise<void>;
-  updateUser(req:Request , res:Response):Promise<void>;
-}
 
 export interface Iusermangament{
     findAllUsers(role:string):Promise<{success:boolean , data:Iuser[]}>
@@ -25,14 +9,6 @@ export interface Iusermangament{
 }
 
 
-export interface IuserContrller {
-  findUser(req:AuthRequest,res:Response):Promise<void>
-}
 
-export interface IbuyerContoller {
-  setBuyer(req:AuthRequest,res:Response):Promise<void>
-}
 
-export interface IsellerController{
-  setOrganizer(req:AuthRequest,res:Response):Promise<void>
-}
+

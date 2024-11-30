@@ -143,7 +143,7 @@ export const Router = createBrowserRouter([
             element:<Category/>
           },
           {
-            path:'Posts',
+            path:'Posts/:child',
             element:<Posts/>
           },
         ]

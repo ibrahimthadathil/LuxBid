@@ -2,10 +2,11 @@ import { Service } from "typedi";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { s3Service } from "./uploadService";
 import { Iuser } from "../../../models/userModel";
+import { IuserService } from "../../interface/userService_Interface";
 
 
 @Service()
-export class userService {
+export class userService implements IuserService{
   constructor(private userRepo: userRepository,private s3Services : s3Service) {}
 
   async upload_Profile(userId:string,file:Express.Multer.File){
@@ -26,7 +27,7 @@ export class userService {
     }
   }
 
-  async editProfile(data:Iuser,userId:string){
+  async edit_Profile(data:Iuser,userId:string){
     try {
       const response =await this.userRepo.update(userId,data)
       if(response){

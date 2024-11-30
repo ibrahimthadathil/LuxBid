@@ -4,7 +4,7 @@ import { generateAccessToken} from "../../../utils/jwt_util";
 import { JwtPayload } from "jsonwebtoken";
 import  { Service} from "typedi";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
-import { IauthService } from "../../interface/service_Interface";
+import { IauthService } from "../../interface/authService_Interface";
 import { otpService } from "./otpService";
 import { tokenService } from "./tokenService";
 import { emailService } from "./emailService";
@@ -22,7 +22,7 @@ export class authService implements IauthService{
     
     }
     
-    async createUser( email : string ){    
+    async create_User( email : string ){    
         const existUser = await this.userRepo.findUserByEmail( email )
         if(existUser && existUser.isVerified) return {message:'user already exist'} 
         if(existUser && !existUser.isVerified ){
@@ -35,7 +35,7 @@ export class authService implements IauthService{
         return { token:Accesstoken , success : true , message: 'Complete Profile' } 
     }
 
-    async verifyotp (otp:string,token:string){
+    async verify_otp (otp:string,token:string){
        
         try {
 
@@ -58,7 +58,7 @@ export class authService implements IauthService{
         
     }
 
-    async registerUser(userDetails:Iuser , token :string){
+    async register_User(userDetails:Iuser , token :string){
         try {
             let {email} = this.tokenservice.verify_Token(token) as JwtPayload
             if(email){
@@ -85,7 +85,7 @@ export class authService implements IauthService{
         }
     }
 
-    async verifySignIn(email:string,password:string){
+    async verify_SignIn(email:string,password:string){
         try {
             const exist = await this.userRepo.findUserByEmail(email)
             if(exist){
@@ -112,7 +112,7 @@ export class authService implements IauthService{
         }
     }
 
-    async verifyGoogle(userDetails :Iuser){
+    async verify_Google(userDetails :Iuser){
         try {
 
             const existUser = await this.userRepo.findUserByEmail(userDetails.email)

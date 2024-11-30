@@ -8,13 +8,13 @@ import { product_Controller } from '../../controller/implements/product/productC
 
 const userRoute = Router()
 
-userRoute.get('/user',AuthMiddleWare,userController.findUser.bind(userController))
-userRoute.post('/setbuyer',AuthMiddleWare,buyer_controller.setBuyer.bind(buyer_controller))
-userRoute.post('/setseller',AuthMiddleWare,Organizer_Controller.setOrganizer.bind(Organizer_Controller))
-userRoute.get('/buyer',AuthMiddleWare,buyer_controller.getBuyer.bind(buyer_controller))
-userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.getSeller.bind(Organizer_Controller))
-userRoute.post('/uploadprofile',AuthMiddleWare,upload.single('image'),userController.uploadProfile.bind(userController))
-userRoute.post('/editprofile',AuthMiddleWare,userController.editProfile.bind(userController))
+userRoute.get('/user',AuthMiddleWare,userController.find_User.bind(userController))
+userRoute.post('/setbuyer',AuthMiddleWare,buyer_controller.set_Buyer.bind(buyer_controller))
+userRoute.post('/setseller',AuthMiddleWare,Organizer_Controller.set_Organizer.bind(Organizer_Controller))
+userRoute.get('/buyer',AuthMiddleWare,buyer_controller.get_Buyer.bind(buyer_controller))
+userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.get_Organizer.bind(Organizer_Controller))
+userRoute.post('/uploadprofile',AuthMiddleWare,upload.single('image'),userController.upload_Profile.bind(userController))
+userRoute.post('/editprofile',AuthMiddleWare,userController.edit_Profile.bind(userController))
 
 userRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),product_Controller.create_Post.bind(product_Controller))
 userRoute.get('/getpost',AuthMiddleWare,product_Controller.get_Post.bind(product_Controller))

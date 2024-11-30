@@ -1,14 +1,15 @@
 import { Service } from "typedi";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
+import { IcategoryService } from "../../interface/categoryServices_Interface";
 
 
 @Service()
-export class categoryService {
+export class categoryService implements IcategoryService{
     constructor(
         private cateRepo:categoryRepository
     ){}
 
-    async addCategory(name:string , status:boolean){
+    async add_Category(name:string , status:boolean){
         try {
             const exist = await this.cateRepo.findByName(name)
             if(exist) return { success:false , message:'Already exist'}
@@ -19,7 +20,7 @@ export class categoryService {
             throw new Error((error as Error).message)
         }
     }
-    async getCategory(){
+    async get_Category(){
         try {
             const response = await this.cateRepo.findAll()            
             if(response)return {success:true ,data:response}
@@ -28,14 +29,16 @@ export class categoryService {
             return {success:false,message:(error as Error).message}
         }
     }
-    async findCategory(name:string){
+    async find_Category(name:string){
         try {
-           return await this.cateRepo.findByName(name)
+           const response= await this.cateRepo.findByName(name)
+           if(response) return {success:true,data:response}
+           else throw new Error('failed to fetch category')
         } catch (error) {
            throw new Error('error from finding category') 
         }
     }
-    async removeCategory(id:string){
+    async remove_Category(id:string){
         
         try {
            const response = await this.cateRepo.delete(id)
@@ -45,7 +48,7 @@ export class categoryService {
             throw new Error('Error from category Deletion')
         }
     }
-    async categoryUpdate(id:string){
+    async category_Update(id:string){
         try {
           const response = await this.cateRepo.listAndUnlist(id)
           if(response)return {success:true,message:response.isActive ? 'Item Blocked':'Item listed'}

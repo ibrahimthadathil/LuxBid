@@ -14,7 +14,6 @@ export const adminSignin=async(adminDetails :Tadmin)=>{
    return await api.post('/auth/signin',adminDetails)
 }
 
-
 export const FetchUsers= async()=>{
    const {data}= await api.get('/users')
    return data
@@ -43,4 +42,22 @@ return await api.delete(`/categoryremove/${id}`)
 
 export const categoryAction =async(id:string)=>{
   return await api.put(`/categoryupdate/${id}`)
+}
+
+
+export const getAllproducts =async(status:boolean)=>{
+  console.log(status);
+  
+  return await api.get(`/products/${status}`)
+}
+
+export const removePost =async(id:string)=>{
+  return await api.delete(`/removepost/${id}`)
+}
+
+export const approvePost = async(id:string)=>{
+  return await api.put(`/updatepost/${id}`)
+}
+export const rejectPost = async(id:string)=>{
+  return await api.put(`/rejectpost/${id}`)
 }

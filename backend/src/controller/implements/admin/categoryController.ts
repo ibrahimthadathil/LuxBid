@@ -1,15 +1,16 @@
 import Container, { Service } from "typedi";
 import { categoryService } from "../../../service/implements/admin/category_Service";
 import { Request, Response } from "express";
+import { IcategoryController } from "../../interface/categoryController_Interface";
 
 @Service()
-export class cateController {
+export class categoryController implements IcategoryController{
   constructor(private cate_Service: categoryService) {}
   async add_Category(req: Request, res: Response) {
     try {
       const { name,isActive } = req.body;
       if (name) {
-        const { message, success } = await this.cate_Service.addCategory(name,isActive);
+        const { message, success } = await this.cate_Service.add_Category(name,isActive);
         if (success) res.status(200).json({ success, message });
         else throw new Error(message);
       } else
@@ -21,9 +22,9 @@ export class cateController {
     }
   }
 
-  async get_category(req: Request, res: Response) {
+  async get_Category(req: Request, res: Response) {
     try {
-      const { success, data, message } = await this.cate_Service.getCategory();
+      const { success, data, message } = await this.cate_Service.get_Category();
       if (success) res.status(200).json({ data, success });
       else res.status(400).json({ success, message });
     } catch (error) {
@@ -31,10 +32,10 @@ export class cateController {
     }
   }
 
-  async Category_Remove(req:Request,res:Response){
+  async remove_Category(req:Request,res:Response){
     const id = req.params.id    
     try {
-     const {message,success}= await this.cate_Service.removeCategory(id)
+     const {message,success}= await this.cate_Service.remove_Category(id)
      if(success)res.status(200).json({message,success})
       else res.status(401).json({message,success})
     } catch (error) {
@@ -42,11 +43,11 @@ export class cateController {
     }
   }
 
-  async category_update(req:Request,res:Response){
+  async update_Category(req:Request,res:Response){
     const id = req.params.id
     try {
       if(id){
-       const {success,message}= await this.cate_Service.categoryUpdate(id)
+       const {success,message}= await this.cate_Service.category_Update(id)
         if(success) res.status(200).json({message,success})
           else res.status(401).json({message,success})
       }else throw new Error('Match not found ')
@@ -56,4 +57,4 @@ export class cateController {
   }
 }
 
-export const categoryController = Container.get(cateController);
+export const category_Controller = Container.get(categoryController);

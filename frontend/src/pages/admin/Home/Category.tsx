@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, TCateForm } from "@/utils/validation/admin";
 import DataTable from "@/components/global/dataTable";
 import { Tcategory } from "@/types/user";
-import { AlertModal } from "@/components/global/AlertModal";
+import  AlertModal  from "@/components/global/AlertModal";
 import { AddCategory, categoryAction, getCategory, removeCategory } from "@/service/Api/adminApi";
 import { useRQ } from "@/hooks/userRQ";
 import Loader from "@/components/global/Loader";
@@ -79,7 +79,7 @@ const Category = () => {
               <Trash2 size={20} color="#9d1a1a" />,
               "Are you sure to Delete This Category",
             ]} 
-            category={item}
+            data={item}
             action={deleteCategory}
           />
         </div>
@@ -107,7 +107,7 @@ const Category = () => {
               this category?
             </>,
           ]}
-          category={item}
+          data={item}
           action={categoryUpdation}
         />
       ),

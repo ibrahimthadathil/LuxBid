@@ -15,4 +15,11 @@ export class productRepository extends BasRepository<Iproduct>{
             throw new Error('errofrom fetching the products')
         }
     }
+    async findByStatus(status:boolean){
+        try {
+            return await Product.find({isApproved:status}).populate('seller','-password').populate('category')
+        } catch (error) {
+            
+        }
+    }
 }

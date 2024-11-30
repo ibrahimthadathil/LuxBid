@@ -9,7 +9,8 @@ export interface Iproduct extends Document{
     description:string,
     title:string,
     isApproved:boolean,
-    location:string
+    location:string,
+    status: 'Pending'|'Approved'|'Rejected'
 }
 
 const productSchema = new Schema({
@@ -20,7 +21,9 @@ const productSchema = new Schema({
     description:{type:String},
     title:{type:String, required:true},
     isApproved:{type:Boolean , default:false},
-    location:{type:String}
-})
+    location:{type:String},
+    status:{type:String ,enum:['Approved','Rejected','Pending'] ,default:'Pending'},
+    isActive:{type:Boolean , default:true}
+},{timestamps:true})
 
 export const Product = mongoose.model<Iproduct>('Product',productSchema)

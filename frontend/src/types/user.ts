@@ -32,13 +32,16 @@ export type Tcategory ={
 
 export type Tproduct ={
     _id:string,
-    seller:string,
+    seller:string | Iuser,
     price:number,
     images:string[],
-    category:string,
+    category:string |Tcategory,
     description:string,
     title:string,
     isApproved:boolean,
-    location:string
+    location:string,
+    createdAt?:Date,
+    status: 'Pending'|'Approved'|'Rejected'
+
 }
 

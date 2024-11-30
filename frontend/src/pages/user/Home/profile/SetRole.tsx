@@ -21,7 +21,6 @@ const Profile = () => {
       setloading(true)
       const {data}= await setupBuyer()
       if(data.success){        
-        
         dispatch(setRole('Buyer'))
         setloading(state=>!state)
       }else{
@@ -39,7 +38,6 @@ const Profile = () => {
      const {data} = await setupSeller()
      console.log('@@@',data);
      if(data.success){        
-      
       dispatch(setRole('Seller'))
       setloading(state=>!state)
     }else{
@@ -60,6 +58,8 @@ const Profile = () => {
         </h1>
        
         {loading ? <Loader/> : role=='Guest' ? <ProfileCards buyer={setBuyer} seller={setSeller}/> : role=='Buyer'? <BuyerProfile  /> : role=='Seller'?<SellerProfile/>:<Loader/> }
+
+      
       </div>
     </>
   );

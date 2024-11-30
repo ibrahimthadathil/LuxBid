@@ -18,6 +18,8 @@ interface TableProps<T>{
   columns:IColumns<T>[];
 }
 export default function DataTable<T extends Record<string ,any>>({data,columns}:TableProps<T>) {
+  console.log('from table');
+  
   return (
     <div className="rounded-lg border bg-card text-card-foreground shadow">
       <Table >

@@ -1,18 +1,16 @@
 import Container, { Service } from "typedi";
 import { userService } from "../../../service/implements/user/userService";
-import { IuserContrller } from "../../interface/controller_Interface";
+import { IuserContrller } from "../../interface/userController_Interface";
 import { Request, Response } from "express";
 import { AuthRequest } from "../../../types/api";
 
 @Service()
  class user_Controller implements IuserContrller{
-
     constructor(
         private userServide : userService
 
     ){}
-
-    async findUser (req:AuthRequest , res:Response){
+    async find_User (req:AuthRequest , res:Response){
         try {
             const user = req.user
             if(user){
@@ -25,7 +23,7 @@ import { AuthRequest } from "../../../types/api";
         }
     }
 
-    async uploadProfile(req:AuthRequest,res:Response){
+    async upload_Profile(req:AuthRequest,res:Response){
         try {
             const currentUser = req.user             
             if(req.file && currentUser){
@@ -40,12 +38,12 @@ import { AuthRequest } from "../../../types/api";
         
     }
 
-    async editProfile(req:AuthRequest, res:Response){
+    async edit_Profile(req:AuthRequest, res:Response){
         try {
             const user = req.user
             
             if(user){
-               const { message , success }= await this.userServide.editProfile(req.body,user._id as string)
+               const { message , success }= await this.userServide.edit_Profile(req.body,user._id as string)
                if(success){
                 res.status(200).json({success,message})
                }else res.status(400).json({message,success})

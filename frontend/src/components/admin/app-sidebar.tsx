@@ -74,16 +74,16 @@ const data = {
     },
     {
       title : 'Posts',
-      url:'/api/admin/LB/Posts',
+      url:'/api/admin/LB/Posts/Approved',
       icon :StickyNote,
       items: [
             {
               title: "Approved",
-              url: "#",
+              url: "/api/admin/LB/Posts/Approved",
             },
             {
               title: "Requestes",
-              url: "#",
+              url: "/api/admin/LB/Posts/request",
             },
       ]
     }

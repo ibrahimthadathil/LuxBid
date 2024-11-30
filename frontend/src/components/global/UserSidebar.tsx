@@ -15,6 +15,7 @@ const Sidebars = () => {
   const role = useSelector((state:Rootstate)=>state.user.role)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(role,'@@')
   
   const handleClick = (route:string) => {
     if(route=='logout'){
@@ -24,18 +25,22 @@ const Sidebars = () => {
     }else if(route=='product')navigate('/user/product')
     else if(route=='profile')navigate('/user/profile')
   };
-const sellerBarItems = [
-  { icon: <FaRegUser/>, label: "Profile" , clickFn :()=> handleClick('profile') },
-  { icon:<AiFillProduct size={20}/>,label:'Products',clickFn:()=> handleClick('product')},
-  { icon: <CiLogout size={20}/>, label: "Logout" , clickFn :()=> handleClick('logout')}, 
-];
-const buyerBarItyems = [
-  { icon: <FaRegUser/>, label: "Profile" , clickFn :()=> handleClick('profile') },
-  { icon: <CiLogout size={20}/>, label: "Logout" , clickFn :()=> handleClick('logout')}, 
+  const getSidebarItems = () => {
+    const commonItems = [
+      { icon: <FaRegUser />, label: "Profile", clickFn: () => handleClick('profile') },
+      { icon: <CiLogout size={20} />, label: "Logout", clickFn: () => handleClick('logout') }
+    ];
 
-]
+    const sellerSpecificItems = [
+      { icon: <AiFillProduct size={20} />, label: 'Products', clickFn: () => handleClick('product') }
+    ];
 
-const sidebarItems = role=='Seller' ? sellerBarItems :buyerBarItyems
+    return role === 'Seller' 
+      ? [...commonItems, ...sellerSpecificItems]
+      : commonItems;
+  };
+
+  const sidebarItems = useMemo(() => getSidebarItems(), [role]);
 
   const sidebarContent = useMemo(
     () => (

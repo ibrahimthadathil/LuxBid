@@ -1,20 +1,20 @@
 import Container, { Service } from "typedi";
 import { admin_Service } from "../../../service/implements/admin/admin_AuthService";
 import { Request, Response } from "express";
-import { userManagement } from "../../../service/implements/admin/admin_userService";
-import { IadminController } from "../../interface/controller_Interface";
+import { admin_userService } from "../../../service/implements/admin/admin_userService";
+import { IadminController } from "../../interface/adminController_Interface";
 
 @Service()
 class AdminController implements IadminController{
   constructor(
     private adminService: admin_Service,
-    private userService : userManagement,
+    private userService : admin_userService,
   ) {}
   async adminSignIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
       
-      const { success, access, message,adminEmail,name } = await this.adminService.admin_signin(email, password);
+      const { success, access, message,adminEmail,name } = await this.adminService.admin_Signin(email, password);
       if (success) {
         res
           .status(200)
@@ -29,7 +29,7 @@ class AdminController implements IadminController{
   async fetchUsers(req:Request,res:Response){
     try {
       const role = req.params.role
-      const {data,success} = await this.userService.findAllUsers(role)
+      const {data,success} = await this.userService.findAll_Users(role)
       if(success){
         res.status(200).json({data})
       }else{
@@ -43,7 +43,7 @@ class AdminController implements IadminController{
     try {
         const email = req.params.id        
         if(email){
-         const response = await this.userService.update_user(email)
+         const response = await this.userService.update_User(email)
          if(response.success){
           res.status(200).json({message:response.message})
          }else{
