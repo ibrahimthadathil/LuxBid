@@ -7,7 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import React from "react"
+import React, { useMemo, useState } from "react"
+import Pagination from "../ux/Pagination";
 interface IColumns<T>{
 key?:string,
 header:string,
@@ -16,11 +17,23 @@ render?:(item:T,i:number)=>React.ReactNode
 interface TableProps<T>{
   data:T[];
   columns:IColumns<T>[];
+  itemsPerPage?:number
 }
-export default function DataTable<T extends Record<string ,any>>({data,columns}:TableProps<T>) {
+export default function DataTable<T extends Record<string ,any>>({data,columns,itemsPerPage=5}:TableProps<T>) {
   console.log('from table');
-  
+  const [currentPage,setCurrentpage]=useState(1);
+  const totalPages = Math.ceil(data.length /itemsPerPage)
+  const currentData = useMemo(()=>{
+    const firstPage = (currentPage-1) * itemsPerPage
+    const lastPage = firstPage + itemsPerPage 
+    return data.slice(firstPage,lastPage)
+  },[currentPage,data,itemsPerPage])
+
+  const pageChange =(page:number)=>{
+    setCurrentpage(page)
+  }
   return (
+    <>
     <div className="rounded-lg border bg-card text-card-foreground shadow">
       <Table >
         <TableHeader className="bg-muted/50 ">
@@ -35,7 +48,7 @@ export default function DataTable<T extends Record<string ,any>>({data,columns}:
         </TableHeader>
         <TableBody className="text-center">
           {
-            data.length ? data.map((item,i) => (
+            currentData.length ? currentData.map((item,i) => (
               <TableRow
                 key={(item as T)._id || i}
                 className="bg-card hover:bg-muted/50 dark:hover:bg-muted/50"
@@ -57,6 +70,10 @@ export default function DataTable<T extends Record<string ,any>>({data,columns}:
         </TableBody>
       </Table>
     </div>
+      <Pagination  currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={pageChange}/>
+      </>
   )
 }
 
