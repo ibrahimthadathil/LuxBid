@@ -3,9 +3,12 @@ import ProfileBar from "../../../../components/global/ProfileBar";
 import { useRQ } from "@/hooks/userRQ";
 import { fetchSeller } from "@/service/Api/sellerApi";
 import Loader from "@/components/global/Loader";
+import React from "react";
 
 const SellerProfile = () => {
-  const {data,isLoading,isSuccess}=useRQ(fetchSeller,'user')  
+  const {data,isLoading,isSuccess}=useRQ(fetchSeller,'Seller')
+  console.log('from seller',data);
+    
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
       isSuccess ? <div className="p-3 space-y-6">
@@ -15,9 +18,10 @@ const SellerProfile = () => {
          <div className="grid grid-cols-3 gap-8">
           <UserForm user={data[0].user} />
         </div>
-      </div> : <Loader/>
+      </div> : 
+    <Loader/>
     
   )
 }
 
-export default SellerProfile;
+export default React.memo(SellerProfile);

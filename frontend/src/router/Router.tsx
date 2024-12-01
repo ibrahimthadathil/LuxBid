@@ -9,7 +9,6 @@ import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
 import PublicRoute, { AdminPublicRoute } from "../service/PublicRoute";
-import UserProfile from "../pages/user/Home/profile/UserProfile";
 import NotFoundPage from "../components/global/NotFoundPage";
 import Forgetpassword from "../pages/user/Auth/Forgetpassword";
 import SideTextSection from "../components/global/SideTextSection";
@@ -22,6 +21,7 @@ import Dashboard from "@/pages/admin/Home/Dashboard";
 import Users from "@/pages/admin/Home/Users";
 import Category from "@/pages/admin/Home/Category";
 import Posts from "@/pages/admin/Home/Posts";
+const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
 export const Router = createBrowserRouter([
@@ -104,7 +104,9 @@ export const Router = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element: <Profile />,
+        element: <Suspense fallback={<Loader />}>
+            <Profile />
+          </Suspense>
       },
       {
         path: "product",

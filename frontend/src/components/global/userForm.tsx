@@ -1,3 +1,5 @@
+import { useRQ } from '@/hooks/userRQ'
+import { fetchBuyer } from '@/service/Api/buyerApi'
 import { saveEdit } from '@/service/Api/userApi'
 import { Iuser } from '@/types/user'
 import { errorFn, TZprofile, ZeditProfile } from '@/utils/validation/user'
@@ -9,7 +11,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 const UserForm = ({user}:{user:Iuser}) => {
-  const [changed,setChange]=useState(true)
+  const [changed,setChange]=useState(true);
   const queryClient = useQueryClient()
   const {handleSubmit,register}=useForm<TZprofile>({resolver:zodResolver(ZeditProfile),defaultValues:{
     firstName: user.firstName,
@@ -22,7 +24,9 @@ const editProfile =async(datas:TZprofile)=>{
     const {data}= await saveEdit(datas)
     if(data.success){
       setChange(true)
-      await queryClient.invalidateQueries({queryKey:['user']})
+      await queryClient.invalidateQueries({queryKey:[user.role]})
+      await queryClient.invalidateQueries({queryKey:['User']});
+      // refetch()
       toast.success(data.message)
     }else toast.error(data.message)
     } catch (error) {

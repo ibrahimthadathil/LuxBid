@@ -9,7 +9,7 @@ const api = axios.create({
 // fetching buyer
 export const fetchBuyer =async()=>{
   try {
-    const response =await api.get('/buyer')
+    const response =await api.get('/buyer');
     return response
   } catch (error) {
     throw new Error('error from fetch buyer')

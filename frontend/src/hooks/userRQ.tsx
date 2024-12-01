@@ -4,6 +4,8 @@ export const useRQ = (executer:Function,key:string,dependecy?:any) => {
     queryKey: [key],
     queryFn: async () => {
       const { data } = await executer();
+      console.log('from rQ',data);
+      
       return data.data
     },
     enabled:dependecy,

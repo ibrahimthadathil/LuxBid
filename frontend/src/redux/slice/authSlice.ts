@@ -24,7 +24,7 @@ const userSlice = createSlice({
             state.email = null
             state.userName = null 
             state.role=null
-            // localStorage.removeItem('user')
+            localStorage.removeItem("access-token");
         },
         setRole :(state , action :PayloadAction<string>)=>{
             state.role = action.payload

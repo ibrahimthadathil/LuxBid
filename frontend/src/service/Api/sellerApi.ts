@@ -8,7 +8,7 @@ const api = axios.create({
   // fetch seller
   export const fetchSeller=async()=>{
     try {
-      return  await api.get('/seller')
+      return await api.get('/seller')
     } catch (error) {
         throw new Error('Error from the fetch seller')
     }

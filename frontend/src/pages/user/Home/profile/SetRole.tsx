@@ -5,24 +5,25 @@ import SellerProfile from "@/pages/user/Home/profile/sellerProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { setRole } from "@/redux/slice/authSlice";
 import { AppDispatch, Rootstate } from "@/redux/store/store";
-import { setupBuyer, setupSeller } from "@/service/Api/userApi";
+import { fetchuser, setupBuyer, setupSeller } from "@/service/Api/userApi";
 import { AxiosError } from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
+import { useRQ } from "@/hooks/userRQ";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Profile = () => {
   useAuth();
-  const role = useSelector((state: Rootstate) => state.user.role);
-  const [loading, setloading] = useState(false)
   const dispatch = useDispatch<AppDispatch>()
+  const {isLoading,data}=useRQ(fetchuser,'User')
+  const queryCLient = useQueryClient()
   const setBuyer=async()=>{
     try {
-      setloading(true)
       const {data}= await setupBuyer()
-      if(data.success){        
+      if(data.success){    
+        queryCLient.invalidateQueries({queryKey:['User']})
         dispatch(setRole('Buyer'))
-        setloading(state=>!state)
       }else{
         throw new Error(data.message)
       }
@@ -34,12 +35,10 @@ const Profile = () => {
 
   const setSeller =async()=>{
     try {
-      setloading(true)
      const {data} = await setupSeller()
-     console.log('@@@',data);
-     if(data.success){        
+     if(data.success){      
+      queryCLient.invalidateQueries({queryKey:['User']})
       dispatch(setRole('Seller'))
-      setloading(state=>!state)
     }else{
       throw new Error(data.message)
     }
@@ -57,7 +56,7 @@ const Profile = () => {
           User Profile
         </h1>
        
-        {loading ? <Loader/> : role=='Guest' ? <ProfileCards buyer={setBuyer} seller={setSeller}/> : role=='Buyer'? <BuyerProfile  /> : role=='Seller'?<SellerProfile/>:<Loader/> }
+        {isLoading ? <Loader/> : data.role =='Guest' ? <ProfileCards buyer={setBuyer} seller={setSeller}/> : data.role=='Buyer'? <BuyerProfile  /> : data.role=='Seller'?<SellerProfile/>:<Loader/> }
 
       
       </div>
