@@ -1,19 +1,27 @@
 import { useRQ } from "@/hooks/userRQ";
-import { createPost, fetchCategory } from "@/service/Api/productApi";
+import { createPost, fetchCategory, updatePost } from "@/service/Api/productApi";
 import { Tcategory } from "@/types/user";
 import { TZpost, ZPost } from "@/utils/validation/post";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { X } from "lucide-react";
-import React, { useState } from "react";
+import { CloudUpload, Loader2, X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Loader from "@/components/global/Loader";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
-const Modal = ({ open }: { open: Function }) => {
-  const [images, setImages] = useState<string[]>([]);
+import { DialogClose } from "@radix-ui/react-dialog";
+
+interface Props<T> {
+  post?: T;
+}
+
+const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
+  const [images, setImages] = useState<string[]>(() =>post?post.images:[]);
   const [imagefiles, setFiles] = useState<any[]>([]);
+  const ref = useRef<HTMLButtonElement>(null);
+  const [spin, setSpin] = useState<boolean>(false);
   const { isLoading, data } = useRQ(fetchCategory, "category");
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const {
     register,
@@ -22,8 +30,15 @@ const Modal = ({ open }: { open: Function }) => {
     formState: { errors },
   } = useForm<TZpost>({
     resolver: zodResolver(ZPost),
+    defaultValues: post
+      ? {
+          title: post.title || "",
+          price: post.price || 0,
+          category: post.category.name || "",
+          description: post.description || "",
+        }
+      : {},
   });
-
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
@@ -51,12 +66,14 @@ const Modal = ({ open }: { open: Function }) => {
       imagefiles.forEach((file) => {
         formData.append(`images`, file);
       });
-     const{data}= await createPost(formData)
+      setSpin(true);
+      const { data } =post ?await updatePost(post._id,formData): await createPost(formData)
+      setSpin((pre) => !pre);
       reset();
-      open(false);
-      if(data.success){
-        queryClient.invalidateQueries({queryKey:['post']})
-        toast.success(data.message)
+      ref.current?.click();
+      if (data.success) {
+        queryClient.invalidateQueries({ queryKey: ["post"] });
+        toast.success(data.message);
       }
     } catch (error) {
 
@@ -71,12 +88,14 @@ const Modal = ({ open }: { open: Function }) => {
             <Loader />
           ) : (
             <>
-              <button
-                onClick={() => open(false)}
-                className="absolute right-4 top-4 text-zinc-400 hover:text-white"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              <DialogClose asChild>
+                <button
+                  ref={ref}
+                  className="absolute right-4 top-4 text-zinc-400 hover:text-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </DialogClose>
 
               <h2 className="text-zinc-400 font-normal text-xs mb-4">
                 Create Post
@@ -171,7 +190,6 @@ const Modal = ({ open }: { open: Function }) => {
                     {errors.title.message}
                   </p>
                 )}
-
                 <input
                   type="number"
                   {...register("price", { valueAsNumber: true })}
@@ -191,7 +209,7 @@ const Modal = ({ open }: { open: Function }) => {
                   className={`w-full p-2 bg-zinc-900 border ${
                     errors.category ? "border-red-500" : "border-zinc-800"
                   } rounded text-sm text-white`}
-                  defaultValue=""
+                  defaultValue={post?.category || ""}
                 >
                   <option value="" disabled>
                     Select category
@@ -220,10 +238,23 @@ const Modal = ({ open }: { open: Function }) => {
                 )}
 
                 <button
+                  disabled={spin}
                   type="submit"
-                  className="w-full p-2 bg-[#5b4bae] hover:bg-[#5b4bae75] text-white rounded text-sm"
+                  className={`w-full p-2 bg-[#5b4bae] hover:bg-[#5b4bae75] text-white rounded text-sm ${
+                    spin ? "opacity-70" : ""
+                  }`}
                 >
-                  Create
+                  {spin ? (
+                    <div className="flex gap-2 justify-center ">
+                      <Loader2 />
+                      <p>Loading..</p>
+                    </div>
+                  ) : (
+                    <div className="flex gap-2 justify-center">
+                      <CloudUpload />
+                      <p>{post?'Update':'Create'}</p>
+                    </div>
+                  )}
                 </button>
               </form>
             </>

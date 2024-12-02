@@ -18,5 +18,7 @@ userRoute.post('/editprofile',AuthMiddleWare,userController.edit_Profile.bind(us
 
 userRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),product_Controller.create_Post.bind(product_Controller))
 userRoute.get('/getpost',AuthMiddleWare,product_Controller.get_Post.bind(product_Controller))
+userRoute.put('/updatepost/:id',AuthMiddleWare,upload.array('images',5),product_Controller.update_Post.bind(product_Controller))
+userRoute.delete('/removepost/:id',AuthMiddleWare,product_Controller.remove_Post.bind(product_Controller))
 export default userRoute
 

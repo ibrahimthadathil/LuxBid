@@ -1,34 +1,38 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/Button"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Separator } from "@radix-ui/react-separator"
+import React, { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/Button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Separator } from "@radix-ui/react-separator";
 
-
-
-interface modalProps<T>{
-    data:T,
-    sideContent:{header:string,render?:(item:T,i:number)=>React.ReactNode}[]
+interface modalProps<T> {
+  data: T;
+  sideContent: {
+    header: string;
+    render?: (item: T, i: number) => React.ReactNode;
+  }[];
 }
-export function PostModal<T extends Record<string,any>>({data,sideContent}:modalProps<T>) {    
-  const [currentIndex, setCurrentIndex] = useState(0)
+export function PostModal<T extends Record<string, any>>({
+  data,
+  sideContent,
+}: modalProps<T>) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === data.images.length - 1 ? 0 : prevIndex + 1
-    )
-  }
+    );
+  };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? data.images.length - 1 : prevIndex - 1
-    )
-  }
+    );
+  };
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger asChild >
         <Button variant="outline">view</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[900px]">
@@ -41,8 +45,11 @@ export function PostModal<T extends Record<string,any>>({data,sideContent}:modal
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                {data.images.map((item :string,i:number) => (
-                  <div key={i} className="w-full max-h-[30rem] overflow-hidden flex-shrink-0">
+                {data.images.map((item: string, i: number) => (
+                  <div
+                    key={i}
+                    className="w-full max-h-[30rem] overflow-hidden flex-shrink-0"
+                  >
                     <img className="w-full  object-cover" src={item} alt="" />
                   </div>
                 ))}
@@ -67,20 +74,22 @@ export function PostModal<T extends Record<string,any>>({data,sideContent}:modal
               <span className="sr-only">Next slide</span>
             </Button>
           </div>
+          {/* {right side of the imgae view div} */}
           <div className="p-6 flex flex-col space-y-4">
-        {sideContent.map((item, index) => (
-          <div key={index} className="space-y-2">
-            <h2 className="text-lg font-serif text-primary">{item.header}</h2>
-            <Separator className="my-2" />
-            <div className="text-sm text-muted-foreground">
-              {item.render ? item.render(data, index) : null}
-            </div>
+            {sideContent.map((item, index) => (
+              <div key={index} className="space-y-2">
+                <h2 className="text-lg font-serif text-primary">
+                  {item.header}
+                </h2>
+                <Separator className="my-2" />
+                <div className="text-sm text-muted-foreground">
+                  {item.render ? item.render(data, index) : null}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
-

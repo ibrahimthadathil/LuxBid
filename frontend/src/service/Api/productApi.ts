@@ -19,7 +19,7 @@ export const fetchCategory=async()=>{
 
 // add post
 export const createPost = async(data:any)=>{
-   
+  
    return  await api.post('/addpost',data) 
 }
 
@@ -28,3 +28,18 @@ export const createPost = async(data:any)=>{
 export const fetchPost=async()=>{
     return await api.get('/getpost')
 }
+
+// update post 
+
+export const updatePost =async(id:string,data:FormData)=>{
+    console.log(id,data);
+    
+    return await api.put(`/updatepost/${id}`,data)
+}
+
+// delete post 
+
+export const removePost =async(id:string)=>{
+    return await api.delete(`/removepost/${id}`)
+}
+

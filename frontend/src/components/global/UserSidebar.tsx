@@ -5,13 +5,11 @@ import { FaRegUser } from "react-icons/fa";
 import Logo from "../../../public/Logo.png";
 import { CiLogout } from "react-icons/ci";
 import { Outlet, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout } from "@/redux/slice/authSlice";
 import { AiFillProduct } from "react-icons/ai";
-import { Rootstate } from "@/redux/store/store";
 import { fetchuser, userLogout } from "@/service/Api/userApi";
 import { useRQ } from "@/hooks/userRQ";
-import Loader from "./Loader";
 import { Loader2 } from "lucide-react";
 
 const Sidebars = () => {

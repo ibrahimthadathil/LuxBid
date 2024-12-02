@@ -19,7 +19,7 @@ adminRoute.get('/findByRole/:role',adminController.fetchUsers.bind(adminControll
 
 adminRoute.get('/products/:status',product_Controller.findAll_Products.bind(product_Controller))
 adminRoute.delete('/removepost/:id',product_Controller.remove_Post.bind(product_Controller))
-adminRoute.put('/updatepost/:id',product_Controller.update_Post.bind(product_Controller))
+adminRoute.put('/updatepost/:id',product_Controller.update_PostStatus.bind(product_Controller))
 adminRoute.put('/rejectpost/:id',product_Controller.reject_Post.bind(product_Controller))
 
 export default adminRoute

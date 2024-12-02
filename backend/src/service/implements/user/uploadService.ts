@@ -1,5 +1,7 @@
 import { Service } from "typedi";
 import {
+  DeleteObjectCommand,
+  DeleteObjectsCommand,
   GetObjectCommand,
   PutObjectCommand,
   S3Client,
@@ -48,20 +50,20 @@ export class s3Service implements s3Service{
           const command = new PutObjectCommand(params);
           await this.s3Service.send(command);
 
-          const getObjectCommand = new GetObjectCommand({
-            Bucket: process.env.BUCKET_NAME,
-            Key: params.Key,
-          });
+          // const getObjectCommand = new GetObjectCommand({
+          //   Bucket: process.env.BUCKET_NAME,
+          //   Key: params.Key,
+          // });
 
-          const presignedUrl = await getSignedUrl(
-            this.s3Service,
-            getObjectCommand,
-            { expiresIn: 604800 }
-          );
-
+          // const presignedUrl = await getSignedUrl(
+          //   this.s3Service,
+          //   getObjectCommand,
+          //   { expiresIn: 604800 }
+          // );
+          
           return {
             success: true,
-            Location: presignedUrl,
+            Location: `https://${process.env.BUCKET_NAME}.s3.${process.env.BUCKET_REGION}.amazonaws.com/${params.Key}`,
           }
         })
       )
@@ -70,4 +72,25 @@ export class s3Service implements s3Service{
       throw new Error((error as Error).message);
     }
   }
+  async delete_File(files:string[]){
+        try {
+          for(let url of files){
+            let key = url.split('.com/')[1]            
+            const params ={
+              Bucket: process.env.BUCKET_NAME,
+              Key: key,
+            }
+            const command = new DeleteObjectCommand(params);
+            try {
+              await this.s3Service.send(command);
+            } catch (sendError) {
+              throw new Error('Faield to delete')
+            }
+          }
+          return true
+        } catch (error) {
+          throw new Error('Error occured in delete file')
+        }
+  }
+  
 }

@@ -20,7 +20,6 @@ interface TableProps<T>{
   itemsPerPage?:number
 }
 export default function DataTable<T extends Record<string ,any>>({data,columns,itemsPerPage=5}:TableProps<T>) {
-  console.log('from table');
   const [currentPage,setCurrentpage]=useState(1);
   const totalPages = Math.ceil(data.length /itemsPerPage)
   const currentData = useMemo(()=>{

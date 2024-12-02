@@ -60,9 +60,21 @@ export class productService implements IproductService{
         }
     }
     async remove_Post(id:string){
-        
+        try {
+        const post = await this.productrepo.findById(id)        
+        const imagesLink = post?.images || []
+        const response = await this.s3Service.delete_File(imagesLink)
+        if(response){
+            const response = await this.productrepo.delete(id)  
+            if(response) return {success:true,message:'Delete successfully'}
+            else throw new Error('failed to delete from the DB')
+        }   
+        else throw new Error('failed to delete')
+        } catch (error) {
+            return{success:false,message:(error as Error).message}
+        }
     }
-    async update_Post(id:string){
+    async update_PostStatus(id:string){
         try {
            const response = await this.productrepo.update(id,{status:'Approved',isApproved:true})
            if(response) return {success:true,message:'Post Approved'}
@@ -80,5 +92,8 @@ export class productService implements IproductService{
         } catch (error) {
             return{success:false,message:(error as Error).message}
         }
+    }
+    async update_post(){
+        
     }
 }

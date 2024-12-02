@@ -10,7 +10,7 @@ export class productRepository extends BasRepository<Iproduct>{
     }
     async findByUser(id:string){
         try {
-            return await Product.find({seller:id})
+            return await Product.find({seller:id}).populate('category')
         } catch (error) {
             throw new Error('errofrom fetching the products')
         }
@@ -22,4 +22,5 @@ export class productRepository extends BasRepository<Iproduct>{
             
         }
     }
+   
 }

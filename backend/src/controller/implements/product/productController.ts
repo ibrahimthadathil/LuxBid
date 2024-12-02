@@ -53,19 +53,19 @@ export class productController implements IproductController{
     const id = req.params.id
     try {
       if(id){
-        await this.product_Service.remove_Post(id)
+       const {success,message}=await this.product_Service.remove_Post(id)
+       if(success)res.status(200).json({message,success})
+        else res.status(401).json({message,success})
       }else throw new Error('Failed to Match item')
-      
     } catch (error) {
-      res.status(500).json({ message: "Sever Error , Try later" });
-
+      res.status(500).json({ message: (error as Error).message + ", Sever Error , Try later" });
     }
   }
-  async update_Post(req:Request,res:Response){
+  async update_PostStatus(req:Request,res:Response){
     try {
       const id =req.params.id
       if(id){
-        const{message,success}= await this.product_Service.update_Post(id)
+        const{message,success}= await this.product_Service.update_PostStatus(id)
         if (success) res.status(200).json({ success, message });
          else res.status(400).json({ success, message });
       } else throw new Error('Match not found')
@@ -82,6 +82,16 @@ export class productController implements IproductController{
       }else throw new Error('Match not found')
     } catch (error) {
       res.status(500).json({ message: "Sever Error , Try later" });
+    }
+  }
+  async update_Post(req:AuthRequest,res:Response){
+    try {
+      console.log('00000000000');
+      
+      console.log(req.files , req.body);
+      
+    } catch (error) {
+      
     }
   }
 }

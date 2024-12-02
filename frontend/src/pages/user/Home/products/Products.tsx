@@ -1,20 +1,111 @@
 import Modal from "@/components/global/Modal";
 import { useRQ } from "@/hooks/userRQ";
-import {  fetchPost } from "@/service/Api/productApi";
-import { useState } from "react";
+import {  fetchPost, removePost } from "@/service/Api/productApi";
+import { useMemo, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import Loader from "@/components/global/Loader";
-import ProductCard from "@/components/global/ProductCard";
-import { Tproduct } from "@/types/user";
+import { Tcategory, Tproduct } from "@/types/user";
 import { useAuth } from "@/hooks/useAuth";
+import { Avatar } from "@radix-ui/react-avatar";
+import { AvatarImage } from "@/components/ui/avatar";
+import DataTable from "@/components/global/dataTable";
+import { PostModal } from "@/components/global/PostModal";
+import AlertModal from "@/components/global/AlertModal";
+import useActionHook from "@/hooks/actionHook";
+import { Button } from "@/components/ui/Button";
+import { Edit } from "lucide-react";
+import { Dialog } from "@/components/ui/dialog";
+import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 
 const Products = () => {
   useAuth()
   const [isOpen, setIsOpen] = useState(false);
   const {isLoading,data,isSuccess}=useRQ(fetchPost,'post')
-  console.log(')))))',data);
-  
+  const {handler}=useActionHook()
+  const deletePost=async(id:string)=>{
+    await handler(removePost,id,'post')
+  }  
+  const Columns = useMemo(()=>[
+    {header:'No',render:(post:Tproduct,i:number)=>`LBP 0${i+1}`},
+    {key:'title',header:'Title' ,render:(post:Tproduct)=>(
+      <div className="flex items-center gap-2">
+          <Avatar className="h-8 w-8 border rounded-full ">
+            <AvatarImage 
+              src={post.images[0]} 
+              alt={post.title} 
+              className="object-cover w-8 h-8 rounded-full" 
+            />
+            </Avatar>
+            <span>{post.title}</span>
+            </div>)},
+    {key:'createdAt',header:'Created',render:(post:Tproduct)=>new Date(post.createdAt as Date).toLocaleDateString()},
+    {key:'price',header:'Price (₹)'},
+    {key:'isApproved',header:'Status', render :(post:Tproduct)=>(
+      <span
+          className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
+            post.status=='Approved' ? "text-green-700" :post.status=='Rejected'? "text-red-700":"text-yellow-700"
+          }`}
+        >
+          {post.status}
+        </span>
+    )},{header:'Details',render:(post:Tproduct)=>(
+      <PostModal data={post} sideContent={content}/>
+    )},
+    {
+      header:'Edit',
+      render:(post:Tproduct)=>(
+        <Dialog>
+          <DialogTrigger asChild>
+          <Button variant={'outline'} className="text-gray-300 hover:b" onClick={()=>setIsOpen(true)}><Edit/> Edit</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <Modal post={post}/>
+          </DialogContent>
+        </Dialog>
+
+      )
+    }
+  ],[data])
+  const content = useMemo(()=>[
+    {
+      header: 'Title of The post',
+      render: (item: Tproduct) => (
+        <p className="font-medium text-sm">{item.title}</p>
+      )
+    },
+    {
+      header: 'Category',
+      render: (item: Tproduct) => (
+        <p>{(item.category as Tcategory)?.name}</p>
+      )
+    },
+    {
+      header: 'Price',
+      render: (item: Tproduct) => (
+        <p className="font-semibold">₹{item.price.toFixed(2)}</p>
+      )
+    },
+    {
+      header: 'Description',
+      render: (item: Tproduct) => (
+        <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
+      )
+    },
+    {
+      header :'Status',
+      render:(post:Tproduct)=>(
+        <p className={`${post.status=='Approved'?'text-green-500':post.status=='Pending'?'text-yellow-500':'text-red-500'}`}>{post.status=='Pending'?'Requested for Approval':post.status=='Rejected'?'This post Rejected from The Authority':'This Post Approved for Auction'}</p>
+      )
+    },
+    {
+      header: 'Actions',
+      render: (item: Tproduct) => (
+        <div className="flex gap-2">
+          <AlertModal contents={['Delete','Ar you sure To Delete This Post ?']} style='bg-red-900' data={item} action={deletePost}/>
+        </div>
+      )
+    }
+  ],[data])
   return (
     <>
       <div className="flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4  rounded-3xl shadow-inner ">
@@ -30,34 +121,33 @@ const Products = () => {
                 </h5>
               </div>
               <div className="w-[30%] flex justify-center flex-1 items-center">
-                <button
-                  className=" py-3 px-8 rounded-lg border border-[#5b4bae] flex gap-2 hover:bg-[#5b4bae75]"
-                  onClick={() => setIsOpen(true)}
-                >
-                  <FaPlusCircle className="mt-[6px]" /> Create post
-                </button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button
+                      className="py-3 px-8 rounded-lg border border-[#5b4bae] flex gap-2 hover:bg-[#5b4bae75]"
+                    >
+                      <FaPlusCircle className="mt-[6px]" /> Create post
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <Modal />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
           <div className="bg-zinc-950 flex flex-col w-[95%] flex-1 min-h-[20rem] max-h-[20rem]  rounded-xl mt-3 ">
             {isLoading ? 
-              <Loader/> :isSuccess&&<ScrollArea className="h-full w-full rounded-md  p-4">
-              <p className="justify-self-center p-5 text-2xl font-semibold hover:text-[#5b4baee0]  transition-colors duration-300 ">Posts</p>
-                <div className="w-full h-full flex flex-wrap items-center  justify-center  gap-5 ">
-                  {data.length  ?
-                    (data as Tproduct[]).map((e)=>(
-                      <ProductCard key={e._id} item={e}/>
-                    )) : <p className="text-red-400">Create New Post</p>
-                  }
-                </div>
-              </ScrollArea>}
+              <Loader/> :<div className="p-10"> <DataTable columns={Columns} data={data} itemsPerPage={3}/></div>}
           </div>
         </div>
       </div>
 
-      {isOpen && <Modal open={setIsOpen} />}
     </>
   );
 };
 
 export default Products;
+
+
+
