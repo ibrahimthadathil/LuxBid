@@ -6,6 +6,8 @@ import { Iproduct } from "../../../models/productModel";
 import { categoryService } from "../admin/category_Service";
 import { response } from "express";
 import { IproductService } from "../../interface/productService_Interface";
+import { Icategory } from "../../../models/categoryModel";
+import { title } from "process";
 
 @Service()
 export class productService implements IproductService{
@@ -93,7 +95,24 @@ export class productService implements IproductService{
             return{success:false,message:(error as Error).message}
         }
     }
-    async update_post(){
+    async update_post(id:string,data:Partial<any|Iproduct>,img?:Express.Multer.File[]){
+       try {
+        const findCategory = await this.categoryService.find_Category(data.category as string)
+        const existingImg = data.preImg ? data.preImg.split(','): []   
+        if(img?.length){
+            const response= await this.s3Service.upload_File(img,'product')
+            if(Array.isArray(response))response.map((link)=>existingImg.push(link.Location))
+            else throw new Error('Failed to upload Image, Try later')
+        }
+            const updatedPost={title:data.title,price:data.price,category:findCategory.data._id,images:existingImg,description:data.description}
+            const response = await this.productrepo.update(id,updatedPost)
+            if(response) return {success:true,message:'Post updated'}
+            else throw new Error('failed to update')
+       } catch (error) {
+            console.log('0000',(error as Error).message);
+            return {success:false,message:(error as Error).message}
+       }
+        
         
     }
 }

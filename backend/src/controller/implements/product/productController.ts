@@ -86,12 +86,14 @@ export class productController implements IproductController{
   }
   async update_Post(req:AuthRequest,res:Response){
     try {
-      console.log('00000000000');
-      
-      console.log(req.files , req.body);
-      
+      const postId = req.params.id
+      const newImage = req.files as Express.Multer.File[]
+      const data = req.body
+     const {message,success}= await this.product_Service.update_post(postId,data,newImage)
+     if(success)res.status(200).json({message,success})
+     else res.status(401).json({message,success})
     } catch (error) {
-      
+      res.status(500).json({ message: "Sever Error , Try later" })
     }
   }
 }

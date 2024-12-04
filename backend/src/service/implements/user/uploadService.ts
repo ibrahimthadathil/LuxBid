@@ -6,11 +6,11 @@ import {
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { log } from "console";
+import { IuploadServise } from "../../interface/s3Service_Interface";
+
 
 @Service()
-export class s3Service implements s3Service{
+export class s3Service implements IuploadServise{
   private s3Service: S3Client;
   constructor() {
     this.s3Service = new S3Client({

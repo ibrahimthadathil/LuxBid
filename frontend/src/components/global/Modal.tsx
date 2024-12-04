@@ -1,7 +1,11 @@
 import { useRQ } from "@/hooks/userRQ";
-import { createPost, fetchCategory, updatePost } from "@/service/Api/productApi";
+import {
+  createPost,
+  fetchCategory,
+  updatePost,
+} from "@/service/Api/productApi";
 import { Tcategory } from "@/types/user";
-import { TZpost, ZPost } from "@/utils/validation/post";
+import { TZpost, TZpostEditing, ZPost, ZPostEditing } from "@/utils/validation/post";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CloudUpload, Loader2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
@@ -10,32 +14,35 @@ import Loader from "@/components/global/Loader";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { AxiosError } from "axios";
 
 interface Props<T> {
   post?: T;
 }
 
 const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
-  const [images, setImages] = useState<string[]>(() =>post?post.images:[]);
-  const [imagefiles, setFiles] = useState<any[]>([]);
+  const [images, setImages] = useState<string[]>(() =>post ? post.images : []);
+  const [imagefiles, setFiles] = useState<File[]>([]);
   const ref = useRef<HTMLButtonElement>(null);
   const [spin, setSpin] = useState<boolean>(false);
   const { isLoading, data } = useRQ(fetchCategory, "category");
   const queryClient = useQueryClient();
-
+  console.log(imagefiles);
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
-  } = useForm<TZpost>({
-    resolver: zodResolver(ZPost),
+  } = useForm<TZpost | TZpostEditing>({
+    resolver: zodResolver(ZPostEditing),
     defaultValues: post
       ? {
           title: post.title || "",
           price: post.price || 0,
           category: post.category.name || "",
           description: post.description || "",
+          file:images,
         }
       : {},
   });
@@ -55,30 +62,37 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
     setImages((prev) => prev.filter((_, index) => index !== indexToRemove));
     setFiles((prev) => prev.filter((_, index) => index !== indexToRemove));
   };
+  useEffect(()=>{
+    setValue("file",images)
+  },[images])
 
-  const onSubmit: SubmitHandler<TZpost> = async (datas: TZpost) => {
+  const onSubmit: SubmitHandler<TZpost | TZpostEditing> = async (datas: TZpost | TZpostEditing) => {
     try {
       const formData = new FormData();
       formData.append("title", datas.title);
       formData.append("price", datas.price.toString());
       formData.append("category", datas.category);
       formData.append("description", datas.description);
+      let newImages=images.filter(e=>!e.includes("blob"));
+      if(post)formData.append('preImg',newImages.join(','))
       imagefiles.forEach((file) => {
         formData.append(`images`, file);
       });
       setSpin(true);
-      const { data } =post ?await updatePost(post._id,formData): await createPost(formData)
+      const { data } = post ? await updatePost(post._id, formData): await createPost(formData);      
       setSpin((pre) => !pre);
       reset();
       ref.current?.click();
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["post"] });
         toast.success(data.message);
-      }
+      }else toast.warning(data.message);
     } catch (error) {
-
+      setSpin((pre) => !pre);
+      toast.error(((error as AxiosError).response?.data as Record<string,any>).message)
     }
   };
+
 
   return (
     <>
@@ -142,6 +156,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                       className="hidden"
                       {...register("file", {
                         onChange: handleImageUpload,
+                        value: images as unknown as any,
                       })}
                       accept="image/*"
                       multiple
@@ -247,12 +262,12 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                   {spin ? (
                     <div className="flex gap-2 justify-center ">
                       <Loader2 />
-                      <p>Loading..</p>
+                      <p>{post ? 'Updating...':'Creating...'}</p>
                     </div>
                   ) : (
                     <div className="flex gap-2 justify-center">
                       <CloudUpload />
-                      <p>{post?'Update':'Create'}</p>
+                      <p>{post ? "Update" : "Create"}</p>
                     </div>
                   )}
                 </button>

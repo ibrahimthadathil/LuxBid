@@ -4,8 +4,3 @@ const userInterceptors = axios.create({
     baseURL : import.meta.env.VITE_USER_BASE_URL,
     withCredentials :true
 })
-
-
-// userInterceptors.interceptors.request.use( ()=>{
-
-// })
