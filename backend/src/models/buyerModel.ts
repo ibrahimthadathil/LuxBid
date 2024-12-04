@@ -3,12 +3,12 @@ import { Iuser } from "./userModel";
 
 export interface IBuyer extends Document{
     _id : ObjectId ,
-    user :string |Iuser,
+    user :string | Iuser,
     CommittedBids:[{
         Auction:string,
         bidAmt :number,
         bidDate:Date ,
-        bisStatus: string ,
+        bisStatus: 'WIN'|'LOST' ,
     }],
 }
 

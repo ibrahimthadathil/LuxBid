@@ -19,8 +19,7 @@ import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 
 const Products = () => {
   useAuth()
-  const [isOpen, setIsOpen] = useState(false);
-  const {isLoading,data,isSuccess}=useRQ(fetchPost,'post')
+  const {isLoading,data}=useRQ(fetchPost,'post')
   const {handler}=useActionHook()
   const deletePost=async(id:string)=>{
     await handler(removePost,id,'post')
@@ -56,7 +55,7 @@ const Products = () => {
       render:(post:Tproduct)=>(
         <Dialog>
           <DialogTrigger asChild>
-          <Button variant={'outline'} className="text-gray-300 hover:b" onClick={()=>setIsOpen(true)}><Edit/> Edit</Button>
+          <Button variant={'outline'} className="text-gray-300 hover:b" ><Edit/> Edit</Button>
           </DialogTrigger>
           <DialogContent>
             <Modal post={post}/>

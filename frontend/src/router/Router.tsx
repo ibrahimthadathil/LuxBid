@@ -21,6 +21,7 @@ import Dashboard from "@/pages/admin/Home/Dashboard";
 import Users from "@/pages/admin/Home/Users";
 import Category from "@/pages/admin/Home/Category";
 import Posts from "@/pages/admin/Home/Posts";
+import Auction from "@/pages/user/Home/auction/Auction";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -112,6 +113,10 @@ export const Router = createBrowserRouter([
         path: "product",
         element: <RollProtected element={<Products />} />,
       },
+      {
+        path:'auction',
+        element:<RollProtected element={<Auction/>}/>
+      }
     ],
   },
 
