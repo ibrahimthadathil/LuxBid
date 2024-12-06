@@ -44,3 +44,22 @@ export type Tproduct ={
 
 }
 
+export type Tauction = {
+    _id:string,
+    title:string,
+    description:string,
+    product:string | Tproduct,
+    bidAmount:number,
+    bidders:{
+        user:string | Iuser ,
+        bidTime:Date,
+        isAccept:boolean,
+        amount:number
+    }[],
+    endTime:Date,
+    auctionType : 'Live'| 'Scheduled',
+    createdAt?:Date,
+    isActive :boolean,
+    entryAmt:number
+}
+

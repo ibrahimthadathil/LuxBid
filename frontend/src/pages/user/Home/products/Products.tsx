@@ -78,12 +78,7 @@ const Products = () => {
         <p>{(item.category as Tcategory)?.name}</p>
       )
     },
-    {
-      header: 'Price',
-      render: (item: Tproduct) => (
-        <p className="font-semibold">₹{item.price.toFixed(2)}</p>
-      )
-    },
+   
     {
       header: 'Description',
       render: (item: Tproduct) => (
