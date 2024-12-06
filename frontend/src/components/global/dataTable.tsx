@@ -47,14 +47,14 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
         </TableHeader>
         <TableBody className="text-center">
           {
-            currentData.length ? currentData.map((item,i) => (
+            currentData.length ? currentData.map((item,ind) => (
               <TableRow
-                key={(item as T)._id || i}
+                key={(item as T)._id || ind}
                 className="bg-card hover:bg-muted/50 dark:hover:bg-muted/50"
               >
                 {
                   columns.map((e,i)=>(
-                    <TableCell key={i} className="font-medium">{e.render ? e.render(item,i):e.key?item[e.key]:'Not found'}</TableCell>
+                    <TableCell key={i} className="font-medium">{e.render ? e.render(item,ind):e.key?item[e.key]:'Not found'}</TableCell>
   
                   ))
                 }

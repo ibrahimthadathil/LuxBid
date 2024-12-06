@@ -35,7 +35,7 @@ const Posts = () => {
     await handler(rejectPost,id,'product')
   }
     const columns = useMemo(()=>[
-    {header:'No',render:(post:Tproduct,i:number)=>`LBP${i+101}`},
+    {header:'No',render:(post:Tproduct,i:number)=>`LBPNO ${i+101}`},
     {key:'title',header:'Title' ,render:(post:Tproduct)=>(
       <div className="flex items-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">
@@ -83,12 +83,7 @@ const Posts = () => {
         </div>
       )
     },
-    {
-      header: 'Price',
-      render: (item: Tproduct) => (
-        <p className="font-semibold">₹{item.price.toFixed(2)}</p>
-      )
-    },
+    
     {
       header: 'Description',
       render: (item: Tproduct) => (
