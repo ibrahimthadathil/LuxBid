@@ -1,4 +1,4 @@
-import { Tcategory } from '@/types/user'
+import { Tcategory } from '@/types/types'
 import axios from 'axios'
 import { axiosInstance } from '../axiosInstance/intercepters'
 

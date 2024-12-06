@@ -1,7 +1,7 @@
 import { useRQ } from '@/hooks/userRQ'
 import { fetchBuyer } from '@/service/Api/buyerApi'
 import { saveEdit } from '@/service/Api/userApi'
-import { Iuser } from '@/types/user'
+import { Iuser } from '@/types/types'
 import { errorFn, TZprofile, ZeditProfile } from '@/utils/validation/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQueryClient } from '@tanstack/react-query'

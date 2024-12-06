@@ -5,10 +5,6 @@ export const ZPost = z.object({
     .string()
     .min(3, "Minimum 3 character Required")
     .max(20, "Title cannot exceed 12 character"),
-  price: z
-    .number()
-    .min(1, "Price must be positive value")
-    .max(100000, "Price is too high"),
   category: z.string().min(1),
   description: z
     .string()
@@ -48,10 +44,6 @@ export const ZPostEditing = z.object({
     .string()
     .min(3, "Minimum 3 character Required")
     .max(20, "Title cannot exceed 12 character"),
-  price: z
-    .number()
-    .min(1, "Price must be positive value")
-    .max(100000, "Price is too high"),
   category: z.string().min(1),
   description: z
     .string()

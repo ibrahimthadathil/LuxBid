@@ -32,7 +32,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/api/admin/LB/dashboard",
+      url: "/admin/LB/dashboard",
       icon: SquareTerminal,
       isActive: true,
       // items: [
@@ -52,38 +52,38 @@ const data = {
     },
     {
       title: "Users",
-      url: "/api/admin/LB/users/Buyer",
+      url: "/admin/LB/users/Buyer",
       icon: User,
       items: [
         {
           title: "Organizer",
-          url: "/api/admin/LB/users/Seller",
+          url: "/admin/LB/users/Seller",
           // icon : 
         },
         {
           title: "Buyer",
-          url: "/api/admin/LB/users/Buyer",
+          url: "/admin/LB/users/Buyer",
         },
         
       ],
     },
     {
       title : 'Category',
-      url:'/api/admin/LB/category',
+      url:'/admin/LB/category',
       icon :Layers3
     },
     {
       title : 'Posts',
-      url:'/api/admin/LB/Posts/Approved',
+      url:'/admin/LB/Posts/Approved',
       icon :StickyNote,
       items: [
             {
               title: "Approved",
-              url: "/api/admin/LB/Posts/Approved",
+              url: "/admin/LB/Posts/Approved",
             },
             {
               title: "Requestes",
-              url: "/api/admin/LB/Posts/request",
+              url: "/admin/LB/Posts/request",
             },
       ]
     }

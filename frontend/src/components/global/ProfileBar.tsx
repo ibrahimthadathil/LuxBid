@@ -1,5 +1,5 @@
 import { uploadProfile } from "@/service/Api/userApi";
-import { Iuser, Tbuyer } from "@/types/user";
+import { Iuser, Tbuyer } from "@/types/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { Gavel, Star, Trophy } from "lucide-react";

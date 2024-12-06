@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "../ui/Button"
-import { Iuser } from "@/types/user"
+import { Iuser } from "@/types/types"
 interface ModalProps<T>{
   data:T,
   action:Function

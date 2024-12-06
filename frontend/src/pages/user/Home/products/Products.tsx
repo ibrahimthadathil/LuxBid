@@ -4,7 +4,7 @@ import {  fetchPost, removePost } from "@/service/Api/productApi";
 import { useMemo, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import Loader from "@/components/global/Loader";
-import { Tcategory, Tproduct } from "@/types/user";
+import { Tcategory, Tproduct } from "@/types/types";
 import { useAuth } from "@/hooks/useAuth";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarImage } from "@/components/ui/avatar";

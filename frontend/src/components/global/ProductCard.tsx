@@ -1,4 +1,4 @@
-import { Tproduct } from "@/types/user"
+import { Tproduct } from "@/types/types"
 
 const ProductCard = ({item}:{item:Tproduct}) => {
 

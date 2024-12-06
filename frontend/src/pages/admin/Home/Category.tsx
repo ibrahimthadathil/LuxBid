@@ -22,7 +22,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, TCateForm } from "@/utils/validation/admin";
 import DataTable from "@/components/global/dataTable";
-import { Tcategory } from "@/types/user";
+import { Tcategory } from "@/types/types";
 import  AlertModal  from "@/components/global/AlertModal";
 import { AddCategory, categoryAction, getCategory, removeCategory } from "@/service/Api/adminApi";
 import { useRQ } from "@/hooks/userRQ";

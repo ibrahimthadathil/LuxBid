@@ -3,7 +3,7 @@ import { findAllUserByRole, UserStatus } from '@/service/Api/adminApi';
 import {  useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom'
 import Loading from '@/components/global/Loader'
-import { Iuser } from '@/types/user';
+import { Iuser } from '@/types/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { UserDetailsModal } from '@/components/global/userModal';
 import { toast } from 'sonner';

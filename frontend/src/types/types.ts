@@ -33,7 +33,6 @@ export type Tcategory ={
 export type Tproduct ={
     _id:string,
     seller:string | Iuser,
-    price:number,
     images:string[],
     category:string |Tcategory,
     description:string,

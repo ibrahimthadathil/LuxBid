@@ -34,7 +34,7 @@ export function TeamSwitcher({
 try {
   await logoutAdmin()
   dispatch(Logout())
-  navigate('/api/admin/auth')
+  navigate('/admin/auth')
   toast.success("Logged Out")
 } catch (error) {
   toast.error('failedf to logout')

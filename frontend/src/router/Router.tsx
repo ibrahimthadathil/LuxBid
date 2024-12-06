@@ -122,7 +122,7 @@ export const Router = createBrowserRouter([
 
   // ADMIN ROUTE
   {
-    path:'/api/admin',
+    path:'/admin',
     children: [
       {
         path: '',

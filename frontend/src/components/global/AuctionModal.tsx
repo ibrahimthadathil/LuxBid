@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { fetchApprovedPost } from '@/service/Api/productApi'
 import { useRQ } from '@/hooks/userRQ'
-import { Tproduct } from '@/types/user'
+import { Tproduct } from '@/types/types'
 import Loader from './Loader'
 
 

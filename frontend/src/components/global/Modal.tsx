@@ -4,7 +4,7 @@ import {
   fetchCategory,
   updatePost,
 } from "@/service/Api/productApi";
-import { Tcategory } from "@/types/user";
+import { Tcategory } from "@/types/types";
 import { TZpost, TZpostEditing, ZPost, ZPostEditing } from "@/utils/validation/post";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CloudUpload, Loader2, X } from "lucide-react";
@@ -39,7 +39,6 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
     defaultValues: post
       ? {
           title: post.title || "",
-          price: post.price || 0,
           category: post.category.name || "",
           description: post.description || "",
           file:images,
@@ -70,7 +69,6 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
     try {
       const formData = new FormData();
       formData.append("title", datas.title);
-      formData.append("price", datas.price.toString());
       formData.append("category", datas.category);
       formData.append("description", datas.description);
       let newImages=images.filter(e=>!e.includes("blob"));
@@ -205,20 +203,6 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                     {errors.title.message}
                   </p>
                 )}
-                <input
-                  type="number"
-                  {...register("price", { valueAsNumber: true })}
-                  placeholder="Price of the product"
-                  className={`w-full p-2 bg-zinc-900 border ${
-                    errors.price ? "border-red-500" : "border-zinc-800"
-                  } rounded text-sm text-white`}
-                />
-                {errors.price && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {errors.price.message}
-                  </p>
-                )}
-
                 <select
                   {...register("category")}
                   className={`w-full p-2 bg-zinc-900 border ${
