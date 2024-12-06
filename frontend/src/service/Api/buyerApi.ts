@@ -1,10 +1,12 @@
 import axios from "axios";
+import { axiosInstance } from "../axiosInstance/intercepters";
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_USER_BASE_URL,
-  withCredentials: true,
-});
+// const api = axios.create({
+//   baseURL: import.meta.env.VITE_USER_BASE_URL,
+//   withCredentials: true,
+// });
 
+const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 
 // fetching buyer
 export const fetchBuyer =async()=>{

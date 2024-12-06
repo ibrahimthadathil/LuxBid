@@ -81,15 +81,18 @@ const Sidebars = () => {
         {/* Content Container */}
         <div className="p-4 pt-12 flex flex-col items-center w-full ">
           {/* Avatar */}
-          {!isCollapsed&&<img
-            src={data?.profile}
-            className="w-12 h-12 rounded-full mb-4 border "
+          {!isCollapsed&&<img 
+            src={data?.profile||
+              `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="navy"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="50" font-family="Arial">${data?.firstName[0].toUpperCase()}</text></svg>`
+
+            }
+            className="w-12 h-12 rounded-full mb-4 border object-cover"
             alt="Logo"
           />}
 
           {/* Sidebar Header */}
           {!isCollapsed && (
-            <h2 className="text-lg font-bold mb-4">{data?.firstName}</h2>
+            <h2 className="text-lg font-bold mb-4">{data?.firstName||''}</h2>
           )}
 
           {/* Sidebar Items */}

@@ -3,6 +3,7 @@ import { admin_Service } from "../../../service/implements/admin/admin_AuthServi
 import { Request, Response } from "express";
 import { admin_userService } from "../../../service/implements/admin/admin_userService";
 import { IadminController } from "../../interface/adminController_Interface";
+import { setCookie } from "../../../utils/cookie_utils";
 
 @Service()
 class AdminController implements IadminController{
@@ -14,8 +15,9 @@ class AdminController implements IadminController{
     try {
       const { email, password } = req.body;
       
-      const { success, access, message,adminEmail,name } = await this.adminService.admin_Signin(email, password);
+      const { success, access, message,adminEmail,name,refresh } = await this.adminService.admin_Signin(email, password);
       if (success) {
+        setCookie(res,'admtkn',refresh as string)
         res
           .status(200)
           .json({ message: message , token : access ,success :true , email:adminEmail , name})
@@ -53,6 +55,14 @@ class AdminController implements IadminController{
         
     } catch (error) {
       res.status(500).json({message:'internal server error'})
+    }
+  }
+  async adminLogout(req:Request,res:Response){
+    try {
+      res.clearCookie('admtkn')
+      res.status(200).json({message:'loggedOUt'})
+    } catch (error) {
+      res.status(500).json({message:"Couldn't cleare the the credantial"})
     }
   }
 

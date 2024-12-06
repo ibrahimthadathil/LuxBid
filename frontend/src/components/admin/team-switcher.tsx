@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/redux/store/store"
 import { Navigate, useNavigate } from "react-router-dom"
 import { toast } from "sonner"
+import { logoutAdmin } from "@/service/Api/adminApi"
 
 export function TeamSwitcher({
   teams,
@@ -29,10 +30,15 @@ export function TeamSwitcher({
   const { isMobile } = useSidebar()
  const dispatch = useDispatch<AppDispatch>() 
  const navigate = useNavigate()
- const logoutAdmin =()=>{
+ const LogoutAdmin =async()=>{
+try {
+  await logoutAdmin()
   dispatch(Logout())
   navigate('/api/admin/auth')
   toast.success("Logged Out")
+} catch (error) {
+  toast.error('failedf to logout')
+}
  }
   return (
     <SidebarMenu>
@@ -66,7 +72,7 @@ export function TeamSwitcher({
             {teams.map((team, index) => (
               <DropdownMenuItem
                 key={team.name}
-                onClick={logoutAdmin}
+                onClick={LogoutAdmin}
                 className="gap-2 p-2"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border">

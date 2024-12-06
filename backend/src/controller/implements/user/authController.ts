@@ -190,7 +190,7 @@ class AuthController implements IAuthController {
   async logoutUser(req:AuthRequest,res:Response){
     try {
       res.clearCookie('rftn');
-       res.status(200).json({message:"suck"})
+       res.status(200).json({message:"loggedOut"})
     } catch (error) {
       console.log((error as Error).message)
       throw new Error('from logout user')

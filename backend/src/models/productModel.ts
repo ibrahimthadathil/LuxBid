@@ -3,7 +3,6 @@ import mongoose ,{Schema,Document}from "mongoose";
 export interface Iproduct extends Document{
     _id:string,
     seller:string,
-    price:number,
     images:string[],
     category:string,
     description:string,
@@ -15,7 +14,6 @@ export interface Iproduct extends Document{
 
 const productSchema = new Schema({
     seller:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},
-    price:{type:Number,required:true},
     images:[{type:String ,required:true}],
     category:{type:mongoose.Schema.Types.ObjectId , ref :'Category',required:true},
     description:{type:String},

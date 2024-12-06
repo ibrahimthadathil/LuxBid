@@ -104,7 +104,7 @@ export class productService implements IproductService{
             if(Array.isArray(response))response.map((link)=>existingImg.push(link.Location))
             else throw new Error('Failed to upload Image, Try later')
         }
-            const updatedPost={title:data.title,price:data.price,category:findCategory.data._id,images:existingImg,description:data.description}
+            const updatedPost={title:data.title,category:findCategory.data._id,images:existingImg,description:data.description}
             const response = await this.productrepo.update(id,updatedPost)
             if(response) return {success:true,message:'Post updated'}
             else throw new Error('failed to update')
@@ -114,5 +114,18 @@ export class productService implements IproductService{
        }
         
         
+    }
+    async approved_Post(userId:string){
+        try {
+           const approvedPost= await this.productrepo.findByApproved(userId)
+           console.log('approved',approvedPost);
+           
+           if(approvedPost)return {success:true,data:approvedPost}
+           else throw new Error('Failed to fetch post')
+           
+        } catch (error) {
+            console.log('approved post',(error as Error).message);
+            return {success:false,message:(error as Error).message}
+        }
     }
 }

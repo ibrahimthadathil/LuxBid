@@ -1,23 +1,27 @@
 import { Tcategory } from '@/types/user'
 import axios from 'axios'
+import { axiosInstance } from '../axiosInstance/intercepters'
 
 type Tadmin = {
     email : string,
     password : string
 }
 
-const api = axios.create({
-    baseURL : import.meta.env.VITE_ADMIN_URL
-})
+// const api = axios.create({
+//     baseURL : import.meta.env.VITE_ADMIN_URL
+// })
+
+const api = axiosInstance(import.meta.env.VITE_ADMIN_URL)
+
 
 export const adminSignin=async(adminDetails :Tadmin)=>{
    return await api.post('/auth/signin',adminDetails)
 }
 
-export const FetchUsers= async()=>{
-   const {data}= await api.get('/users')
-   return data
-}
+// export const FetchUsers= async()=>{
+//    const {data}= await api.get('/users')
+//    return data
+// }
 
 export const UserStatus =async(email:string)=>{
   return  await api.put(`/updateuser/${email}`)
@@ -56,8 +60,14 @@ export const removePost =async(id:string)=>{
 }
 
 export const approvePost = async(id:string)=>{
+  console.log('222222');
+  
   return await api.put(`/updatepost/${id}`)
 }
 export const rejectPost = async(id:string)=>{
   return await api.put(`/rejectpost/${id}`)
+}
+
+export const logoutAdmin =async()=>{
+  return await api.post('/adminlogout')
 }

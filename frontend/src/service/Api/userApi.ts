@@ -1,5 +1,6 @@
 import { TZprofile } from "@/utils/validation/user";
 import axios from "axios";
+import { axiosInstance } from "../axiosInstance/intercepters";
 
 type Tuser = {
   email: string;
@@ -11,10 +12,12 @@ type Tuser = {
   password: string;
 };
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_USER_BASE_URL,
-  withCredentials:true
-});
+// const api = axios.create({
+//   baseURL: import.meta.env.VITE_USER_BASE_URL,
+//   withCredentials:true
+// });
+
+const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 
 // signup request
 

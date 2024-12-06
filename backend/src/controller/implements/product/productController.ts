@@ -96,6 +96,17 @@ export class productController implements IproductController{
       res.status(500).json({ message: "Sever Error , Try later" })
     }
   }
+  async approved_Post(req:AuthRequest,res:Response){
+    try {
+      const userId = req.user?._id
+      if(!userId)res.status(403).json({message:'Inavlid Request'})
+      const {success,data,message}=await this.product_Service.approved_Post(userId as string)
+      if(success)res.status(200).json({message,data})
+      else res.status(401).json({message,success})  
+    } catch (error) {
+      res.status(500).json({ message: "Sever Error , Try later" })
+    }
+  }
 }
 
 

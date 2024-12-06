@@ -1,20 +1,24 @@
-import axios from "axios";
+import { axiosInstance } from "../axiosInstance/intercepters";
 
 
-const cateApi = axios.create({
-    baseURL : import.meta.env.VITE_ADMIN_URL,
-    withCredentials: true,
-})
+// const cateApi = axios.create({
+//     baseURL : import.meta.env.VITE_ADMIN_URL,
+//     withCredentials: true,
+// })
 
-const api = axios.create({
-    baseURL: import.meta.env.VITE_USER_BASE_URL,
-    withCredentials: true,
-  });
+// const api = axios.create({
+    //     baseURL: import.meta.env.VITE_USER_BASE_URL,
+    //     withCredentials: true,
+    //   });
+
+    
+const category = axiosInstance(import.meta.env.VITE_ADMIN_URL)
+const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 
 // fetch category 
 
 export const fetchCategory=async()=>{
-    return await cateApi.get('/getcategory')
+    return await category.get('/getcategory')
 }
 
 // add post
@@ -43,3 +47,8 @@ export const removePost =async(id:string)=>{
     return await api.delete(`/removepost/${id}`)
 }
 
+export const fetchApprovedPost =async()=>{
+    console.log('8888888');
+    
+    return await api.get(`/approvedpost`)
+}

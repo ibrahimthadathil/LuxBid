@@ -10,7 +10,7 @@ export class productRepository extends BasRepository<Iproduct>{
     }
     async findByUser(id:string){
         try {
-            return await Product.find({seller:id}).populate('category')
+            return await Product.find({seller:id}).populate('category',)
         } catch (error) {
             throw new Error('errofrom fetching the products')
         }
@@ -19,8 +19,14 @@ export class productRepository extends BasRepository<Iproduct>{
         try {
             return await Product.find({isApproved:status}).populate('seller','-password').populate('category')
         } catch (error) {
-            
+            throw new Error('failed to find  post')
         }
     }
-   
+    async findByApproved(id:string){
+        try {
+            return await Product.find({ seller:id , isApproved:true})
+        } catch (error) {
+            throw new Error('failed to findApproved post')
+        }
+    }
 }

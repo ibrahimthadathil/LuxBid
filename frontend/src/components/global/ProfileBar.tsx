@@ -1,5 +1,6 @@
 import { uploadProfile } from "@/service/Api/userApi";
 import { Iuser, Tbuyer } from "@/types/user";
+import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { Gavel, Star, Trophy } from "lucide-react";
 import React, { useState } from "react";
@@ -7,6 +8,7 @@ import { toast } from "sonner";
 
 const ProfileBar = ({ user, bids }: { user: Iuser; bids: Tbuyer }) => {
   const [img, setimg] = useState<string|null>(null)
+  const queryClient = useQueryClient()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     (async () => {
       try {
@@ -16,6 +18,7 @@ const ProfileBar = ({ user, bids }: { user: Iuser; bids: Tbuyer }) => {
           const {data} =await uploadProfile(image)
           if(data.success){
             toast.success(data.message)
+            await queryClient.invalidateQueries({queryKey:['User']});
           }else toast.error(data.message)
         }else toast.error('Size Must be less than 2MB')
       } catch (error) {

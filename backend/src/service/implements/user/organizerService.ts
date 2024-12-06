@@ -30,9 +30,13 @@ export class organizerService implements IorgaizerService{
   }
 
   async get_Seller(userId:string){
+    console.log('7777777',userId);
+    
     try {
      const Organizer = await this.sellerRepo.findUserById(userId) 
      const Buyer = await this.buyerRepo.findByUserId(userId)
+     console.log('888888',Organizer,'00000',Buyer);
+     
      if(Organizer&&Buyer){
         return {success:true , buyer:Buyer , seller:Organizer}
      }else{
