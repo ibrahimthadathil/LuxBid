@@ -15,7 +15,7 @@ let persister = persistStore(store);
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}> 
-      <Toaster richColors position="top-right" theme="dark" />
+      <Toaster richColors position="top-right" theme="dark" expand />
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <PersistGate persistor={persister}>
           <QueryClientProvider client={queryClient}>  

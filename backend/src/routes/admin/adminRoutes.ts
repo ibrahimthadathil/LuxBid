@@ -12,7 +12,7 @@ adminRoute.post('/auth/signin',adminController.adminSignIn.bind(adminController)
 adminRoute.put('/updateuser/:id',AdminMiddleware,adminController.updateUser.bind(adminController))
 
 adminRoute.post('/addcategory',AdminMiddleware,category_Controller.add_Category.bind(category_Controller))
-adminRoute.get('/getcategory',AdminMiddleware,category_Controller.get_Category.bind(category_Controller))
+adminRoute.get('/getAllcategory',AdminMiddleware,category_Controller.get_Category.bind(category_Controller))
 adminRoute.delete('/categoryremove/:id',AdminMiddleware,category_Controller.remove_Category.bind(category_Controller))
 adminRoute.put('/categoryupdate/:id',AdminMiddleware,category_Controller.update_Category.bind(category_Controller))
 

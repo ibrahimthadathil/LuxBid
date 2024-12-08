@@ -24,6 +24,8 @@ export class categoryController implements IcategoryController{
 
   async get_Category(req: Request, res: Response) {
     try {
+      console.log('from category');
+      
       const { success, data, message } = await this.cate_Service.get_Category();
       if (success) res.status(200).json({ data, success });
       else res.status(400).json({ success, message });

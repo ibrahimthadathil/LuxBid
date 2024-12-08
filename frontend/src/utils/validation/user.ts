@@ -42,7 +42,15 @@ export const ZresetPass = z.object({
 export  type TZresetPass = z.infer<typeof ZresetPass>
 
 export const errorFn: SubmitErrorHandler<any> = (err) => {
-  Object.values(err).forEach((e:any) => {
+  Object.values(err).forEach((e:any) => {   
+    if (typeof e === 'object') {
+      for(let v in e){
+        console.log('$$$',e[v].message);
+        toast.error(e[v].message)
+        
+        // toast.error(v.message)
+      }
+    }
     toast.error(e.message);
   });
 };

@@ -12,13 +12,15 @@ import { axiosInstance } from "../axiosInstance/intercepters";
     //   });
 
     
-const category = axiosInstance(import.meta.env.VITE_ADMIN_URL)
+const category = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 
 // fetch category 
 
 export const fetchCategory=async()=>{
-    return await category.get('/getcategory')
+    console.log('64654765765876');
+    
+    return await category.get('/findcategory')
 }
 
 // add post
