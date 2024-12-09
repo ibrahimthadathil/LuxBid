@@ -15,9 +15,14 @@ import { TZauction, Zauction } from "@/utils/validation/auction";
 import { zodResolver } from "@hookform/resolvers/zod";
 import  TimeSelect  from "@/components/ui/TimeInput";
 import { errorFn } from "@/utils/validation/user";
+import useActionHook from "@/hooks/actionHook";
+import { createAuction } from "@/service/Api/auctionApi";
+import { useQueryClient } from "@tanstack/react-query";
 
 const AuctionForm = () => {
   const { isLoading, data } = useRQ(fetchApprovedPost, "post"); // Fetching posts
+  const {handler} = useActionHook()
+  const queryclient = useQueryClient()
   const {
     register,
     handleSubmit,
@@ -29,17 +34,18 @@ const AuctionForm = () => {
     formState: { errors },
   } = useForm<TZauction>({
     resolver: zodResolver(Zauction),
-    defaultValues: { auctionType: "Live", productId: "" },
+    defaultValues: { auctionType: "Live", post: "" },
   });
-
   const auctionStatus = watch("auctionType");
-
 
   const onSubmit = async (formData: TZauction) => {
     try {
-      console.log("Submitted Data:", formData);
-      alert("Auction Created Successfully!");
-      reset();
+      alert('data submitt')
+      const response = await handler(createAuction,formData)
+      if(response) {
+        queryclient.invalidateQueries({queryKey:['auction']})
+        reset();
+      }
     } catch (error) {
       console.error("Auction creation failed:", error);
     }
@@ -60,19 +66,19 @@ const AuctionForm = () => {
                   <Card
                     key={post._id}
                     className={`cursor-pointer ${
-                      watch("productId") === post._id ? "ring-2 ring-primary" : ""
+                      watch("post") === post._id ? "ring-2 ring-primary" : ""
                     }`}
                   >
                     <CardContent
                       className="p-2 flex items-center space-x-3"
                       onClick={() => {
-                        setValue("productId", post._id);
-                        clearErrors("productId");
+                        setValue("post", post._id);
+                        clearErrors("post");
                       }}
                     >
                       <input
                         type="radio"
-                        {...register("productId")}
+                        {...register("post")}
                         value={post._id}
                         className="sr-only "
                       />
@@ -155,29 +161,29 @@ const AuctionForm = () => {
           {auctionStatus === "Scheduled" && (
             <>
               <Controller
-                name="startDateTime"
+                name="startTime"
                 control={control}
                 render={({ field }) => (
                   <TimeSelect
-                    id="startDateTime"
+                    id="startTime"
                     label="Start Date and Time"
                     value={field.value}
                     onChange={field.onChange}
-                    error={errors?.startDateTime?.message || 'Invalid option of Starting'}
+                    error={errors?.startTime?.message || 'Invalid option of Starting'}
                   />
                 )}
               />
 
               <Controller
-                name="endDateTime"
+                name="endTime"
                 control={control}
                 render={({ field }) => (
                   <TimeSelect
-                    id="endDateTime"
+                    id="endTime"
                     label="End Date and Time"
                     value={field.value}
                     onChange={field.onChange}
-                    error={errors.endDateTime?.message || 'Invalid option of Starting'}
+                    error={errors.endTime?.message || 'Invalid option of Starting'}
                   />
                 )}
               />

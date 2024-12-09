@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Clock, Calendar } from 'lucide-react';
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
+import moment from 'moment-timezone';
 import "react-datepicker/dist/react-datepicker.css";
 import {
   Select,
@@ -21,14 +22,14 @@ interface DateTimeSelectProps {
   error?:string
 }
 
-const DateTimeSelect=({
+const DateTimeSelect = ({
   id,
   value,
   onValidate,
   label,
   onChange,
   error
-}: DateTimeSelectProps)=> {
+}: DateTimeSelectProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(value || null);
   const [selectedTime, setSelectedTime] = useState<string>("");
 
@@ -46,27 +47,59 @@ const DateTimeSelect=({
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
     if (date && selectedTime && onChange) {
-      const [hours, minutes] = selectedTime.split(':');
-      const [time, period] = selectedTime.split(' ');
-      date.setHours(
-        period === 'PM' ? parseInt(hours) + 12 : parseInt(hours),
-        parseInt(minutes)
-      );
-      onChange(date);
+      // Parse the time
+      const [timeStr, period] = selectedTime.split(' ');
+      const [hours, minutes] = timeStr.split(':');
+      
+      // Create a moment object in IST
+      let momentDate = moment(date).tz('Asia/Kolkata');
+      
+      // Adjust hours for 12-hour format
+      let adjustedHours = parseInt(hours);
+      if (period === 'PM' && adjustedHours !== 12) {
+        adjustedHours += 12;
+      }
+      if (period === 'AM' && adjustedHours === 12) {
+        adjustedHours = 0;
+      }
+      
+      // Set the time
+      momentDate.hours(adjustedHours).minutes(parseInt(minutes));
+      
+      // Convert to Date object
+      const finalDate = momentDate.toDate();
+      
+      onChange(finalDate);
     }
   };
 
   const handleTimeChange = (time: string) => {
     setSelectedTime(time);
     if (selectedDate && onChange) {
-      const [hours, minutes] = time.split(':');
-      const [_, period] = time.split(' ');
-      const newDate = new Date(selectedDate);
-      newDate.setHours(
-        period === 'PM' ? parseInt(hours) + 12 : parseInt(hours),
-        parseInt(minutes.split(' ')[0])
-      );
-      onChange(newDate);
+      // Parse the time
+      const [timeStr, period] = time.split(' ');
+      const [hours, minutes] = timeStr.split(':');
+      
+      // Create a moment object in IST
+      let momentDate = moment(selectedDate).tz('Asia/Kolkata');
+      
+      // Adjust hours for 12-hour format
+      let adjustedHours = parseInt(hours);
+      if (period === 'PM' && adjustedHours !== 12) {
+        adjustedHours += 12;
+      }
+      if (period === 'AM' && adjustedHours === 12) {
+        adjustedHours = 0;
+      }
+      
+      // Set the time
+      momentDate.hours(adjustedHours).minutes(parseInt(minutes));
+      
+      // Convert to Date object
+      const finalDate = momentDate.toDate();
+      console.log('232323',finalDate);
+      
+      onChange(finalDate);
     }
   };
 
@@ -114,5 +147,4 @@ const DateTimeSelect=({
   );
 }
 
-export default DateTimeSelect
-
+export default DateTimeSelect;

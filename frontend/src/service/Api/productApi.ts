@@ -50,7 +50,5 @@ export const removePost =async(id:string)=>{
 }
 
 export const fetchApprovedPost =async()=>{
-    console.log('8888888');
-    
     return await api.get(`/approvedpost`)
 }

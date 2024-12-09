@@ -48,8 +48,8 @@ export type Tauction = {
     _id:string,
     title:string,
     description:string,
-    product:string | Tproduct,
-    bidAmount:number,
+    post:string | Tproduct,
+    baseAmount:number,
     bidders:{
         user:string | Iuser ,
         bidTime:Date,

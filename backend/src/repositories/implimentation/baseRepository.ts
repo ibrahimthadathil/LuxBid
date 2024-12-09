@@ -15,9 +15,8 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
         return this.model.find({},'-password')
     }
 
-    async create(data: Partial<T>): Promise<T> {
-        console.log(data);
-        
+    async create(data: Partial<T>): Promise<T> { 
+                       
         return this.model.create(data)
     }
     

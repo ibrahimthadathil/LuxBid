@@ -3,9 +3,10 @@ import mongoose ,{Schema,Document} from 'mongoose'
 export interface IAuction extends Document{
     _id:string,
     title:string,
+    seller:string,
     description:string,
-    product:string,
-    bidAmount:number,
+    post:string,
+    baseAmount:number,
     bidders:{
         user:string,
         bidTime:Date,
@@ -13,6 +14,7 @@ export interface IAuction extends Document{
         amount:number
     }[],
     endTime:Date,
+    startTime:Date,
     auctionType : 'Live'| 'Scheduled',
     createdAt?:Date,
     isActive :boolean,
@@ -21,8 +23,10 @@ export interface IAuction extends Document{
 
 const auctionSchema = new Schema({
     title:{type:String , required:true},
+    seller:{type:mongoose.Schema.Types.ObjectId , ref :'Organizer'},
     description:{type:String,required:true},
-    bidAmount:{type:Number,required:true},
+    baseAmount:{type:Number,required:true},
+    post:{type:mongoose.Schema.Types.ObjectId , ref :'Product' ,required :true},
     bidders:[{
         user: {type:mongoose.Schema.Types.ObjectId, ref:'User'},
         bidTime:{type:Date},
@@ -30,10 +34,11 @@ const auctionSchema = new Schema({
         isAccept:{type:Boolean, default:false},
     }],
     endTime:{type:Date},
+    startTime:{type:Date},
     auctionType :{type:String,enum:['Live','Scheduled'],required:true},
     isActive:{type:Boolean},
     entryAmt:{type:Number,required:true}
-},{timestamps:true})
+})
 
 
 export const Auction = mongoose.model<IAuction>('Auction',auctionSchema)
