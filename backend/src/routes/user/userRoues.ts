@@ -4,8 +4,6 @@ import { userController } from '../../controller/implements/user/userController'
 import { buyer_controller } from '../../controller/implements/user/buyerController';
 import { Organizer_Controller } from '../../controller/implements/user/organizerController';
 import { upload } from '../../utils/multer_Utils';
-import { product_Controller } from '../../controller/implements/product/productController';
-import { category_Controller } from '../../controller/implements/admin/categoryController';
 
 const userRoute = Router()
 
@@ -17,11 +15,5 @@ userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.get_Organizer.bind(O
 userRoute.post('/uploadprofile',AuthMiddleWare,upload.single('image'),userController.upload_Profile.bind(userController))
 userRoute.post('/editprofile',AuthMiddleWare,userController.edit_Profile.bind(userController))
 
-userRoute.get('/findcategory',AuthMiddleWare,category_Controller.get_Category.bind(category_Controller))
-userRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),product_Controller.create_Post.bind(product_Controller))
-userRoute.get('/getpost',AuthMiddleWare,product_Controller.get_Post.bind(product_Controller))
-userRoute.put('/updatepost/:id',AuthMiddleWare,upload.array('images',5),product_Controller.update_Post.bind(product_Controller))
-userRoute.delete('/removepost/:id',AuthMiddleWare,product_Controller.remove_Post.bind(product_Controller))
-userRoute.get('/approvedpost',AuthMiddleWare,product_Controller.approved_Post.bind(product_Controller))
 export default userRoute
 

@@ -1,5 +1,5 @@
 import { Service } from "typedi";
-import { productRepository } from "../../../repositories/implimentation/productsRepository";
+import { productRepository } from "../../../repositories/implimentation/product/productsRepository"
 import { s3Service } from "../user/uploadService";
 import { Iuser } from "../../../models/userModel";
 import { Iproduct } from "../../../models/productModel";

@@ -1,6 +1,6 @@
 
 import mongoose ,{Schema,Document} from 'mongoose'
-export interface IAuction{
+export interface IAuction extends Document{
     _id:string,
     title:string,
     description:string,

@@ -7,6 +7,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import adminRoute from "./routes/admin/adminRoutes";
 import authRoute from "./routes/user/authRoutes";
+import postRoute from "./routes/post/postRoutes";
 
 dotenv.config();
 connectDB();
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 app.use("/Luxbid", authRoute);
 app.use("/Luxbid", userRoute);
+app.use("/Luxbid", postRoute);
 app.use("/LB/api", adminRoute);
 
 // app.get("/h", (req, res) => {
