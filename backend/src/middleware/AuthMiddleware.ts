@@ -18,7 +18,7 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
         }else{
             const {email} = verifyToken(refreshToken) as JwtPayload
             const currentUser = await User.findOne({email},'-password')
-            console.log(currentUser);            
+            // console.log(currentUser);            
             if(!currentUser?.isActive){
                 res.clearCookie('rftn')
                 throw new Error('User Access denied By the Authority')

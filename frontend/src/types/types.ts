@@ -47,6 +47,7 @@ export type Tproduct ={
 export type Tauction = {
     _id:string,
     title:string,
+    seller : string,
     description:string,
     post:string | Tproduct,
     baseAmount:number,
@@ -57,6 +58,7 @@ export type Tauction = {
         amount:number
     }[],
     endTime:Date,
+    startTime :Date,
     auctionType : 'Live'| 'Scheduled',
     createdAt?:Date,
     isActive :boolean,

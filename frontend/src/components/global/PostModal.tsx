@@ -8,6 +8,7 @@ import { Separator } from "@radix-ui/react-separator";
 
 interface modalProps<T> {
   data: T;
+  images?:string[];
   sideContent: {
     header: string;
     render?: (item: T, i: number) => React.ReactNode;
@@ -15,18 +16,19 @@ interface modalProps<T> {
 }
 export function PostModal<T extends Record<string, any>>({
   data,
-  sideContent,
+  sideContent,images
 }: modalProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [postImages] = useState<string[]>(()=>(images ? images:data.images))
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === data.images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === postImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? data.images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? postImages.length - 1 : prevIndex - 1
     );
   };
 
@@ -45,7 +47,7 @@ export function PostModal<T extends Record<string, any>>({
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                {data.images.map((item: string, i: number) => (
+                {postImages.map((item: string, i: number) => (
                   <div
                     key={i}
                     className="w-full max-h-[30rem] overflow-hidden flex-shrink-0"

@@ -34,9 +34,9 @@ const auctionSchema = new Schema({
         isAccept:{type:Boolean, default:false},
     }],
     endTime:{type:Date},
-    startTime:{type:Date},
+    startTime:{type:Date ,default:Date.now()},
     auctionType :{type:String,enum:['Live','Scheduled'],required:true},
-    isActive:{type:Boolean},
+    isActive:{type:Boolean , default:true},
     entryAmt:{type:Number,required:true}
 })
 

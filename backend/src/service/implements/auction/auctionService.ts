@@ -5,6 +5,7 @@ import { IAuction } from "../../../models/auctionModel";
 @Service()
 export class auctionService {
   constructor(private auctionRepo: auctionRepository) {}
+
   async create_Auction(auction:IAuction,userId:string){
     try {
       console.log('111',auction);
@@ -21,5 +22,34 @@ export class auctionService {
       return {success:false , message :(error as Error).message}      
     }
     
+  }
+  async getAll_Auction(userId:string){
+    try {
+     const response= await this.auctionRepo.findByUser(userId)
+     if(response)return {success:true , data :response}
+     else throw new Error('Failed to fetch')
+    } catch (error) {
+      return {success:false , message:'Internal Error, Try Later '+(error as Error).message}
+    }
+  }
+  async close_Auction(auctionId:string){
+    try {
+     const response= await this.auctionRepo.update(auctionId,{isActive:false})
+     if(response)return {success:true , message :'Deal closed'}
+     else throw new Error('failed to update')
+    } catch (error) {
+      return {success:false , message :'Internal error '+(error as Error).message}
+    }
+  }
+  async delete_Auction(auctionId:string){
+    try {
+      const selectedAuction = await this.auctionRepo.findById(auctionId)
+      if(selectedAuction?.isActive)return {success:false , message:'Close the auction to delete..!'}
+      const response = await this.auctionRepo.delete(auctionId)
+      if(response)return{success:true,message:'Deleted Successfully'}
+      else throw new Error('failed to delete')
+    } catch (error) {
+      return {success:false , message :'INtern error '+(error as Error).message}
+    }
   }
 }
