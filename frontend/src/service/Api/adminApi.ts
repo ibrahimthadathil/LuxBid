@@ -35,7 +35,7 @@ export const AddCategory = async(values:Partial<Tcategory>)=>{
 }
 
 export const getCategory = async()=>{
-  return await api.get('/getcategory')
+  return await api.get('/getAllcategory')
 }
 
 export const removeCategory =async(id:string)=>{
@@ -48,9 +48,7 @@ export const categoryAction =async(id:string)=>{
 }
 
 
-export const getAllproducts =async(status:boolean)=>{
-  console.log(status);
-  
+export const getAllproducts =async(status:boolean)=>{  
   return await api.get(`/products/${status}`)
 }
 
@@ -58,11 +56,10 @@ export const removePost =async(id:string)=>{
   return await api.delete(`/removepost/${id}`)
 }
 
-export const approvePost = async(id:string)=>{
-  console.log('222222');
-  
+export const approvePost = async(id:string)=>{  
   return await api.put(`/updatepost/${id}`)
 }
+
 export const rejectPost = async(id:string)=>{
   return await api.put(`/rejectpost/${id}`)
 }

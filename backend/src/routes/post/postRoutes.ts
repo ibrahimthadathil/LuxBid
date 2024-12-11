@@ -6,7 +6,7 @@ import { product_Controller } from '../../controller/implements/product/productC
 
 const postRoute = Router()
 // find Category
-postRoute.get('/findcategory',AuthMiddleWare,category_Controller.get_Category.bind(category_Controller))
+postRoute.get('/findcategory',AuthMiddleWare,category_Controller.get_ListedCategory.bind(category_Controller))
 //post
 postRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),product_Controller.create_Post.bind(product_Controller))
 postRoute.get('/getpost',AuthMiddleWare,product_Controller.get_Post.bind(product_Controller))

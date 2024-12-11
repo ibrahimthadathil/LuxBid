@@ -18,7 +18,6 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 // fetch category 
 
 export const fetchCategory=async()=>{
-    console.log('64654765765876');
     
     return await category.get('/findcategory')
 }

@@ -5,12 +5,14 @@ import GuideIcon from '../../assets/icons/Guide';
 import HomeIcon from '../../assets/icons/Home';
 import CommunityIcon from '../../assets/icons/Pepole';
 import CustomButton from '@/components/ux/customButon';
+import { useNavigate } from 'react-router-dom';
 
 const IconBar = () => {
   const [activeIcon, setActiveIcon] = useState<string>('home');
   const [sliderPosition, setSliderPosition] = useState<number>(0);
   const [sliderWidth, setSliderWidth] = useState<number>(0);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]); 
+  const navigate = useNavigate()
 
   useEffect(() => {
     const activeIndex = ['home', 'guide', 'deals', 'about', 'community'].indexOf(activeIcon);
@@ -23,8 +25,9 @@ const IconBar = () => {
     }
   }, [activeIcon]);
 
-  const handleIconClick = (icon: string) => {
-    setActiveIcon(icon);
+  const handleIconClick = (route: string) => {
+    setActiveIcon(route);
+    navigate(`/${route}`)
   }
 
   const isActive = (icon: string) => icon === activeIcon;

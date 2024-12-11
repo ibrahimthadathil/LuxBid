@@ -9,9 +9,7 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
 
     try {
 
-        let refreshToken = req.cookies.rftn
-        // console.log(refreshToken);
-        
+        let refreshToken = req.cookies.rftn        
         // console.log(refreshToken);
         if(!refreshToken){
             throw new Error("UnAuthorized user..., User don't have token")

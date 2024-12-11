@@ -25,4 +25,12 @@ export class categoryRepository extends BasRepository<Icategory>{
             throw new Error('Failed to update category')
         }
     }
+    async findByListed(){
+        try {
+            return await Category.find({isActive:true})
+        } catch (error) {
+            throw new Error('Failed to find')
+
+        }
+    }
 }

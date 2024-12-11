@@ -22,7 +22,16 @@ export class categoryService implements IcategoryService{
     }
     async get_Category(){
         try {
-            const response = await this.cateRepo.findAll()            
+            const response = await this.cateRepo.findAll()    
+            if(response)return {success:true ,data:response}
+            else throw new Error('failed to fetch')
+        } catch (error) {
+            return {success:false,message:(error as Error).message}
+        }
+    }
+    async get_ListedCategory(){
+        try {
+            const response = await this.cateRepo.findByListed()      
             if(response)return {success:true ,data:response}
             else throw new Error('failed to fetch')
         } catch (error) {

@@ -33,6 +33,15 @@ export class categoryController implements IcategoryController{
       res.status(500).json({ message: "Internal error, Try later" });
     }
   }
+  async get_ListedCategory(req: Request, res: Response) {
+    try {      
+      const { success, data, message } = await this.cate_Service.get_ListedCategory();
+      if (success) res.status(200).json({ data, success });
+      else res.status(400).json({ success, message });
+    } catch (error) {
+      res.status(500).json({ message: "Internal error, Try later" });
+    }
+  }
 
   async remove_Category(req:Request,res:Response){
     const id = req.params.id    

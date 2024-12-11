@@ -22,6 +22,8 @@ import Users from "@/pages/admin/Home/Users";
 import Category from "@/pages/admin/Home/Category";
 import Posts from "@/pages/admin/Home/Posts";
 import Auction from "@/pages/user/Home/auction/Auction";
+import Deals from "@/pages/user/Deals/Deals";
+import Guide from "@/pages/user/Guide/Guide";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -82,6 +84,14 @@ export const Router = createBrowserRouter([
         path: "home",
         element: <Navigate to="/" />,
       },
+      {
+        path :'deals',
+        element: <Deals/>
+      },
+      {
+        path:'guide',
+        element : <Guide/>
+      }
     ],
   },
   {
