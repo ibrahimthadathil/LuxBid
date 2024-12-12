@@ -121,7 +121,6 @@ const Guide = () => {
         </div>
       </div>
     </div>
-    {/* <Footer/> */}
     </>
     
   );

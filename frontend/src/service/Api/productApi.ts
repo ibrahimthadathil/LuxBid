@@ -47,7 +47,6 @@ export const updatePost =async(id:string,data:FormData)=>{
 export const removePost =async(id:string)=>{
     return await api.delete(`/removepost/${id}`)
 }
-
 export const fetchApprovedPost =async()=>{
     return await api.get(`/approvedpost`)
 }

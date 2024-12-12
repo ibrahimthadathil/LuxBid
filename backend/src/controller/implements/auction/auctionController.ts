@@ -1,7 +1,7 @@
 import Container, { Service } from "typedi";
 import { auctionService } from "../../../service/implements/auction/auctionService";
 import { AuthRequest } from "../../../types/api";
-import { Response } from "express";
+import { Request, Response } from "express";
 import { IAuction } from "../../../models/auctionModel";
 
 @Service()
@@ -25,7 +25,7 @@ export class auctionController {
     try {
       const organizer = req.user
       if(organizer){
-       const {success,data,message}= await this.auctionService.getAll_Auction(organizer._id as string)
+       const {success,data,message}= await this.auctionService.getUserAll_Auction(organizer._id as string)
        if(success)res.status(200).json({success,data})
         else res.status(401).json({success,message})
       }
@@ -57,6 +57,15 @@ export class auctionController {
       }else throw new Error('failed to match the Auction')
     } catch (error) {
       res.status(500).json({message:'Internal error'+(error as Error).message})
+    }
+  }
+  async getTopAuctions(req:Request,res:Response){
+    try {
+      const {success,data,message} =await this.auctionService.getTop_Auctions()
+      if(success)res.status(200).json({success,data})
+        else res.status(400).json({success,message})
+    } catch (error) {
+      res.status(500).json({message:(error as Error).message})
     }
   }
 }

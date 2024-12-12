@@ -15,7 +15,7 @@ const Navbar = () => {
     location.pathname !== "/auth/resetpassword" 
 
   return (
-    <nav className=" flex ">
+    <nav className="flex">
       {/* Left Section: Logo */}
       <div className="ps-8 w-[10%]  ">
         <img src={Logo} alt="Logo" className="w-28" />

@@ -23,7 +23,7 @@ export class auctionService {
     }
     
   }
-  async getAll_Auction(userId:string){
+  async getUserAll_Auction(userId:string){
     try {
      const response= await this.auctionRepo.findByUser(userId)
      if(response)return {success:true , data :response}
@@ -51,5 +51,14 @@ export class auctionService {
     } catch (error) {
       return {success:false , message :'INtern error '+(error as Error).message}
     }
+  }
+  async getTop_Auctions(){
+      try {
+       const res= await this.auctionRepo.findTopAuctions()
+       if(res)return {success:true ,data:res}
+       else return {success:false,message:'failed to load'}
+      } catch (error) {
+        return {success:false , message :'Internal server error , try later'}
+      }
   }
 }

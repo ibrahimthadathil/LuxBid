@@ -10,7 +10,7 @@ export const createAuction = async(data:Tauction) =>{
     return await api.post('/createAuction',data)
 }
 
-// fetch all auction 
+// fetch all auction by user
 
 export const fetchAuction =async()=>{
     return await api.get('/auctions')
@@ -26,4 +26,10 @@ export const changeActionStatus = async(id:string)=>{
 
 export const deleteAuction = async(id:string)=>{
     return await api.delete(`/deleteAuction/${id}`)
+}
+
+// fetch all action
+
+export const topAuctions =async()=>{
+    return await api.get('/topAuctions')
 }
