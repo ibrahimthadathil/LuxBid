@@ -8,5 +8,5 @@ auctionRoute.post('/createAuction',AuthMiddleWare,auction_Controller.create_Auct
 auctionRoute.get('/auctions',AuthMiddleWare,auction_Controller.get_Auctions.bind(auction_Controller))
 auctionRoute.put('/closeAuction/:id',AuthMiddleWare,auction_Controller.close_Auction.bind(auction_Controller))
 auctionRoute.delete('/deleteAuction/:id',AuthMiddleWare,auction_Controller.delete_Auction.bind(auction_Controller))
-auctionRoute.get('/topAuctions',AuthMiddleWare,auction_Controller.getTopAuctions.bind(auction_Controller))
+auctionRoute.get('/displayAuction',auction_Controller.getTopAndDisplayAuctions.bind(auction_Controller))
 export default auctionRoute

@@ -52,13 +52,22 @@ export class auctionService {
       return {success:false , message :'INtern error '+(error as Error).message}
     }
   }
-  async getTop_Auctions(){
+  async getDisplay_Auctions(){
       try {
-       const res= await this.auctionRepo.findTopAuctions()
-       if(res)return {success:true ,data:res}
+       const res= await this.auctionRepo.findAuctionByLimit() 
+       if(res)return {success:true ,data:res[0]}
        else return {success:false,message:'failed to load'}
       } catch (error) {
         return {success:false , message :'Internal server error , try later'}
       }
+  }
+  async findByLimit(){
+    try {
+      const response = await this.auctionRepo.findAuctionByLimit()
+      if(response)return {data:response,success:true}
+      else return {success:false , message:'Failed to retrive'}
+    } catch (error) {
+      return {success:false , message :'Internal server error , try later'}
+    }
   }
 }

@@ -59,13 +59,21 @@ export class auctionController {
       res.status(500).json({message:'Internal error'+(error as Error).message})
     }
   }
-  async getTopAuctions(req:Request,res:Response){
+  async getTopAndDisplayAuctions(req:Request,res:Response){
     try {
-      const {success,data,message} =await this.auctionService.getTop_Auctions()
+      const {success,data,message} =await this.auctionService.getDisplay_Auctions()
+      
       if(success)res.status(200).json({success,data})
         else res.status(400).json({success,message})
     } catch (error) {
       res.status(500).json({message:(error as Error).message})
+    }
+  }
+  async findBy_Limit(req:Request,res:Response){
+    try {
+      // const {} = await this
+    } catch (error) {
+      
     }
   }
 }

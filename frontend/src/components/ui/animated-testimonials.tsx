@@ -2,9 +2,14 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tproduct } from "@/types/types";
 import moment from "moment-timezone";
-import { ArrowDownRight, ArrowRight, CalendarClock, Radio, Users } from "lucide-react";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  CalendarClock,
+  Radio,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
-
 
 type Testimonial = {
   _id: string;
@@ -22,12 +27,13 @@ export const AnimatedTestimonials = React.memo(
   ({
     testimonials,
     autoplay = false,
-    isLoading = false,
-  }: {
+    }: {
     testimonials: Testimonial[];
     autoplay?: boolean;
     isLoading?: boolean;
   }) => {
+    console.log('from test',testimonials);
+    
     const [active, setActive] = useState<number>(() => 0);
 
     const handleNext = useCallback(() => {
@@ -50,29 +56,8 @@ export const AnimatedTestimonials = React.memo(
       }
     }, [autoplay, handleNext]);
 
-    const loadingRender = useMemo(() => {
-      if (isLoading) {
-        return (
-          <div className="max-w-sm md:max-w-4xl mx-auto animate-pulse">
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
-              <div className="h-80 w-full bg-gray-300 rounded-3xl"></div>
-              <div className="flex justify-between flex-col py-4">
-                <div>
-                  <div className="h-6 bg-gray-300 mb-2 w-1/2"></div>
-                  <div className="h-4 bg-gray-300 mb-4 w-1/3"></div>
-                  <div className="h-20 bg-gray-300"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
-      return null;
-    }, [isLoading]);
-
-    if (loadingRender) return loadingRender;
-
     return (
+      
       <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
           <div>
@@ -200,7 +185,7 @@ export const AnimatedTestimonials = React.memo(
           </div>
         </div>
       </div>
-    );
+    )
   }
 );
 

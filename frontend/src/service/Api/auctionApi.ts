@@ -31,5 +31,6 @@ export const deleteAuction = async(id:string)=>{
 // fetch all action
 
 export const topAuctions =async()=>{
-    return await api.get('/topAuctions')
+    return await api.get('/displayAuction')
 }
+
