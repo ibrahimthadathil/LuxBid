@@ -15,15 +15,16 @@ import SideTextSection from "../components/global/SideTextSection";
 import ResetPassword from "../pages/user/Auth/ResetPassword";
 import AdminHome from "@/pages/admin/Home/home";
 import Loader from "@/components/global/Loader";
-import Products from "@/pages/user/Home/products/Products";
+import Products from "@/pages/user/Home/Posts/Posts";
 import RollProtected from "@/service/rolleProtected";
 import Dashboard from "@/pages/admin/Home/Dashboard";
 import Users from "@/pages/admin/Home/Users";
 import Category from "@/pages/admin/Home/Category";
 import Posts from "@/pages/admin/Home/Posts";
-import Auction from "@/pages/user/Home/auction/Auction";
+import ListAuction from "@/pages/user/Home/auction/ListAuction";
 import Deals from "@/pages/user/Deals/Deals";
 import Guide from "@/pages/user/Guide/Guide";
+import AuctionPage from "@/pages/user/ViewAuction/Auction";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -86,11 +87,16 @@ export const Router = createBrowserRouter([
       },
       {
         path :'deals',
-        element: <Deals/>
+        element: <Deals/>,
+      
       },
       {
         path:'guide',
         element : <Guide/>
+      },
+      {
+        path:'deals/post',
+        element:<AuctionPage/>,
       }
     ],
   },
@@ -125,7 +131,7 @@ export const Router = createBrowserRouter([
       },
       {
         path:'auction',
-        element:<RollProtected element={<Auction/>}/>
+        element:<RollProtected element={<ListAuction/>}/>
       }
     ],
   },

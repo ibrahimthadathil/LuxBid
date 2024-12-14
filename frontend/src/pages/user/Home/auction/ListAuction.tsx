@@ -11,7 +11,7 @@ import { Tauction, Tproduct } from "@/types/types";
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarImage } from "@/components/ui/avatar";
 import Loader from "@/components/global/Loader";
-import { Calendar, Radio, Users } from 'lucide-react';
+import { Radio, Users } from 'lucide-react';
 import { CalendarClock } from 'lucide-react';
 import moment from "moment";
 import { PostModal } from "@/components/global/PostModal";
@@ -19,7 +19,7 @@ import AlertModal from "@/components/global/AlertModal";
 import useActionHook from "@/hooks/actionHook";
 
 
-const Auction = () => {
+const ListAuction = () => {
   useAuth();
   const {data,isLoading} = useRQ(fetchAuction,'auction')
   const {handler}=useActionHook()
@@ -182,4 +182,4 @@ const Auction = () => {
   );
 };
 
-export default Auction;
+export default ListAuction;

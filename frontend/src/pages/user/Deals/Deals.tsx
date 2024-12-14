@@ -104,7 +104,13 @@ const Deals = () => {
       </div>
 
       {/* {scheduled section} */}
-      
+      <div className="w-[80%]  h-32 flex rounded-full  overflow-hidden">
+        <HeroHighlight color="dark:bg-dot-thick-gray-500">
+          <h1 className="text-5xl font-bold mb-6 text-gray-400 ">
+            Scheduled Auctions{" "}
+          </h1>
+        </HeroHighlight>
+      </div>
       <div>
         <div className="container mx-auto px-4 py-8 relative mb-10 ">
           <h2 className="text-2xl mb-6 text-gray-400">Scheduled Aucions</h2>
@@ -140,7 +146,7 @@ const Deals = () => {
 
       <div>
         <div className="container mx-auto px-4 py-8 relative mb-10 ">
-          <h2 className="text-2xl mb-6 text-gray-400">Live Aucions</h2>
+          {/* <h2 className="text-2xl mb-6 text-gray-400">Live Aucions</h2> */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
             {isLoading ?<Skeleton/>:(data.Live as any[]).map((card, index) => (
               <FlexibleCard
