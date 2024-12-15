@@ -25,6 +25,7 @@ import ListAuction from "@/pages/user/Home/auction/ListAuction";
 import Deals from "@/pages/user/Deals/Deals";
 import Guide from "@/pages/user/Guide/Guide";
 import AuctionPage from "@/pages/user/ViewAuction/Auction";
+import AuctionInterface from "@/components/user/auction/AuctionInterface";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -95,8 +96,12 @@ export const Router = createBrowserRouter([
         element : <Guide/>
       },
       {
-        path:'deals/post',
+        path:'deals/auction',
         element:<AuctionPage/>,
+      },
+      {
+        path:'deals/auction/bids',
+        element :<AuctionInterface userType="organizer"/>
       }
     ],
   },

@@ -23,7 +23,7 @@ export interface IAuction extends Document{
 
 const auctionSchema = new Schema({
     title:{type:String , required:true},
-    seller:{type:mongoose.Schema.Types.ObjectId , ref :'Organizer'},
+    seller:{type:mongoose.Schema.Types.ObjectId , ref :'User'},
     description:{type:String,required:true},
     baseAmount:{type:Number,required:true},
     post:{type:mongoose.Schema.Types.ObjectId , ref :'Product' ,required :true},

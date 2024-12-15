@@ -34,3 +34,6 @@ export const topAuctions =async()=>{
     return await api.get('/displayAuction')
 }
 
+export const viewAuction =async(id:string)=>{
+    return await api.get(`/viewAuction/${id}`)
+}

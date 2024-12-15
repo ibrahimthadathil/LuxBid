@@ -62,18 +62,23 @@ export class auctionController {
   async getTopAndDisplayAuctions(req:Request,res:Response){
     try {
       const {success,data,message} =await this.auctionService.getDisplay_Auctions()
-      
       if(success)res.status(200).json({success,data})
         else res.status(400).json({success,message})
     } catch (error) {
       res.status(500).json({message:(error as Error).message})
     }
   }
-  async findBy_Limit(req:Request,res:Response){
+  async view_Auction(req:Request,res:Response){
     try {
-      // const {} = await this
+      const id = req.params.id
+      if(id){
+        const {success,data,message} = await this.auctionService.view_Auction(id)
+        if(success)res.status(200).json({data,success})
+          else res.status(401).json({message,success})
+      }else throw new Error('failed to view the post')
     } catch (error) {
-      
+      res.status(500).json({message:(error as Error).message})
+
     }
   }
 }

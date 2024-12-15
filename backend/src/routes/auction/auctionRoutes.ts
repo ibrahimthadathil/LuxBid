@@ -9,4 +9,5 @@ auctionRoute.get('/auctions',AuthMiddleWare,auction_Controller.get_Auctions.bind
 auctionRoute.put('/closeAuction/:id',AuthMiddleWare,auction_Controller.close_Auction.bind(auction_Controller))
 auctionRoute.delete('/deleteAuction/:id',AuthMiddleWare,auction_Controller.delete_Auction.bind(auction_Controller))
 auctionRoute.get('/displayAuction',auction_Controller.getTopAndDisplayAuctions.bind(auction_Controller))
+auctionRoute.get('/viewAuction/:id',auction_Controller.view_Auction.bind(auction_Controller))
 export default auctionRoute

@@ -76,4 +76,12 @@ export class auctionRepository extends BasRepository<IAuction> {
       throw new Error('Failed to retrive the data')
     }
   }
+
+  async viewAuction(id:string){
+    try {
+      return await Auction.findOne({_id:id}).populate('post').populate('seller','-password')
+    } catch (error) {
+      
+    }
+  }
 }

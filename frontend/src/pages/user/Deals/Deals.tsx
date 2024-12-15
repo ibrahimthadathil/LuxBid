@@ -4,33 +4,18 @@ import { HeroHighlight } from "@/components/ui/hero-highlight";
 import  Skeleton  from "@/components/ux/Skelton";
 import { FlexibleCard } from "@/components/ux/FlexibleCard";
 import { useRQ } from "@/hooks/userRQ";
-const cardData = [
-  {
-    title: "Mountain Retreat",
-    description: "Escape to the serene mountains for a peaceful getaway.",
-    imageUrl:
-      "https://app.requestly.io/delay/5000/https://nextui.org/images/hero-card-complete.jpeg",
-  },
-  {
-    title: "Beach Paradise",
-    description: "Relax on pristine beaches with crystal clear waters.",
-    imageUrl:
-      "https://app.requestly.io/delay/5000/https://nextui.org/images/hero-card-complete.jpeg",
-  },
-  {
-    title: "City Adventure",
-    description: "Explore vibrant city life and cultural attractions.",
-    imageUrl:
-      "https://app.requestly.io/delay/5000/https://nextui.org/images/hero-card-complete.jpeg",
-  },
-];
+
 import { topAuctions } from "@/service/Api/auctionApi";
-import { Tauction } from "@/types/types";
 import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 const Deals = () => {
   const { isLoading, data } = useRQ(topAuctions, "topauction");
- console.log(!isLoading && data.Live);
- 
+  const navigate = useNavigate()
+  const handleClick =(id:string)=>{
+    if(id)navigate('/deals/auction',{state:{id}})
+    else toast.warning('Failed to load, Try Later')  
+  }
   
   return (
     <>
@@ -121,7 +106,7 @@ const Deals = () => {
                 {...card}
                 imageUrl={card?.posts[0]?.images[0]}
                 size="small"
-                onButtonClick={() => console.log(`Clicked on ${card.title}`)}
+                onButtonClick={handleClick}
               />
             ))}
           </div>
@@ -154,7 +139,7 @@ const Deals = () => {
                 {...card}
                 imageUrl={card?.posts[0]?.images[0]}
                 size="small"
-                onButtonClick={() => console.log(`Clicked on ${card.title}`)}
+                onButtonClick={handleClick}
               />
             ))}
           </div>

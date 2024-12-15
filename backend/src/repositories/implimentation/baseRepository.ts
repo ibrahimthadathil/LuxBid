@@ -21,7 +21,9 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
     }
     
     async findById(id: string , populator?:string): Promise<T | null> {
-        return this.model.findById(id)
+        const query = this.model.findById(id)
+        if(populator)query.populate(populator)
+        return await query.exec()    //for ensure 
     }
     async update(id: string, data: Partial<T>): Promise<T | null> {
         return this.model.findByIdAndUpdate(id,data,{new:true})     

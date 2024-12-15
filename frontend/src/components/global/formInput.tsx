@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldError, FieldValues, useForm, UseFormRegister } from "react-hook-form";
+import { FieldError, useForm,  } from "react-hook-form";
 
 interface props{
     // value:string;

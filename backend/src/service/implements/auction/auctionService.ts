@@ -61,9 +61,9 @@ export class auctionService {
         return {success:false , message :'Internal server error , try later'}
       }
   }
-  async findByLimit(){
+  async view_Auction(id:string){
     try {
-      const response = await this.auctionRepo.findAuctionByLimit()
+      const response = await this.auctionRepo.viewAuction(id)
       if(response)return {data:response,success:true}
       else return {success:false , message:'Failed to retrive'}
     } catch (error) {
