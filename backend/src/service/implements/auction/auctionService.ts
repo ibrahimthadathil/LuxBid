@@ -70,4 +70,20 @@ export class auctionService {
       return {success:false , message :'Internal server error , try later'}
     }
   }
+  async auction_Interface(auctionId:string,userId:string){
+    try {
+      const response = await this.auctionRepo.auction_Participants(auctionId)
+      response?.bidders.sort((a,b)=>b.amount-a.amount)
+      if(response){
+        const organizer = await this.auctionRepo.findById(auctionId)
+        console.log('userId: - ',userId , 'seller :- ',organizer?.seller);
+        
+        if(organizer?.seller==userId)return {success:true ,organizer:true,auction:response}
+        else return {success:false , organizer:false ,auction:response} 
+      }else throw new Error('failed to fetch Auction')
+    } catch (error) {
+      console.log('error frm service');
+      return {success:false , message :(error as Error).message}
+    }
+  }
 }

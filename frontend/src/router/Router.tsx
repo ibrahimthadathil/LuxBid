@@ -26,6 +26,8 @@ import Deals from "@/pages/user/Deals/Deals";
 import Guide from "@/pages/user/Guide/Guide";
 import AuctionPage from "@/pages/user/ViewAuction/Auction";
 import AuctionInterface from "@/components/user/auction/AuctionInterface";
+import Checkout from "@/components/user/stripe/Checkout";
+import Return from "@/components/user/stripe/Return";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -101,9 +103,18 @@ export const Router = createBrowserRouter([
       },
       {
         path:'deals/auction/bids',
-        element :<AuctionInterface userType="organizer"/>
-      }
+        element :<AuctionInterface userType="bidder"/>
+      },
+      
     ],
+  },
+  {
+    path:'/payment',
+    element:<ProtectedRoute element={<Checkout/>} store="access-token"/>
+  },
+  {
+    path:'/return',
+    element:<Return/>
   },
   {
     path: "/user",

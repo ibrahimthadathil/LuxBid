@@ -1,6 +1,7 @@
 import { TZprofile } from "@/utils/validation/user";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { axiosInstance } from "../axiosInstance/intercepters";
+import { toast } from "sonner";
 
 type Tuser = {
   email: string;
@@ -108,9 +109,7 @@ export const userLogout =async()=>{
 
 export const uploadProfile = async(image:File)=>{
   const data=new FormData();
-  data.append("image",image)
-  console.log('===',data);
-  
+  data.append("image",image)  
   return await api.post('/uploadprofile',data)
 
 }
@@ -118,4 +117,26 @@ export const uploadProfile = async(image:File)=>{
 // profile update
 export const saveEdit = async(data:TZprofile)=>{
 return await api.post('/editprofile',data)
+}
+
+// Auction join stripe 
+
+export const joinPayment=async(data:{price:string,title:string,img:string,id:string})=>{
+  try {
+    const response = await api.post('/create-checkout-session',data)
+    console.log(response,'88888');
+    return response.data.clientSecret
+  } catch (error) {
+  toast.error(((error as AxiosError).response?.data as Record<string,any>).message)
+
+  }
+}
+// get status of the payment after the request
+export const getSessionStatus = async (sessionId:string,id:string)=>{
+  try {
+    const response = await api.get(`/session-status?session_id=${sessionId}&aid=${id}`)
+    return response.data
+  } catch (error) {
+    toast.error('failed to complete payment')
+  }
 }

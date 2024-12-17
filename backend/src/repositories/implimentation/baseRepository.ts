@@ -29,6 +29,10 @@ export abstract class BasRepository <T extends Document>implements IBaseReposito
         return this.model.findByIdAndUpdate(id,data,{new:true})     
     }
 
+    async findByField(field:any,value:string){
+        return this.model.findOne({[field]:value})
+    }
+
     async delete(id: string): Promise<void | any> {
        return this.model.findByIdAndDelete(id)
     }

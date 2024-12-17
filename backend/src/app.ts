@@ -9,6 +9,7 @@ import adminRoute from "./routes/admin/adminRoutes";
 import authRoute from "./routes/user/authRoutes";
 import postRoute from "./routes/post/postRoutes";
 import auctionRoute from "./routes/auction/auctionRoutes";
+const stripe = require('stripe')('sk_test_51QWLQMKpzbcdCsVNwquO66URKhyM5AB3t0D8XiJ9BIHjFpK73CrHVdrLe1KKgJ1jQ4PGdTutySL1nxEI31PVzpPf00QUKBW537');
 
 dotenv.config();
 connectDB();

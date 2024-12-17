@@ -81,5 +81,16 @@ export class auctionController {
 
     }
   }
+  async auctoion_Interface(req:AuthRequest,res:Response){
+    try {
+      const user = req.user
+      const {success,auction,message,organizer}=await this.auctionService.auction_Interface(req.params.id as string,user?._id as string)
+      if(success)res.status(200).json({data:{success,auction,organizer}})
+      else res.status(403).json({message,success})
+    } catch (error) {
+      console.log('controller');
+      res.status(500).json({message:'Internal Server Error :-'+(error as Error).message})
+    }
+  }
 }
 export const auction_Controller = Container.get(auctionController);

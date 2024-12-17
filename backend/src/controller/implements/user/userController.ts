@@ -3,10 +3,14 @@ import { userService } from "../../../service/implements/user/userService";
 import { IuserContrller } from "../../interface/userController_Interface";
 import { Request, Response } from "express";
 import { AuthRequest } from "../../../types/api";
+import { stripeService } from "../../../service/implements/stripe/stripeService";
 
 @Service()
 class user_Controller implements IuserContrller {
-  constructor(private userServide: userService) {}
+  constructor(
+    private userServide: userService,
+    private stripeService: stripeService
+  ) {}
   async find_User(req: AuthRequest, res: Response) {
     try {
       const user = req.user;
@@ -57,6 +61,31 @@ class user_Controller implements IuserContrller {
         res.status(200).json({ success: false, message: "Inavlid Access" });
     } catch (error) {}
   }
+
+  async make_Payment(req:AuthRequest,res:Response){        
+    try {
+      console.log('00000');
+      
+      if(!req.user)res.status(403).json({message:'Login to Join',success:false})
+      const {success,message,session} =  await this.userServide.auction_JoinPayment(req.body)      
+      if(success)res.status(200).json({success,clientSecret: session.client_secret})
+      else res.status(401).json({success:false , message:'failed to make payment'})
+    } catch (error) {
+        console.log('errr from stripe 121212');
+        console.log((error as Error).message);
+        res.status(500).json({ message: "Internal Error,Try later" });       
+    }
+  }
+  async payment_Status(req:AuthRequest,res:Response){
+    const user = req.user 
+  try {
+    const {success,data,message} = await this.userServide.auction_Join(req.query,user?._id as string)
+    if(success)res.status(200).json({success,data})
+      else res.status(400).json({success,message})
+  } catch (error) {
+    res.status(500).json({message:'Internal server Error,Try later'})
+  }
+}
 }
 
 export const userController = Container.get(user_Controller);

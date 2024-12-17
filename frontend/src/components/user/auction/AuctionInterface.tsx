@@ -3,11 +3,15 @@ import { Avatar } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/input"
 import { Hammer, Timer, Users, Check, HandshakeIcon as HandShake, ArrowLeft } from 'lucide-react'
+import { Navigate, useLocation } from "react-router-dom"
+import { useRQ } from "@/hooks/userRQ"
+import { auctionInterface } from "@/service/Api/auctionApi"
 
-interface Bid {
-  user: string
-  amount: number
-  time: string
+interface Biduser {
+  user: {firstName:string , profile:string}
+  amount: number;
+  bidTime: string;
+  isAccept:boolean;
 }
 
 interface AuctionInterfaceProps {
@@ -18,14 +22,13 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
   const [currentBid, setCurrentBid] = useState(17564)
   const [currentBidder, setCurrentBidder] = useState("John")
   const [bidAmount, setBidAmount] = useState("")
+  const location = useLocation()
+  const {AuctionId} = location.state ||''
+  const {isLoading,data}=useRQ(()=>auctionInterface(AuctionId),'detailed')
+  console.log(data);
   
-  const bids: Bid[] = [
-    { user: "John", amount: 3000, time: "22:10" },
-    { user: "Alice", amount: 2800, time: "22:05" },
-    { user: "Bob", amount: 2600, time: "21:55" },
-    { user: "Rahul G", amount: 2300, time: "23:14" },
-    { user: "Sanjal P", amount: 2700, time: "22:38" },
-  ]
+  if(!AuctionId)return <Navigate to='/deals' replace={true}/>
+  
 
   const handleBid = () => {
     if (bidAmount) {
@@ -47,7 +50,7 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
     // Add logic to finalize the deal
   }
 
-  const renderBidder = (bidder: Bid, size: 'sm' | 'md' | 'lg') => {
+  const renderBidder = (bidder:any, size: 'sm' | 'md' | 'lg') => {
     const avatarSizes = {
       sm: 'w-16 h-16',
       md: 'w-20 h-20',
@@ -60,19 +63,19 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
     }
 
     return (
-      <div className={`flex flex-col items-center ${size === 'lg' ? 'mx-4' : 'mx-2'}`}>
+      isLoading ?<p>Loading</p>:<div className={`flex flex-col items-center ${size === 'lg' ? 'mx-4' : 'mx-2'}`}>
         <Avatar className={`${avatarSizes[size]} mb-2`}>
           <img
-            src={`https://api.dicebear.com/6.x/initials/svg?seed=${bidder.user}`}
-            alt={`${bidder.user}'s avatar`}
+            src={`https://api.dicebear.com/6.x/initials/svg?seed=${data?.auction?.bidders?.user?.profile}`}
+            alt={`${data?.auction?.bidders?.user?.firstName}'s avatar`}
             className="object-cover"
           />
         </Avatar>
         <div className="text-center">
-          <h2 className={`${textSizes[size]} font-semibold text-amber-500`}>{bidder.user}</h2>
+          <h2 className={`${textSizes[size]} font-semibold text-amber-500`}>{data?.auction?.bidders?.user?.firstName}</h2>
           <div className="flex items-center justify-center gap-1 mt-1">
             <Hammer className={`${size === 'sm' ? 'w-2 h-2' : 'w-3 h-3'}`} />
-            <span className={textSizes[size]}>₹{bidder.amount}</span>
+            <span className={textSizes[size]}>₹{data?.auction?.bidders?.amount}</span>
           </div>
         </div>
       </div>
@@ -91,11 +94,11 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-xl font-light text-amber-500">Jatayu vadham By RR</h1>
+            <h1 className="text-xl font-light text-amber-500">{data?.auction?.title}</h1>
             <div className="flex items-center gap-4 text-sm text-slate-400 mt-2">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>11.5k</span>
+                <span>{data?.auction?.bidders?.length}</span>
               </div>
             </div>
           </div>
@@ -107,9 +110,9 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
 
         {/* Top 3 Bidders */}
         <div className="flex justify-center items-end mb-6">
-          {renderBidder(bids[1], 'sm')}
-          {renderBidder(bids[0], 'lg')}
-          {renderBidder(bids[2], 'sm')}
+          {renderBidder(data?.auction?.bidders?.[1], 'sm')}
+          {renderBidder(data?.auction?.bidders?.[0], 'lg')}
+          {renderBidder(data?.auction?.bidders?.[2], 'sm')}
         </div>
 
         {/* Current Bid Display */}
@@ -117,32 +120,32 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
           <div className="inline-block bg-slate-800/50 rounded-full px-6 py-2 border border-slate-700">
             <div className="flex items-center gap-2">
               <Hammer className="w-4 h-4" />
-              <span className="text-sm font-semibold">Current Bid: ₹{currentBid}</span>
+              <span className="text-sm font-semibold">Current Bid: ₹{data?.auction?.baseAmount}</span>
             </div>
           </div>
         </div>
 
         {/* Bids List */}
         <div className="space-y-3 mb-6">
-          {bids.map((bid, index) => (
+          {(data?.auction?.bidders as Biduser[])?.map((user, index) => (
             <div
               key={index}
               className="flex items-center justify-between bg-slate-800/30 rounded-full px-4 py-2"
             >
               <div className="flex items-center gap-2">
                 <Avatar className="w-6 h-6 bg-slate-700">
-                  <span className="text-xs">{bid.user[0]}</span>
+                  {user.user.profile ? <img src={user.user.profile}/>:<span className="text-s ps-[7px]">{user.user.firstName[0].toUpperCase()}</span>}
                 </Avatar>
-                <span className="text-sm text-slate-300">{bid.user}</span>
+                <span className="text-sm text-slate-300">{user.user.firstName}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm">₹{bid.amount}</span>
-                <span className="text-xs text-slate-500">{bid.time}</span>
-                {userType=='organizer'&&<Button
+                <span className="text-sm">₹{user.amount}</span>
+                <span className="text-xs text-slate-500">{user.bidTime}</span>
+                {data?.organizer&&<Button
                   size="sm"
                   variant="outline"
                   className="rounded-full text-green-400 border-green-400 hover:bg-green-400/20"
-                  onClick={() => handleAccept(bid.user, bid.amount)}
+                  // onClick={() => handleAccept(user., user.amount)}
                   
                 >
                   <Check className="w-4 h-4 mr-1" />
@@ -154,7 +157,7 @@ const AuctionInterface=({ userType }: AuctionInterfaceProps)=> {
         </div>
 
         {/* Bidding Area or Deal Button */}
-        {userType === 'bidder' ? (
+        {!data?.organizer ? (
           <div className="flex gap-2">
             <Input
               type="number"

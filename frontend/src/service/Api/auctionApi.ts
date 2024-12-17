@@ -37,3 +37,7 @@ export const topAuctions =async()=>{
 export const viewAuction =async(id:string)=>{
     return await api.get(`/viewAuction/${id}`)
 }
+
+export const auctionInterface = async(id:string)=>{
+    return await api.get(`/auctionInterface/${id}`)
+}

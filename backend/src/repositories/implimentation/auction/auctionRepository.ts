@@ -84,4 +84,26 @@ export class auctionRepository extends BasRepository<IAuction> {
       
     }
   }
+
+  async join_Auction(auctionId:string,userId:string,bidAmt:number){
+    try {
+      await Auction.findOneAndUpdate({_id:auctionId,"bidders.user": { $ne: userId }},{$addToSet:{bidders:{user:userId,bidTime:Date.now(),amount:bidAmt}}},{new:true})
+      return
+    } catch (error) {
+      console.log('from bidcreatye');
+      console.log((error as Error).message );
+      
+    }
+  }
+
+  async auction_Participants(id:string){
+    try {
+      return await Auction.findById(id).populate({path: 'bidders.user',select:'firstName profile'})
+         
+    } catch (error) {
+      console.log('error from participents');
+      console.log((error as Error).message );
+
+    }
+  } 
 }

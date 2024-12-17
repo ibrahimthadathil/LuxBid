@@ -7,6 +7,8 @@ import {
   ChevronRight,
   Clock,
   Calendar,
+  CreditCard,
+  Wallet,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,6 +18,8 @@ import { toast } from "sonner";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import moment from "moment";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 const AuctionPage = React.memo(() => {
   console.log("rendering post");
   const navigate = useNavigate();
@@ -26,11 +30,10 @@ const AuctionPage = React.memo(() => {
     toast.warning("Choose an Auction");
   }
   const { isLoading, data } = useRQ(() => viewAuction(id), "detailed");
-  console.log(data);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-
+  
   const toggleSection = useCallback((section: string) => {
     setOpenSection((prevSection) => (prevSection === section ? null : section));
   }, []);
@@ -40,6 +43,10 @@ const AuctionPage = React.memo(() => {
       (prevIndex) => (prevIndex + 1) % data.post.images.length
     );
   };
+
+  const cardPaymendHandle =()=>{
+    navigate('/payment',{state:{price:data.entryAmt , title:data.title,img:data.post.images[0],id:data._id}})
+  }
 
   const prevImage = () => {
     setCurrentImageIndex(
@@ -209,9 +216,83 @@ const AuctionPage = React.memo(() => {
             </div>
 
             {/* Join Button */}
-            <Button className="w-full bg-indigo-900 hover:bg-indigo-700 text-white py-6 text-lg">
-              Join Now ₹ {data.entryAmt}
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+              <Button className="w-full bg-indigo-900 hover:bg-indigo-700 text-white py-6 text-lg">
+                Join Now ₹ {data.entryAmt}
+              </Button>
+
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-black text-white border-zinc-800">
+        <DialogHeader className="flex flex-row items-start justify-between">
+          <DialogTitle className="text-sm font-normal">
+            Auction ID : #0898LB012
+          </DialogTitle>
+          <Button
+            variant="ghost"
+            className="h-6 w-6 p-0 text-white"
+            onClick={() => document.querySelector("dialog")?.close()}
+          >
+          </Button>
+        </DialogHeader>
+
+        <div className="space-y-6">
+          <div className="relative h-48 w-full overflow-hidden rounded-lg">
+            <img
+              src={data.post.images[0]}
+              alt="Auction Item"
+              className="object-fit"
+              
+            />
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div className="space-y-1">
+              <h4 className="text-sm font-medium leading-none">Choose Payment :</h4>
+            </div>
+           
+          </div>
+
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                variant="outline"
+                className="w-full bg-transparent border-zinc-700 text-white hover:bg-zinc-800 hover:text-white"
+                onClick={cardPaymendHandle}
+              >
+                <CreditCard className="mr-2 h-4 w-4" />
+                Card payment
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full bg-transparent border-zinc-700 text-white hover:bg-zinc-800 hover:text-white"
+              >
+                <Wallet className="mr-2 h-4 w-4" />
+                Wallet
+              </Button>
+            </div>
+
+            <div className="relative">
+              <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-500 h-4 w-4" />
+              <Input
+                placeholder="PAN NO : ABCDE1234F"
+                className="bg-transparent border-zinc-700 pl-10"
+              />
+            </div>
+          </div>
+          <div className="rounded-lg bg-zinc-900 p-4 text-xs text-zinc-400">
+            <span className="font-semibold text-white">⚠️  </span>
+            To participate in bidding, a refundable Security Deposit is required (5%) of The base Amount.
+            This deposit ensures a fair and transparent bidding process. Without the
+            deposit, you will not be eligible to join any bids. In if you failed to win the context you will get the amount Refund
+          </div>
+
+          <Button className="w-full bg-purple-700 hover:bg-purple-600">
+            ₹ {data.entryAmt}
+          </Button>
+        </div>
+      </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
