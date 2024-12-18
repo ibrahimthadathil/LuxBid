@@ -105,5 +105,20 @@ export class auctionRepository extends BasRepository<IAuction> {
       console.log((error as Error).message );
 
     }
-  } 
+  }
+
+  async updateBidAMT(id:string,userId:string,amt:number){
+    try {
+      console.log(id,userId,amt);
+      
+      const d= await Auction.findOneAndUpdate({_id:id,'bidders.user':userId},{$set:{'bidders.$.amount':amt,'bidders.$.bidTime':Date.now() }},{new:true})
+     console.log(d);  
+
+
+    } catch (error) {
+      console.log('oooooo');
+      
+    }
+  }
+
 }

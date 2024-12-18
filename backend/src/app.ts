@@ -1,4 +1,5 @@
 import "reflect-metadata";
+
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/DB";
@@ -9,6 +10,8 @@ import adminRoute from "./routes/admin/adminRoutes";
 import authRoute from "./routes/user/authRoutes";
 import postRoute from "./routes/post/postRoutes";
 import auctionRoute from "./routes/auction/auctionRoutes";
+import session from "express-session";
+import { sessionConfig } from "./utils/session_utils";
 const stripe = require('stripe')('sk_test_51QWLQMKpzbcdCsVNwquO66URKhyM5AB3t0D8XiJ9BIHjFpK73CrHVdrLe1KKgJ1jQ4PGdTutySL1nxEI31PVzpPf00QUKBW537');
 
 dotenv.config();
@@ -25,7 +28,7 @@ app.use(cors(target));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(session(sessionConfig))
 app.use("/Luxbid", authRoute);
 app.use("/Luxbid", userRoute);
 app.use("/Luxbid", postRoute);

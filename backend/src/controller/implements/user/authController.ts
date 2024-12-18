@@ -49,6 +49,7 @@ class AuthController implements IAuthController {
           res.status(401).json({ message: response.message });
   
         }else{
+          req.session.userId = response.user as string
           setCookie(res, "rftn", response.refresh as string);
           res
             .status(200)
@@ -92,6 +93,9 @@ class AuthController implements IAuthController {
       const { email, password } = req.body;
       const response = await this.authService.verify_SignIn(email, password);
       if (response?.success) {
+        console.log(response);
+        let userId = response.user?.toString()
+        req.session.userId = userId;
         setCookie(res, "rftn", response.refresh as string);
         res
           .status(200)
@@ -114,10 +118,10 @@ class AuthController implements IAuthController {
   async googleAuth(req: Request, res: Response) {
     const userDetails: Iuser = req.body;
     try {
-      const { success, message, token, refresh } =
+      const { success, message, token, refresh,user } =
         await this.authService.verify_Google(userDetails);
       if (success) {
-        
+        req.session.userId = user as string
         setCookie(res, "rftn", refresh as string);
         res
           .status(200)
@@ -191,7 +195,12 @@ class AuthController implements IAuthController {
     try {
       res.clearCookie('rftn');
        res.status(200).json({message:"loggedOut"})
-    } catch (error) {
+       req.session.destroy((err) => {
+        if (err) {
+          console.error('Error during logout:', err);
+          return res.status(500).send('Could not log out');
+        } }) 
+     } catch (error) {
       console.log((error as Error).message)
       throw new Error('from logout user')
     }

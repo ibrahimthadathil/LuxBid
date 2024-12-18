@@ -109,5 +109,6 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
 
-  }
+  },
+  "include": ["src/**/*.ts", "src/utils/session_utils.ts"]
 }

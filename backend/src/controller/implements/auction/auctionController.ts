@@ -68,29 +68,44 @@ export class auctionController {
       res.status(500).json({message:(error as Error).message})
     }
   }
-  async view_Auction(req:Request,res:Response){
+  async view_Auction(req:AuthRequest,res:Response){
     try {
       const id = req.params.id
+      const user = req.session.userId
+      console.log('^^^^^^',user);
+      
       if(id){
-        const {success,data,message} = await this.auctionService.view_Auction(id)
-        if(success)res.status(200).json({data,success})
-          else res.status(401).json({message,success})
+        const response= await this.auctionService.view_Auction(id,user as string)
+        if(response?.success)res.status(200).json({data:response?.data,success:response?.success})
+          else res.status(401).json({message:response?.message,success:response?.success})
       }else throw new Error('failed to view the post')
+      
     } catch (error) {
       res.status(500).json({message:(error as Error).message})
-
     }
   }
   async auctoion_Interface(req:AuthRequest,res:Response){
     try {
       const user = req.user
       const {success,auction,message,organizer}=await this.auctionService.auction_Interface(req.params.id as string,user?._id as string)
-      if(success)res.status(200).json({data:{success,auction,organizer}})
+      
+      if(organizer)res.status(200).json({data:{success,auction,organizer}})
+      else if(!organizer) res.status(200).json({data:{success,auction,organizer}})
       else res.status(403).json({message,success})
     } catch (error) {
       console.log('controller');
       res.status(500).json({message:'Internal Server Error :-'+(error as Error).message})
     }
   }
-}
+  async raiseBid_AMT(req:AuthRequest,res:Response){
+    try {
+      const user = req.user
+      const {amt,auctionId}= req.body
+      const g = await this.auctionService.raiseBidAMT(amt,auctionId,user?._id as string)
+    } catch (error) {
+      console.log('from update');
+      
+    }
+  }
+} 
 export const auction_Controller = Container.get(auctionController);

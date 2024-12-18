@@ -17,3 +17,9 @@ export const fetchBuyer =async()=>{
     throw new Error('error from fetch buyer')
   }
 }
+
+// raise bid 
+
+export const raiseBidAmount = async(amt:number,auctionId:string)=>{
+  return await api.post('/raise-bid-amt',{amt,auctionId})
+}
