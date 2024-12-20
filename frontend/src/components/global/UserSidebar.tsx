@@ -10,7 +10,7 @@ import { logout } from "@/redux/slice/authSlice";
 import { AiFillProduct } from "react-icons/ai";
 import { fetchuser, userLogout } from "@/service/Api/userApi";
 import { useRQ } from "@/hooks/userRQ";
-import { CirclePlus, Loader2 } from "lucide-react";
+import { CirclePlus, GavelIcon, Loader2 } from "lucide-react";
 
 const Sidebars = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -26,11 +26,13 @@ const Sidebars = () => {
     }else if(route=='product')navigate('/user/product')
     else if(route=='profile')navigate('/user/profile')
     else if(route=='auction')navigate('/user/auction')
+    else if(route=='myBids')navigate('/user/myBids')
   };
 
   const getSidebarItems = () => {
     const commonItems = [
       { icon: <FaRegUser/>, label: "Profile", clickFn: () => handleClick('profile') },
+      { icon: <GavelIcon/>, label: "My Bids", clickFn: () => handleClick('myBids') },
       
     ];
     const logoutItem = { icon: <CiLogout className="ms-[-5px]" size={20} />, label: "Logout", clickFn: () => handleClick('logout') }

@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 type Testimonial = {
   _id: string;
@@ -35,7 +36,7 @@ export const AnimatedTestimonials = React.memo(
     console.log('from test',testimonials);
     
     const [active, setActive] = useState<number>(() => 0);
-
+    const navigate = useNavigate()
     const handleNext = useCallback(() => {
       setActive((prev) => (prev + 1) % testimonials.length);
     }, [testimonials.length]);
@@ -179,7 +180,7 @@ export const AnimatedTestimonials = React.memo(
                     </motion.span>
                   ))}
               </motion.p>
-              <Button className="mt-5 self-center bg-indigo-900 text-white hover:text-indigo-900">Explore <ArrowRight className="mt-1"/></Button>
+              <Button className="mt-5 self-center bg-indigo-900 text-white hover:text-indigo-900" onClick={()=>navigate('/AllDeals')}>Explore <ArrowRight className="mt-1"/></Button>
 
             </motion.div>
           </div>

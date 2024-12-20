@@ -16,9 +16,11 @@ import { auctionInterface } from "@/service/Api/auctionApi";
 import moment from "moment";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { raiseBidAmount } from "@/service/Api/buyerApi";
+import { useQueryClient } from "@tanstack/react-query";
+import { handleRaisedBid } from "@/service/Api/sellerApi";
 
 interface Biduser {
-  user: { firstName: string; profile: string };
+  user: { _id:string,firstName: string; profile: string };
   amount: number;
   bidTime: string;
   isAccept: boolean;
@@ -26,14 +28,11 @@ interface Biduser {
 interface avatarofBidder {
   bidder: Biduser;
   size: "sm" | "md" | "lg";
-}
-interface AuctionInterfaceProps {
-  userType: "bidder" | "organizer";
+  accept?:boolean
 }
 
-const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
-  const [currentBid, setCurrentBid] = useState(17564);
-  const [currentBidder, setCurrentBidder] = useState("John");
+
+const AuctionInterface = () => {
   const [bidAmount, setBidAmount] = useState("");
   const location = useLocation();
   const { AuctionId } = location.state || "";
@@ -41,32 +40,41 @@ const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
     () => auctionInterface(AuctionId),
     "detailed"
   );
-  console.log(data);
+  const queryClient = useQueryClient()
+console.log(data);
 
   if (!AuctionId) return <Navigate to="/deals" replace={true} />;
 
-  const handleBid = async(auctionId:string) => {
+  const handleBid = async(auctionId:string) => {           // implement the customHook don't forget
     if (bidAmount) {
-      setCurrentBid(parseInt(bidAmount));
-      await raiseBidAmount(Number(bidAmount),auctionId)
-      setCurrentBidder("You"); // Assuming the current user is bidding
+      const {data} = await raiseBidAmount(Number(bidAmount),auctionId)
       setBidAmount("");
+      if(data.success){
+        await queryClient.invalidateQueries({queryKey:['detailed']})
+        
+      }
     }
   };
 
-  const handleAccept = (bidder: string, amount: number) => {
-    setCurrentBid(amount);
-    setCurrentBidder(bidder);
-    console.log(`Accepted bid from ${bidder} for ₹${amount}`);
-    // Add logic to handle bid acceptance
+  const handleAccept = async(bidder: string, amount: number,auctionId:string) => {
+    try {
+      const data=await handleRaisedBid(bidder,amount,auctionId)
+      if(data?.data?.success){
+        await queryClient.invalidateQueries({queryKey:['detailed']})
+      }
+      
+    } catch (error) {
+      
+    }
+  
   };
 
   const handleDeal = () => {
-    console.log("Deal finalized with", currentBidder, "for ₹", currentBid);
+   
     // Add logic to finalize the deal
   };
 
-  const renderBidder = ({ bidder, size }: avatarofBidder) => {
+  const renderBidder = ({ bidder, size ,accept}: avatarofBidder) => {
     const avatarSizes = {
       sm: "w-16 h-16",
       md: "w-20 h-20",
@@ -86,7 +94,7 @@ const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
           size === "lg" ? "mx-4" : "mx-2"
         }`}
       >
-        <Avatar className={`${avatarSizes[size]} mb-2`}>
+        <Avatar className={`${avatarSizes[size]} mb-2 ${accept ?"border-green-500 animate-pulse border-4" :''}`}>
           <img
             src={
               bidder?.user?.profile
@@ -160,7 +168,7 @@ const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
         {/* Top 3 Bidders */}
         <div className="flex justify-center items-end mb-6">
           {renderBidder({ bidder: data?.auction?.bidders?.[1], size: "sm" })}
-          {renderBidder({ bidder: data?.auction?.bidders?.[0], size: "lg" })}
+          {renderBidder({ bidder: data?.auction?.bidders?.[0], size: "lg" ,accept:data?.auction?.bidders?.[0]?.isAccept})}
           {renderBidder({ bidder: data?.auction?.bidders?.[2], size: "sm" })}
         </div>
 
@@ -212,7 +220,7 @@ const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
                       size="sm"
                       variant="outline"
                       className="rounded-full text-green-400 border-green-400 hover:bg-green-400/20"
-                      // onClick={() => handleAccept(user., user.amount)}
+                      onClick={() => handleAccept(user.user._id,user.amount,data?.auction?._id)}
                     >
                       <Check className="w-4 h-4 mr-1" />
                       Accept
@@ -242,7 +250,7 @@ const AuctionInterface = ({ userType }: AuctionInterfaceProps) => {
             </Button>
           </div>
         ) : (
-          <Button
+          <Button disabled={data?.auction?.bidders?.length <1}
             className="w-full rounded-full bg-green-600 hover:bg-green-700"
             onClick={handleDeal}
           >

@@ -1,10 +1,12 @@
 import { Service } from "typedi";
 import { auctionRepository } from "../../../repositories/implimentation/auction/auctionRepository";
 import { IAuction } from "../../../models/auctionModel";
+import { query } from "express";
+import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
 
 @Service()
 export class auctionService {
-  constructor(private auctionRepo: auctionRepository) {}
+  constructor(private auctionRepo: auctionRepository,private categoryRepo :categoryRepository) {}
 
   async create_Auction(auction: IAuction, userId: string) {
     try {
@@ -128,14 +130,45 @@ export class auctionService {
     }
   }
   async raiseBidAMT(amt: number,auctionId:string ,userId: string) {
-    try {
-      console.log(auctionId,userId,amt);
-      
-        const response = await this.auctionRepo.updateBidAMT(auctionId,userId,amt)
-      
+    try {      
+       const response = await this.auctionRepo.updateBidAMT(auctionId,userId,amt)
+       if(response)return{success:true , message:'raised '} // add name later
+        else return {success:false , message:'failed to raise'}
     } catch (error) {
-      console.log('pppppp');
+      console.log('error from bid rise');
+      return {success:false , message:(error as Error).message}
+    }
+  }
+  async acceptBidAmt(user:string,bidamt:number,auction:string){
+    try {
+      const response = await this.auctionRepo.accept_currentBid(user,bidamt,auction)
+      console.log(response,'@@@');
       
+      if(response)return {success:true,message:'Deal granted'}
+      else throw new Error('failed to Accept the deal')
+    } catch (error) {
+      return {success:false , message:(error as Error).message}
+    }
+  }
+  async filterd_Auctions(queries:any){
+    try {
+      const {
+        limit = 5,
+        skip = 0,
+        page = 0,
+        search = '',
+        category = 'All',
+        types ='All'
+      } = queries;
+      const allCategory = await this.categoryRepo.findAllCategoryByField().then(data=>data.map(cate=>cate.name))
+      const finalCategory = category ==='All'?[...allCategory]:[category]
+      const allType = types=='All'?['Live','Scheduled']:[types]
+      const result =await this.auctionRepo.filterd_Auctions(limit,skip,page,search,finalCategory,allType) 
+      if(result){
+        return { success:true , data: result ,category :allCategory}
+      } else throw new Error('Failed to load the Deals') 
+    } catch (error) {
+      return {success:false , message:(error as Error).message}
     }
   }
 }

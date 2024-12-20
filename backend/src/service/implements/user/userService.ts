@@ -5,6 +5,7 @@ import { Iuser } from "../../../models/userModel";
 import { IuserService } from "../../interface/userService_Interface";
 import { stripeService } from "../stripe/stripeService";
 import { auctionRepository } from "../../../repositories/implimentation/auction/auctionRepository";
+import { buyer_service } from "./buyerService";
 
 @Service()
 export class userService implements IuserService {
@@ -12,7 +13,8 @@ export class userService implements IuserService {
     private userRepo: userRepository,
     private s3Services: s3Service,
     private stripeService: stripeService,
-    private auctionRepo : auctionRepository
+    private auctionRepo : auctionRepository,
+    private buyerService : buyer_service
   ) {}
 
   async upload_Profile(userId: string, file: Express.Multer.File) {
@@ -66,8 +68,11 @@ export class userService implements IuserService {
       };
       if(response.status=='complete'){
         const currentAuction = await this.auctionRepo.findById(query.aid)
-        await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+       const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+      if(response){
+       const response = await this.buyerService.set_MYBids(query.aid,userId,currentAuction?.entryAmt as number)
       }
+    }
       if (response) return { success: true, data };
       else throw new Error("Failed to complete The Payment");
     } catch (error) {

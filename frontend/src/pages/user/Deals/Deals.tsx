@@ -112,7 +112,7 @@ const Deals = () => {
           </div>
 
           <div className="absolute bottom-4 right-4">
-            <Button className="flex items-center bg-black text-white hover:text-black">
+            <Button className="flex items-center bg-black text-white hover:text-black" onClick={()=>navigate('/AllDeals')}>
               Explore
               <ChevronRight className="" />
             </Button>
@@ -145,7 +145,7 @@ const Deals = () => {
           </div>
 
           <div className="absolute bottom-4 right-4">
-            <Button className="flex items-center bg-black text-white hover:text-black">
+            <Button className="flex items-center bg-black text-white hover:text-black" onClick={()=>navigate('/AllDeals')}>
               Explore
               <ChevronRight className="" />
             </Button>

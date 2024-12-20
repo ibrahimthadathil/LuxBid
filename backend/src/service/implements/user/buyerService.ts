@@ -38,4 +38,12 @@ export class buyer_service implements IBuyerService {
       
     }
   }
+
+  async set_MYBids(auctionId:string,userId:string,amt:number){
+    try {
+      await this.buyerRepo.create_BidHistory(auctionId,userId,amt)
+    } catch (error) {
+      
+    }
+  }
 }

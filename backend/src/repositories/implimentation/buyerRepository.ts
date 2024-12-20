@@ -20,4 +20,11 @@ export class BuyerRepository extends BasRepository<IBuyer>{
         }
 
     }
+    async create_BidHistory(auctionId:string,userId:string,amt:number){
+        try {
+            await Buyer.findOneAndUpdate({user:userId,'CommittedBids.auction':{$ne:auctionId}},{$addToSet:{CommittedBids:{auction:auctionId,bidAmt:amt}}},{upsert:true})
+        } catch (error) {
+            
+        }
+    }
 }

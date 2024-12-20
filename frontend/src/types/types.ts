@@ -16,7 +16,7 @@ export interface Iuser extends Document{
 
 export type Tbuyer= {
     CommittedBids:[{
-        Auction:string,
+        Auction:Tauction,
         bidAmt :number,
         bidDate:Date ,
         bisStatus: string ,

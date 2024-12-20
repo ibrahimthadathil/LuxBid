@@ -101,10 +101,37 @@ export class auctionController {
     try {
       const user = req.user
       const {amt,auctionId}= req.body
-      const g = await this.auctionService.raiseBidAMT(amt,auctionId,user?._id as string)
+      const {message,success} = await this.auctionService.raiseBidAMT(amt,auctionId,user?._id as string)
+      if(success)res.status(200).json({message,success})
+        else res.status(400).json({message,success})
     } catch (error) {
       console.log('from update');
+      res.status(500).json({message:'Internal Server Error :-'+(error as Error).message})
+
+    }
+  }
+  async accept_BidAmt(req:AuthRequest,res:Response){
+    try {
+      const {userid,amt,auctionId}= req.body      
+      const  {message,success}=await this.auctionService.acceptBidAmt(userid,amt,auctionId)
+      console.log(success);
       
+      if(success)res.status(200).json({message,success})
+        else res.status(400).json({message,success})
+    } catch (error) {
+      res.status(500).json({message:'Internal Server Error :-'+(error as Error).message})
+
+    }
+  }
+  async filtered_auction(req:Request,res:Response){
+    try {
+      console.log(req.query);
+      
+     const {success,category,data,message} = await this.auctionService.filterd_Auctions(req.query)
+     if(success)res.status(200).json({data:{data,category}})
+      else res.status(401).json({success,message})
+    } catch (error) {
+      res.status(500).json({message:'internal Server Error :- '+(error as Error).message})
     }
   }
 } 

@@ -13,7 +13,16 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
       return await api.get('/seller')
     } catch (error) {
         console.log('error from seller',);
-        throw new Error('Error from the fetch seller')
         
+    }
+  }
+
+  // accept the biddAMT
+  export const handleRaisedBid =async(userid:string,amt:number,auctionId:string)=>{
+    try {
+      return await api.post('/accept-bidAmt',{userid,amt,auctionId})
+    } catch (error) {
+      console.log('error from handle raise amt',);
+
     }
   }

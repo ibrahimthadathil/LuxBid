@@ -12,5 +12,7 @@ auctionRoute.get('/displayAuction',auction_Controller.getTopAndDisplayAuctions.b
 auctionRoute.get('/viewAuction/:id',auction_Controller.view_Auction.bind(auction_Controller))
 auctionRoute.get('/auctionInterface/:id',AuthMiddleWare,auction_Controller.auctoion_Interface.bind(auction_Controller))
 auctionRoute.post('/raise-bid-amt',AuthMiddleWare,auction_Controller.raiseBid_AMT.bind(auction_Controller))
+auctionRoute.post('/accept-bidAmt',AuthMiddleWare,auction_Controller.accept_BidAmt.bind(auction_Controller))
+auctionRoute.get('/AllDeals',auction_Controller.filtered_auction.bind(auction_Controller))
 
 export default auctionRoute

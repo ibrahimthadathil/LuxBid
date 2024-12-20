@@ -33,4 +33,12 @@ export class categoryRepository extends BasRepository<Icategory>{
 
         }
     }
+    async findAllCategoryByField(){
+        try {
+            return await Category.find({isActive:true},{_id:0,name:1})
+        } catch (error) {
+            console.log();
+            throw new Error('From find  category')
+        }
+    }
 }

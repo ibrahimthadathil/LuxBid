@@ -5,7 +5,7 @@ export interface IBuyer extends Document{
     _id : ObjectId ,
     user :string | Iuser,
     CommittedBids:[{
-        Auction:string,
+        auction:string,
         bidAmt :number,
         bidDate:Date ,
         bisStatus: 'WIN'|'LOST' ,
@@ -16,9 +16,9 @@ const BuyerSchema = new Schema({
     user:{type : mongoose.Schema.Types.ObjectId , ref : 'User',required:true} ,
     committedBids : [
         {
-            Auction : {type:mongoose.Schema.Types.ObjectId ,ref :'Auction'} ,
+            auction : {type:mongoose.Schema.Types.ObjectId ,ref :'Auction'} ,
             bidAmt : { type : Number },
-            bideDate:{type:Date ,default:new Date()} ,
+            bideDate:{type:Date ,default: Date.now()} ,
             bidStatus:{ type :String , enum:['WIN','LOST',]}
         }
     ]
