@@ -102,7 +102,11 @@ export class auctionRepository extends BasRepository<IAuction> {
     try {
       return await Auction.findOne({ _id: id })
         .populate("post")
-        .populate("seller", "-password");
+        .populate("seller", "-password")
+        .populate({
+          path: "bidders.user",
+          select: "email",
+        });
     } catch (error) {}
   }
 

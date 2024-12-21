@@ -18,6 +18,7 @@ const GoogleAuth = () => {
             const auth = getAuth(app)
             const {user} = await signInWithPopup(auth,provider)
             const {data} = await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})
+            console.log('from gg',data);
             
             if(data.success){
               localStorage.setItem('access-token',data.AccessToken)

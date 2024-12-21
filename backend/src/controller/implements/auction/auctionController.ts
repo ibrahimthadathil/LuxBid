@@ -71,15 +71,11 @@ export class auctionController {
   async view_Auction(req:AuthRequest,res:Response){
     try {
       const id = req.params.id
-      const user = req.session.userId
-      console.log('^^^^^^',user);
-      
       if(id){
-        const response= await this.auctionService.view_Auction(id,user as string)
-        if(response?.success)res.status(200).json({data:response?.data,success:response?.success})
-          else res.status(401).json({message:response?.message,success:response?.success})
+        const {success,data,message}= await this.auctionService.view_Auction(id)
+        if(success)res.status(200).json({data,success})
+        else res.status(401).json({message,success})
       }else throw new Error('failed to view the post')
-      
     } catch (error) {
       res.status(500).json({message:(error as Error).message})
     }

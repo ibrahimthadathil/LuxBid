@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Search } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Search, User, Users } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Select,
@@ -16,6 +16,8 @@ import { viewAllAuctions } from "@/service/Api/auctionApi";
 import Skeleton from "../ux/Skelton";
 import { Tauction, Tproduct } from "@/types/types";
 import Pagination from "../ux/Pagination";
+import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 interface FilterState {
   search: string;
@@ -26,7 +28,7 @@ interface FilterState {
 }
 
 export default function PostGrid() {
-
+  const navigate = useNavigate()
   const [filters, setFilters] = useState<any>({
     search: "",
     category: "All",
@@ -39,24 +41,28 @@ export default function PostGrid() {
     ...filters,
     skip: (filters.page * filters.limit).toString()
   }).toString();
-  const { isLoading, data ,refetch} = useRQ(
+
+  const { isLoading, data } = useRQ(
     () => viewAllAuctions(query),
-    "viewAll"
+    "viewAll",filters
   );
  
+  const  queryClient = useQueryClient()
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ["viewAll"] });
+  }, [filters, queryClient]);
 
-  const handleFilterChange = (key: string, value: string | number) => {
-    setFilters((prev:FilterState) => ({
+  const handleFilterChange = (key: keyof FilterState, value: string | number) => {
+    setFilters((prev:any) => ({
       ...prev,
       [key]: value,
-      page: key === 'page' ? value : 0
-    }));  
-    
-  };  
-  const handlePageChange = (newPage: number) => {
-    handleFilterChange('page', newPage - 1); 
+      page: key === "page" ? (value as number) : 0,
+    }));
   };
- 
+  const handlePageChange = (newPage: number) => {
+    handleFilterChange("page", newPage - 1);
+  };
+
   const totalPages = Math.ceil((data?.total || 0) / filters.limit);
   console.log(data);
   return (
@@ -129,17 +135,31 @@ export default function PostGrid() {
                 )}
               </div>
               <CardContent className="p-4">
-                <h3 className="font-semibold line-clamp-2 mb-2">{post.title}</h3>
-                <div className="flex justify-between">
-                  <p className="text-sm text-muted-foreground line-clamp-2 flex gap-2">
-                    <div>
-                      {post.description.slice(0, 50)}
-                      <span className="text-white">...more</span>
-                    </div>
-                  </p>
-                  <Button>Join</Button>
+              <h3 className="font-semibold text-lg line-clamp-1 mb-2">{post.title}</h3>
+              <div className="flex justify-between items-start gap-4">
+                <p className="text-sm text-muted-foreground line-clamp-2 flex-grow">
+                  {post.description}
+                  {post.description.length > 50 && (
+                    <button className="text-primary hover:underline ml-1 font-medium">
+                      ...more
+                    </button>
+                  )}
+                </p>
+                <Button size="sm" className="shrink-0 bg-indigo-900" variant={"outline"} onClick={()=>{const id = post?._id
+                  return navigate('/deals/auction',{state:{id}})}}>Join</Button>
+              </div>
+            </CardContent>
+            <CardFooter className="px-4 py-3 bg-muted/10">
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center gap-2">
+                  <Users size={20} className="text-muted-foreground" />
+                  <span className="text-lg font-semibold">{post.bidders?.length || 0}</span>
                 </div>
-              </CardContent>
+                <div className="text-sm font-medium">
+                  Current Bid: <span className="text-primary">₹ {post.baseAmount || 0}</span>
+                </div>
+              </div>
+            </CardFooter>
             </Card>
           ))}
         </div> 

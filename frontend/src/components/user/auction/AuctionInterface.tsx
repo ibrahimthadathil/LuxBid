@@ -10,7 +10,7 @@ import {
   HandshakeIcon as HandShake,
   ArrowLeft,
 } from "lucide-react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useRQ } from "@/hooks/userRQ";
 import { auctionInterface } from "@/service/Api/auctionApi";
 import moment from "moment";
@@ -29,12 +29,13 @@ interface avatarofBidder {
   bidder: Biduser;
   size: "sm" | "md" | "lg";
   accept?:boolean
-}
+}       
 
 
 const AuctionInterface = () => {
   const [bidAmount, setBidAmount] = useState("");
   const location = useLocation();
+  const navigate = useNavigate()
   const { AuctionId } = location.state || "";
   const { isLoading, data } = useRQ(
     () => auctionInterface(AuctionId),
@@ -122,7 +123,7 @@ console.log(data);
     <div className="w-full  text-white p-10">
       <button
         className="mb-6 rounded-full w-12 h-12 flex items-center justify-center border hover:bg-indigo-950 hover:text-white text-indigo-400"
-        onClick={() => ""}
+        onClick={() => navigate(`/deals/auction/`,{state:{id:AuctionId}})}
       >
         <ArrowLeft className="w-6 h-6" />
       </button>

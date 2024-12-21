@@ -20,10 +20,13 @@ import "react-medium-image-zoom/dist/styles.css";
 import moment from "moment";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { useSelector } from "react-redux";
+import { Rootstate } from "@/redux/store/store";
 const AuctionPage = React.memo(() => {
   console.log("rendering post");
   const navigate = useNavigate();
   const location = useLocation();
+  const {isAuthenticated,email} = useSelector((state:Rootstate)=>state.user)
   const { id } = location.state || "";
   if (!id) {
     toast.warning("Choose an Auction");
@@ -33,6 +36,7 @@ const AuctionPage = React.memo(() => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const joinedUser = data?.bidders?.find((user:any)=>user.user.email==email)
   console.log('****',data);
   
   const toggleSection = useCallback((section: string) => {
@@ -40,28 +44,34 @@ const AuctionPage = React.memo(() => {
   }, []);
 
   const handleClick =()=>{
-    const storage = localStorage.getItem('access-token')
-    if(!storage)toast.error('Login to Join')
-    else if(data?.organizer)navigate('/deals/auction/bids',{state:{AuctionId:data?.data?._id}})
-    else if(!data?.organizer&&!data.isLoggout)navigate('/deals/auction/bids',{state:{AuctionId:data?.data?._id}})
+    if(!isAuthenticated){
+      toast.error('Login to Join')
+    }
+    else if(data?.seller?.email==email){
+      alert('organizer')
+      navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
+    }
+    else if(joinedUser){
+      confirm('buyer')
+      // navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
+    }
     else return
-
   }
 
   const nextImage = () => {
     setCurrentImageIndex(
-      (prevIndex) => (prevIndex + 1) % data?.data?.post.images.length
+      (prevIndex) => (prevIndex + 1) % data?.post.images.length
     );
   };
 
   const cardPaymendHandle =()=>{
-    navigate('/payment',{state:{price:data?.data?.entryAmt , title:data?.data?.title,img:data?.data?.post.images[0],id:data?.data?._id}})
+    navigate('/payment',{state:{price:data?.entryAmt , title:data?.title,img:data?.post.images[0],id:data?._id}})
   }
 
   const prevImage = () => {
     setCurrentImageIndex(
       (prevIndex) =>
-        (prevIndex - 1 + data?.data?.post.images.length) % data?.data?.post.images.length
+        (prevIndex - 1 + data?.post.images.length) % data?.post.images.length
     );
   };
 
@@ -81,20 +91,20 @@ const AuctionPage = React.memo(() => {
           <div className="lg:w-1/4 space-y-6">
             {/* Title with gradient */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif bg-gradient-to-b from-[#426D9F] via-[#426D9F] to-[#A7534E] bg-clip-text text-transparent leading-tight pt-1">
-              {data?.data?.title.split(" ")[0]}
+              {data?.title?.split(" ")[0]}
               <br />
-              {data?.data?.title.split(" ")[1]}
+              {data?.title?.split(" ")[1]}
               <br />
-              {data?.data?.title.split(" ")[2] || "By"}
+              {data?.title?.split(" ")[2] || "By"}
               <br />
-              {data?.data?.title.split(" ")[3] || data?.data?.seller.firstName}
+              {data?.title?.split(" ")[3] || data?.seller?.firstName}
             </h1>
 
             {/* Stats */}
             <div className="flex items-center gap-4 text-gray-300">
               <div className="flex items-center gap-2">
                 <Users2 className="w-4 h-4" />
-                <span>{data?.data?.bidders.length}</span>
+                <span>{data?.bidders?.length}</span>
               </div>
               {data.auctionType == "Live" ? (
                 <div className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full">
@@ -113,7 +123,7 @@ const AuctionPage = React.memo(() => {
             <div className="text-gray-300 flex gap-2">
               <Clock />
               {moment(Date.now()).format("LLL") >
-              moment(data?.data?.strtTime).format("LLL")
+              moment(data?.strtTime).format("LLL")
                 ? `close on ${moment(data.endTime).format("LLL")}`
                 : `Starts on $`}
             </div>
@@ -124,7 +134,7 @@ const AuctionPage = React.memo(() => {
                 <span className="text-gray-100 ">Current Bid </span>
                 <span className="text-white font-thin">
                   {" "}
-                  ₹ {data?.data?.baseAmount}
+                  ₹ {data?.baseAmount}
                 </span>
               </div>
             </div>
@@ -143,7 +153,7 @@ const AuctionPage = React.memo(() => {
               <div className="w-full max-w-[290px] aspect-[3/4] rounded-t-full overflow-hidden border relative cursor-zoom-in">
                 <img
                   ref={imageRef}
-                  src={data?.data?.post.images[currentImageIndex]}
+                  src={data?.post?.images[currentImageIndex]}
                   alt={`Pearl Necklace ${currentImageIndex + 1}`}
                   className="object-cover w-full h-full"
                 />
@@ -177,7 +187,7 @@ const AuctionPage = React.memo(() => {
               </Button>
               {openSection === "description" && (
                 <div className="p-4 text-sm text-gray-300">
-                  {data?.data?.description}
+                  {data?.description}
                 </div>
               )}
 
@@ -195,10 +205,10 @@ const AuctionPage = React.memo(() => {
               </Button>
               {openSection === "status" && (
                 <div className="p-4 text-sm text-gray-300">
-                  The auction is currently <span className="text-indigo-500">{data?.data?.auctionType}</span> with {data?.data?.bidders.length} active bidders. The
+                  The auction is currently <span className="text-indigo-500">{data?.auctionType}</span> with {data?.bidders.length} active bidders. The
                   bidding has been intense, with the price steadily climbing.
                   There's still time left for interested parties to place their
-                  bids and potentially win this stunning piece of {data?.data?.post.title}.
+                  bids and potentially win this stunning piece of {data?.post.title}.
                 </div>
               )}
 
@@ -217,9 +227,9 @@ const AuctionPage = React.memo(() => {
               {openSection === "organizer" && (
                 <div className="p-4 text-sm text-gray-300">
                   <p>
-                    This Auction is Organized by {data?.data?.seller.firstName}.
+                    This Auction is Organized by {data?.seller?.firstName}.
                     <br />
-                    contact : {data?.data?.seller.email}
+                    contact : {data?.seller?.email}
                   </p>
                 </div>
               )}
@@ -231,8 +241,7 @@ const AuctionPage = React.memo(() => {
               <Button className="w-full bg-indigo-900 hover:bg-indigo-700 text-white py-6 text-lg"
               onClick={()=>handleClick()}
               >
-    
-              {data?.isLoggout? '₹'+data?.data?.entryAmt + ' Join now': data?.data?.organizer ? ' View ': ' View'}
+                {data?.seller?.email==email ?'View':joinedUser ? 'View':` Join Now ₹ ${data?.entryAmt}`}
               </Button>
 
               </DialogTrigger>
@@ -252,7 +261,7 @@ const AuctionPage = React.memo(() => {
         <div className="space-y-6">
           <div className="relative h-48 w-full overflow-hidden rounded-lg">
             <img
-              src={data?.data?.post.images[0]}
+              src={data?.post?.images[0]}
               alt="Auction Item"
               className="object-fit"
               
@@ -302,7 +311,7 @@ const AuctionPage = React.memo(() => {
 
           <Button className="w-full bg-purple-700 hover:bg-purple-600">
            
-            ₹ {data?.data?.entryAmt} 
+            ₹ {data?.entryAmt} 
           </Button>
         </div>
       </DialogContent>

@@ -8,7 +8,7 @@ export const useRQ = (executer:Function,key:string,dependecy?:any) => {
       
       return data.data
     },
-    enabled:dependecy,
+    enabled:dependecy!== false,
     
   });
 };

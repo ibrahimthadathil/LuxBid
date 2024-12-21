@@ -78,30 +78,29 @@ export class auctionService {
       return { success: false, message: "Internal server error , try later" };
     }
   }
-  async view_Auction(id: string, userId: string) {
+  async view_Auction(id: string) {
     try {
       const response = await this.auctionRepo.viewAuction(id);
-      console.log(response);
-      console.log(response?.seller, "===", userId);
-
-      if (response) {
-        if (((response.seller as any)._id as string) == userId) {
-          return { data: { data: response, organizer: true }, success: true };
-        } else if (userId) {
-          const isExistInAuction = response.bidders.find(
-            (user) => user.user == userId
-          );
-          if (isExistInAuction)
-            return {
-              data: { data: response, organizer: false },
-              success: true,
-            };
-          else
-            return { data: { data: response, isLoggout: true }, success: true };
-        } else {
-          return { data: { data: response, isLoggout: true }, success: true };
-        }
-      } else throw new Error("failed to Fetch");
+      if(response)return {data:response,success:true}
+      else throw new Error('Failed to fetch');
+      // if (response) {
+      //   if (Response) {
+      //     return { data: { data: response, organizer: true }, success: true };
+      //   } else if (userId) {
+      //     const isExistInAuction = response.bidders.find(
+      //       (user) => user.user == userId
+      //     );
+      //     if (isExistInAuction)
+      //       return {
+      //         data: { data: response, organizer: false },
+      //         success: true,
+      //       };
+      //     else
+      //       return { data: { data: response, isLoggout: true }, success: true };
+      //   } else {
+      //     return { data: { data: response, isLoggout: true }, success: true };
+      //   }
+      // } else throw new Error("failed to Fetch");
     } catch (error) {
       return {
         success: false,
