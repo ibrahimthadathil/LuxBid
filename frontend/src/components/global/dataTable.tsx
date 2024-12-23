@@ -27,7 +27,8 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
     const lastPage = firstPage + itemsPerPage 
     return data.slice(firstPage,lastPage)
   },[currentPage,data,itemsPerPage])
-
+  console.log(data);
+  
   const pageChange =(page:number)=>{
     setCurrentpage(page)
   }
@@ -54,6 +55,7 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
               >
                 {
                   columns.map((e,i)=>(
+                    
                     <TableCell key={i} className="font-medium">{e.render ? e.render(item,ind):e.key?item[e.key]:'Not found'}</TableCell>
   
                   ))

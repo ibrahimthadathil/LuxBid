@@ -1,4 +1,3 @@
-import axios from "axios";
 import { axiosInstance } from "../axiosInstance/intercepters";
 
 // const api = axios.create({
@@ -22,4 +21,10 @@ export const fetchBuyer =async()=>{
 
 export const raiseBidAmount = async(amt:number,auctionId:string)=>{
   return await api.post('/raise-bid-amt',{amt,auctionId})
+}
+
+// show all commited bids
+
+export const showCommittedBids =async()=>{
+  return await api.get('/allBids')
 }

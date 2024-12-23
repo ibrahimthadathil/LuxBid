@@ -16,6 +16,7 @@ export const axiosInstance = (baseURL:string)=>{
             config.headers.Authorization = `${token}`
         }        
         return config
+        
     }, (error) => {
         return Promise.reject(error)
     })

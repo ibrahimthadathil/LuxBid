@@ -5,10 +5,11 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Separator } from "@radix-ui/react-separator";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface modalProps<T> {
   data: T;
-  images?:string[];
+  images?: string[];
   sideContent: {
     header: string;
     render?: (item: T, i: number) => React.ReactNode;
@@ -16,10 +17,13 @@ interface modalProps<T> {
 }
 export function PostModal<T extends Record<string, any>>({
   data,
-  sideContent,images
+  sideContent,
+  images,
 }: modalProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [postImages] = useState<string[]>(()=>(images ? images:data.images))
+  const [postImages] = useState<string[]>(() =>
+    images ? images : data.images
+  );
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === postImages.length - 1 ? 0 : prevIndex + 1
@@ -34,11 +38,11 @@ export function PostModal<T extends Record<string, any>>({
 
   return (
     <Dialog>
-      <DialogTrigger asChild >
+      <DialogTrigger asChild>
         <Button variant="outline">view</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[900px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <DialogContent className="sm:max-w-[900px] ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
           <div className="relative">
             <div className="overflow-hidden rounded-lg aspect-w-3 aspect-h-4">
               <div
@@ -77,19 +81,21 @@ export function PostModal<T extends Record<string, any>>({
             </Button>
           </div>
           {/* {right side of the imgae view div} */}
-          <div className="p-6 flex flex-col space-y-4">
-            {sideContent.map((item, index) => (
-              <div key={index} className="space-y-2">
-                <h2 className="text-lg font-serif text-primary">
-                  {item.header}
-                </h2>
-                <Separator className="my-2" />
-                <div className="text-sm text-muted-foreground">
-                  {item.render ? item.render(data, index) : null}
+          <ScrollArea className="h-[450px] w-full rounded-md  p-6">
+            <div className="flex flex-col space-y-4 pr-4">
+              {sideContent.map((item, index) => (
+                <div key={index} className="space-y-2">
+                  <h2 className="text-lg  text-primary">
+                    {item.header}
+                  </h2>
+                  <Separator className="my-2" />
+                  <div className="text-sm ">
+                    {item.render ? item.render(data, index) : null}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
       </DialogContent>
     </Dialog>

@@ -48,7 +48,6 @@ const Posts = () => {
             <span>{post.title}</span>
             </div>)},
     {key:'createdAt',header:'Posted',render:(post:Tproduct)=>new Date(post.createdAt as Date).toLocaleDateString()},
-    {key:'price',header:'Price (₹)'},
     {key:'isApproved',header:'Status', render :(post:Tproduct)=>(
       <span
           className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
@@ -104,7 +103,8 @@ const Posts = () => {
   
   return (
     <>
-    {isLoading ? <Loader/>:<div className="container m mx-auto px-4 py-4">
+    {isLoading ? <Loader/>:
+    <div className="container m mx-auto px-4 py-4">
       <div className='flex justify-center items-center mb-5'>
     <h1 className="text-2xl font-bold flex items-center gap-2">
       {route?<><ShieldCheck/>Approved Posts</>:<><ShieldAlert/>Posts Requestes</>}

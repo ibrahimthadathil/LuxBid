@@ -14,10 +14,13 @@ userRoute.get('/buyer',AuthMiddleWare,buyer_controller.get_Buyer.bind(buyer_cont
 userRoute.get('/seller',AuthMiddleWare,Organizer_Controller.get_Organizer.bind(Organizer_Controller))
 userRoute.post('/uploadprofile',AuthMiddleWare,upload.single('image'),userController.upload_Profile.bind(userController))
 userRoute.post('/editprofile',AuthMiddleWare,userController.edit_Profile.bind(userController))
+userRoute.get('/allBids',AuthMiddleWare,buyer_controller.committed_Auction.bind(buyer_controller))
 
 // stripe route 
 userRoute.post('/create-checkout-session',AuthMiddleWare,userController.make_Payment.bind(userController))
 userRoute.get('/session-status',AuthMiddleWare,userController.payment_Status.bind(userController)) 
+
+
 
 
 export default userRoute

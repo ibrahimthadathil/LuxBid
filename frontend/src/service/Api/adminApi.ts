@@ -67,3 +67,9 @@ export const rejectPost = async(id:string)=>{
 export const logoutAdmin =async()=>{
   return await api.post('/adminlogout')
 }
+
+
+export const listByType = async(type:string)=>{
+  // alert(type)
+  return await api.get(`/list-by-type/${type}`)
+}

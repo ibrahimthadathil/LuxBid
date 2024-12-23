@@ -170,4 +170,13 @@ export class auctionService {
       return {success:false , message:(error as Error).message}
     }
   }
+  async listBy_Type(auctionType:string){
+    try {
+     const response = await this.auctionRepo.findAllByType(auctionType)
+     if(response)return {success:true , data:response}
+     else throw new Error('Failed to fetch')
+    } catch (error) {
+      return {success:false , message :(error as Error).message}
+    }
+  }
 }

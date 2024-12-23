@@ -41,9 +41,22 @@ export class buyer_service implements IBuyerService {
 
   async set_MYBids(auctionId:string,userId:string,amt:number){
     try {
-      await this.buyerRepo.create_BidHistory(auctionId,userId,amt)
+     const response = await this.buyerRepo.create_BidHistory(auctionId,userId,amt)
+     if(response)return{success:true}
+     else throw new Error('Failed to set the history')
     } catch (error) {
-      
+      console.log('error from create buyer history');
+      return {success:false , message:(error as Error).message}
+    }
+  }
+
+  async allCommited_Auction(user:string){
+    try {
+       const response = await this.buyerRepo.findCommitedBids(user)
+       if(response)return {success:true , data:response}
+       else return {success:false , message :'failed to load the bids, Try later'}
+    } catch (error) {
+      return {success:false , message :(error as Error).message}
     }
   }
 }

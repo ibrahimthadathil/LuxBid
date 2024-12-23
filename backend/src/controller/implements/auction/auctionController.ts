@@ -130,5 +130,17 @@ export class auctionController {
       res.status(500).json({message:'internal Server Error :- '+(error as Error).message})
     }
   }
+  async listBy_Type(req:Request,res:Response){
+    try {
+      const auction = req.params.type
+      console.log(auction);
+      
+      const {success, data, message}=await this.auctionService.listBy_Type(auction)
+      if(success) res.status(200).json({success,data})
+        else res.status(404).json({message,success})
+    } catch (error) {
+      res.status(500).json({message:'internal Server Error :- '+(error as Error).message})
+    }
+  }
 } 
 export const auction_Controller = Container.get(auctionController);

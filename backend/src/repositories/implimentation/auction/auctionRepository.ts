@@ -202,4 +202,12 @@ export class auctionRepository extends BasRepository<IAuction> {
       
     }
   }
+
+  async findAllByType(auctionType: string){
+    try {
+      return await Auction.find({auctionType:auctionType}).populate('seller','-password').populate('post')
+    } catch (error) {
+      console.log('error from find by type :-'+ (error as Error).message);
+    }
+  }
 }

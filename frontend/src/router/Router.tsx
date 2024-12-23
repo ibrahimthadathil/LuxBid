@@ -28,8 +28,9 @@ import AuctionPage from "@/pages/user/ViewAuction/Auction";
 import AuctionInterface from "@/components/user/auction/AuctionInterface";
 import Checkout from "@/components/user/stripe/Checkout";
 import Return from "@/components/user/stripe/Return";
-import MyBids from "@/components/user/mybids/MyBids";
+import MyBids from "@/components/user/profile/mybids/MyBids";
 import AllDeals from "@/pages/user/Deals/AllDeals";
+import AllAuctions from "@/components/admin/AllAuctions";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -195,6 +196,10 @@ export const Router = createBrowserRouter([
             path:'Posts/:child',
             element:<Posts/>
           },
+          {
+            path:'Auction/:child',
+            element : <AllAuctions/>
+          }
         ]
       }
     ]

@@ -18,6 +18,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { raiseBidAmount } from "@/service/Api/buyerApi";
 import { useQueryClient } from "@tanstack/react-query";
 import { handleRaisedBid } from "@/service/Api/sellerApi";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Biduser {
   user: { _id:string,firstName: string; profile: string };
@@ -33,6 +34,7 @@ interface avatarofBidder {
 
 
 const AuctionInterface = () => {
+  useAuth()
   const [bidAmount, setBidAmount] = useState("");
   const location = useLocation();
   const navigate = useNavigate()

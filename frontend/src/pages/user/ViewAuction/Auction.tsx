@@ -53,7 +53,7 @@ const AuctionPage = React.memo(() => {
     }
     else if(joinedUser){
       confirm('buyer')
-      // navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
+      navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
     }
     else return
   }
@@ -81,7 +81,7 @@ const AuctionPage = React.memo(() => {
         {/* Back Button */}
         <button
           className="mb-6 rounded-full w-12 h-12 flex items-center justify-center border border-white text-indigo-400"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/deals')}
         >
           <ArrowLeft className="w-6 h-6" />
         </button>

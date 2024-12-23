@@ -47,7 +47,7 @@ export type Tproduct ={
 export type Tauction = {
     _id:string,
     title:string,
-    seller : string,
+    seller : string | Iuser,
     description:string,
     post:string | Tproduct,
     baseAmount:number,

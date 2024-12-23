@@ -6,6 +6,8 @@ import {
 
   SquareTerminal,
   StickyNote,
+  GavelIcon,
+  Radio,
 } from "lucide-react"
 
 import { NavMain } from "@/components/admin/nav-main"
@@ -85,6 +87,21 @@ const data = {
               title: "Requestes",
               url: "/admin/LB/Posts/request",
             },
+      ]
+    },
+    {
+      title:'Auctions',
+      url:'/admin/LB/Auction/Live',
+      icon:GavelIcon,
+      items :[
+        {
+          title:'Live',
+          url:'/admin/LB/Auction/Live',
+        },
+        {
+          title:'scheduled',
+          url:'/admin/LB/Auction/Scheduled'
+        }
       ]
     }
   

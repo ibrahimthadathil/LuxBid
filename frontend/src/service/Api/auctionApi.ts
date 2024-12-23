@@ -41,7 +41,8 @@ export const viewAuction =async(id:string)=>{
 export const auctionInterface = async(id:string)=>{
     return await api.get(`/auctionInterface/${id}`)
 }
-
+// filter
 export const viewAllAuctions =async(query:string)=>{
     return await api.get(`/AllDeals?${query}`)
 }
+

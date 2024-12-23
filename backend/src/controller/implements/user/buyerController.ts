@@ -44,6 +44,16 @@ class BuyerController implements IbuyerContoller{
         }
     }
 
+    async committed_Auction(req:AuthRequest, res:Response){
+        try {
+            const user = req.user?._id
+          const {success,data,message}=  await this.buyerService.allCommited_Auction(user as string)
+          if(success)res.status(200).json({success,data})
+          else res.status(404).json({success,message})  
+        } catch (error) {
+            res.status(500).json({success:false,message:'Internal Error'})
+        }
+    }
 }
 
 export const buyer_controller = Container.get(BuyerController)

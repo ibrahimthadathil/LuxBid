@@ -61,19 +61,19 @@ export class userService implements IuserService {
 
   async auction_Join(query: any, userId: string) {
     try {
-      const response = await this.stripeService.payment_Status(query, userId);
+      const response = await this.stripeService.payment_Status(query, userId);      
       const data = {
         status: response.status,
         customer_email: response.customer_details.email,
       };
       if(response.status=='complete'){
-        const currentAuction = await this.auctionRepo.findById(query.aid)
-       const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+      const currentAuction = await this.auctionRepo.findById(query.aid)
+      const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
       if(response){
-       const response = await this.buyerService.set_MYBids(query.aid,userId,currentAuction?.entryAmt as number)
-      }
+       const {success,message} = await this.buyerService.set_MYBids(query.aid,userId,currentAuction?.entryAmt as number)
+      return {success,message,data} 
+      }else throw new Error('failed to make payment')
     }
-      if (response) return { success: true, data };
       else throw new Error("Failed to complete The Payment");
     } catch (error) {
       console.log((error as Error).message);

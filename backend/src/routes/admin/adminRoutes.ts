@@ -3,6 +3,7 @@ import { adminController } from "../../controller/implements/admin/adminControll
 import {  category_Controller } from "../../controller/implements/admin/categoryController";
 import { product_Controller } from "../../controller/implements/product/productController";
 import { AdminMiddleware } from "../../middleware/adminMiddleware";
+import { auction_Controller } from "../../controller/implements/auction/auctionController";
 
 
 const adminRoute = Router() 
@@ -17,11 +18,13 @@ adminRoute.delete('/categoryremove/:id',AdminMiddleware,category_Controller.remo
 adminRoute.put('/categoryupdate/:id',AdminMiddleware,category_Controller.update_Category.bind(category_Controller))
 
 adminRoute.get('/findByRole/:role',AdminMiddleware,adminController.fetchUsers.bind(adminController))
-
+// post
 adminRoute.get('/products/:status',AdminMiddleware,product_Controller.findAll_Products.bind(product_Controller))
 adminRoute.delete('/removepost/:id',AdminMiddleware,product_Controller.remove_Post.bind(product_Controller))
 adminRoute.put('/updatepost/:id',AdminMiddleware,product_Controller.update_PostStatus.bind(product_Controller))
 adminRoute.put('/rejectpost/:id',AdminMiddleware,product_Controller.reject_Post.bind(product_Controller))
+//auction
+adminRoute.get('/list-by-type/:type',auction_Controller.listBy_Type.bind(auction_Controller))
 
 adminRoute.post('/adminlogout',adminController.adminLogout.bind(adminController))
 
