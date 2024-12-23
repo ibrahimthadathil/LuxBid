@@ -1,9 +1,9 @@
 import  { Router } from 'express'
-import { AuthMiddleWare } from '../../middleware/AuthMiddleware';
-import { userController } from '../../controller/implements/user/userController';
-import { buyer_controller } from '../../controller/implements/user/buyerController';
-import { Organizer_Controller } from '../../controller/implements/user/organizerController';
-import { upload } from '../../utils/multer_Utils';
+import { AuthMiddleWare } from '@/middleware/AuthMiddleware';
+import { userController } from '@/controller/implements/user/userController';
+import { buyer_controller } from '@/controller/implements/user/buyerController';
+import { Organizer_Controller } from '@/controller/implements/user/organizerController';
+import { upload } from '@/utils/multer_Utils';
 
 const userRoute = Router()
 

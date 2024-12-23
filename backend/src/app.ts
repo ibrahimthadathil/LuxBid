@@ -12,8 +12,8 @@ import postRoute from "./routes/post/postRoutes";
 import auctionRoute from "./routes/auction/auctionRoutes";
 import session from "express-session";
 import { sessionConfig } from "./utils/session_utils";
-const stripe = require('stripe')('sk_test_51QWLQMKpzbcdCsVNwquO66URKhyM5AB3t0D8XiJ9BIHjFpK73CrHVdrLe1KKgJ1jQ4PGdTutySL1nxEI31PVzpPf00QUKBW537');
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 connectDB();
 

@@ -1,9 +1,9 @@
 import Container, { Service } from "typedi";
-import { userService } from "../../../service/implements/user/userService";
-import { IuserContrller } from "../../interface/userController_Interface";
+import { userService } from "@/service/implements/user/userService";
+import { IuserContrller } from "@/controller/interface/userController_Interface";
 import { Request, Response } from "express";
-import { AuthRequest } from "../../../types/api";
-import { stripeService } from "../../../service/implements/stripe/stripeService";
+import { AuthRequest } from "@/types/api";
+import { stripeService } from "@/service/implements/stripe/stripeService";
 
 @Service()
 class user_Controller implements IuserContrller {
