@@ -3,27 +3,22 @@ import { AuthRequest } from "../types/api";
 import { verifyToken } from "../utils/jwt_util";
 import { JwtPayload } from "jsonwebtoken";
 import { Iuser, User } from "../models/userModel";
+import { HttpStatus } from "@/enums/http_StatusCode";
 
 
 export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunction)=>{
 
     try {
-
-        let refreshToken = req.cookies.rftn        
-        // console.log(refreshToken);
-        if(!refreshToken){
-            throw new Error("UnAuthorized user..., User don't have token")
-        }else{
-            const {email} = verifyToken(refreshToken) as JwtPayload
-            const currentUser = await User.findOne({email},'-password')
-            // console.log(currentUser);            
-            if(!currentUser?.isActive){
-                res.clearCookie('rftn')
-                throw new Error('User Access denied By the Authority')
-            }
-            req.user = currentUser as Iuser            
-            next()
-
+        
+        const token = req.headers['authorization']
+        if(!token)res.status(HttpStatus.UNAUTHORIZED).json({ message: "Access denied . No token provided" })
+         else{
+            const {email,id} = verifyToken(token) as JwtPayload
+            const _id = id
+            if(_id){
+                req.user = _id
+                next()
+            }else res.status(HttpStatus.UNAUTHORIZED)
         }
 
     } catch (error) {

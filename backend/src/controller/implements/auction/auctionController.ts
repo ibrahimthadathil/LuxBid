@@ -13,7 +13,7 @@ export class auctionController {
     const auction = req.body as IAuction
     try {
     if(organizer){      
-     const {message,success} = await this.auctionService.create_Auction(auction,organizer._id as string)
+     const {message,success} = await this.auctionService.create_Auction(auction,organizer as string)
      if(success)res.status(200).json({message,success})
       else res.status(401).json({message,success})
     }else throw new Error('Invalid access,')  
@@ -25,7 +25,7 @@ export class auctionController {
     try {
       const organizer = req.user
       if(organizer){
-       const {success,data,message}= await this.auctionService.getUserAll_Auction(organizer._id as string)
+       const {success,data,message}= await this.auctionService.getUserAll_Auction(organizer as string)
        if(success)res.status(200).json({success,data})
         else res.status(401).json({success,message})
       }
@@ -82,8 +82,8 @@ export class auctionController {
   }
   async auctoion_Interface(req:AuthRequest,res:Response){
     try {
-      const user = req.user
-      const {success,auction,message,organizer}=await this.auctionService.auction_Interface(req.params.id as string,user?._id as string)
+      const userId = req.user
+      const {success,auction,message,organizer}=await this.auctionService.auction_Interface(req.params.id as string,userId as string)
       
       if(organizer)res.status(200).json({data:{success,auction,organizer}})
       else if(!organizer) res.status(200).json({data:{success,auction,organizer}})
@@ -95,9 +95,9 @@ export class auctionController {
   }
   async raiseBid_AMT(req:AuthRequest,res:Response){
     try {
-      const user = req.user
+      const userId = req.user
       const {amt,auctionId}= req.body
-      const {message,success} = await this.auctionService.raiseBidAMT(amt,auctionId,user?._id as string)
+      const {message,success} = await this.auctionService.raiseBidAMT(amt,auctionId,userId as string)
       if(success)res.status(200).json({message,success})
         else res.status(400).json({message,success})
     } catch (error) {

@@ -126,8 +126,8 @@ export const Router = createBrowserRouter([
   {
     path: "/user",
     element: (
-      <ProtectedRoute
-        element={
+      // <ProtectedRoute
+        // element={
           <Suspense
             fallback={
               <div className="bg-black h-screen items-center flex justify-center text-white">
@@ -137,9 +137,9 @@ export const Router = createBrowserRouter([
           >
             <UserProfile />
           </Suspense>
-        }
-        store="access-token"
-      />
+        // }
+      //   store="access-token"
+      // />
     ),
     children: [
       {

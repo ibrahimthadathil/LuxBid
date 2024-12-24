@@ -5,7 +5,7 @@ import { Iadmin } from "../models/admin/adminModal";
 
 export interface AuthRequest extends Request{
 
-    user?:Iuser
+    user?:string
 }
 
 export interface AdminRequest extends Request{

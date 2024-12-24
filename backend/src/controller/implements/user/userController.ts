@@ -14,8 +14,9 @@ class user_Controller implements IuserContrller {
   async find_User(req: AuthRequest, res: Response) {
     try {
       const user = req.user;
-      if (user) {
-        res.status(200).json({ success: true, data: user });
+      const {success,data,message} = await this.userServide.findUser(user as string)
+      if (success) {
+        res.status(200).json({ success: true, data });
       } else res.status(401).json({ success: false, message: "un-Authorized" });
     } catch (error) {
       console.log("from error", (error as Error).message);
@@ -25,10 +26,10 @@ class user_Controller implements IuserContrller {
 
   async upload_Profile(req: AuthRequest, res: Response) {
     try {
-      const currentUser = req.user;
-      if (req.file && currentUser) {
+      const userId = req.user;
+      if (req.file && userId) {
         const { message, success } = await this.userServide.upload_Profile(
-          currentUser._id as string,
+          userId as string,
           req.file
         );
         if (success) res.status(200).json({ success, message });
@@ -47,12 +48,12 @@ class user_Controller implements IuserContrller {
 
   async edit_Profile(req: AuthRequest, res: Response) {
     try {
-      const user = req.user;
+      const userId = req.user;
 
-      if (user) {
+      if (userId) {
         const { message, success } = await this.userServide.edit_Profile(
           req.body,
-          user._id as string
+          userId as string
         );
         if (success) {
           res.status(200).json({ success, message });
@@ -77,9 +78,9 @@ class user_Controller implements IuserContrller {
     }
   }
   async payment_Status(req:AuthRequest,res:Response){
-    const user = req.user 
+    const userId = req.user 
   try {
-    const {success,data,message} = await this.userServide.auction_Join(req.query,user?._id as string)
+    const {success,data,message} = await this.userServide.auction_Join(req.query,userId as string)
     if(success)res.status(200).json({success,data})
       else res.status(400).json({success,message})
   } catch (error) {

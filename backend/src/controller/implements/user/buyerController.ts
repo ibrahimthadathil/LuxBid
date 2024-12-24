@@ -14,7 +14,7 @@ class BuyerController implements IbuyerContoller{
         try {
             const currentUser = req.user
             if(currentUser){
-            const { success , message }=await this.buyerService.set_Buyer(currentUser._id as string)
+            const { success , message }=await this.buyerService.set_Buyer(currentUser as string)
             if(success) res.status(200).json({success,message})
              else res.status(401).json({success,message}) 
             }else{
@@ -28,9 +28,9 @@ class BuyerController implements IbuyerContoller{
 
     async get_Buyer(req:AuthRequest,res:Response){
         try {
-            const buyer = req.user as Iuser
-            if(buyer){
-               const{success,data,message}= await this.buyerService.get_Buyer(buyer._id as string)
+            const buyerId = req.user 
+            if(buyerId){
+               const{success,data,message}= await this.buyerService.get_Buyer(buyerId as string)
                 if(success){
                     res.status(200).json({success,data,message:'Approved as a Buyer'})
                 }else res.status(403).json({message,success})
@@ -46,8 +46,8 @@ class BuyerController implements IbuyerContoller{
 
     async committed_Auction(req:AuthRequest, res:Response){
         try {
-            const user = req.user?._id
-          const {success,data,message}=  await this.buyerService.allCommited_Auction(user as string)
+            const userId = req.user
+          const {success,data,message}=  await this.buyerService.allCommited_Auction(userId as string)
           if(success)res.status(200).json({success,data})
           else res.status(404).json({success,message})  
         } catch (error) {

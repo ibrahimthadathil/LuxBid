@@ -17,7 +17,7 @@ export class productService implements IproductService{
         private categoryService :categoryService
     ){}
 
-    async create_Post(user:Iuser,datas:Partial<Iproduct>,files:Express.Multer.File[]){
+    async create_Post(user:string,datas:Partial<Iproduct>,files:Express.Multer.File[]){
         try {
             const {data} =await this.categoryService.find_Category(datas.category as string)
             if(data){
@@ -27,7 +27,7 @@ export class productService implements IproductService{
                  console.log('dddddddd');
                 const imagesLink = response.map((file)=>file.Location)
                 datas.category = data._id
-                const post ={...datas,images:imagesLink,seller:user._id} as Iproduct                
+                const post ={...datas,images:imagesLink,seller:user} as Iproduct                
                 const setPost = await this.productrepo.create(post)
                 console.log('$$$$$$$$$',setPost);
                 if(setPost)return {success:true,message:'Post created Successfully'}

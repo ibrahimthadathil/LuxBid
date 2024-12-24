@@ -12,7 +12,7 @@ export class productController implements IproductController{
     try {
       const images = req.files as Express.Multer.File[];
       const { message, success } = await this.product_Service.create_Post(
-        req.user as Iuser,
+        req.user as string,
         req.body,
         images
       );
@@ -23,10 +23,10 @@ export class productController implements IproductController{
 
   async get_Post(req: AuthRequest, res: Response) {
     try {
-      const user = req.user;
-      if (user) {
+      const userId = req.user;
+      if (userId) {
         const { success, message, data } = await this.product_Service.findUser_Post(
-          user._id as string
+          userId as string
         );
         console.log("====", data);
 
@@ -98,7 +98,7 @@ export class productController implements IproductController{
   }
   async approved_Post(req:AuthRequest,res:Response){
     try {
-      const userId = req.user?._id
+      const userId = req.user
       if(!userId)res.status(403).json({message:'Inavlid Request'})
       const {success,data,message}=await this.product_Service.approved_Post(userId as string)
       if(success)res.status(200).json({message,data})

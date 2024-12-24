@@ -11,8 +11,8 @@ import { IsellerController } from "../../interface/sellerController";
 
     async set_Organizer(req:AuthRequest,res:Response ){
         try {
-            const seller = req.user 
-           const {success , message} = await this.orgService.set_Organizer(seller?._id as string)
+            const sellerId = req.user 
+           const {success , message} = await this.orgService.set_Organizer(sellerId as string)
             if(success){
                 res.status(200).json({success,message})
             }else res.status(401).json({success,message})
@@ -27,11 +27,11 @@ import { IsellerController } from "../../interface/sellerController";
         try {
                 console.log('123455');
                 
-            const user = req.user
-            console.log('@@@',user);
+            const userId = req.user
+            console.log('@@@',userId);
             
-           if(user){
-            const {success,message,buyer,seller}= await this.orgService.get_Seller(user?._id as string)
+           if(userId){
+            const {success,message,buyer,seller}= await this.orgService.get_Seller(userId as string)
             console.log('999999',success,message,buyer,seller);
             
            if(success){

@@ -17,6 +17,18 @@ export class userService implements IuserService {
     private buyerService : buyer_service
   ) {}
 
+  async findUser(userId:string){
+    try {
+     const currentUser = await this.userRepo.findById(userId)
+     if(currentUser){
+       const {password,...rest} = currentUser.toObject()
+       return {success:true , data:rest}
+     }else throw new Error('failed to fetch') 
+    } catch (error) {
+      return {success:false , message:(error as Error).message}
+    }
+  }
+
   async upload_Profile(userId: string, file: Express.Multer.File) {
     try {
       const currentUser = await this.userRepo.findById(userId);

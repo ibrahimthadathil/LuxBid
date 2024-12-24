@@ -80,6 +80,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+html::-webkit-scrollbar{
+  display: none;
+}
 .errInput{
   border: 1px solid red !important;
   outline: 0px transparent;

@@ -5,7 +5,7 @@ export const generateAccessToken =<T>(data:Partial<T>):string =>{
 
         let skey = process.env.JWT_KEY as string
 
-        return jwt.sign(data,skey,{expiresIn:'2m'})
+        return jwt.sign(data,skey,{expiresIn:'24h'})
 
 }
 

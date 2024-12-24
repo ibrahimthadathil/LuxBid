@@ -5,8 +5,9 @@ import { Container, Service } from "typedi";
 import { authService } from "../../../service/implements/user/authService";
 import { IAuthController } from "../../interface/authController_Interface"
 import { setCookie } from "../../../utils/cookie_utils";
-import { set } from "mongoose";
 import { AuthRequest } from "../../../types/api";
+import { HttpStatus } from "@/enums/http_StatusCode";
+import logger from "@/utils/logger_utils";
 
 @Service()
 class AuthController implements IAuthController {
@@ -205,6 +206,30 @@ class AuthController implements IAuthController {
       throw new Error('from logout user')
     }
   }
+
+  async setNewToken(req:Request,res:Response){
+    logger.debug('entered into set new token')
+    const token=req.cookies?.rftn;
+    if(!token){
+        res.status(HttpStatus.FORBIDDEN).json({message:'Internal Server Error'})
+        return
+    }
+    try {
+      console.log('232323');
+      
+      const response= await this.authService.checkToken(token)
+      if(response?.success){
+        res.json({accessToken:response.accessToken})
+        return
+      }else{
+        res.clearCookie('rftn')
+        res.status(HttpStatus.FORBIDDEN).json({message:response?.message})
+      }
+    } catch (error) {
+        console.log('error in the setnew token',error);
+        
+    }
+}
 }
 
 export const authController = Container.get(AuthController);

@@ -5,7 +5,7 @@ import {
   RandomPassword,
 } from "../../../utils/hash_utils";
 import { generateAccessToken } from "../../../utils/jwt_util";
-import { JwtPayload } from "jsonwebtoken";
+import { JsonWebTokenError, JwtPayload } from "jsonwebtoken";
 import { Service } from "typedi";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { IauthService } from "../../interface/authService_Interface";
@@ -277,6 +277,21 @@ export class authService implements IauthService {
     } catch (error) {
       console.log(error);
       return { success: false, message: (error as Error).message };
+    }
+  }
+
+  async checkToken(token:string){
+    try {
+     const response = this.tokenservice.verify_Token(token)
+     if(typeof response === 'object' && response !== null && 'id' in response){
+      const newAccessToken = this.tokenservice.generate_AccessToken({email:response.email,id:response.id})
+      return {success:true,message:"new token created",accessToken:newAccessToken}
+     }
+    } catch (error) {
+      if (error instanceof JsonWebTokenError) {
+        return {success:false,message:"Refresh token expired, please log in again"}
+     }
+     console.error("Error verifying refresh token:", error);
     }
   }
 }
