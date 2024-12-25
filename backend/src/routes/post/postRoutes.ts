@@ -1,8 +1,8 @@
 import {Router} from 'express'
-import { AuthMiddleWare } from '../../middleware/AuthMiddleware'
-import { category_Controller } from '../../controller/implements/admin/categoryController'
-import { upload } from '../../utils/multer_Utils'
-import { product_Controller } from '../../controller/implements/product/productController'
+import { AuthMiddleWare } from '@/middleware/user/AuthMiddleware'
+import { category_Controller } from '@/controller/implements/admin/categoryController'
+import { upload } from '@/utils/multer_Utils'
+import { product_Controller } from '@/controller/implements/product/productController'
 
 const postRoute = Router()
 // find Category

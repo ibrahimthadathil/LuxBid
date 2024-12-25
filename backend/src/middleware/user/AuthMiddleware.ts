@@ -1,8 +1,7 @@
 import { NextFunction, Response } from "express";
-import { AuthRequest } from "../types/api";
-import { verifyToken } from "../utils/jwt_util";
+import { AuthRequest } from "@/types/api";
+import { verifyToken } from "@/utils/jwt_util";
 import { JwtPayload } from "jsonwebtoken";
-import { Iuser, User } from "../models/userModel";
 import { HttpStatus } from "@/enums/http_StatusCode";
 
 
@@ -13,7 +12,7 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
         const token = req.headers['authorization']
         if(!token)res.status(HttpStatus.UNAUTHORIZED).json({ message: "Access denied . No token provided" })
          else{
-            const {email,id} = verifyToken(token) as JwtPayload
+            const {id} = verifyToken(token) as JwtPayload
             const _id = id
             if(_id){
                 req.user = _id

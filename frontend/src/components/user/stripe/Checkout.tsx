@@ -14,7 +14,10 @@ const location = useLocation()
 const {price,title,img,id} = location.state 
 
 const fetchClientSecret = useCallback(async() => await joinPayment({price,title,img,id}), []);
+
+
 const options = {fetchClientSecret};
+console.log(     'sdfsdf:-',options  )
 
   return (
     <div id="checkout">

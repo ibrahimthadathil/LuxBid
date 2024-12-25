@@ -8,7 +8,7 @@ import OTP from "../pages/user/Auth/OTP";
 import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
-import PublicRoute, { AdminPublicRoute } from "../service/PublicRoute";
+import PublicRoute, { AdminProtected, AdminPublicRoute } from "../service/PublicRoute";
 import NotFoundPage from "../components/global/NotFoundPage";
 import Forgetpassword from "../pages/user/Auth/Forgetpassword";
 import SideTextSection from "../components/global/SideTextSection";
@@ -41,17 +41,17 @@ export const Router = createBrowserRouter([
     element: <Auth />,
     children: [
       {
-        path: "registration",
-        element: (
-          <ProtectedRoute
-            element={<Registration />}
-            store="registration-token"
-          />
-        ),
-      },
-      {
         element: <SideTextSection />,
         children: [
+          {
+            path: "registration",
+            element: (
+              <PublicRoute
+                element={<Registration />}
+                route="/"
+              />
+            ),
+          },
           {
             path: "",
             element: <Navigate to="/auth/signup" />,
@@ -66,7 +66,7 @@ export const Router = createBrowserRouter([
           },
           {
             path: "otp/verify",
-            element: <ProtectedRoute element={<OTP />} store="otp-token" />,
+            element: <PublicRoute element={<OTP />}  route="/"/>,
           },
 
           {
@@ -76,7 +76,7 @@ export const Router = createBrowserRouter([
           {
             path: "resetpassword",
             element: (
-              <ProtectedRoute store="rptkn" element={<ResetPassword />} />
+              <PublicRoute element={<ResetPassword />} route="/"/>
             ),
           },
         ],
@@ -117,7 +117,7 @@ export const Router = createBrowserRouter([
   },
   {
     path:'/payment',
-    element:<ProtectedRoute element={<Checkout/>} store="access-token"/>
+    element:<ProtectedRoute element={<Checkout/>} />
   },
   {
     path:'/return',
@@ -178,7 +178,7 @@ export const Router = createBrowserRouter([
       },
       {
         path:'LB',
-        element : <ProtectedRoute element={<AdminHome/>} store="accessToken" />,
+        element :  <AdminProtected element={<AdminHome/>} />,
         children:[
           {
             path:'dashboard',

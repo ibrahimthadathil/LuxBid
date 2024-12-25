@@ -59,7 +59,7 @@ const AuctionForm = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <ScrollArea className="min-h-[100px] h-auto overflow-auto px-2">
+          <ScrollArea className="h-[350px]  px-2">
             <div className="space-y-2 pr-2 p-6 ">
               {data?.length ? (
                 (data as Tproduct[]).map((post) => (
@@ -106,7 +106,7 @@ const AuctionForm = () => {
       </div>
 
       {/* Right side - Auction details */}
-      <div className="w-full sm:w-3/5">
+      <div className="w-full min-h-[] sm:w-3/5">
         <h3 className="text-base font-semibold mb-2">Auction Details</h3>
         <form onSubmit={handleSubmit(onSubmit,errorFn)} className="space-y-4">
           {/* Title */}

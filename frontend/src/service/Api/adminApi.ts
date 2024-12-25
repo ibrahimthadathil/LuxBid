@@ -1,16 +1,18 @@
 import { Tcategory } from '@/types/types'
 import { axiosInstance } from '../axiosInstance/intercepters'
+import axios from 'axios'
 
 type Tadmin = {
     email : string,
     password : string
 }
 
-// const api = axios.create({
-//     baseURL : import.meta.env.VITE_ADMIN_URL
-// })
+const api = axios.create({
+    baseURL : import.meta.env.VITE_ADMIN_URL,
+    withCredentials:true
+})
 
-const api = axiosInstance(import.meta.env.VITE_ADMIN_URL)
+// const api = axiosInstance(import.meta.env.VITE_ADMIN_URL)
 
 
 export const adminSignin=async(adminDetails :Tadmin)=>{

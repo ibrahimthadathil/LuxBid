@@ -1,8 +1,11 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import NavBar from "../../../components/global/NavBar"
 import { HeroHighlight } from "@/components/ui/hero-highlight"
+import { useSelector } from "react-redux"
+import { Rootstate } from "@/redux/store/store"
 
 const Auth = () => {
+  
   return (
     <>
     <HeroHighlight>

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { auction_Controller } from "../../controller/implements/auction/auctionController";
-import { AuthMiddleWare } from "../../middleware/AuthMiddleware";
+import { auction_Controller } from "@/controller/implements/auction/auctionController";
+import { AuthMiddleWare } from "@/middleware/user/AuthMiddleware";
 
 const auctionRoute = Router()
 

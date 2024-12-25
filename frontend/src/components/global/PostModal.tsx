@@ -81,7 +81,7 @@ export function PostModal<T extends Record<string, any>>({
             </Button>
           </div>
           {/* {right side of the imgae view div} */}
-          <ScrollArea className="h-[450px] w-full rounded-md  p-6">
+          <ScrollArea className="max-h-[480px]  w-full rounded-md  p-6">
             <div className="flex flex-col space-y-4 pr-4">
               {sideContent.map((item, index) => (
                 <div key={index} className="space-y-2">
