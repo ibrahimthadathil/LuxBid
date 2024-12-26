@@ -11,3 +11,7 @@ export interface AuthRequest extends Request{
 export interface AdminRequest extends Request{
     admin?:Iadmin
 }
+
+export interface AuctionRequest extends Request{
+    auction?:{id:string,user:string }   
+}

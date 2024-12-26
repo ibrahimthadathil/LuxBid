@@ -1,32 +1,49 @@
-const {createLogger, format, transports ,addColors} = require("winston");
+import path from "path";
+
+const { createLogger, format, transports, addColors } = require("winston");
 
 addColors({
-    error: 'red',
-    warn: 'yellow',
-    info: 'green',
-    http: 'magenta',
-    debug: 'blue'
-  });
+  error: "red",
+  warn: "yellow",
+  info: "green",
+  http: "magenta",
+  debug: "blue",
+});
 
-const customFormate =format.combine(
-    format.json(),
-    format.colorize()
-  ); 
+interface LogEntry {
+  level: string;
+  message: string;
+  timestamp: string;
+}
+
+const customFormat = format.combine(
+  format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+  format.printf((info: LogEntry) => {
+    return ` ${info.timestamp} ${info.level} : ${info.message}`;
+  }),
+  format.json(),
+  format.colorize({ all: true })
+);
 
 const logger = createLogger({
   level: "debug",
-  format: customFormate,
-  transports: [new transports.Console()],
+  format: customFormat,
+  transports: [
+    new transports.Console(),
+    new transports.File({
+      filename: path.join(__dirname, "logs", "combined.log"),
+      level: "debug",
+    }),
+    new transports.File({
+      filename: path.join(__dirname, "logs", "errors.log"),
+      level: "error",
+    }),
+  ],
 });
-
 
 // for errr
 export const logError = (error: unknown): void => {
   logger.error((error as Error).message);
-};
-
-export const logWarning = (message: string): void => {
-  logger.warn(message);
 };
 
 export const logInfo = (message: string): void => {

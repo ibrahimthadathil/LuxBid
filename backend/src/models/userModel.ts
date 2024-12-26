@@ -22,7 +22,7 @@ const userSchema = new Schema({
     phone :{ type : String },
     firstName : { type :String , required : true},
     lastName : { type : String} ,
-    gender : { type : String , enum :[ 'Male' , 'Female','Other' ],  },
+    gender : { type : String , enum :[ 'Male' , 'Female','Other' ],},
     role : { type: String , enum :[ 'Buyer' , 'Seller','Guest'] , default :'Guest'},
     address : { type : mongoose.Schema.Types.ObjectId , ref : 'Address'},
     isActive : {type : Boolean , default : true},
