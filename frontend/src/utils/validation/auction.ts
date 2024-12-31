@@ -48,4 +48,15 @@ export const Zauction = z
     }
   );
 
+// bid validation schema
+export const bidSchema = z.object({
+  bidAmount: z.number().min(1, "Bid amount must be greater than 0"),
+  currentBid: z.number(),
+}).refine(
+  ({ bidAmount, currentBid }) => bidAmount > currentBid,
+  { message: "Bid amount must be higher than the current bid" }
+);
+
+
+
 export type TZauction = z.infer<typeof Zauction>;

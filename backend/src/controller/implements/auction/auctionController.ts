@@ -3,10 +3,11 @@ import { auctionService } from "../../../service/implements/auction/auctionServi
 import { AuthRequest } from "../../../types/api";
 import { Request, Response } from "express";
 import { IAuction } from "../../../models/auctionModel";
+import { SocketService } from "@/service/implements/socket/socket_Service";
 
 @Service()
 export class auctionController {
-  constructor(private auctionService: auctionService) {}
+  constructor(private auctionService: auctionService, private socketService : SocketService) {}
   
   async create_Auction(req:AuthRequest,res:Response){
     const organizer = req.user 
@@ -98,7 +99,9 @@ export class auctionController {
       const userId = req.user
       const {amt,auctionId}= req.body
       const {message,success} = await this.auctionService.raiseBidAMT(amt,auctionId,userId as string)
-      if(success)res.status(200).json({message,success})
+      if(success){
+        this.socketService.emitToRoom(auctionId, "bidUpdated", { amt, userId });
+        res.status(200).json({message,success})}
         else res.status(400).json({message,success})
     } catch (error) {
       console.log('from update');
@@ -112,7 +115,9 @@ export class auctionController {
       const  {message,success}=await this.auctionService.acceptBidAmt(userid,amt,auctionId)
       console.log(success);
       
-      if(success)res.status(200).json({message,success})
+      if(success){
+        this.socketService.emitToRoom(auctionId, "bidAccepted", { userid, amt });
+        res.status(200).json({message,success})}
         else res.status(400).json({message,success})
     } catch (error) {
       res.status(500).json({message:'Internal Server Error :-'+(error as Error).message})

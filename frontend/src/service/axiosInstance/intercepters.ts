@@ -66,6 +66,7 @@ export const axiosInstance = (baseURL: string) => {
             }
             return instance(originalRequest);
           } catch (err) {
+            alert('kkk')
             toast.error("Session expired");
             store.dispatch(logout())
             return Promise.reject(err);

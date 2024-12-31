@@ -14,7 +14,10 @@ import { sessionConfig } from "./utils/session_utils";
 import { AuthMiddleWare } from "./middleware/user/AuthMiddleware";
 import { authorizationAccess } from "./middleware/user/AuthorizationMiddleware";
 import { OrganizerAuthMiddleware } from "./middleware/user/organizerAuthmiddleware";
+import { createServer } from "http";
+import { SocketService } from "@/service/implements/socket/socket_Service";
 import "./utils/logger_utils";
+import Container from "typedi";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 connectDB();
@@ -26,6 +29,9 @@ const target = {
 };
 
 const app = express();
+const httpServer = createServer(app);
+const socketService = Container.get(SocketService);
+socketService.initialize(httpServer);
 app.use(cors(target));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -33,6 +39,8 @@ app.use(cookieParser());
 app.use(session(sessionConfig));
 app.use("/Luxbid", authRoute);
 app.use("/Luxbid", userRoute);
+app.use("/Luxbid", auctionRoute);
+app.use("/LB/api", adminRoute);
 app.use(
   "/Luxbid",
   AuthMiddleWare,
@@ -40,9 +48,6 @@ app.use(
   OrganizerAuthMiddleware,
   postRoute
 );
-app.use("/Luxbid", auctionRoute);
-app.use("/LB/api", adminRoute);
-
 // app.get("/h", (req, res) => {
 //   res
 //     .cookie("jj", "aggahgahg", {
@@ -56,6 +61,6 @@ app.use("/LB/api", adminRoute);
 
 const PORT = process.env.PORT_NO || 4001;
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`backend running at http://localhost:${PORT}`);
 });

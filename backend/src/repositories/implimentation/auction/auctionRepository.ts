@@ -155,24 +155,24 @@ export class auctionRepository extends BasRepository<IAuction> {
 
   async accept_currentBid(user: string, amt: number, auction: string) {
     try {
-    return await Auction.bulkWrite([
-        {
-          updateMany: {
-            filter: {
-              _id: auction,
-              "bidders.user": { $ne: user },
-            },
-            update: { $set: { "bidders.$[].isAccept": false } },
-          },
-        },
-        {
-          updateOne :{
-            filter:{ _id:auction,'bidders.user':user},
-            update:{$set:{baseAmount:amt ,'bidders.$.isAccept':true}},
-          }
-        }
-      ]);
       
+      
+    return await Auction.bulkWrite([
+      {
+        
+        updateOne: {
+          filter: { _id: auction },
+          update: { $set: { "bidders.$[].isAccept": false } }, 
+        },
+      },
+      {
+        updateOne: {
+          filter: { _id: auction, "bidders.user": user },
+          update: { $set: { "bidders.$.isAccept": true } }, 
+        },
+      },
+      ]);
+           
     } catch (error) {
       console.log('error fom bulkwrite');
       

@@ -81,6 +81,7 @@ export class userService implements IuserService {
       if(response.status=='complete'){
       const currentAuction = await this.auctionRepo.findById(query.aid)
       const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+      
       if(response){
        const {success,message} = await this.buyerService.set_MYBids(query.aid,userId,currentAuction?.entryAmt as number)
       return {success,message,data} 
