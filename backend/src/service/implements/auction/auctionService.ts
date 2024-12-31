@@ -1,12 +1,14 @@
 import { Service } from "typedi";
 import { auctionRepository } from "../../../repositories/implimentation/auction/auctionRepository";
 import { IAuction } from "../../../models/auctionModel";
-import { query } from "express";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
+import { scheduledAuctionService } from "./auctionScheduledService";
 
 @Service()
 export class auctionService {
-  constructor(private auctionRepo: auctionRepository,private categoryRepo :categoryRepository) {}
+  constructor(
+    private auctionRepo: auctionRepository,private categoryRepo :categoryRepository ,
+    private scheduledAuctionService :scheduledAuctionService) {}
 
   async create_Auction(auction: IAuction, userId: string) {
     try {
@@ -22,7 +24,10 @@ export class auctionService {
       if (existPost)
         return { success: false, message: "Already made With this post" };
       const response = await this.auctionRepo.create(auction);
-      if (response) return { success: true, message: "Auction Hosted" };
+      if (response){
+        if(response.auctionType=='Scheduled')await this.scheduledAuctionService.scheduleAuctionClosure(response._id ,response.endTime)
+        return { success: true, message: "Auction Hosted" };
+      } 
       else return { success: false, message: "Failed to Host, Try later" };
     } catch (error) {
       return { success: false, message: (error as Error).message };

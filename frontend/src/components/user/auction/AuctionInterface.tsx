@@ -324,6 +324,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSocket } from "@/context/socketCotext";
 import { bidSchema } from "@/utils/validation/auction";
 import { toast } from "sonner";
+import Loader from "@/components/global/Loader";
 
 interface Biduser {
   user: { _id:string,firstName: string; profile: string };
@@ -393,9 +394,8 @@ const AuctionInterface = () => {
         clearInterval(timer);
       }
     }, 1000);
-
     return () => clearInterval(timer);
-  }, [data?.auction?.startTime]);
+  }, [data]);
 
   const handleBid = async (currentbid:number) => {
     try {
@@ -480,12 +480,36 @@ const AuctionInterface = () => {
   };
 
   return (
-    <div className="w-full min-h-screen text-white p-10 relative">
-      {!auctionStarted && (
+    isLoading ? <Loader/> :<div className="w-full min-h-screen text-white p-10 relative">
+      {!auctionStarted && countdown&&(
         <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 border">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-4">Auction Starts In</h2>
             <p className="text-6xl font-bold">{countdown}</p>
+          </div>
+        </div>
+      )}
+      {!data?.auction?.isActive && ( // Added condition to render "Auction is Closed" overlay
+        <div className="absolute inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold mb-4">Auction is Closed</h2>
+            <p className="text-xl mb-4">Ended {moment(data?.auction?.endTime).fromNow()}</p>
+              <div className="mt-4">
+                <h3 className="text-2xl font-semibold mb-2">Winner</h3>
+                <div className="flex items-center justify-center">
+                  <Avatar className="w-16 h-16 mr-4">
+                    <img
+                      src={data?.auction?.bidders[0].user.profile || `https://api.dicebear.com/6.x/initials/svg?seed=${data?.auction?.bidders[0].user.firstName[0]}`}
+                      alt={`${data?.auction?.bidders[0].user.firstName}'s avatar`}
+                      className="object-cover"
+                    />
+                  </Avatar>
+                  <div className="text-left">
+                    <p className="text-lg font-semibold">{data?.auction?.bidders[0].user.firstName}</p>
+                    <p className="text-amber-500">Winning Bid: ₹{data?.auction?.bidders[0].amount}</p>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       )}
@@ -554,13 +578,15 @@ const AuctionInterface = () => {
         {/* Current Bid Display */}
         <div className="text-center mb-8">
           <div className="inline-block bg-slate-800/50 rounded-full px-6 py-2 border border-slate-700">
-            <div className="flex items-center gap-2">
+            <div className="flex  items-center gap-2">
               <Hammer className="w-4 h-4" />
               <span className="text-sm font-semibold">
                 Current Bid: ₹{data?.auction?.baseAmount}
               </span>
+             
             </div>
           </div>
+          <p></p>
         </div>
 
         {/* Bids List */}
