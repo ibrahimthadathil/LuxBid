@@ -147,5 +147,6 @@ export class auctionController {
       res.status(500).json({message:'internal Server Error :- '+(error as Error).message})
     }
   }
+ 
 } 
 export const auction_Controller = Container.get(auctionController);

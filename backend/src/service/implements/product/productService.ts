@@ -8,6 +8,7 @@ import { response } from "express";
 import { IproductService } from "../../interface/productService_Interface";
 import { Icategory } from "../../../models/categoryModel";
 import { title } from "process";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class productService implements IproductService{
@@ -21,6 +22,8 @@ export class productService implements IproductService{
         try {
             const {data} =await this.categoryService.find_Category(datas.category as string)
             if(data){
+                console.log('kkkk');
+                
              const response= await this.s3Service.upload_File(files,'product')
              console.log('wwwwwwww');
              if(Array.isArray(response)){
@@ -36,6 +39,7 @@ export class productService implements IproductService{
          } else throw new Error('failed for setup') 
                         
         } catch (error){
+            logError(error)
             console.log('from create post error');
             return {success:false,message:(error as Error).message}
         }

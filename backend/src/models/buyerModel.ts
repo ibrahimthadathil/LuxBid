@@ -4,7 +4,7 @@ import { Iuser } from "./userModel";
 export interface IBuyer extends Document{
     _id : ObjectId ,
     user :string | Iuser,
-    CommittedBids:[{
+    committedBids:[{
         auction:string,
         bidAmt :number,
         bidDate:Date ,

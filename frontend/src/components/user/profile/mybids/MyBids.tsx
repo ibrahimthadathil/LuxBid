@@ -11,7 +11,7 @@ import { useMemo } from "react"
 
 const MyBids = () => {
   const {data,isLoading}=useRQ(showCommittedBids,'mybids')
-console.log(data);
+console.log(data,'oo');
 
 
     const Columns =useMemo(()=>[
@@ -22,15 +22,17 @@ console.log(data);
       {
         header:'Auction Title',
         render:(auction:any)=>(
+      
+          
           <div className="flex items-center gap-2">
         <Avatar className="h-8 w-8 border rounded-full ">
           <AvatarImage 
-            src={(auction.auction.post as Tproduct).images[0]} 
-            alt={auction.auction.title} 
+            src={(auction?.auction?.post as Tproduct)?.images[0]} 
+            alt={auction?.auction?.title} 
             className="object-cover w-8 h-8 rounded-full" 
           />
           </Avatar>
-          <span>{auction.auction.title}</span>
+          <span>{auction?.auction?.title}</span>
           </div>
         )
       },
@@ -51,7 +53,7 @@ console.log(data);
       {
         header:'Details',
         render:(auction:any)=>(
-          <PostModal images={(auction?.auction?.post as Tproduct).images} sideContent={viewContent} key={auction._id} data={auction.auction} />
+          <PostModal images={(auction?.auction?.post as Tproduct)?.images} sideContent={viewContent} key={auction._id} data={auction.auction} />
         )
       }
     ],[data])
@@ -60,40 +62,40 @@ console.log(data);
       {
         header:'Title of The Auction',
         render :(post:Tauction)=>(
-          <p>{post.title.toUpperCase()}</p>
+          <p>{post?.title?.toUpperCase()}</p>
         )
       },
       {
         header:'Active Participants',
         render :(item:Tauction)=>(
           <div className="">
-            <div className="flex gap-2"><Users size={20}/><p>{item.bidders.length} Members</p></div>
+            <div className="flex gap-2"><Users size={20}/><p>{item?.bidders?.length} Members</p></div>
           </div>
         )
       },
       {
         header:'Auction Type',
         render:(item:Tauction)=>(
-          <span>{item.auctionType =='Live' ? <div className="flex gap-2"><Radio size={20}/><p>Live</p></div> : <div className="flex gap-2"><CalendarClock size={20}/><p>Scheduled</p></div>}</span>
+          <span>{item?.auctionType =='Live' ? <div className="flex gap-2"><Radio size={20}/><p>Live</p></div> : <div className="flex gap-2"><CalendarClock size={20}/><p>Scheduled</p></div>}</span>
         )
       },
       {
         header:'Created Time',
         render:(post:Tauction)=>(
-            <p>{moment(post.startTime).format('LLLL')}</p>
+            <p>{moment(post?.startTime).format('LLLL')}</p>
         )
       },
       {
         header:'End Time',
         render:(post:Tauction)=>{
-          if(post.auctionType=='Scheduled')return <p>{moment(post.endTime).format('LLLL')}</p>
+          if(post?.auctionType=='Scheduled')return <p>{moment(post?.endTime).format('LLLL')}</p>
           else return <p>Will End while Close the Deal</p>
         }
       },
       {
         header:'Fianl Bid Amount ',
         render:(post:Tauction)=>(
-          <p className="text-orange-200"> ₹ {post.baseAmount}</p>
+          <p className="text-orange-200"> ₹ {post?.baseAmount}</p>
       )
       }
     ],[data])

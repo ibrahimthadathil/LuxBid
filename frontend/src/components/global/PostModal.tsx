@@ -22,7 +22,7 @@ export function PostModal<T extends Record<string, any>>({
 }: modalProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [postImages] = useState<string[]>(() =>
-    images ? images : data.images
+    images ? images : data?.images
   );
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -51,7 +51,7 @@ export function PostModal<T extends Record<string, any>>({
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
               >
-                {postImages.map((item: string, i: number) => (
+                {postImages?.map((item: string, i: number) => (
                   <div
                     key={i}
                     className="w-full max-h-[30rem] overflow-hidden flex-shrink-0"
@@ -90,7 +90,7 @@ export function PostModal<T extends Record<string, any>>({
                   </h2>
                   <Separator className="my-2" />
                   <div className="text-sm ">
-                    {item.render ? item.render(data, index) : null}
+                    {item.render ? item?.render(data, index) : null}
                   </div>
                 </div>
               ))}

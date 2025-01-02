@@ -153,3 +153,381 @@
 [34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 01:28:47"}[39m
 [34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 01:28:50"}[39m
 [34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 02:02:44"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:03"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:11"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:14"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 11:30:20"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:21"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:30:23"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:31:28"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 11:31:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:31:33"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:33:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:41"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 11:35:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:48"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:49"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 11:35:50"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:51"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 11:35:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 17:48:03"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 17:52:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 17:54:18"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 18:13:50"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:04:54"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:18:00"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:19:47"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:19:48"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:19:51"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:19:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:20:00"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:20:02"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:20:03"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:20:08"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:20:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:20:34"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:21:27"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:22:24"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:24:34"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:25:28"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:25:46"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:26:06"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:26:37"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:26:53"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:28:18"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:29:08"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:31:35"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:31:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:32:40"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:32:45"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:33:08"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:38:21"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 19:39:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:39:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:39:21"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:48:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 19:59:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:03:40"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:05:49"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:05:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:08:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:08:14"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:08:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:06"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:09:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:10:47"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 20:10:51"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:10:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:11:34"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:11:40"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:12:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:12:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:12:45"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 20:12:46"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:12:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:13:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:13:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:13:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:14:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:14:35"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 20:14:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:14:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:16:56"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:16:56"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:28:40"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:31:18"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:35:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:39:32"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 20:41:06"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:13:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:14:09"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:22:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:22:24"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:25:43"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:25:49"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:29:43"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: The path 'committedBids' must exist in the document in order to apply array updates.","timestamp":"2025-01-01 22:29:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:32:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:35:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:36:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:36:39"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:36:41"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:13"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:20"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:28"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:37:29"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:06"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:09"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 22:39:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:39"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:39:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:01"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 22:40:01"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:08"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:12"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:40:16"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 22:40:30"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 22:40:31"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 22:40:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 22:42:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:42:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:45:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:45:33"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:45:34"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:46:21"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:46:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:46:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:46:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:46:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:47:48"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:47:48"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:50:50"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:51:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:51:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:51:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:52:41"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:52:41"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:52:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:52:48"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:52:48"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:53:20"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:53:20"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:53:57"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:54:39"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:54:39"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:55:08"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:57:23"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:57:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:57:34"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:58:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 22:58:36"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:58:40"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:01:46"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:02:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:03:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:03:54"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:04:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:04:22"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:04:22"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:05:22"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:05:23"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:05:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:05:45"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:05:45"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:06:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:26"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:26"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:27"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:31"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:31"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:07:57"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:08:00"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:08:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:08:13"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:08:18"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:08:18"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:08:34"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:09:18"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:11:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:11:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:11:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:11:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:11:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:12:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:12:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:12:42"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:12:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:13:26"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:13:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:13:33"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:13:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:14:00"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:14:00"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:14:56"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:15:51"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:15:51"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:15:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:16:28"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:16:28"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:16:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:27"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:27"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:28"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:32"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:33"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:45"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:21:53"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:22:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:22:19"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:22:54"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:24:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:24:06"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:24:44"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:24:45"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:24:46"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:25:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:25:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:25:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:27:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 23:27:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:27:57"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:28:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:28:11"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:28:13"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:29:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:29:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:29:54"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:29:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:30:34"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:30:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:30:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:31:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:31:05"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:31:15"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:31:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:32:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:32:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:32:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:32:57"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:33:09"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:33:09"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:33:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:33:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:34:47"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:34:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 23:35:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 23:35:28"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:35:28"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:36:57"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:36:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:37:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:38:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 23:38:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-01 23:38:11"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:38:11"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:38:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:38:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:39:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:39:02"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:07"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:12"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:55"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:58"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:40:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:40:59"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:42:22"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:42:23"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:42:26"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-01 23:44:03"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:45:06"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:45:56"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:45:56"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:48:04"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:48:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:52:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:55:00"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:57:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-01 23:59:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:00:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:03:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:05:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:07:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:09:05"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:11:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:24:27"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:35:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:37:08"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:40:45"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:41:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:41:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:41:49"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:42:30"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:43:05"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:44:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 00:44:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:01:12"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:03:09"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:14:36"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:21:31"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:28:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:44:56"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:46:32"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:48:19"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:48:19"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:49:58"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:49:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:50:58"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:50:58"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:53:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:55:52"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 01:57:14"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:03:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:04:25"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:05:11"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:08:01"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:09:46"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 02:13:04"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 08:55:41"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:01:59"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:03:32"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:04:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-02 09:09:15"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:15:37"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:21:38"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:30:12"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:30:45"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:31:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-02 09:31:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-02 09:31:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-02 09:31:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-02 09:31:33"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:31:39"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:31:39"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:31:41"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:31:50"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:31:51"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:32:01"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:32:03"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:32:17"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:32:18"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:32:19"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:32:24"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:32:27"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:35:42"}[39m
+[34m{"level":"debug","message":"from buyer middleware","timestamp":"2025-01-02 09:35:42"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:35:43"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:35:44"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:36:16"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:37:38"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:38:12"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:41:01"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:42:10"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:43:19"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:45:01"}[39m
+[34m{"level":"debug","message":"from seller middleware","timestamp":"2025-01-02 09:50:38"}[39m

@@ -3,12 +3,14 @@ import { auctionRepository } from "../../../repositories/implimentation/auction/
 import { IAuction } from "../../../models/auctionModel";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
 import { scheduledAuctionService } from "./auctionScheduledService";
+import { save } from "agenda/dist/job/save";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class auctionService {
   constructor(
     private auctionRepo: auctionRepository,private categoryRepo :categoryRepository ,
-    private scheduledAuctionService :scheduledAuctionService) {}
+    private scheduledAuctionService :scheduledAuctionService, ) {}
 
   async create_Auction(auction: IAuction, userId: string) {
     try {
@@ -184,4 +186,5 @@ export class auctionService {
       return {success:false , message :(error as Error).message}
     }
   }
+
 }

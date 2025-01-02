@@ -1,6 +1,8 @@
 import { Service } from "typedi";
 import { Buyer, IBuyer } from "../../models/buyerModel";
 import { BasRepository } from "./baseRepository";
+import { logError } from "@/utils/logger_utils";
+import { IAuction } from "@/models/auctionModel";
 
 @Service()
 export class BuyerRepository extends BasRepository<IBuyer> {
@@ -41,5 +43,35 @@ export class BuyerRepository extends BasRepository<IBuyer> {
       console.log('error from finding buyer',(error as Error).message);
       throw new Error('failed to load the bids')
     }
+  }
+  async updateAuctionHistory(auction:IAuction) {
+    try {
+      const bulkOps = auction.bidders.map(bidder => ({
+        updateOne: {
+          filter: { 
+            user: bidder.user,
+            'committedBids.auction': auction._id 
+          },
+          update: {
+            $set: {
+              'committedBids.$.bidStatus': bidder.isAccept ? 'WIN' : 'LOST',
+              'committedBids.$.bidAmt': bidder.amount,
+              'committedBids.$.bidDate': bidder.bidTime
+            }
+          }
+        }
+      }));
+  
+      const result = await Buyer.bulkWrite(bulkOps);
+      
+        return true
+      
+  
+    } catch (error) {
+      logError(error)
+      console.error('Error updating auction history:', error);
+    }
+  
+  
   }
 }

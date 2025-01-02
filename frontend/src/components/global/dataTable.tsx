@@ -25,7 +25,7 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
   const currentData = useMemo(()=>{
     const firstPage = (currentPage-1) * itemsPerPage
     const lastPage = firstPage + itemsPerPage 
-    return data.slice(firstPage,lastPage)
+    return data?.slice(firstPage,lastPage)
   },[currentPage,data,itemsPerPage])
   console.log(data);
   

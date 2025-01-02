@@ -27,7 +27,6 @@ export class SocketService {
 
             } catch (error) {
               console.error(`Error in joinAuctionRoom: ${(error as Error).message}`);
-
               socket.emit("error", { message: "Failed to join room." });
             }
           });
@@ -40,9 +39,18 @@ export class SocketService {
             }
           });
 
+          socket.on('bidAccepted',({AuctionId,amount,user})=>{
+            socket.to(AuctionId).emit('notifyBidAccepted',{message:`Bid of ₹${amount} by ${user} is Accepted`})
+          })
+
+
           socket.on("error", (error: Error) => {
             console.error(`Socket error: ${error.message}`);
           });
+
+
+
+
         });
       }
     } catch (error) {
@@ -50,7 +58,7 @@ export class SocketService {
     }
   }
 
-  emitToRoom(room: string, event: string, data: any) {
+  emitToRoom(room: string, event: string, data?: any) {
     try {
       if (this.io) {
         this.io.to(room).emit(event, data);

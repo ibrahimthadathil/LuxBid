@@ -26,3 +26,9 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
 
     }
   }
+
+  // finalize bid 
+
+  export const finalizeDeal =async(id:string)=>{
+    return await api.post(`/finalize-deal/${id}`)
+  }

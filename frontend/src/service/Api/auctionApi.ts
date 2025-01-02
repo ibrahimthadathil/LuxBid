@@ -46,3 +46,5 @@ export const viewAllAuctions =async(query:string)=>{
     return await api.get(`/AllDeals?${query}`)
 }
 
+
+

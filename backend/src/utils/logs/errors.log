@@ -2,3 +2,21 @@
 [31m{"level":"error","message":"gokul","timestamp":"2024-12-28 20:23:42"}[39m
 [31m{"level":"error","message":"gokul","timestamp":"2024-12-28 20:26:42"}[39m
 [31m{"level":"error","message":"gokul","timestamp":"2024-12-29 12:01:28"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:05:49"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:16:56"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:43"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:49"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: The path 'committedBids' must exist in the document in order to apply array updates.","timestamp":"2025-01-01 22:29:43"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:53:57"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:58:40"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:06:42"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:08:34"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:09:18"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:12:53"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:14:56"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:16:59"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:45:56"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:48:04"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:48:19"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:49:58"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:50:58"}[39m

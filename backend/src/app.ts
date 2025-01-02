@@ -32,6 +32,7 @@ const app = express();
 const httpServer = createServer(app);
 const socketService = Container.get(SocketService);
 socketService.initialize(httpServer);
+
 app.use(cors(target));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

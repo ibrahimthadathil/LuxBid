@@ -3,13 +3,18 @@ import { organizerRepository } from "../../../repositories/implimentation/organi
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { BuyerRepository } from "../../../repositories/implimentation/buyerRepository";
 import { IorgaizerService } from "../../interface/organizerService_Interface";
+import { logError } from "@/utils/logger_utils";
+import { auctionRepository } from "@/repositories/implimentation/auction/auctionRepository";
+import { SocketService } from "../socket/socket_Service";
 
 @Service()
 export class organizerService implements IorgaizerService{
   constructor(
     private sellerRepo: organizerRepository,
     private userRepo: userRepository,
-    private buyerRepo : BuyerRepository
+    private buyerRepo : BuyerRepository,
+    private auctionRepo :auctionRepository,
+    private socketService : SocketService
   ) {}
 
   async set_Organizer(userId: string) {
@@ -47,4 +52,26 @@ export class organizerService implements IorgaizerService{
       throw new Error((error as Error).message)
     }
   }
+
+   async finalize_Auction(organizer:string,auction:string){
+      try {
+         const response =  await this.auctionRepo.findById(auction)
+         if(response?.seller==organizer){
+          response.isActive = false;
+          if(response.auctionType=='Live')response.endTime = new Date()
+          await response.save() 
+         const updated =  await this.buyerRepo.updateAuctionHistory(response)// update the buyer history
+          if(updated){
+            this.socketService.emitToRoom(auction, 'auctionUpdated', { message: 'Auction data updated'});
+            return{success:true}
+           } else return {success:false ,message:'failed to finalise the auction'}
+         }
+         else throw new Error('un-Authorized')
+         
+      } catch (error) {
+        logError(error)
+        return {success:false}
+      }
+    }
+
 }

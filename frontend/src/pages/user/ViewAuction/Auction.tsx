@@ -236,7 +236,7 @@ const AuctionPage = React.memo(() => {
             </div>
 
             {/* Join Button */}
-            <Dialog>
+            {!data?.isActive&&data?.seller?.email!==email&&!joinedUser ?<Button className="bg-red-800" variant={"outline"}>Auction Closed</Button>:<Dialog>
               <DialogTrigger asChild>
               <Button className="w-full bg-indigo-900 hover:bg-indigo-700 text-white py-6 text-lg"
               onClick={()=>handleClick()}
@@ -315,7 +315,7 @@ const AuctionPage = React.memo(() => {
           </Button>
         </div>
       </DialogContent>
-            </Dialog>
+            </Dialog>}
           </div>
         </div>
       </div>

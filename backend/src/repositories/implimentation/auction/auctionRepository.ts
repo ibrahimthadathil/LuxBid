@@ -168,7 +168,7 @@ export class auctionRepository extends BasRepository<IAuction> {
       {
         updateOne: {
           filter: { _id: auction, "bidders.user": user },
-          update: { $set: { "bidders.$.isAccept": true } }, 
+          update: { $set: { "bidders.$.isAccept": true } , baseAmount:amt }, 
         },
       },
       ]);

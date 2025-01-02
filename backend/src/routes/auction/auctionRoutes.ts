@@ -3,6 +3,7 @@ import { auction_Controller } from "@/controller/implements/auction/auctionContr
 import { AuthMiddleWare } from "@/middleware/user/AuthMiddleware";
 import { authorizationAccess } from "@/middleware/user/AuthorizationMiddleware";
 import { OrganizerAuthMiddleware } from "@/middleware/user/organizerAuthmiddleware";
+import { Organizer_Controller } from "@/controller/implements/user/organizerController";
 
 const auctionRoute = Router()
 
@@ -16,5 +17,7 @@ auctionRoute.get('/auctionInterface/:id',AuthMiddleWare,auction_Controller.aucto
 auctionRoute.post('/raise-bid-amt',AuthMiddleWare,auction_Controller.raiseBid_AMT.bind(auction_Controller))
 auctionRoute.post('/accept-bidAmt',AuthMiddleWare,auction_Controller.accept_BidAmt.bind(auction_Controller))
 auctionRoute.get('/AllDeals',auction_Controller.filtered_auction.bind(auction_Controller))
+
+auctionRoute.post('/finalize-deal/:id',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,Organizer_Controller.finalize_Deal.bind(Organizer_Controller))
 
 export default auctionRoute

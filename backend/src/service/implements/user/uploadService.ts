@@ -7,6 +7,7 @@ import {
   S3Client,
 } from "@aws-sdk/client-s3";
 import { IuploadServise } from "../../interface/s3Service_Interface";
+import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 
 
 @Service()
@@ -19,7 +20,10 @@ export class s3Service implements IuploadServise{
         secretAccessKey: process.env.BUCKET_SECRET_KEY || "",
       },
       region: process.env.BUCKET_REGION || "",
-    });
+      requestHandler: new NodeHttpHandler({
+        connectionTimeout: 300000, // Set connection timeout (5 minutes)
+        socketTimeout: 300000, // Set socket timeout (5 minutes)
+      }),    });
   }
   private validate_Files(file:Express.Multer.File){
     if (file.size > 2 * 1024 * 1024)
