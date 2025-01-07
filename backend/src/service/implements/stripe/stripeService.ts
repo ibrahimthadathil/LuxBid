@@ -1,9 +1,14 @@
+import { logError } from "@/utils/logger_utils";
+import Stripe from "stripe";
 import { Service } from "typedi";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 @Service()
 export class stripeService {
-  constructor() {}
+  private stripe: Stripe;
+  constructor() {
+    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!   );
+  }
   async makePaymentSession(data:any) {      
     try {
       console.log(data);
@@ -26,6 +31,10 @@ export class stripeService {
         line_items: paymentItems,
         mode: "payment",
         return_url: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
+        metadata: {
+          aid: data.id,  
+          userId: data.userId
+        }
       });
       console.log('workingstopp');
       return session;
@@ -47,4 +56,38 @@ export class stripeService {
         throw new Error('Failed to complee the payment')
     }
   }
+  
+  async handleWebhook(event: Stripe.Event) {
+    try {
+      if (event.type === 'checkout.session.completed') {
+        const session = event.data.object as Stripe.Checkout.Session;
+        await this.handleSuccessfulPayment(session);
+      }
+      return { success: true };
+    } catch (error) {
+      logError(error);
+      throw error;
+    }
+  }
+  
+  private async handleSuccessfulPayment(session: Stripe.Checkout.Session) {
+    try {
+      const auctionId = session.metadata?.auctionId;
+      const userId = session.metadata?.userId;
+  
+      if (!auctionId || !userId) {
+        throw new Error('Missing metadata in session');
+      }
+  
+      // await this.auctionRepo.updatePaymentStatus(
+      //   auctionId,
+      //   userId,
+      //   'completed'
+      // );
+    } catch (error) {
+      logError(error);
+      throw error;
+    }
+  }
+
 }

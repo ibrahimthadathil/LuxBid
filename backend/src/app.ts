@@ -37,7 +37,7 @@ app.use(cors(target));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session(sessionConfig));
+// app.use(session(sessionConfig));
 app.use("/Luxbid", authRoute);
 app.use("/Luxbid", userRoute);
 app.use("/Luxbid", auctionRoute);

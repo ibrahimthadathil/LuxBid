@@ -31,7 +31,7 @@ export const useSocket = () => {
   const context = useContext(SocketContext);
   // console.log("Socket Context:", context); 
   if (!context) {
-    throw new Error("useSocket must be used within a SocketProvider");
+    throw new Error("error from use socket");
   }
   return context;
 };

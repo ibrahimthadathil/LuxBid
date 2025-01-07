@@ -8,7 +8,6 @@ const controllerMap = new Map();
 
 export const axiosInstance = (baseURL: string) => {
   
-
   const instance = axios.create({
     baseURL,
     withCredentials: true,
@@ -68,6 +67,7 @@ export const axiosInstance = (baseURL: string) => {
           } catch (err) {
             alert('kkk')
             toast.error("Session expired");
+            alert('ooo')
             store.dispatch(logout())
             return Promise.reject(err);
           }

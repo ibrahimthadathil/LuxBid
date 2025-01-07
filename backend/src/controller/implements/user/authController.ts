@@ -6,8 +6,8 @@ import { authService } from "../../../service/implements/user/authService";
 import { IAuthController } from "../../interface/authController_Interface"
 import { setCookie } from "../../../utils/cookie_utils";
 import { AuthRequest } from "../../../types/api";
-import { HttpStatus } from "@/enums/http_StatusCode";
-import logger from "@/utils/logger_utils";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
+import logger, { logError } from "@/utils/logger_utils";
 
 @Service()
 class AuthController implements IAuthController {
@@ -22,17 +22,18 @@ class AuthController implements IAuthController {
         userData.email
       );
       if (!token && !success) {
-        res.status(409).json({ response: message, success: false });
-        console.log(message);
+        res.status(HttpStatus.CONFLICT).json({ response: message, success: false });
+       
       } else {
-        res.status(200).json({ token: token, response: message, success });
+        res.status(HttpStatus.OK).json({ token: token, response: message, success });
       }
     } catch (error) {
-      console.log((error as Error).message);
+      logError(error)
+      
       res
-        .status(500)
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
         .json({
-          response: "Internal server error",
+          response: responseMessage.ERROR_MESSAGE,
           error: (error as Error).message,
         });
     }
@@ -42,18 +43,17 @@ class AuthController implements IAuthController {
     try {
       
       const { otp } = req.body;
-      console.log('dfgh' , otp);
       const token = req.headers.authorization as string; 
       if(otp){
         const response = await this.authService.verify_otp(otp, token);
         if (!response.success){
-          res.status(401).json({ message: response.message });
+          res.status(HttpStatus.UNAUTHORIZED).json({ message: response.message });
   
         }else{
           req.session.userId = response.user as string
           setCookie(res, "rftn", response.refresh as string);
           res
-            .status(200)
+            .status(HttpStatus.OK)
             .json({
               success: true,
               token: response.token,
@@ -63,11 +63,12 @@ class AuthController implements IAuthController {
             });
   
         }
-      }else res.status(401).json({ message: "OTP Required..!" });
+      }else res.status(HttpStatus.UNAUTHORIZED).json({ message: "OTP Required..!" });
     } catch (error) {
-      console.log((error as Error).message);
+      logError(error)
+      
       if ((error as Error).message == "Token verification failed") {
-        res.status(401).json({ message: "Invalid token" });
+        res.status(HttpStatus.UNAUTHORIZED).json({ message: "Invalid token" });
       }
     }
   }
@@ -79,12 +80,13 @@ class AuthController implements IAuthController {
       const response = await this.authService.register_User(userDetails, token);
       if (response.success) {
         res
-          .status(200)
+          .status(HttpStatus.OK)
           .json({ token: response.token, message: response.message });
       } else {
-        res.status(403).json({ message: response.message });
+        res.status(HttpStatus.FORBIDDEN).json({ message: response.message });
       }
     } catch (error) {
+      logError(error)
       console.log(error);
     }
   }
@@ -94,12 +96,11 @@ class AuthController implements IAuthController {
       const { email, password } = req.body;
       const response = await this.authService.verify_SignIn(email, password);
       if (response?.success) {
-        console.log(response);
         let userId = response.user?.toString()
         req.session.userId = userId;
         setCookie(res, "rftn", response.refresh as string);
         res
-          .status(200)
+          .status(HttpStatus.OK)
           .json({
             token: response.token,
             success: true,
@@ -109,10 +110,11 @@ class AuthController implements IAuthController {
           });
       } else {
         console.log("check");
-        res.status(401).json(response);
+        res.status(HttpStatus.UNAUTHORIZED).json(response);
       }
     } catch (error) {
-      res.status(500).json({ message: (error as Error).message });
+      logError(error)
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: (error as Error).message });
     }
   }
 
@@ -125,14 +127,15 @@ class AuthController implements IAuthController {
         req.session.userId = user as string
         setCookie(res, "rftn", refresh as string);
         res
-          .status(200)
+          .status(HttpStatus.OK)
           .json({ AccessToken: token, message: message, success: true });
       } else {
-        res.status(500).json({ message: message });
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: message });
       }
     } catch (error) {
+      logError(error)
       console.log(error);
-      res.status(500).json({ message: (error as Error).message });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: (error as Error).message });
     }
   }
 
@@ -142,11 +145,12 @@ class AuthController implements IAuthController {
       const { success, message, token } =
         await this.authService.forget_Password(email);
       console.log(success);
-      if (!success) res.status(401).json({ message });
-      else res.status(200).json({ message, token });
+      if (!success) res.status(HttpStatus.UNAUTHORIZED).json({ message });
+      else res.status(HttpStatus.OK).json({ message, token });
     } catch (error) {
+      logError(error)
       console.log(error);
-      res.status(500).json({ message: (error as Error).message });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: (error as Error).message });
     }
   }
 
@@ -161,14 +165,15 @@ class AuthController implements IAuthController {
           otp
         );
         if (!success) {
-          res.status(401).json({ message });
+          res.status(HttpStatus.UNAUTHORIZED).json({ message });
         }else{
-          res.status(200).json({ message, token });
+          res.status(HttpStatus.OK).json({ message, token });
         }
-      }else res.status(401).json({message :'OTP is required'})      
+      }else res.status(HttpStatus.UNAUTHORIZED).json({message :'OTP is required'})      
     } catch (error) {
+      logError(error)
       console.log(error, "from reset password");
-      res.status(500).json({ message: "server error , try after some time" });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message:responseMessage.ERROR_MESSAGE });
     }
   }
 
@@ -182,26 +187,28 @@ class AuthController implements IAuthController {
         Token
       );
       if (success) {
-        res.status(200).json({ success :true, message:message,});
+        res.status(HttpStatus.OK).json({ success :true, message:message,});
       }else{
-        res.status(401).json({ success:false,message:message})
+        res.status(HttpStatus.UNAUTHORIZED).json({ success:false,message:message})
       }
     } catch (error) {
+      logError(error)
       console.error(error);
-      res.status(500).json({ message: "Server error, try again later" });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE });
     }
   }
 
   async logoutUser(req:AuthRequest,res:Response){
     try {
       res.clearCookie('rftn');
-       res.status(200).json({message:"loggedOut"})
-       req.session.destroy((err) => {
-        if (err) {
-          console.error('Error during logout:', err);
-          return res.status(500).send('Could not log out');
-        } }) 
+       res.status(HttpStatus.OK).json({message:"loggedOut"})
+      //  req.session.destroy((err) => {
+      //   if (err) {
+      //     console.error('Error during logout:', err);
+      //     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Could not log out');
+      //   } }) 
      } catch (error) {
+      logError(error)
       console.log((error as Error).message)
       throw new Error('from logout user')
     }
@@ -211,7 +218,7 @@ class AuthController implements IAuthController {
     logger.debug('entered into set new token')
     const token=req.cookies?.rftn;
     if(!token){
-        res.status(HttpStatus.FORBIDDEN).json({message:'Internal Server Error'})
+        res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ERROR_MESSAGE})
         return
     }
     try {
@@ -226,6 +233,7 @@ class AuthController implements IAuthController {
         res.status(HttpStatus.FORBIDDEN).json({message:response?.message})
       }
     } catch (error) {
+      logError(error)
         console.log('error in the setnew token',error);
         
     }

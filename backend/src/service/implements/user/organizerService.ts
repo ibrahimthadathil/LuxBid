@@ -6,6 +6,7 @@ import { IorgaizerService } from "../../interface/organizerService_Interface";
 import { logError } from "@/utils/logger_utils";
 import { auctionRepository } from "@/repositories/implimentation/auction/auctionRepository";
 import { SocketService } from "../socket/socket_Service";
+import { stripeService } from "../stripe/stripeService";
 
 @Service()
 export class organizerService implements IorgaizerService{
@@ -14,7 +15,8 @@ export class organizerService implements IorgaizerService{
     private userRepo: userRepository,
     private buyerRepo : BuyerRepository,
     private auctionRepo :auctionRepository,
-    private socketService : SocketService
+    private socketService : SocketService,
+    private stripeService : stripeService
   ) {}
 
   async set_Organizer(userId: string) {
@@ -63,6 +65,24 @@ export class organizerService implements IorgaizerService{
          const updated =  await this.buyerRepo.updateAuctionHistory(response)// update the buyer history
           if(updated){
             this.socketService.emitToRoom(auction, 'auctionUpdated', { message: 'Auction data updated'});
+
+
+
+            const losingBidders = response.bidders.filter(bidder => !bidder.isAccept);
+            for (const bidder of losingBidders) {
+              try {
+                // Assuming the bidder object has the paymentIntentId and the amount they paid
+                if (bidder.paymentSessionId) {
+                  // await this.stripeService.refundPayment(bidder.paymentSessionId, bidder.amount);
+                }
+              } catch (error) {
+                logError(error);
+              }
+            }
+    
+
+
+
             return{success:true}
            } else return {success:false ,message:'failed to finalise the auction'}
          }

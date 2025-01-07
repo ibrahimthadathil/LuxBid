@@ -21,6 +21,7 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
         }
 
     } catch (error) {
+        console.log((error as Error).message);
         console.log('error from middleware');
         res.status(400).json({message:(error as Error).message})
     }

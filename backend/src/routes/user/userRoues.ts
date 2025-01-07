@@ -23,6 +23,10 @@ userRoute.get('/allBids',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,
 userRoute.post('/create-checkout-session',AuthMiddleWare,userController.make_Payment.bind(userController))
 userRoute.get('/session-status',AuthMiddleWare,userController.payment_Status.bind(userController)) 
 
+// userRoute.post('/webhook', 
+//     // express.raw({type: 'application/json'}),
+//     userController.webhook_Handler.bind(userController)
+//   );
 
 
 

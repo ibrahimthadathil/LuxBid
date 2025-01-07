@@ -6,6 +6,17 @@ export enum HttpStatus {
     UNAUTHORIZED = 401,
     FORBIDDEN = 403,
     NOT_FOUND = 404,
+    CONFLICT=409,
     INTERNAL_SERVER_ERROR = 500,
     SERVICE_UNAVAILABLE = 503,
 }
+
+export const responseMessage = {
+    SUCCESS_MESSAGE: "Operation completed successfully.",
+    ERROR_MESSAGE: "An error has occurred. Please try again later.",
+    LOGIN_REQUIRED: "You must be logged in to access this feature.",
+    ACCESS_DENIED: "You do not have permission to access this resource.",
+    NOT_FOUND: "The requested resource was not found.",
+    INVALID_INPUT: "The input provided is invalid.",
+    INVALID_REQUEST:"Invalid Request"
+} as const;

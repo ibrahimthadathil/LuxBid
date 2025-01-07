@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { Auction, IAuction } from "../../../models/auctionModel";
 import { BasRepository } from "../baseRepository";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class auctionRepository extends BasRepository<IAuction> {
@@ -110,15 +111,14 @@ export class auctionRepository extends BasRepository<IAuction> {
     } catch (error) {}
   }
 
-  async join_Auction(auctionId: string, userId: string, bidAmt: number) {
+  async join_Auction(auctionId: string, userId: string, bidAmt: number,paymentSessionId: string) {
     try {
     return  await Auction.findOneAndUpdate(
         { _id: auctionId, "bidders.user": { $ne: userId } },
         {
           $addToSet: {
-            bidders: { user: userId, bidTime: Date.now(), amount: bidAmt },
-          },
-        },
+            bidders: { user: userId, bidTime: Date.now(), amount: bidAmt , paymentSessionId ,paymentStatus: "pending"},
+        }},
         { new: true }
       );
       
@@ -208,6 +208,15 @@ export class auctionRepository extends BasRepository<IAuction> {
       return await Auction.find({auctionType:auctionType}).populate('seller','-password').populate('post')
     } catch (error) {
       console.log('error from find by type :-'+ (error as Error).message);
+    }
+  }
+
+  async updatePaymentStatus(auctionId: string, userId: string, status: string){
+    try {
+     return await Auction.updateOne( { _id: auctionId, "bidders.user": userId },
+        { $set: { "bidders.$.paymentStatus": status } })
+    } catch (error) {
+      logError(error)
     }
   }
 }

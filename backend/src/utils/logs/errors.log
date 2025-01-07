@@ -20,3 +20,6 @@
 [31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:48:19"}[39m
 [31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:49:58"}[39m
 [31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:50:58"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:17:41"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:20:10"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:22:12"}[39m

@@ -61,10 +61,12 @@ export class userService implements IuserService {
     }
   }
 
-  async auction_JoinPayment(data: any) {
+  async auction_JoinPayment(data: any,userId:string) {
     try {
       const session = await this.stripeService.makePaymentSession(data);
-      if (session) return { success: true, session };
+      if (session) {
+        await this.auctionRepo.join_Auction(data.id, userId, data.price, session.id);
+        return { success: true, session }}
       else return { success: false, message: "Failed to make payment" };
     } catch (error) {
       return { success: false, message: (error as Error).message };
@@ -80,7 +82,8 @@ export class userService implements IuserService {
       };
       if(response.status=='complete'){
       const currentAuction = await this.auctionRepo.findById(query.aid)
-      const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+      // const response = await this.auctionRepo.join_Auction(query.aid,userId,currentAuction?.entryAmt as number)
+      const response =await this.auctionRepo.updatePaymentStatus(query.aid, userId, "completed")
       
       if(response){
        const {success,message} = await this.buyerService.set_MYBids(query.aid,userId,currentAuction?.entryAmt as number)

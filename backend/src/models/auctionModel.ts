@@ -11,7 +11,9 @@ export interface IAuction extends Document{
         user:string,
         bidTime:Date,
         isAccept:boolean,
-        amount:number
+        amount:number,
+        paymentSessionId:string,
+        paymentStatus:string
     }[],
     endTime:Date,
     startTime:Date,
@@ -32,6 +34,8 @@ const auctionSchema = new Schema({
         bidTime:{type:Date},
         amount:{type:Number},
         isAccept:{type:Boolean, default:false},
+        paymentSessionId: { type: String }, 
+        paymentStatus: { type: String, default: 'pending' }
     }],
     endTime:{type:Date},
     startTime:{type:Date ,default:Date.now()},
