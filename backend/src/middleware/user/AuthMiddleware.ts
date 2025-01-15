@@ -2,7 +2,7 @@ import { NextFunction, Response } from "express";
 import { AuthRequest } from "@/types/api";
 import { verifyToken } from "@/utils/jwt_util";
 import { JwtPayload } from "jsonwebtoken";
-import { HttpStatus } from "@/enums/http_StatusCode";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 
 
 export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunction)=>{
@@ -13,11 +13,11 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
         if(!token)res.status(HttpStatus.UNAUTHORIZED).json({ message: "Access denied . No token provided" })
          else{
             const {id} = verifyToken(token) as JwtPayload
-            const _id = id
-            if(_id){
-                req.user = _id
+            const userId = id
+            if(userId){
+                req.user = userId
                 next()
-            }else res.status(HttpStatus.UNAUTHORIZED)
+            }else res.status(HttpStatus.UNAUTHORIZED).json({message:responseMessage.ACCESS_DENIED})
         }
 
     } catch (error) {

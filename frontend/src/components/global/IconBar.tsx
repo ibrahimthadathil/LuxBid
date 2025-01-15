@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import AboutIcon from '../../assets/icons/About';
-import Deals from '../../assets/icons/Deals';
-import GuideIcon from '../../assets/icons/Guide';
-import HomeIcon from '../../assets/icons/Home';
-import CommunityIcon from '../../assets/icons/Pepole';
+
 import CustomButton from '@/components/ux/customButon';
 import { useNavigate } from 'react-router-dom';
+import { CircleAlert, Handshake,} from 'lucide-react';
+import { FaGuilded, FaHouseDamage } from 'react-icons/fa';
+import { MdPeople } from 'react-icons/md';
 
 const IconBar = () => {
   const [activeIcon, setActiveIcon] = useState<string>('home');
@@ -52,7 +51,7 @@ const IconBar = () => {
           className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
         >
           <span className="pt-1">
-            <HomeIcon color={isActive('home') ? '#5B4BAE' : 'white'} />
+            <FaHouseDamage color={isActive('home') ? '#5B4BAE' : 'white'} />
           </span>
           Home
         </div>
@@ -64,7 +63,7 @@ const IconBar = () => {
           className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
         >
           <span className="pt-1">
-            <GuideIcon color={isActive('guide') ? '#5B4BAE' : 'white'} />
+            <FaGuilded color={isActive('guide') ? '#5B4BAE' : 'white'} />
           </span>
           Guide
         </div>
@@ -76,7 +75,7 @@ const IconBar = () => {
           className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
         >
           <span className="pt-1">
-            <Deals color={isActive('deals') ? '#5B4BAE' : 'white'} />
+            <Handshake size={18} color={isActive('deals') ? '#5B4BAE' : 'white'} />
           </span>
           Deals
         </div>
@@ -88,7 +87,7 @@ const IconBar = () => {
           className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
         >
           <span className="pt-1">
-            <AboutIcon color={isActive('about') ? '#5B4BAE' : 'white'} />
+            <CircleAlert size={18} color={isActive('about') ? '#5B4BAE' : 'white'} />
           </span>
           About
         </div>
@@ -100,7 +99,7 @@ const IconBar = () => {
           className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
         >
           <span className="pt-1">
-            <CommunityIcon color={isActive('community') ? '#5B4BAE' : 'white'} />
+            <MdPeople color={isActive('community') ? '#5B4BAE' : 'white'} />
           </span>
           Community
         </div>

@@ -7,7 +7,7 @@ import { IAuthController } from "../../interface/authController_Interface"
 import { setCookie } from "../../../utils/cookie_utils";
 import { AuthRequest } from "../../../types/api";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
-import logger, { logError } from "@/utils/logger_utils";
+import logger, { logDebug, logError } from "@/utils/logger_utils";
 
 @Service()
 class AuthController implements IAuthController {
@@ -96,9 +96,8 @@ class AuthController implements IAuthController {
       const { email, password } = req.body;
       const response = await this.authService.verify_SignIn(email, password);
       if (response?.success) {
-        let userId = response.user?.toString()
-        req.session.userId = userId;
         setCookie(res, "rftn", response.refresh as string);
+        setCookie(res,'authtkn',response.roleAccess as string)
         res
           .status(HttpStatus.OK)
           .json({
@@ -121,10 +120,10 @@ class AuthController implements IAuthController {
   async googleAuth(req: Request, res: Response) {
     const userDetails: Iuser = req.body;
     try {
-      const { success, message, token, refresh,user } =
+      const { success, message, token, refresh ,roleAccess} =
         await this.authService.verify_Google(userDetails);
       if (success) {
-        req.session.userId = user as string
+        setCookie(res,'authtkn',roleAccess as string)
         setCookie(res, "rftn", refresh as string);
         res
           .status(HttpStatus.OK)
@@ -201,6 +200,7 @@ class AuthController implements IAuthController {
   async logoutUser(req:AuthRequest,res:Response){
     try {
       res.clearCookie('rftn');
+      res.clearCookie('authtkn');
        res.status(HttpStatus.OK).json({message:"loggedOut"})
       //  req.session.destroy((err) => {
       //   if (err) {

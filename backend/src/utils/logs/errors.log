@@ -23,3 +23,8 @@
 [31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:17:41"}[39m
 [31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:20:10"}[39m
 [31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:22:12"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:46:41"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:47:13"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:48:41"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:49:50"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:52:36"}[39m

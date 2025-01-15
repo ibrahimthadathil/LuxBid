@@ -18,5 +18,7 @@ export const responseMessage = {
     ACCESS_DENIED: "You do not have permission to access this resource.",
     NOT_FOUND: "The requested resource was not found.",
     INVALID_INPUT: "The input provided is invalid.",
-    INVALID_REQUEST:"Invalid Request"
+    INVALID_REQUEST:"Invalid Request",
+    TOKEN_ACCESS:'Token not valid , Access declained',
+    UPLOAD_FAILED :'Failed to upload , Try later'
 } as const;

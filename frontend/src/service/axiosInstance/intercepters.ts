@@ -80,10 +80,8 @@ export const axiosInstance = (baseURL: string) => {
           error.response.status >= 400 &&
           error.response.status < 500 &&
           error.response.status !== 401
-        ) {
-          console.log('@@@@',error.response.data);
-          
-          toast.error(`${error.response.data.response || "An error occurred"}`);
+        ) {          
+          toast.error(`${error.response.data.message || error.response.data.response||"An error occurred"}`);
         }
       } else if (error.request) {
         toast.error("Network error, please check your connection.");

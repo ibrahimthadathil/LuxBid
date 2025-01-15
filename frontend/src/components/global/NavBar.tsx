@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Logo from "../../../public/Logo.png";
 import IconBar from "./IconBar";
-import Language from "./Language";
 import Mode from "./Mode";
 
 const Navbar = () => {
@@ -25,8 +24,8 @@ const Navbar = () => {
       <div className="w-[70%] p-6 relative">{showIconBar && <IconBar />}</div>
 
       {/* End section  */}
-      <div className="w-[20%] p-8 flex justify-between">
-        <Language />
+      <div className="w-[20%] p-8 flex justify-end">
+        {/* <Language /> */}
         <div className="pt-3">
           <Mode />
         </div>

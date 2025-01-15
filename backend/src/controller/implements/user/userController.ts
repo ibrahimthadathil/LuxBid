@@ -6,6 +6,7 @@ import { AuthRequest } from "@/types/api";
 import { stripeService } from "@/service/implements/stripe/stripeService";
 import Stripe from "stripe";
 import { logError } from "@/utils/logger_utils";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 
 
 @Service()
@@ -22,12 +23,12 @@ class user_Controller implements IuserContrller {
       const user = req.user;
       const {success,data,message} = await this.userServide.findUser(user as string)
       if (success) {
-        res.status(200).json({ success: true, data });
-      } else res.status(401).json({ success: false, message: "un-Authorized" });
+        res.status(HttpStatus.OK).json({ success: true, data });
+      } else res.status(HttpStatus.BAD_REQUEST).json({ success: false, message:responseMessage.ACCESS_DENIED });
     } catch (error) {
       logError(error)
       console.log("from error", (error as Error).message);
-      res.status(500).json({ message: "Internal Error" });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});
     }
   }
 
@@ -39,18 +40,17 @@ class user_Controller implements IuserContrller {
           userId as string,
           req.file
         );
-        if (success) res.status(200).json({ success, message });
-        else res.status(401).json({ success, message });
+        if (success) res.status(HttpStatus.OK).json({ success, message });
+        else res.status(HttpStatus.UNAUTHORIZED).json({ success, message });
       } else
         res
-          .status(400)
-          .json({ success: false, message: "Failed to upload, Try later" });
+          .status(HttpStatus.BAD_REQUEST)
+          .json({ success: false, message: responseMessage.UPLOAD_FAILED });
     } catch (error) {
       logError(error)
-      console.log("from upload ", error);
       res
-        .status(500)
-        .json({ success: false, message: "Internal error, Try later" });
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({ success: false, message: responseMessage.ERROR_MESSAGE });
     }
   }
 
@@ -64,10 +64,10 @@ class user_Controller implements IuserContrller {
           userId as string
         );
         if (success) {
-          res.status(200).json({ success, message });
-        } else res.status(400).json({ message, success });
+          res.status(HttpStatus.OK).json({ success, message });
+        } else res.status(HttpStatus.BAD_REQUEST).json({ message, success });
       } else
-        res.status(200).json({ success: false, message: "Inavlid Access" });
+        res.status(HttpStatus.UNAUTHORIZED).json({ success: false, message: responseMessage.ACCESS_DENIED});
     } catch (error) {
       logError(error)
     }
@@ -75,26 +75,26 @@ class user_Controller implements IuserContrller {
 
   async make_Payment(req:AuthRequest,res:Response){        
     try {      
-      if(!req.user)res.status(403).json({message:'Login to Join',success:false})
+      if(!req.user)res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.LOGIN_REQUIRED,success:false})
       const {success,message,session} =  await this.userServide.auction_JoinPayment(req.body,req.user as string)      
-      if(success)res.status(200).json({success,clientSecret: session.client_secret})
-      else res.status(401).json({success:false , message:'failed to make payment'})
+      if(success)res.status(HttpStatus.OK).json({success,clientSecret: session.client_secret})
+      else res.status(401).json({success:false , message:responseMessage.ERROR_MESSAGE})
     } catch (error) {
       logError(error)
         console.log('errr from stripe 121212');
         console.log((error as Error).message);
-        res.status(500).json({ message: "Internal Error,Try later" });       
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});       
     }
   }
   async payment_Status(req:AuthRequest,res:Response){
     const userId = req.user 
   try {
     const {success,data,message} = await this.userServide.auction_Join(req.query,userId as string)
-    if(success)res.status(200).json({success,data})
-      else res.status(400).json({success,message})
+    if(success)res.status(HttpStatus.OK).json({success,data})
+      else res.status(HttpStatus.BAD_REQUEST).json({success,message})
   } catch (error) {
     logError(error)
-    res.status(500).json({message:'Internal server Error,Try later'})
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
   }
 }
 
@@ -121,7 +121,7 @@ class user_Controller implements IuserContrller {
 //     res.json({ received: true });
 //   } catch (err) {
 //     logError(err)
-//     return res.status(400).send(`Webhook Error: ${(err as Error).message}`);
+//     return res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
 //   }
 // }
 

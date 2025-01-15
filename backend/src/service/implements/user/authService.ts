@@ -126,6 +126,9 @@ export class authService implements IauthService {
               email: exist.email,
               id: exist._id,
             });
+            const roleAccess = this.tokenservice.generate_AccessToken({
+              id:exist._id,role:exist.role
+            })
             return {
               success: true,
               user : id,
@@ -134,6 +137,7 @@ export class authService implements IauthService {
               token: Accesstoken,
               email: exist.email,
               name: exist.firstName,
+              roleAccess
             };
           } else {
             return {
@@ -163,13 +167,16 @@ export class authService implements IauthService {
           id: existUser._id,
           email: existUser.email,
         });
+        const roleAccess = this.tokenservice.generate_AccessToken({
+          id:existUser._id,role:existUser.role
+        })
 
         return {
           success: true,
-          user:existUser._id,
           token: Accesstoken,
           refresh: RefreshToken,
           message: "Google Authentication successful",
+          roleAccess
         };
       }
       const randomPassword = await RandomPassword();
