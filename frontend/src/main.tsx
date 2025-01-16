@@ -17,13 +17,13 @@ createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <Toaster richColors position="top-right" theme="dark" expand />
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <SocketProvider>
-      <PersistGate persistor={persister}>
-        <QueryClientProvider client={queryClient}>
+      <SocketProvider>
+        <PersistGate persistor={persister}>
+          <QueryClientProvider client={queryClient}>
             <RouterProvider router={Router} />
-        </QueryClientProvider>
-      </PersistGate>
-          </SocketProvider>
+          </QueryClientProvider>
+        </PersistGate>
+      </SocketProvider>
     </ThemeProvider>
   </Provider>
 );

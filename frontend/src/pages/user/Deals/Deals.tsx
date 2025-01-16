@@ -25,7 +25,7 @@ const Deals = () => {
             Hot Deals
           </h1>
         </div>
-        <HeroHighlight color="dark:bg-dot-thick-gray-500">
+        <HeroHighlight >
           <div>
             {isLoading ? (
               <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between space-y-8 lg:space-y-0 lg:space-x-8">

@@ -1,17 +1,19 @@
-import GoogleIcon from "../../../assets/icons/Google"
+import GoogleIcon from "@/assets/icons/Google"
 import { GoogleAuthProvider, signInWithPopup ,getAuth} from "@firebase/auth";
-import { app } from "../../../config/firebase";
-import {  googleAuthSignIn } from "../../../service/Api/userApi";
+import { app } from "@/config/firebase";
+import {  googleAuthSignIn } from "@/service/Api/userApi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { loaginSuccess } from "../../../redux/slice/authSlice";
-import { AppDispatch } from "../../../redux/store/store";
+import { loaginSuccess } from "@/redux/slice/authSlice";
+import { AppDispatch } from "@/redux/store/store";
+import { useTheme } from "@/components/theme/theme-provider";
 
 
 const GoogleAuth = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
+  const {theme} = useTheme()
     const handleGoogleAuth=async()=>{
         try {
             const provider = new GoogleAuthProvider()
@@ -34,7 +36,7 @@ const GoogleAuth = () => {
   return (
     <>
       <button 
-        className="mt-3 w-[85%] sm:w-[58%] flex justify-center items-center gap-3 text-white p-2 px-4 md:px-5 rounded-md border border-[#426ea683]  hover:bg-[#312474c1] hover:border-black transition-colors duration-200"
+        className={`mt-3 w-[85%] sm:w-[58%] flex justify-center items-center gap-3 ${theme=='dark'?'text-white':'text-black'} p-2 px-4 md:px-5 rounded-md border border-[#426ea683]  hover:bg-[#312474c1] hover:text-white hover:border-black transition-colors duration-200`}
         onClick={handleGoogleAuth}>
        <GoogleIcon /> Continue with Google
       </button>

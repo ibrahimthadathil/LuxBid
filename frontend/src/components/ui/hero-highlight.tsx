@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
-
+import { useTheme } from "@/components/theme/theme-provider";
 export const HeroHighlight = ({
   children,
   className,
@@ -13,6 +13,7 @@ export const HeroHighlight = ({
   className?: string;
   containerClassName?: string;
 }) => {
+  const { theme } = useTheme(); 
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -27,6 +28,10 @@ export const HeroHighlight = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
+const highlightDotBgClass = theme === 'light'
+  ? 'bg-dot-thick-indigo-400'
+  : 'bg-dot-thick-indigo-700';
   return (
     <div
       className={cn(
@@ -35,10 +40,9 @@ export const HeroHighlight = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className={`absolute inset-0 bg-dot-thick-neutral-300 ${bg?bg:'dark:bg-dot-thick-transparent'} pointer-events-none`} />
+      <div className={`absolute inset-0 ${bg || 'bg-dot-thick-transparent'} pointer-events-none`} />
       <motion.div
-        className={`pointer-events-none bg-dot-thick-indigo-500 ${color ? color:'dark:bg-dot-thick-indigo-800'}  absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100`}
-        style={{
+className={`pointer-events-none ${color || highlightDotBgClass} absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100`}        style={{
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
               200px circle at ${mouseX}px ${mouseY}px,
@@ -68,6 +72,12 @@ export const Highlight = ({
   children: React.ReactNode;
   className?: string;
 }) => {
+  const { theme } = useTheme(); 
+
+  const gradientClass = theme === 'light'
+    ? 'from-indigo-300 to-purple-300'
+    : 'from-indigo-500 to-purple-500';
+
   return (
     <motion.span
       initial={{
@@ -87,7 +97,7 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500`,
+        `relative inline-block pb-1 px-1 rounded-lg bg-gradient-to-r ${gradientClass}`,
         className
       )}
     >
