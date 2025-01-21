@@ -58,7 +58,7 @@ const OTP = () => {
         {/* <p className="text-slate-400 mb-4">Remaining time : 90 sec</p> */}
         <button
           type="submit"
-          className={`w-[75%] sm:w-[50%] ${theme=='dark'?"text-white bg-zinc-800":'text-black ' } p-2 rounded-md `}
+          className={`w-[75%] sm:w-[50%] ${theme=='dark'?" bg-zinc-800":'bg-indigo-700 ' } text-white p-2 rounded-md `}
           onClick={handleClick}
         >
           Verify

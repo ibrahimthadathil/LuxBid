@@ -72,6 +72,5 @@ export const logoutAdmin =async()=>{
 
 
 export const listByType = async(type:string)=>{
-  // alert(type)
   return await api.get(`/list-by-type/${type}`)
 }

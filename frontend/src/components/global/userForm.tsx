@@ -9,10 +9,13 @@ import {  AxiosError } from 'axios'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { useTheme } from '../theme/theme-provider'
 
 const UserForm = ({user}:{user:Iuser}) => {
   const [changed,setChange]=useState(true);
   const queryClient = useQueryClient()
+  const {theme} =useTheme()
+
   const {handleSubmit,register}=useForm<TZprofile>({resolver:zodResolver(ZeditProfile),defaultValues:{
     firstName: user.firstName,
       lastName: user.lastName ,
@@ -35,47 +38,47 @@ const editProfile =async(datas:TZprofile)=>{
 }
   return (
     <>
-    <div className="col-span-2 bg-black shadow-xl rounded-2xl p-4">
-      <h2 className="text-xl font-semibold text-gray-200 mb-3">Change details</h2>
+    <div className={`col-span-2 ${theme=='dark'?'bg-black':'bg-gray-100'} shadow-inner rounded-2xl p-4`}>
+      <h2 className={`text-xl font-bold  mb-3 ${theme=='dark'?'text-gray-200':'text-indigo-900'}`}>Change details</h2>
       <form className="space-y-4" onSubmit={(handleSubmit(editProfile,errorFn))}>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-1">First name</label>
+            <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>First name</label>
             <input
             {...register('firstName')}
             onChange={()=>setChange(false)}
               type="text"
-              className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
+              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Last name</label>
+            <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>Last name</label>
             <input
             {...register('lastName')}
             onChange={()=>setChange(false)}
               type="text"
               placeholder='Optional'
-              className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
+              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Email</label>
+            <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>Email</label>
             <input
             {...register('email')}
               type="email"
               placeholder='email'
-              className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
+              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Phone ( IND )</label>
+            <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>Phone ( IND )</label>
             <input
             {...register('phone')}
               type="text"
               placeholder='Phone'
-              className="w-full bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"
+              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
         </div>

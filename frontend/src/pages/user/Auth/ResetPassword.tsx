@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { errorFn, TZresetPass, ZresetPass } from "@/utils/validation/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const ResetPassword = () => {
 
@@ -15,8 +16,8 @@ const ResetPassword = () => {
     formState: { errors },
   } = useForm<TZresetPass>({ resolver: zodResolver(ZresetPass) });
   const navigate = useNavigate();
+  const {theme} = useTheme()  
   const handleSubmits = async (datas: TZresetPass) => {
-    
     try {
       const token = localStorage.getItem("rptkn");
       if (token) {
@@ -74,7 +75,7 @@ const ResetPassword = () => {
             <br />
             <button
               type="submit"
-              className="mt-3 w-[35%] sm:w-[35%] text-white p-2 rounded-md bg-zinc-800"
+              className={`mt-3 w-[35%] sm:w-[35%] text-white p-2 rounded-md  ${theme==='dark'?'bg-zinc-800':'bg-indigo-700  '}`}
             >
               Verify
             </button>

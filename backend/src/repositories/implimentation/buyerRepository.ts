@@ -36,9 +36,12 @@ export class BuyerRepository extends BasRepository<IBuyer> {
   }
   async findCommitedBids(id:string,){
     try {
-      return await Buyer.findOne({user:id}).populate({path:'committedBids.auction',populate:{
-        path:'post'
-      }})
+     const data=  await Buyer.findOne({user:id}).populate({path:'committedBids.auction',populate:[
+        { path : 'post' } , { path : 'bidders.user', select:'email profile firstName ' }
+      ]})
+      console.log(data);
+      
+      return data
     } catch (error) {
       console.log('error from finding buyer',(error as Error).message);
       throw new Error('failed to load the bids')

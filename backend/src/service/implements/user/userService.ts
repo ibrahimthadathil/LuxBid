@@ -66,6 +66,7 @@ export class userService implements IuserService {
       const session = await this.stripeService.makePaymentSession(data);
       if (session) {
         await this.auctionRepo.join_Auction(data.id, userId, data.price, session.id);
+        // 
         return { success: true, session }}
       else return { success: false, message: "Failed to make payment" };
     } catch (error) {

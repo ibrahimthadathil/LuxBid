@@ -33,6 +33,8 @@ export const authorizationAccess = async (
         .json({ message: "Blocked by the Authority" });
     }
   } catch (error) {
+    console.log('kitti');
+    
     logError(error)
   }
 };

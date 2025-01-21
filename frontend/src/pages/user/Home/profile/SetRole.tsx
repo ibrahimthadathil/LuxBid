@@ -12,9 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { useRQ } from "@/hooks/userRQ";
 import { useQueryClient } from "@tanstack/react-query";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const Profile = () => {
   useAuth();
+  const {theme} =useTheme()
   const dispatch = useDispatch<AppDispatch>()
   const {isLoading,data}=useRQ(fetchuser,'User')
   const queryCLient = useQueryClient()
@@ -51,8 +53,8 @@ const Profile = () => {
     
   return (
     <>
-      <div className="flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4   rounded-3xl shadow-inner ">
-        <h1 className="text-2xl font-semibold mb-4 text-gray-200">
+      <div className={`flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4 ${theme=='dark'? 'bg-[#35333357]':'bg-gray-50'} rounded-3xl shadow-inner `}>
+        <h1 className={`text-2xl font-bold mb-4 ${theme=='dark'? 'text-gray-200':'text-indigo-900'} `}>
           User Profile
         </h1>
        

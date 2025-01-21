@@ -48,11 +48,9 @@ const AuctionPage = React.memo(() => {
       toast.error('Login to Join')
     }
     else if(data?.seller?.email==email){
-      alert('organizer')
       navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
     }
     else if(joinedUser){
-      confirm('buyer')
       navigate('/deals/auction/bids',{state:{AuctionId:data?._id}})
     }
     else return

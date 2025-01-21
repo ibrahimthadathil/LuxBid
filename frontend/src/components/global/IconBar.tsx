@@ -47,11 +47,11 @@ const IconBar = () => {
   };
 
   return (
-    <div className="relative flex justify-between h-[4.2rem] w-[40rem] rounded-lg bg-[#4241414b] shadow-inner p-2">
+    <div className={`relative flex justify-between h-[4.2rem] w-[40rem] rounded-lg ${theme==='dark'?'bg-[#4241414b]':'bg-gray-100'}  shadow-inner p-2`}>
       {/* Slider */}
       <div
         className={`absolute ms-[-5px] h-[3.1rem] ${
-          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#51458ced]'
+          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#5b4baed7]'
         } rounded-lg transition-all duration-500 ease-in-out`}
         style={{
           transform: `translateX(${sliderPosition}px)`,
@@ -71,7 +71,7 @@ const IconBar = () => {
           key={name}
           ref={(el) => (iconRefs.current[index] = el)} // Store reference
           onClick={() => handleIconClick(name)}
-          className={`ps-3 pe-2 pt-3 flex gap-3 font-thin text-[15px] cursor-pointer relative z-10`}
+          className={`ps-3 pe-2 pt-3 flex gap-3 font- text-[15px] cursor-pointer relative z-10`}
           style={{ color: getTextColor(name) }} // Apply text color
         >
           <span className="pt-1">

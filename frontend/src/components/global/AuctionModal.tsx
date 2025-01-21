@@ -40,7 +40,6 @@ const AuctionForm = () => {
 
   const onSubmit = async (formData: TZauction) => {
     try {
-      alert('data submitt')
       const response = await handler(createAuction,formData)
       if(response) {
         queryclient.invalidateQueries({queryKey:['auction']})

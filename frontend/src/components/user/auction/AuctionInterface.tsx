@@ -143,7 +143,6 @@ const AuctionInterface = () => {
 
   const handleDeal = async(id:string) => {
     try {
-      alert('working')
      const {data} = await finalizeDeal(id)
     if(data.success){
       socket.emit('close Auction', {id}); 

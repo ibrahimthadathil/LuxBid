@@ -10,15 +10,16 @@ import { ScrollArea } from "../ui/scroll-area";
 interface modalProps<T> {
   data: T;
   images?: string[];
+  buttonText?:string;
   sideContent: {
-    header: string;
+    header?: string;
     render?: (item: T, i: number) => React.ReactNode;
   }[];
 }
 export function PostModal<T extends Record<string, any>>({
   data,
   sideContent,
-  images,
+  images,buttonText='View'
 }: modalProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [postImages] = useState<string[]>(() =>
@@ -39,7 +40,7 @@ export function PostModal<T extends Record<string, any>>({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">view</Button>
+        <Button variant="outline">{buttonText}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[900px] ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
@@ -54,7 +55,7 @@ export function PostModal<T extends Record<string, any>>({
                 {postImages?.map((item: string, i: number) => (
                   <div
                     key={i}
-                    className="w-full max-h-[30rem] overflow-hidden flex-shrink-0"
+                    className="w-full max-h-[25rem] overflow-hidden flex-shrink-0"
                   >
                     <img className="w-full  object-cover" src={item} alt="" />
                   </div>
@@ -81,15 +82,15 @@ export function PostModal<T extends Record<string, any>>({
             </Button>
           </div>
           {/* {right side of the imgae view div} */}
-          <ScrollArea className="max-h-[480px]  w-full rounded-md  p-6">
+          <ScrollArea className="max-h-[400px]  w-full  rounded-md  p-6">
             <div className="flex flex-col space-y-4 pr-4">
               {sideContent.map((item, index) => (
                 <div key={index} className="space-y-2">
-                  <h2 className="text-lg  text-primary">
-                    {item.header}
+                  <h2 className="text-lg font-bold text-gray-100  ">
+                    {item.header ? item.header+' :':''} 
                   </h2>
                   <Separator className="my-2" />
-                  <div className="text-sm ">
+                  <div className="text-sm text-gray-400">
                     {item.render ? item?.render(data, index) : null}
                   </div>
                 </div>

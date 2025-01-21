@@ -65,9 +65,7 @@ export const axiosInstance = (baseURL: string) => {
             }
             return instance(originalRequest);
           } catch (err) {
-            alert('kkk')
             toast.error("Session expired");
-            alert('ooo')
             store.dispatch(logout())
             return Promise.reject(err);
           }
@@ -80,7 +78,9 @@ export const axiosInstance = (baseURL: string) => {
           error.response.status >= 400 &&
           error.response.status < 500 &&
           error.response.status !== 401
-        ) {          
+        ) {
+          console.log('llll',error.response.data);
+                    
           toast.error(`${error.response.data.message || error.response.data.response||"An error occurred"}`);
         }
       } else if (error.request) {

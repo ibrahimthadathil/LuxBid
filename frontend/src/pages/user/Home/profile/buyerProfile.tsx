@@ -3,14 +3,13 @@ import UserForm from "../../../../components/global/userForm";
 import { useRQ } from "@/hooks/userRQ";
 import Loader from "@/components/global/Loader";
 import { fetchBuyer } from "@/service/Api/buyerApi";
+import { useTheme } from "@/components/theme/theme-provider";
 
 
 const ProfileDashboard = () => {
-  const{isLoading,data,isSuccess}= useRQ(fetchBuyer,'Buyer')
-   
-  
+  const{isLoading,data,isSuccess}= useRQ(fetchBuyer,'Buyer') 
   console.log('from buyer',data);
-   
+  const {theme} =useTheme()
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
     isSuccess?<div className="p-3 space-y-6  ">
@@ -21,7 +20,7 @@ const ProfileDashboard = () => {
       {/* { profile details } */}
       <div className="grid grid-cols-3 gap-8">
         <UserForm user={data?.user}/>
-        <div className="bg-black shadow-xl rounded-2xl p-8 h-fit">
+        <div className={`${theme=='dark'? 'bg-[#35333357]':'bg-gray-50'} shadow-xl rounded-2xl p-8 h-fit`}>
           <h2 className="text-xl font-semibold text-gray-300 mb-6">
             To get access to Organize an auction? 
           </h2>

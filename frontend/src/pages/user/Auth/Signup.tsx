@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import GoogleAuth from "./GoogleAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpRequest } from "../../../service/Api/userApi";
@@ -7,11 +6,12 @@ import { AxiosError } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {  useForm } from "react-hook-form";
 import { TzsignUp, ZsignUp } from "@/utils/validation/user";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const SignIn = () => {
   const {register,handleSubmit,formState:{errors}}=useForm<TzsignUp>({resolver:zodResolver(ZsignUp)})
   const navigate = useNavigate();
-  
+  const {theme} = useTheme()
   const handleSignUpSubmit = async (datas : TzsignUp) => {
     try {
         const { data } = await signUpRequest(datas.email);
@@ -49,12 +49,11 @@ const SignIn = () => {
             type="email"
             placeholder="Email"
             {...register('email')}
-            // onChange={(e) => setEmail(e.target.value)}
-            className="mt-3 p-2 w-[85%] sm:w-[95%] mb-3 bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            className={`mt-3 p-2 w-[85%] sm:w-[95%] mb-3 ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700`}
           />
           <button
             type="submit"
-            className="w-[85%] sm:w-[95%] text-white p-2 rounded-md bg-zinc-800"
+            className={`w-[85%] sm:w-[95%] text-white ${theme==='dark'?'bg-zinc-700':'bg-indigo-700'} p-2 rounded-md `}
             >
             Continue
           </button>
@@ -62,7 +61,7 @@ const SignIn = () => {
         <br />
         <h6>
           Already have an account?
-          <span className="text-white ps-1 font-light">
+          <span className={`${theme=='dark'?"text-white underline":'text-indigo-400 underline'} ps-1 font-light`}>
             <Link to={"/auth/signin"}>SignIn</Link>
           </span>
         </h6>

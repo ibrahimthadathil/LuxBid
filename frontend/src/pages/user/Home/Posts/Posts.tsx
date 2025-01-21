@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/Button";
 import { Edit } from "lucide-react";
 import { Dialog } from "@/components/ui/dialog";
 import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const Products = () => {
   useAuth()
@@ -23,7 +24,9 @@ const Products = () => {
   const {handler}=useActionHook()
   const deletePost=async(id:string)=>{
     await handler(removePost,id,'post')
-  }  
+  }
+  const {theme} =useTheme() 
+
   const Columns = useMemo(()=>[
     {header:'No',render:(post:Tproduct,i:number)=>`LBP 0${i+1}`},
     {key:'title',header:'Title' ,render:(post:Tproduct)=>(
@@ -102,7 +105,7 @@ const Products = () => {
   ],[data])
   return (
     <>
-      <div className="flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4  rounded-3xl shadow-inner ">
+      <div className={"flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4  rounded-3xl shadow-inner "}>
         <h1 className="text-2xl font-semibold mb-4 text-gray-200">Products</h1>
         <div className="flex flex-col items-center h-full">
           <div className="w-[95%] h-[8.4rem] border-2 border-dashed rounded-xl border-[#5b4baeaf]">

@@ -12,6 +12,7 @@ import { IauthService } from "../../interface/authService_Interface";
 import { otpService } from "./otpService";
 import { tokenService } from "./tokenService";
 import { emailService } from "./emailService";
+import { logDebug } from "@/utils/logger_utils";
 
 @Service()
 export class authService implements IauthService {
@@ -41,6 +42,7 @@ export class authService implements IauthService {
 
   async verify_otp(otp: string, token: string) {
     try {
+      logDebug('reached tp verify')
       const { email, id } = this.tokenservice.verify_Token(token) as JwtPayload;
       if (email) {
         const isValidOTP = await this.otpService.verifyOTP(email, otp);
@@ -57,7 +59,8 @@ export class authService implements IauthService {
           email,
           id,
         });
-
+        console.log('000');
+        
         return {
           success: true,
           token: Accesstoken,
@@ -111,9 +114,11 @@ export class authService implements IauthService {
       const exist = await this.userRepo.findUserByEmail(email)
       console.log(exist);
       if (exist) {
-        const id = (exist._id as object).toString()
-        console.log(id,'asdfg',typeof id);
+        console.log(email,password,exist.password,'88');
+        
         const passwordCheck = await comparePassword(password, exist.password);
+        console.log('reached here');
+        
         if (!passwordCheck) {
           return { success: false, message: "Invalid password...!" };
         } else {
@@ -131,7 +136,7 @@ export class authService implements IauthService {
             })
             return {
               success: true,
-              user : id,
+              // user : id,
               refresh: RefreshToken,
               message: "succesfully logged In..!",
               token: Accesstoken,

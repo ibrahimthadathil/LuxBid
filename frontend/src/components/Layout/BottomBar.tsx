@@ -1,6 +1,9 @@
+import { useTheme } from "../theme/theme-provider"
+
 const BottomBar = () => {
+  const {theme} = useTheme()
   return (
-    <div className="pt-3 border-t px-5 mb-3 border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+  <div className={`pt-3 border-t px-5  ${theme=='dark'?"text-white bg-black":'text-black bg-white'} border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4`}>
           <p className="text-gray-400 text-sm">
             © 2024 LUX BID. All rights reserved.
           </p>

@@ -31,6 +31,9 @@ import Return from "@/components/user/stripe/Return";
 import MyBids from "@/components/user/profile/mybids/MyBids";
 import AllDeals from "@/pages/user/Deals/AllDeals";
 import AllAuctions from "@/components/admin/AllAuctions";
+import Chat from "@/pages/user/Community/Chat";
+import ChatUI from "@/components/user/chats/ChatUi";
+import GroupList from "@/components/user/chats/GroupList";
 const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
 const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
 
@@ -112,6 +115,20 @@ export const Router = createBrowserRouter([
         path:'deals/auction/bids',
         element :<AuctionInterface />
       },
+      {
+        path: '/community',
+        element: <Chat />,
+        children: [
+          {
+            path: '', // Default path showing the group list
+            element: <GroupList />,
+          },
+          {
+            path: ':groupId', // Dynamic path for the chat UI
+            element: <ChatUI />,
+          },
+        ],
+      }
       
     ],
   },
@@ -119,6 +136,7 @@ export const Router = createBrowserRouter([
     path:'/payment',
     element:<ProtectedRoute element={<Checkout/>} />
   },
+  
   {
     path:'/return',
     element:<Return/>

@@ -1,9 +1,11 @@
 import Icon from "@/assets/images/BrandIcon.png";
 import FooterLinks from "./FooterLink";
+import { useTheme } from "../theme/theme-provider";
 
 const Footer = () => {
+  const {theme} = useTheme()
   return (
-    <footer className="bg-black text-white pt-12 pb-8">
+    <footer className={`${theme=='dark'?"text-white bg-black":'text-black bg-white'} pt-12 pb-8`}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:ms-0">
           {/* Newsletter Section - Takes 12 columns on small screens, 4 on medium */}

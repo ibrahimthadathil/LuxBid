@@ -1,4 +1,5 @@
 import React, { useRef, useCallback } from 'react';
+import { useTheme } from '../theme/theme-provider';
 
 interface OTPInputProps {
   onChange?: (value: string) => void;
@@ -7,7 +8,7 @@ interface OTPInputProps {
 
 const OTPInput: React.FC<OTPInputProps> = ({ onChange}) => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>(Array(6).fill(null));
-
+  const {theme} = useTheme()
   const handleChange = useCallback((index: number, event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
@@ -36,7 +37,7 @@ const OTPInput: React.FC<OTPInputProps> = ({ onChange}) => {
             ref={(el) => (inputRefs.current[index] = el)}
             type="text"
             maxLength={1}
-            className="w-8 h-8 text-center bg-zinc-900 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 transition duration-150 ease-in-out"
+            className={`w-8 h-8 text-center ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} rounded focus:outline-none focus:ring-1 focus:ring-blue-500 transition duration-150 ease-in-out`}
             onChange={(e) => handleChange(index, e)}
           />
           {index < 5 && <span className="mx-1 text-lg">-</span>}

@@ -50,7 +50,7 @@ class AuthController implements IAuthController {
           res.status(HttpStatus.UNAUTHORIZED).json({ message: response.message });
   
         }else{
-          req.session.userId = response.user as string
+          // req.session.userId = response.user as string
           setCookie(res, "rftn", response.refresh as string);
           res
             .status(HttpStatus.OK)
@@ -66,7 +66,6 @@ class AuthController implements IAuthController {
       }else res.status(HttpStatus.UNAUTHORIZED).json({ message: "OTP Required..!" });
     } catch (error) {
       logError(error)
-      
       if ((error as Error).message == "Token verification failed") {
         res.status(HttpStatus.UNAUTHORIZED).json({ message: "Invalid token" });
       }
@@ -78,6 +77,8 @@ class AuthController implements IAuthController {
       const userDetails: Iuser = req.body;
       const token = req.headers.authorization as string;
       const response = await this.authService.register_User(userDetails, token);
+      console.log(response.success);
+      
       if (response.success) {
         res
           .status(HttpStatus.OK)
@@ -94,7 +95,11 @@ class AuthController implements IAuthController {
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
+      console.log(email,password,'lll');
+      
       const response = await this.authService.verify_SignIn(email, password);
+      console.log('000',response);
+      
       if (response?.success) {
         setCookie(res, "rftn", response.refresh as string);
         setCookie(res,'authtkn',response.roleAccess as string)
@@ -108,8 +113,8 @@ class AuthController implements IAuthController {
             name: response.name,
           });
       } else {
-        console.log("check");
-        res.status(HttpStatus.UNAUTHORIZED).json(response);
+        console.log("check",response.message);
+        res.status(HttpStatus.UNAUTHORIZED).json({success:response.success,message:response.message});
       }
     } catch (error) {
       logError(error)

@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { MdSpaceDashboard } from "react-icons/md";
 import { VscThreeBars } from "react-icons/vsc";
 import { FaRegUser } from "react-icons/fa";
-import Logo from "../../../public/Logo.png";
 import { CiLogout } from "react-icons/ci";
 import { Outlet, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
@@ -11,12 +10,15 @@ import { AiFillProduct } from "react-icons/ai";
 import { fetchuser, userLogout } from "@/service/Api/userApi";
 import { useRQ } from "@/hooks/userRQ";
 import { CirclePlus, GavelIcon, Loader2 } from "lucide-react";
+import { useTheme } from "../theme/theme-provider";
 
 const Sidebars = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleSidebar = () => setIsCollapsed((prev) => !prev);
   const dispatch = useDispatch();
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
+  const {theme} =useTheme()
+ 
   const {isLoading, isSuccess, data} = useRQ(fetchuser, 'User')
   const handleClick = async(route:string) => {
     if(route=='logout'){
@@ -54,7 +56,7 @@ const Sidebars = () => {
           <li
             onClick={() => clickFn()}
             key={label}
-            className="flex items-center py-2 cursor-pointer hover:shadow-lg rounded-xl hover:text-[#5B4BAE] px-2"
+            className="flex items-center py-2 cursor-pointer hover:shadow-inner hover:bg-gray-100 rounded-xl hover:text-[#5B4BAE] px-2"
           >
             <span className="ms- w-6 mr-2">{icon}</span>
             {!isCollapsed && <span>{label}</span>}
@@ -69,7 +71,7 @@ const Sidebars = () => {
     <div className="flex h-full">
       {/* Sidebar */}
       <div
-        className={`rounded-3xl flex flex-col relative transition-all  bg-[#1a191996] duration-500 m-4  ${
+        className={`rounded-3xl flex flex-col relative transition-all ${theme=='dark'? 'bg-[#35333357]':'bg-gray-50'} shadow-inner  duration-500 m-4  ${
           isCollapsed ? "w-16" : "w-64"
         }`}
       >

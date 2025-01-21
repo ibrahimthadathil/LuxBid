@@ -36,7 +36,7 @@ const GoogleAuth = () => {
   return (
     <>
       <button 
-        className={`mt-3 w-[85%] sm:w-[58%] flex justify-center items-center gap-3 ${theme=='dark'?'text-white':'text-black'} p-2 px-4 md:px-5 rounded-md border border-[#426ea683]  hover:bg-[#312474c1] hover:text-white hover:border-black transition-colors duration-200`}
+        className={`mt-3 w-[85%] sm:w-[58%] flex justify-center items-center gap-3 ${theme=='dark'?'text-white hover:bg-indigo-700':'text-white hover:bg-black'} p-2 px-4 md:px-5 rounded-md border border-[#426ea683]   hover:border-black transition-colors duration-200`}
         onClick={handleGoogleAuth}>
        <GoogleIcon /> Continue with Google
       </button>

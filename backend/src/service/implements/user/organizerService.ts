@@ -64,9 +64,7 @@ export class organizerService implements IorgaizerService{
           await response.save() 
          const updated =  await this.buyerRepo.updateAuctionHistory(response)// update the buyer history
           if(updated){
-            this.socketService.emitToRoom(auction, 'auctionUpdated', { message: 'Auction data updated'});
-
-
+            this.socketService.emitToRoom(auction, 'auctionUpdated', { message: 'Deal finalized'});
 
             const losingBidders = response.bidders.filter(bidder => !bidder.isAccept);
             for (const bidder of losingBidders) {

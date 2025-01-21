@@ -9,14 +9,15 @@ import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { TzsignIn, zsignIn } from "@/utils/validation/user";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const SignIn = () => {
   
   const {handleSubmit,register,formState:{errors}} = useForm<TzsignIn>({resolver:zodResolver(zsignIn)})
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const {theme} = useTheme() 
   const handleSignInSubmit = async (datas : TzsignIn) => {
-    
     try {
       const { data } = await signInRequest(datas)
       if (data.success) {
@@ -49,13 +50,13 @@ const SignIn = () => {
             type="email"
             placeholder="Email"
             {...register('email')}
-            className="mt-3 p-2 w-[85%] sm:w-[65%] mb-3 text-white bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            className={`mt-3 p-2 w-[85%] sm:w-[65%] mb-3  ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700`}
             />
           <input
             type="password"
             placeholder="Password"
             {...register('password')}
-            className=" p-2 w-[85%] sm:w-[65%] mb-1 text-white placeholder-zinc-500 bg-zinc-900 border-white rounded-md focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            className={` p-2 w-[85%] sm:w-[65%] mb-1  placeholder-zinc-500 ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} border-white rounded-md focus:outline-none focus:ring-1 focus:ring-neutral-700`}
           />
           <p className="">
             <Link
@@ -67,7 +68,7 @@ const SignIn = () => {
           </p>
           <button
             type="submit"
-            className="w-[85%]  sm:w-[65%] mt-2 text-white p-2 rounded-md bg-zinc-800"
+            className={`w-[85%]  sm:w-[65%] mt-2 text-white p-2 rounded-md ${theme==='dark'?'bg-zinc-700':'bg-indigo-700'}`}
           >
             Continue
           </button>
@@ -75,7 +76,7 @@ const SignIn = () => {
         <br />
         <h6>
           Don't have an account?
-          <span className="text-white ps-1 font-light">
+          <span className={` ${theme=='dark'?'text-white underline':'text-indigo-500 underline'} ps-1 font-light`}>
             <Link to={"/auth/signup"}>SignUp</Link>
           </span>
         </h6>

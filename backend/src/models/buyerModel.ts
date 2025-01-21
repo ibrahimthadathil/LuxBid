@@ -8,7 +8,7 @@ export interface IBuyer extends Document{
         auction:string,
         bidAmt :number,
         bidDate:Date ,
-        bisStatus: 'WIN'|'LOST' ,
+        bisStatus: 'WIN'|'LOST'|'ON-AIR' ,
     }],
 }
 
@@ -19,7 +19,7 @@ const BuyerSchema = new Schema({
             auction : {type:mongoose.Schema.Types.ObjectId ,ref :'Auction'} ,
             bidAmt : { type : Number },
             bideDate:{type:Date ,default: Date.now()} ,
-            bidStatus:{ type :String , enum:['WIN','LOST',]}
+            bidStatus:{ type :String , enum:['WIN','LOST'],default:'ON-AIR'}
         }
     ]
 })
