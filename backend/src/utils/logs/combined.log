@@ -686,3 +686,43 @@
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 09:28:55"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 09:29:49"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 09:30:38"}[39m
+[31m{"level":"error","message":"alert is not defined","timestamp":"2025-01-21 12:40:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 14:15:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 14:15:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-21 14:15:45"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Path `user` is required.","timestamp":"2025-01-22 10:53:47"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-01-22 10:54:06"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:04:30"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:08:44"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:10:03"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:16"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:16"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:17"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:17"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:19"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:19"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:20"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:20"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:22"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:22"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:34"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:34"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:43:01"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:43:01"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:43:02"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:43:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-23 10:07:58"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3$\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:01"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:01"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:02"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:02"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:04"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:04"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:08"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:08"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:19"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:19"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3$\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:46"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-23 23:09:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-23 23:09:54"}[39m

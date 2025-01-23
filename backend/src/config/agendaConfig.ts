@@ -15,19 +15,3 @@ export const agenda=new Agenda({
   })();
 
 
-
-//   (async () => {
-//     try {
-//       await agenda.start();
-//       console.log('Agenda started successfully.');
-  
-//       process.on('SIGINT', async () => {
-//         await agenda.stop();
-//         console.log('Agenda stopped gracefully');
-//         process.exit(0);
-//       });
-  
-//     } catch (error) {
-//       console.error('Error starting Agenda:', error);
-//     }
-//   })();

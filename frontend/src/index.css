@@ -89,6 +89,10 @@ html::-webkit-scrollbar{
   outline: 0px transparent;
 }
 
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
 body{
   background: black;
 }

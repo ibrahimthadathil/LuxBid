@@ -10,7 +10,9 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
   // fetch seller
   export const fetchSeller=async()=>{
     try {
-      return await api.get('/seller')
+      const response= await api.get('/seller')
+      console.log('===',response);
+      return response
     } catch (error) {
         console.log('error from seller',);
         

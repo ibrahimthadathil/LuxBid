@@ -17,7 +17,7 @@ export class SocketService {
 
         this.io.on("connection", (socket: Socket) => {
 
-          console.log(`Socket connected: ${socket.id}`);
+          console.log(`Socket connected: ${socket.id} from auction`);
 
           socket.on("joinAuctionRoom", (auctionId: string) => {
             try {

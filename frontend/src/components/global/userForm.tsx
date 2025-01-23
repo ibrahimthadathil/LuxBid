@@ -48,7 +48,7 @@ const editProfile =async(datas:TZprofile)=>{
             {...register('firstName')}
             onChange={()=>setChange(false)}
               type="text"
-              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
+              className={`w-full ${theme=='dark'?'bg-[#1a1a1a] ':'bg-gray-200'}  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
           <div>
@@ -58,7 +58,7 @@ const editProfile =async(datas:TZprofile)=>{
             onChange={()=>setChange(false)}
               type="text"
               placeholder='Optional'
-              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
+              className={`w-full ${theme=='dark'?'bg-[#1a1a1a] ':'bg-gray-200'} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
         </div>
@@ -69,7 +69,7 @@ const editProfile =async(datas:TZprofile)=>{
             {...register('email')}
               type="email"
               placeholder='email'
-              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
+              className={`w-full ${theme=='dark'?'bg-[#1a1a1a] ':'bg-gray-200'} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
           <div>
@@ -78,12 +78,12 @@ const editProfile =async(datas:TZprofile)=>{
             {...register('phone')}
               type="text"
               placeholder='Phone'
-              className={`w-full ${theme=='dark'?'':''} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
+              className={`w-full ${theme=='dark'?'bg-[#1a1a1a] ':'bg-gray-200'} bg-[#1a1a1a]  rounded-xl px-4 py-[10px] focus:outline-none focus:ring-[.5px] focus:ring-purple-500 text-gray-200"`}
             />
           </div>
         </div>
         
-        <button disabled={changed} className={` text-white px-8 py-3 border border-dashed border-[#5b4bae96] rounded-xl hover:bg-[#5b4bae85] transition-colors shadow-lg ${changed? 'opacity-50':''}`}>
+        <button disabled={changed} className={` ${theme=='dark'?'text-white':'text-indigo-800'} px-8 py-3 border border-dashed border-[#5b4bae96] rounded-xl hover:bg-[#5b4bae85] transition-colors shadow-lg ${changed? 'opacity-50':''}`}>
          {changed ? 'Edit To save':'Save changes'}
         </button>
       </form>

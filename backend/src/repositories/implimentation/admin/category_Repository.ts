@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { BasRepository } from "../baseRepository";
 import { Category, Icategory } from "../../../models/categoryModel";
+import logger from "@/utils/logger_utils";
 
 
 @Service()
@@ -39,6 +40,28 @@ export class categoryRepository extends BasRepository<Icategory>{
         } catch (error) {
             console.log();
             throw new Error('From find  category')
+        }
+    }
+    async fetchgroup(){
+        try {
+            return await Category.aggregate([{$match:{isActive:true}},{
+                $lookup:{
+                    from:'messages',
+                    localField:'_id',
+                    foreignField:'category',
+                    as:'messages'
+                }},
+                {
+                    $addFields:{recentMessage:{$arrayElemAt:['$messages',0]}}
+                },
+                {
+                    $project:{name:1,recentMessage:1}
+                }
+            ])
+       
+        } catch (error) {
+            console.log('error from meeeee');
+            logger(error)
         }
     }
 }

@@ -15,15 +15,23 @@ export const buyerAuthMiddleware =async(req:AuthRequest,res:Response,next:NextFu
                if(!token)res.status(HttpStatus.UNAUTHORIZED).json({message:responseMessage.TOKEN_ACCESS})
                  const {role,id}= verifyToken(token) as JwtPayload
                  if(!role){
+                  console.log('#####');                  
                    const currentuser =await User.findById(buyerId)
                    const authToken = generateAccessToken({id:currentuser?._id,role:currentuser?.role})
                    setCookie(res,'authtkn',authToken)
                  }
-                 if((role === "Seller" || role === "Buyer")&&buyerId==id)next()
-                 else res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})
+                 console.log(role,'now');
+                 
+                 if((role === "Seller" || role === "Buyer")&&buyerId==id){
+                  console.log('tttt');
+                  next()}
+                 else {
+                console.log('reaaa');
+                
+                res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})}
                 
         
-    } catch (error) {
+    } catch (error) { 
         logError(error)
     }
 }

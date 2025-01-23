@@ -5,12 +5,11 @@ const SocketContext = createContext<Socket | null>(null);
 
 export const SocketProvider = ({ children }:{ children: React.ReactNode }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
-// alert(import.meta.env.VITE_SOCKET_URL+'111')
+// import.meta.env.VITE_SOCKET_URL+'111')
   useEffect(() => {
     const newSocket = io(import.meta.env.VITE_SOCKET_URL)
     setSocket(newSocket);
 
-    // Cleanup on unmount
     return () => {
       if (newSocket) {
         newSocket.disconnect();

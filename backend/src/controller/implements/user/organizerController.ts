@@ -36,7 +36,9 @@ import { logError } from "@/utils/logger_utils";
            if(success){
             res.status(HttpStatus.OK).json({data:[seller,buyer]})
            }else res.status(HttpStatus.BAD_REQUEST).json({ message })
-           }else res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})
+           }else {
+            console.log('kkk');
+            res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})}
         } catch (error) {
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})

@@ -1,12 +1,14 @@
 import { Service } from "typedi";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
 import { IcategoryService } from "../../interface/categoryServices_Interface";
+import { messageRepository } from "@/repositories/implimentation/chat/messageRepositury";
 
 
 @Service()
 export class categoryService implements IcategoryService{
     constructor(
-        private cateRepo:categoryRepository
+        private cateRepo:categoryRepository,
+        private chatRepo:messageRepository
     ){}
 
     async add_Category(name:string , status:boolean){
@@ -14,6 +16,8 @@ export class categoryService implements IcategoryService{
             const exist = await this.cateRepo.findByName(name)
             if(exist) return { success:false , message:'Already exist'}
           const response = await this.cateRepo.create({name,isActive:status})
+          if(response) await this.chatRepo.create({category:response.id,user:'Admin',content: `Welcome to the ${name} group chat! Feel free to share your thoughts.`})
+           else throw new Error('Group chat Execution failed') 
           if(response) return {success:true , message:'Created succesfully'}
           else throw new Error('Failed to Add category')
         } catch (error) {

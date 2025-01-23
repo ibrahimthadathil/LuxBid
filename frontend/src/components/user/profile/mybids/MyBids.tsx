@@ -14,9 +14,11 @@ import { CalendarClock, Radio, Users, X } from "lucide-react";
 import moment from "moment";
 import { useMemo } from "react";
 import { BidHistoryDialog } from "../BideHistory";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const MyBids = () => {
   const { data, isLoading } = useRQ(showCommittedBids, "mybids");
+  const {theme} =useTheme()
   console.log(data, "oo");
 
   const Columns = useMemo(
@@ -107,8 +109,6 @@ const MyBids = () => {
     [data]
   );
 
-  const BidHistory = useMemo(()=>[{}],[data])
-
   const viewContent = useMemo(
     () => [
       {
@@ -191,8 +191,8 @@ const MyBids = () => {
     [data]
   );
   return (
-    <div className="flex-1 flex flex-col items-center justify-start p-5 bg-[#1a191996] m-4 rounded-3xl shadow-inner">
-      <h1 className="text-3xl font-semibold text-zinc-300 mb-4">
+    <div className={`flex-1 flex flex-col items-center justify-start p-5 ${theme=='dark'?'bg-[#1a191996]':'bg-gray-100'} m-4 rounded-3xl shadow-inner`}>
+      <h1 className={`text-3xl font-semibold ${theme=='dark'?'text-zinc-300':'text-indigo-900'}  mb-4`}>
         Committed Bids
       </h1>
       <div className="w-[95%] min-h-44 rounded-3xl flex flex-col px-3">
