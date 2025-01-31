@@ -9,7 +9,7 @@ import { logout } from "@/redux/slice/authSlice";
 import { AiFillProduct } from "react-icons/ai";
 import { fetchuser, userLogout } from "@/service/Api/userApi";
 import { useRQ } from "@/hooks/userRQ";
-import { CirclePlus, GavelIcon, Loader2 } from "lucide-react";
+import { BaggageClaim, CirclePlus, GavelIcon, Loader2, Wallet } from "lucide-react";
 import { useTheme } from "../theme/theme-provider";
 
 const Sidebars = () => {
@@ -29,6 +29,8 @@ const Sidebars = () => {
     else if(route=='profile')navigate('/user/profile')
     else if(route=='auction')navigate('/user/auction')
     else if(route=='myBids')navigate('/user/myBids')
+  else if(route=='orders')navigate('/user/orders')
+  else if(route=='payments')navigate('/user/transactions')
   };
 
   const getSidebarItems = () => {
@@ -36,16 +38,21 @@ const Sidebars = () => {
       { icon: <FaRegUser/>, label: "Profile", clickFn: () => handleClick('profile') },
       { icon: <GavelIcon/>, label: "My Bids", clickFn: () => handleClick('myBids') },
       
+      
     ];
-    const logoutItem = { icon: <CiLogout className="ms-[-5px]" size={20} />, label: "Logout", clickFn: () => handleClick('logout') }
+    const lastItem = [
+      { icon:<BaggageClaim/> , label:'Winnings & Orders',clickFn:()=>handleClick('orders')},
+      {icon:<Wallet/>,label:'Transactions' , clickFn: ()=> handleClick('payments')},
+      { icon: <CiLogout className="ms-[-5px]" size={20} />, label: "Logout", clickFn: () => handleClick('logout') }]
+
     const sellerItems = [
       { icon: <AiFillProduct size={20} className="ms-[-4px]"/>, label: 'Products', clickFn: () => handleClick('product') },
       {icon:<CirclePlus size={20} className="ms-[-4px]"/>,label:'Create Auction',clickFn:()=>handleClick('auction')}
     ];
 
     return isSuccess && data.role === 'Seller' 
-      ? [...commonItems, ...sellerItems,logoutItem]
-      : [...commonItems,logoutItem];
+      ? [...commonItems, ...sellerItems,...lastItem]
+      :data.role=='Guest'?[lastItem[lastItem.length-1]]: [...commonItems,...lastItem] ;
   };
 
   const sidebarItems = useMemo(() => isSuccess ? getSidebarItems() : [], [isSuccess, data]);

@@ -10,6 +10,8 @@ export const AuthMiddleWare =async(req:AuthRequest,res:Response,next:NextFunctio
     try {
         
         const token = req.headers['authorization']
+        console.log(token,'1111');
+        
         if(!token)res.status(HttpStatus.UNAUTHORIZED).json({ message: "Access denied . No token provided" })
          else{
             const {id} = verifyToken(token) as JwtPayload

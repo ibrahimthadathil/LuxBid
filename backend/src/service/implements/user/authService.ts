@@ -142,6 +142,7 @@ export class authService implements IauthService {
               token: Accesstoken,
               email: exist.email,
               name: exist.firstName,
+              role:exist.role,
               roleAccess
             };
           } else {
@@ -180,6 +181,7 @@ export class authService implements IauthService {
           success: true,
           token: Accesstoken,
           refresh: RefreshToken,
+          role:existUser.role,
           message: "Google Authentication successful",
           roleAccess
         };

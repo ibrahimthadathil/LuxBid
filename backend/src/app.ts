@@ -17,6 +17,7 @@ import { createServer } from "http";
 import "./utils/logger_utils";
 import { initializeSocket } from "./config/socketConfig";
 import chatRoute from "./routes/chat/chatRoutes";
+import addressRoute from "./routes/user/addressRoute";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 connectDB();
@@ -40,6 +41,7 @@ app.use("/Luxbid", userRoute);
 app.use("/Luxbid", auctionRoute);
 app.use("/LB/api", adminRoute);
 app.use("/Luxbid",chatRoute)
+app.use("/LuxBid",addressRoute)
 app.use(
   "/Luxbid",
   AuthMiddleWare,

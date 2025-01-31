@@ -98,32 +98,32 @@ class user_Controller implements IuserContrller {
   }
 }
 
-// async webhook_Handler(req: Request, res: Response) {
-//   const sig = req.headers['stripe-signature'];
+async webhook_Handler(req: Request, res: Response) {
+  const sig = req.headers['stripe-signature'];
 
-//   try {
-//     if (!process.env.STRIPE_WEBHOOK_SECRET) {
-//       throw new Error('Missing Stripe webhook secret');
-//     }
+  try {
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+      throw new Error('Missing Stripe webhook secret');
+    }
 
-//     const event = this.stripe.webhooks.constructEvent(
-//       req.body,
-//       sig as string,
-//       process.env.STRIPE_WEBHOOK_SECRET
-//     );
+    const event = this.stripe.webhooks.constructEvent(
+      req.body,
+      sig as string,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
 
-//     // Log the event for debugging
-//     console.log('Webhook received:', event.type);
+    // Log the event for debugging
+    console.log('Webhook received:', event.type);
 
-//     // Handle the event
-//     await this.stripeService.handleWebhook(event);
+    // Handle the event
+    await this.stripeService.handleWebhook(event);
 
-//     res.json({ received: true });
-//   } catch (err) {
-//     logError(err)
-//     return res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
-//   }
-// }
+    res.json({ received: true });
+  } catch (err) {
+    logError(err)
+    return res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
+  }
+}
 
 }
 

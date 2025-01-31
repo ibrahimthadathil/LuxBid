@@ -6,6 +6,7 @@ import { IbuyerContoller } from "../../interface/buyerController";
 import { Iuser } from "../../../models/userModel";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
+import { setCookie } from "@/utils/cookie_utils";
 
 @Service()
 class BuyerController implements IbuyerContoller {
@@ -15,10 +16,12 @@ class BuyerController implements IbuyerContoller {
     try {
       const currentUser = req.user;
       if (currentUser) {
-        const { success, message } = await this.buyerService.set_Buyer(
+        const { success, message ,roleAccess} = await this.buyerService.set_Buyer(
           currentUser as string
         );
-        if (success) res.status(HttpStatus.OK).json({ success, message });
+        if (success) {
+          setCookie(res, "authtkn", roleAccess as string);
+          res.status(HttpStatus.OK).json({ success, message });}
         else res.status(HttpStatus.UNAUTHORIZED).json({ success, message });
       } else {
         res

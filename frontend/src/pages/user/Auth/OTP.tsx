@@ -28,6 +28,7 @@ const OTP = () => {
           loaginSuccess({
             userName: String(data.name),
             email: String(data.email),
+            role:'Guest'
           })
         );
         navigate("/");

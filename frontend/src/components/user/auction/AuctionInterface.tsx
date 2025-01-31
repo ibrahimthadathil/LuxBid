@@ -180,7 +180,7 @@ const AuctionInterface = () => {
                 ? bidder?.user?.profile
                 : `https://api.dicebear.com/6.x/initials/svg?seed=${bidder?.user?.firstName[0]}`
             }
-            alt={`${bidder?.user?.firstName}'s avatar`}
+            alt={`${bidder?.user?.firstName}'`}
             className="object-cover"
           />
         </Avatar>

@@ -64,3 +64,16 @@ export const ZeditProfile = z.object({
 })
 
 export type TZprofile = z.infer<typeof ZeditProfile> 
+
+
+// for address 
+
+export const ZAddress = z.object({
+  propertyName: z.string().min(1, { message: 'Property Name is required' }),
+  street: z.string().min(1, { message: 'Street is required' }),
+  city: z.string().min(1, { message: 'City is required' }),
+  state: z.string().min(1, { message: 'State is required' }),
+  pincode: z.string().min(1, { message: 'Pincode is required' }).length(6, { message: 'Pincode must be 6 digits' }),
+});
+
+export type TZAddress = z.infer<typeof ZAddress>;

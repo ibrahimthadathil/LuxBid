@@ -51,7 +51,7 @@ const IconBar = () => {
       {/* Slider */}
       <div
         className={`absolute ms-[-5px] h-[3.1rem] ${
-          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#5b4baed7]'
+          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#321e94]'
         } rounded-lg transition-all duration-500 ease-in-out`}
         style={{
           transform: `translateX(${sliderPosition}px)`,

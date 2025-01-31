@@ -17,9 +17,7 @@ const Forgetpassword = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Tzemail>({ resolver: zodResolver(Zemail) });
-  const handleVerify = async (datas: Tzemail) => {
-    console.log('llll');
-    
+  const handleVerify = async (datas: Tzemail) => {    
     console.log(datas);
     
     try {

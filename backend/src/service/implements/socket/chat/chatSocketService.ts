@@ -15,7 +15,7 @@ export class chatSocketService extends BasesocketService{
             this.usersCount(roomId)
         
         })
-
+            
         socket.on('leaveChatRoom',(roomId:string)=>{
             console.log(`Socket ${socket.id} left chat room: ${roomId}`);
             socket.leave(roomId);

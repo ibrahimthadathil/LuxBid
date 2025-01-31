@@ -23,7 +23,7 @@ const SignIn = () => {
       if (data.success) {
         localStorage.setItem("access-token", data.token);
         toast.success(data.message);
-        dispatch(loaginSuccess({ userName: data.name, email: data.email }));
+        dispatch(loaginSuccess({ userName: data.name, email: data.email ,role:data.role}));
         navigate("/");
       } else {
         toast.error(data.message);

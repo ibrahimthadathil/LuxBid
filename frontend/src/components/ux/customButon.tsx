@@ -13,15 +13,15 @@ const CustomButton: React.FC = () => {
   };
   return (
     <button
-      className={`h-[50px] w-[120px] mx-1 my-1 ${theme==='dark'?'bg-black':'bg-[#5b4baed7]'} text-white text-[16px] font-thin rounded-[10px] flex justify-center items-center cursor-pointer transition duration-[500ms] hover:shadow-[1px_1px_13px_#5B4BAE,-1px_-1px_6px_#5B4BAE] hover:text-[#d6d6d6] active:shadow-[1px_1px_14px_#20232e,-1px_-1px_33px_#545b78] active:text-[#d6d6d6] active:transition-[100ms] `}
+      className={`h-[50px] w-[120px] mx-1 my-1 ${theme==='dark'?'bg-black':'border-[#321e94]'}  text-[16px]  rounded-[10px] flex justify-center items-center cursor-pointer  `}
       onClick={handleclick}
     >
       {userName ? (
         <div className="flex gap-2 ">
-          <FaUser color={`${theme==='dark'?'#5b4bae':'#fff'}`} className="mt-1" /> {userName.substring(0,8)}{" "}
+          <FaUser color={`${theme==='dark'?'#5b4bae':'#321e94'}`} className="mt-1" /> {userName.substring(0,8)}{" "}
         </div>
       ) : (
-        <p className="text-white font-n">SignUp / In</p>
+        <p className={`${theme=='dark'?'text-white':'text-indigo-800'}  font-semibold`}>SignUp/In</p>
       )}
     </button>
   );

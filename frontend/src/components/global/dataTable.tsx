@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table"
 import React, { useMemo, useState } from "react"
 import Pagination from "../ux/Pagination";
+import { useTheme } from "../theme/theme-provider";
 interface IColumns<T>{
 key?:string,
 header:string,
@@ -20,6 +21,7 @@ interface TableProps<T>{
   itemsPerPage?:number
 }
 export default function DataTable<T extends Record<string ,any>>({data,columns,itemsPerPage=5}:TableProps<T>) {
+  const {theme}=useTheme()
   const [currentPage,setCurrentpage]=useState(1);
   const totalPages = Math.ceil(data.length /itemsPerPage)
   const currentData = useMemo(()=>{
@@ -27,7 +29,6 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
     const lastPage = firstPage + itemsPerPage 
     return data?.slice(firstPage,lastPage)
   },[currentPage,data,itemsPerPage])
-  console.log(data);
   
   const pageChange =(page:number)=>{
     setCurrentpage(page)
@@ -56,7 +57,7 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
                 {
                   columns.map((e,i)=>(
                     
-                    <TableCell key={i} className="font-medium">{e.render ? e.render(item,ind):e.key?item[e.key]:'Not found'}</TableCell>
+                    <TableCell key={i} className={`font-medium ${theme=='dark'?'':'text-black'}`}>{e.render ? e.render(item,ind):e.key?item[e.key]:'Not found'}</TableCell>
   
                   ))
                 }

@@ -14,10 +14,7 @@ const ProductCard = ({item}:{item:Tproduct}) => {
 			<span className="text-sm dark:text-gray-600"></span>
 		</div>
 		<div className="space-y-1">
-			<span className="flex items-center space-x-2">₹
-				
-				<span className=" ps-2">{item.price}</span>
-			</span>
+			
 			<span className="flex items-center space-x-2">
 				status : 
 				<span className={`${item.isApproved ?'text-green-900':'text-orange-700'} ps-1`} >{item.isApproved ? 'Approved':'Pending'}</span>

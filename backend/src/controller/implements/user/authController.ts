@@ -111,6 +111,7 @@ class AuthController implements IAuthController {
             message: response.message,
             email: response.email,
             name: response.name,
+            role:response.role
           });
       } else {
         console.log("check",response.message);
@@ -125,14 +126,14 @@ class AuthController implements IAuthController {
   async googleAuth(req: Request, res: Response) {
     const userDetails: Iuser = req.body;
     try {
-      const { success, message, token, refresh ,roleAccess} =
+      const { success, message, token, refresh ,roleAccess,role} =
         await this.authService.verify_Google(userDetails);
       if (success) {
         setCookie(res,'authtkn',roleAccess as string)
         setCookie(res, "rftn", refresh as string);
         res
           .status(HttpStatus.OK)
-          .json({ AccessToken: token, message: message, success: true });
+          .json({ AccessToken: token, message: message, success: true ,role});
       } else {
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: message });
       }
@@ -224,15 +225,15 @@ class AuthController implements IAuthController {
     const token=req.cookies?.rftn;
     if(!token){
         res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ERROR_MESSAGE})
-        return
     }
     try {
       console.log('232323');
       
       const response= await this.authService.checkToken(token)
       if(response?.success){
+        console.log(response.success,' after success');
         res.json({accessToken:response.accessToken})
-        return
+        
       }else{
         res.clearCookie('rftn')
         res.status(HttpStatus.FORBIDDEN).json({message:response?.message})

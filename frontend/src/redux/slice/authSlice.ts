@@ -22,11 +22,12 @@ const userSlice = createSlice({
             state.email = action.payload.email;
             state.userName = action.payload.userName
             state.isAuthenticated = true
+            state.role = action.payload.role as string
         },
         logout :(state)=>{
             state.email = null
             state.userName = null 
-            state.role=null
+            state.role = null
             state.isAuthenticated = null
             localStorage.removeItem("access-token");
         },

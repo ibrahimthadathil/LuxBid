@@ -8,8 +8,7 @@ const Home = () => {
 const {theme} =useTheme()
   const backgroundClass = theme === 'dark' 
   ? 'from-black via-black to-[#201c34ea]'
-  : 'from-white via-white to-[#c9c1f5]';
-  
+  : 'from-white via-white to-[#d4cef6]';
   return (
     <>
       

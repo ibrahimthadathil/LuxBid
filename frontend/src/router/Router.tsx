@@ -8,7 +8,10 @@ import OTP from "../pages/user/Auth/OTP";
 import Registration from "../pages/user/Auth/Registration";
 import SignInAdmin from "../pages/admin/Auth/Signup";
 import ProtectedRoute from "../service/Protected";
-import PublicRoute, { AdminProtected, AdminPublicRoute } from "../service/PublicRoute";
+import PublicRoute, {
+  AdminProtected,
+  AdminPublicRoute,
+} from "../service/PublicRoute";
 import NotFoundPage from "../components/global/NotFoundPage";
 import Forgetpassword from "../pages/user/Auth/Forgetpassword";
 import SideTextSection from "../components/global/SideTextSection";
@@ -34,8 +37,15 @@ import AllAuctions from "@/components/admin/AllAuctions";
 import Chat from "@/pages/user/Community/Chat";
 import ChatUI from "@/components/user/chats/ChatUi";
 import GroupList from "@/components/user/chats/GroupList";
-const UserProfile = React.lazy(()=>import('@/pages/user/Home/profile/UserProfile'))
-const Profile = React.lazy(() => import("../pages/user/Home/profile/SetRole"));
+import Orders from "@/pages/user/Home/orders/Orders";
+import Winnnings from "@/components/user/profile/winnings/winnnings";
+import OrdersStatus from "@/components/user/profile/orders/orders";
+import Transactions from "@/pages/user/Home/payment/Transactions";
+import SetRole from "@/components/user/profile/Landing/SetRole";
+const UserProfile = React.lazy(
+  () => import("@/pages/user/Home/profile/UserProfile")
+);
+const Profile = React.lazy(() => import("../pages/user/Home/profile/profile"));
 
 export const Router = createBrowserRouter([
   // USER ROUTE
@@ -48,12 +58,7 @@ export const Router = createBrowserRouter([
         children: [
           {
             path: "registration",
-            element: (
-              <PublicRoute
-                element={<Registration />}
-                route="/"
-              />
-            ),
+            element: <PublicRoute element={<Registration />} route="/" />,
           },
           {
             path: "",
@@ -69,7 +74,7 @@ export const Router = createBrowserRouter([
           },
           {
             path: "otp/verify",
-            element: <PublicRoute element={<OTP />}  route="/"/>,
+            element: <PublicRoute element={<OTP />} route="/" />,
           },
 
           {
@@ -78,9 +83,7 @@ export const Router = createBrowserRouter([
           },
           {
             path: "resetpassword",
-            element: (
-              <PublicRoute element={<ResetPassword />} route="/"/>
-            ),
+            element: <PublicRoute element={<ResetPassword />} route="/" />,
           },
         ],
       },
@@ -95,135 +98,151 @@ export const Router = createBrowserRouter([
         element: <Navigate to="/" />,
       },
       {
-        path :'deals',
-        element: <Deals/>,
-      
+        path: "deals",
+        element: <Deals />,
       },
       {
-        path:'guide',
-        element : <Guide/>
+        path: "guide",
+        element: <Guide />,
       },
       {
-        path:'AllDeals',
-       element:<AllDeals/>
+        path: "AllDeals",
+        element: <AllDeals />,
       },
       {
-        path:'deals/auction',
-        element:<AuctionPage/>,
+        path: "deals/auction",
+        element: <AuctionPage />,
       },
       {
-        path:'deals/auction/bids',
-        element :<AuctionInterface />
+        path: "deals/auction/bids",
+        element: <AuctionInterface />,
       },
       {
-        path: '/community',
+        path: "/community",
         element: <Chat />,
         children: [
           {
-            path: '', // Default path showing the group list
+            path: "", // Default path showing the group list
             element: <GroupList />,
           },
           {
-            path: ':groupId', // Dynamic path for the chat UI
+            path: ":groupId", // Dynamic path for the chat UI
             element: <ChatUI />,
           },
         ],
-      }
-      
+      },
     ],
   },
   {
-    path:'/payment',
-    element:<ProtectedRoute element={<Checkout/>} />
+    path: "/payment",
+    element: <ProtectedRoute element={<Checkout />} />,
   },
-  
+
   {
-    path:'/return',
-    element:<Return/>
+    path: "/return",
+    element: <Return />,
   },
   {
     path: "/user",
     element: (
-      // <ProtectedRoute
-        // element={
-          <Suspense
-            fallback={
-              <div className="bg-black h-screen items-center flex justify-center text-white">
-                <Loader />
-              </div>
-            }
-          >
-            <UserProfile />
-          </Suspense>
-        // }
-      //   store="access-token"
-      // />
+      <Suspense
+        fallback={
+          <div className="bg-black h-screen items-center flex justify-center text-white">
+            <Loader />
+          </div>
+        }
+      >
+        <UserProfile />
+      </Suspense>
+    
     ),
     children: [
       {
         path: "profile",
-        element: <Suspense fallback={<Loader />}>
-            <Profile />
-          </Suspense>
+        element: (
+            <RollProtected element={<Profile />} />
+
+        ),
+      },
+      {
+        path:'setrole',
+        element:<RollProtected element={<SetRole/>} guest={true} />
       },
       {
         path: "product",
         element: <RollProtected element={<Products />} />,
       },
       {
-        path:'auction',
-        element:<RollProtected element={<ListAuction/>}/>
+        path: "auction",
+        element: <RollProtected element={<ListAuction />} />,
       },
       {
-        path:'myBids',
-        element:<MyBids/>
+        path: "myBids",
+        element: <MyBids />,
+      },
+      {
+        path: "orders",
+        element: <Orders />,
+        children: [
+          {
+            path: "winnings",
+            element:<Winnnings/>
+          },
+          {
+            path:"status",
+            element:<OrdersStatus/>
+          }
+        ],
+      },
+      {
+        path:'transactions',
+        element:<Transactions/>
       }
     ],
   },
 
   // ADMIN ROUTE
   {
-    path:'/admin',
+    path: "/admin",
     children: [
       {
-        path: '',
-        element: <Navigate to="auth" replace />, 
+        path: "",
+        element: <Navigate to="auth" replace />,
       },
       {
-        path: 'auth',
-        element: <AdminPublicRoute element={<SignInAdmin/>}/>,
-        index:true
+        path: "auth",
+        element: <AdminPublicRoute element={<SignInAdmin />} />,
+        index: true,
       },
       {
-        path:'LB',
-        element :  <AdminProtected element={<AdminHome/>} />,
-        children:[
+        path: "LB",
+        element: <AdminProtected element={<AdminHome />} />,
+        children: [
           {
-            path:'dashboard',
-            element:<Dashboard/>
+            path: "dashboard",
+            element: <Dashboard />,
           },
           {
-           path:'users/:userRole' ,
-           element:<Users/>
+            path: "users/:userRole",
+            element: <Users />,
           },
           {
-            path:'category',
-            element:<Category/>
+            path: "category",
+            element: <Category />,
           },
           {
-            path:'Posts/:child',
-            element:<Posts/>
+            path: "Posts/:child",
+            element: <Posts />,
           },
           {
-            path:'Auction/:child',
-            element : <AllAuctions/>
-          }
-        ]
-      }
-    ]
+            path: "Auction/:child",
+            element: <AllAuctions />,
+          },
+        ],
+      },
+    ],
   },
 
- 
   {
     path: "*",
     element: <NotFoundPage />,

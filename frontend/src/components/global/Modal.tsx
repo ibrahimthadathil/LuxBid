@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { AxiosError } from "axios";
+import { useTheme } from "../theme/theme-provider";
 
 interface Props<T> {
   post?: T;
@@ -22,12 +23,12 @@ interface Props<T> {
 
 const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
   const [images, setImages] = useState<string[]>(() =>post ? post.images : []);
+  const {theme} = useTheme()
   const [imagefiles, setFiles] = useState<File[]>([]);
   const ref = useRef<HTMLButtonElement>(null);
   const [spin, setSpin] = useState<boolean>(false);
   const { isLoading, data } = useRQ(fetchCategory, "category");
   const queryClient = useQueryClient();
-  console.log(imagefiles);
   const {
     register,
     handleSubmit,
@@ -95,7 +96,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="sm:max-w-[400px] w-full bg-black border border-zinc-800 rounded-lg p-6 relative">
+        <div className={`sm:max-w-[400px] w-full ${theme=='dark'?'bg-black':'bg-white'}   rounded-lg p-6 relative`}>
           {isLoading ? (
             <Loader />
           ) : (
@@ -103,13 +104,13 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
               <DialogClose asChild>
                 <button
                   ref={ref}
-                  className="absolute right-4 top-4 text-zinc-400 hover:text-white"
+                  className={`absolute right-4 top-4 ${theme=='dark'?'text-zinc-400':'text-indigo-900'} `}
                 >
                   <X className="h-4 w-4" />
                 </button>
               </DialogClose>
 
-              <h2 className="text-zinc-400 font-normal text-xs mb-4">
+              <h2 className={`${theme=='dark'?'text-zinc-400':'text-indigo-900'} font-normal  `}>
                 Create Post
               </h2>
 
@@ -120,8 +121,8 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                 <div className="flex items-center justify-center">
                   <label
                     className={`flex flex-col items-center ${
-                      errors.file ? "border-red-900" : "border-zinc-800"
-                    } justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer bg-zinc-900 hover:bg-zinc-800`}
+                      errors.file ? "border-red-900" : "border-indigo-700"
+                    } justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer ${theme=='dark'?'bg-zinc-900 hover:bg-zinc-800':'bg-gray-100 hover:bg-gray-50'}  `}
                   >
                     {images[images.length - 1] ? (
                       <img
@@ -130,7 +131,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                         className="max-h-32 object-contain"
                       />
                     ) : (
-                      <div className="text-zinc-500 text-center">
+                      <div className={`${theme=='dark'?'text-zinc-400':'text-indigo-700'} text-center`}>
                         <svg
                           className="w-4 h-4 mb-2 mx-auto"
                           aria-hidden="true"
@@ -194,7 +195,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                   type="text"
                   {...register("title")}
                   placeholder="Title Of the Post"
-                  className={`w-full p-2 bg-zinc-900 border ${
+                  className={`w-full shadow-inner p-2 ${theme=='dark'?'bg-zinc-900':'bg-gray-100'}  ${
                     errors.title ? "border-red-500" : "border-zinc-800"
                   } rounded text-sm text-white`}
                 />
@@ -205,9 +206,9 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                 )}
                 <select
                   {...register("category")}
-                  className={`w-full p-2 bg-zinc-900 border ${
+                  className={`w-full p-2 ${theme=='dark'?'bg-zinc-900 text-white':'bg-gray-100 text-black'} ${
                     errors.category ? "border-red-500" : "border-zinc-800"
-                  } rounded text-sm text-white`}
+                  } rounded text-sm text-gray-400`}
                   defaultValue={post?.category || ""}
                 >
                   <option value="" disabled>
@@ -226,9 +227,9 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                 <textarea
                   {...register("description")}
                   placeholder="Description"
-                  className={`w-full p-2 bg-zinc-900 border ${
+                  className={`w-full p-2 ${theme=='dark'?'bg-zinc-900 text-white':'bg-gray-100 text-black'} ${
                     errors.description ? "border-red-500" : "border-zinc-800"
-                  } rounded text-sm text-white h-24`}
+                  } rounded text-sm  h-24`}
                 ></textarea>
                 {errors.description && (
                   <p className="text-red-500 text-xs mt-1">
@@ -244,7 +245,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                   }`}
                 >
                   {spin ? (
-                    <div className="flex gap-2 justify-center ">
+                    <div className="flex gap-2 justify-center animate-pulse">
                       <Loader2 />
                       <p>{post ? 'Updating...':'Creating...'}</p>
                     </div>

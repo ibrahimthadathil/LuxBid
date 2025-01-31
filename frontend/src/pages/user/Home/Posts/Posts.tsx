@@ -41,7 +41,7 @@ const Products = () => {
             <span>{post.title}</span>
             </div>)},
     {key:'createdAt',header:'Created',render:(post:Tproduct)=>new Date(post.createdAt as Date).toLocaleDateString()},
-    {key:'price',header:'Price (₹)'},
+    
     {key:'isApproved',header:'Status', render :(post:Tproduct)=>(
       <span
           className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
@@ -58,7 +58,7 @@ const Products = () => {
       render:(post:Tproduct)=>(
         <Dialog>
           <DialogTrigger asChild>
-          <Button variant={'outline'} className="text-gray-300 hover:b" ><Edit/> Edit</Button>
+          <Button variant={'outline'} className={`${theme=='dark'?'text-white':'tex-black'}`} ><Edit/> Edit</Button>
           </DialogTrigger>
           <DialogContent>
             <Modal post={post}/>
@@ -91,28 +91,28 @@ const Products = () => {
     {
       header :'Status',
       render:(post:Tproduct)=>(
-        <p className={`${post.status=='Approved'?'text-green-500':post.status=='Pending'?'text-yellow-500':'text-red-500'}`}>{post.status=='Pending'?'Requested for Approval':post.status=='Rejected'?'This post Rejected from The Authority':'This Post Approved for Auction'}</p>
+        <p className={`${post.status=='Approved'?'text-green-700':post.status=='Pending'?'text-yellow-500':'text-red-500'}`}>{post.status=='Pending'?'Requested for Approval':post.status=='Rejected'?'This post Rejected from The Authority':'This Post Approved for Auction'}</p>
       )
     },
     {
       header: 'Actions',
       render: (item: Tproduct) => (
         <div className="flex gap-2">
-          <AlertModal contents={['Delete','Ar you sure To Delete This Post ?']} style='bg-red-900' data={item} action={deletePost}/>
+          <AlertModal contents={['Delete','Ar you sure To Delete This Post ?']} style='bg-red-900 text-white' data={item} action={deletePost}/>
         </div>
       )
     }
   ],[data])
   return (
     <>
-      <div className={"flex-1 flex flex-col  p-5 bg-[#1a191996]  m-4  rounded-3xl shadow-inner "}>
-        <h1 className="text-2xl font-semibold mb-4 text-gray-200">Products</h1>
+      <div className={`flex-1 flex flex-col  p-5 ${theme=='dark'?'bg-[#1a191996]':'bg-gray-100'}  m-4  rounded-3xl shadow-inner `}>
+        <h1 className={` text-2xl font-semibold mb-4 text-gray-200 ${theme=='dark'?'':'text-indigo-800'}`}>Products</h1>
         <div className="flex flex-col items-center h-full">
           <div className="w-[95%] h-[8.4rem] border-2 border-dashed rounded-xl border-[#5b4baeaf]">
             <div className="flex h-full">
-              <div className="w-[70%] h-full flex justify-center items-center text-[#cbcacf] text-xl">
-                <h5 className="font-light">
-                  Welcome to <span className="text-[#5b4bae]">LuxBid!</span>{" "}
+              <div className={`w-[70%] h-full flex justify-center items-center ${theme=='dark'?'text-[#cbcacf]':'text-black'}  text-xl`}>
+                <h5 className="font-thin">
+                  Welcome to <span className="text-[#5b4bae] font-normal">LuxBid!</span>{" "}
                   Here, you can create an auction post to showcase
                   <br /> your items and attract potential bidders.
                 </h5>
@@ -121,9 +121,9 @@ const Products = () => {
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button
-                      className="py-3 px-8 rounded-lg border border-[#5b4bae] flex gap-2 hover:bg-[#5b4bae75]"
+                      className={`py-3 px-8 rounded-lg r bg-indigo-800 ${theme=='dark'?'text-gray-100':''} flex gap-2 hover:bg-indigo-900`}
                     >
-                      <FaPlusCircle className="mt-[6px]" /> Create post
+                      <FaPlusCircle  /> Create post
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
@@ -133,7 +133,7 @@ const Products = () => {
               </div>
             </div>
           </div>
-          <div className="bg-zinc-950 flex flex-col w-[95%] flex-1 min-h-[20rem] max-h-[20rem]  rounded-xl mt-3 ">
+          <div className={`${theme=='dark'?'bg-black':'bg-gray-200'} flex flex-col w-[95%] flex-1 min-h-[20rem] max-h-[20rem]  rounded-xl mt-3 `}>
             {isLoading ? 
               <Loader/> :<div className="p-10"> <DataTable columns={Columns} data={data} itemsPerPage={3}/></div>}
           </div>

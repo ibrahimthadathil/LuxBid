@@ -6,6 +6,7 @@ import { IsellerController } from "../../interface/sellerController";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { json } from "stream/consumers";
 import { logError } from "@/utils/logger_utils";
+import { setCookie } from "@/utils/cookie_utils";
 
     @Service()
  class organizerController implements IsellerController{
@@ -15,8 +16,9 @@ import { logError } from "@/utils/logger_utils";
     async set_Organizer(req:AuthRequest,res:Response ){
         try {
             const sellerId = req.user 
-           const {success , message} = await this.orgService.set_Organizer(sellerId as string)
+           const {success , message,roleAccess} = await this.orgService.set_Organizer(sellerId as string)
             if(success){
+                setCookie(res,'authtkn',roleAccess as string)
                 res.status(HttpStatus.OK).json({success,message})
             }else res.status(HttpStatus.UNAUTHORIZED).json({success,message})
             
@@ -29,8 +31,9 @@ import { logError } from "@/utils/logger_utils";
     }
     async get_Organizer(req:AuthRequest,res:Response){
         try {
-            const userId = req.user
+            console.log('reached here');
             
+            const userId = req.user
            if(userId){
             const {success,message,buyer,seller}= await this.orgService.get_Seller(userId as string)            
            if(success){

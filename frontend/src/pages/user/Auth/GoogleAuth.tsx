@@ -19,13 +19,11 @@ const GoogleAuth = () => {
             const provider = new GoogleAuthProvider()
             const auth = getAuth(app)
             const {user} = await signInWithPopup(auth,provider)
-            const {data} = await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})
-            console.log('from gg',data);
-            
+            const {data} = await googleAuthSignIn({email:String(user.email),firstName:String(user.displayName),profile:String(user.photoURL)})            
             if(data.success){
-              localStorage.setItem('access-token',data.AccessToken)
+              localStorage.setItem('access-token',data.AccessToken) 
               toast.success(data.message)
-              dispatch(loaginSuccess({userName:String(user.displayName),email:String(user.email)}))
+              dispatch(loaginSuccess({userName:String(user.displayName),email:String(user.email),role:data.role?data.role:'Guest'}))
               navigate('/')
             }
             

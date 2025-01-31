@@ -11,20 +11,21 @@ import { OrganizerAuthMiddleware } from '@/middleware/user/organizerAuthmiddlewa
 const userRoute = Router()
 
 userRoute.get('/user',AuthMiddleWare,authorizationAccess,userController.find_User.bind(userController))
-userRoute.post('/setbuyer',AuthMiddleWare,authorizationAccess,buyer_controller.set_Buyer.bind(buyer_controller))
-userRoute.post('/setseller',AuthMiddleWare,authorizationAccess,Organizer_Controller.set_Organizer.bind(Organizer_Controller))
+userRoute.put('/setbuyer',AuthMiddleWare,authorizationAccess,buyer_controller.set_Buyer.bind(buyer_controller))
+userRoute.put('/setseller',AuthMiddleWare,authorizationAccess,Organizer_Controller.set_Organizer.bind(Organizer_Controller))
 userRoute.get('/buyer',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,buyer_controller.get_Buyer.bind(buyer_controller))
 userRoute.get('/seller',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware,Organizer_Controller.get_Organizer.bind(Organizer_Controller))
 userRoute.post('/uploadprofile',AuthMiddleWare,authorizationAccess,upload.single('image'),userController.upload_Profile.bind(userController))
 userRoute.post('/editprofile',AuthMiddleWare,authorizationAccess,userController.edit_Profile.bind(userController))
 userRoute.get('/allBids',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,buyer_controller.committed_Auction.bind(buyer_controller))
 
-// stripe route 
+// stripe rout
+// e 
 userRoute.post('/create-checkout-session',AuthMiddleWare,userController.make_Payment.bind(userController))
 userRoute.get('/session-status',AuthMiddleWare,userController.payment_Status.bind(userController)) 
 
 // userRoute.post('/webhook', 
-//     // express.raw({type: 'application/json'}),
+//     express.raw({type: 'application/json'}),
 //     userController.webhook_Handler.bind(userController)
 //   );
 

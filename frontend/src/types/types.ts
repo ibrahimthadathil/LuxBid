@@ -65,3 +65,12 @@ export type Tauction = {
     entryAmt:number
 }
 
+export type TAddress = {
+    _id?:string
+    propertyName:string  
+    user?:string
+    street: string;
+    city: string;
+    state: string;
+    pincode: string;
+}

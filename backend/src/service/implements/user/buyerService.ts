@@ -3,12 +3,15 @@ import { BuyerRepository } from "../../../repositories/implimentation/buyerRepos
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { IBuyerService } from "../../interface/buyerService_Interface";
 import { Iuser } from "../../../models/userModel";
+import { tokenService } from "./tokenService";
+import { logDebug } from "@/utils/logger_utils";
 
 @Service()
 export class buyer_service implements IBuyerService {
   constructor(
     private buyerRepo: BuyerRepository,
-    private userRepo: userRepository
+    private userRepo: userRepository,
+    private tokenService : tokenService
   ) {}
 
   async set_Buyer(userId: string) {
@@ -16,9 +19,12 @@ export class buyer_service implements IBuyerService {
       const exist = await this.buyerRepo.findByUserId(userId);
       if (!exist) {
         const setUp = await this.buyerRepo.create({ user: userId });
-        if (setUp) {
-          await this.userRepo.update(userId, { role: "Buyer" });
-          return { success: true, message: "Approved as Buyer" };
+        if (setUp) { 
+          const response = await this.userRepo.update(userId, { role: "Buyer" });
+          if (response) {
+          const roleAccess = this.tokenService.generate_AccessToken({id:response._id ,role:response.role}) 
+          return { success: true, message: "Approved as Buyer" ,roleAccess};
+        }else throw new Error('Failed to update the role')
         } else return { success: false, message: "Faild for the approval" };
       } else {
         return { success: false, message: "Data conflict" };

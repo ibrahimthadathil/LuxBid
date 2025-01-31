@@ -7,7 +7,6 @@ import React from "react";
 
 const SellerProfile = () => {
   const {data,isLoading,isSuccess}=useRQ(fetchSeller,'Seller')
-  console.log('from seller',data);
     
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :

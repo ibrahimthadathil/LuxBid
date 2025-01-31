@@ -13,7 +13,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
 import { CalendarClock, Radio, Users, X } from "lucide-react";
 import moment from "moment";
 import { useMemo } from "react";
-import { BidHistoryDialog } from "../BideHistory";
+import { BidHistoryDialog } from "./BidHistory";
 import { useTheme } from "@/components/theme/theme-provider";
 
 const MyBids = () => {

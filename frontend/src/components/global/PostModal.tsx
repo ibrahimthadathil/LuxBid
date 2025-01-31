@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Separator } from "@radix-ui/react-separator";
 import { ScrollArea } from "../ui/scroll-area";
+import { useTheme } from "../theme/theme-provider";
 
 interface modalProps<T> {
   data: T;
@@ -21,6 +22,7 @@ export function PostModal<T extends Record<string, any>>({
   sideContent,
   images,buttonText='View'
 }: modalProps<T>) {
+  const {theme}=useTheme()
   const [currentIndex, setCurrentIndex] = useState(0);
   const [postImages] = useState<string[]>(() =>
     images ? images : data?.images
@@ -86,11 +88,11 @@ export function PostModal<T extends Record<string, any>>({
             <div className="flex flex-col space-y-4 pr-4">
               {sideContent.map((item, index) => (
                 <div key={index} className="space-y-2">
-                  <h2 className="text-lg font-bold text-gray-100  ">
+                  <h2 className={`text-lg font-bold  ${theme=='dark'?"text-graytext-gray-100":'text-indigo-900'} `}>
                     {item.header ? item.header+' :':''} 
                   </h2>
                   <Separator className="my-2" />
-                  <div className="text-sm text-gray-400">
+                  <div className={` ${theme=='dark'?'text-gray-400 ':'text-black font-light'} text-sm `}>
                     {item.render ? item?.render(data, index) : null}
                   </div>
                 </div>

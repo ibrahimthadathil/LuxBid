@@ -20,5 +20,6 @@ export const responseMessage = {
     INVALID_INPUT: "The input provided is invalid.",
     INVALID_REQUEST:"Invalid Request",
     TOKEN_ACCESS:'Token not valid , Access declained',
-    UPLOAD_FAILED :'Failed to upload , Try later'
+    UPLOAD_FAILED :'Failed to upload , Try later',
+    INTERNAL_ERROR : 'Internal Server Error'
 } as const;

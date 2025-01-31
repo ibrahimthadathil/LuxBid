@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="flex">
       {/* Left Section: Logo */}
       <div className="ps-8 w-[10%]  ">
-        <img src={Logo} alt="Logo" className="w-28" />
+        <img src={Logo} alt="Logo" className="w-28"/>
       </div>
 
       {/* icons bar*/}

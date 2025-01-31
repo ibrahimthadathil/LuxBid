@@ -90,11 +90,11 @@ export const fetchuser = async () => {
 };
 
 export const setupBuyer = async()=>{
-        return await api.post('/setbuyer')
+        return await api.put('/setbuyer')
 }
 
 export const setupSeller = async()=>{
-      let res =await api.post('/setseller')
+      let res =await api.put('/setseller')
       return res
       
 }

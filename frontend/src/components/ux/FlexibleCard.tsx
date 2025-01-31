@@ -9,7 +9,7 @@ interface FlexibleCardProps {
   baseAmount:string;
   size?: "small" | "medium" | "large";
   className?: string;
-  onButtonClick: () => void;
+  onButtonClick: (id:string) => void;
 }
 
 export function FlexibleCard({
@@ -51,7 +51,7 @@ export function FlexibleCard({
         <Button 
           variant="outline" 
           size="sm" 
-          onClick={()=>onButtonClick(_id)}
+          onClick={()=>onButtonClick(_id as string)}
           className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"        >
           ₹ {baseAmount}
         </Button>

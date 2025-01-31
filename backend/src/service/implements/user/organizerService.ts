@@ -6,7 +6,7 @@ import { IorgaizerService } from "../../interface/organizerService_Interface";
 import { logError } from "@/utils/logger_utils";
 import { auctionRepository } from "@/repositories/implimentation/auction/auctionRepository";
 import { SocketService } from "../socket/socket_Service";
-import { stripeService } from "../stripe/stripeService";
+import { tokenService } from "./tokenService";
 
 @Service()
 export class organizerService implements IorgaizerService{
@@ -16,18 +16,21 @@ export class organizerService implements IorgaizerService{
     private buyerRepo : BuyerRepository,
     private auctionRepo :auctionRepository,
     private socketService : SocketService,
-    private stripeService : stripeService
+    private tokenservice : tokenService
   ) {}
 
   async set_Organizer(userId: string) {
     try {
       const exist = await this.sellerRepo.findById(userId);
       if (!exist) {
-        const res = await this.sellerRepo.create({ user: userId });
+        const newuser = await this.sellerRepo.create({ user: userId });
           await this.buyerRepo.create({user:userId})
-        if (res) {
-          await this.userRepo.update(userId, { role: "Seller" });
-          return { success: true, message: "Approved as Buyer" };
+        if (newuser) {
+         const response = await this.userRepo.update(userId, { role: "Seller" })
+         if(response){
+          const roleAccess = this.tokenservice.generate_AccessToken({role:response.role,id:response._id}) 
+           return { success: true, message: "Approved as Buyer" ,roleAccess};
+         }else throw new Error('Failed to update the user role')
         } else return { success: true, message: "Failed For The Approval" };
       } else return { success: false, message: "Data conflict" };
     } catch (error) {
@@ -36,14 +39,10 @@ export class organizerService implements IorgaizerService{
     }
   }
 
-  async get_Seller(userId:string){
-    console.log('7777777',userId);
-    
+  async get_Seller(userId:string){    
     try {
      const Organizer = await this.sellerRepo.findUserById(userId) 
-     const Buyer = await this.buyerRepo.findByUserId(userId)
-     console.log('888888',Organizer,'00000',Buyer);
-     
+     const Buyer = await this.buyerRepo.findByUserId(userId)     
      if(Organizer&&Buyer){
         return {success:true , buyer:Buyer , seller:Organizer}
      }else{

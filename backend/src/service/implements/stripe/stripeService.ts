@@ -7,7 +7,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export class stripeService {
   private stripe: Stripe;
   constructor() {
-    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!   );
+    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   }
   async makePaymentSession(data:any) {      
     try {
@@ -36,7 +36,7 @@ export class stripeService {
           userId: data.userId
         }
       });
-      console.log('workingstopp');
+      console.log('payent details :-',session);
       return session;
     } catch (error) {
         console.log('11111',(error as Error ).message);

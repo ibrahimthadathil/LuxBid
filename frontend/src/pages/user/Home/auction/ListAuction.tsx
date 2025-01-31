@@ -17,11 +17,13 @@ import moment from "moment";
 import { PostModal } from "@/components/global/PostModal";
 import AlertModal from "@/components/global/AlertModal";
 import useActionHook from "@/hooks/actionHook";
+import { useTheme } from "@/components/theme/theme-provider";
 
 
 const ListAuction = () => {
   useAuth();
   const {data,isLoading} = useRQ(fetchAuction,'auction')
+  const {theme} = useTheme()
   const {handler}=useActionHook()
   const closeAuction =async(id:string)=>{
     await handler(changeActionStatus,id,'auction')
@@ -142,14 +144,14 @@ const ListAuction = () => {
     },
   ],[data])
   return (
-    <div className="flex-1 flex flex-col p-5 bg-[#1a191996] m-4 rounded-3xl shadow-inner">
-      <h1 className="text-2xl font-semibold mb-4 text-gray-200 ps-1">
+    <div className={`flex-1 flex flex-col p-5 ${theme=='dark'?'bg-[#1a191996]':'bg-gray-100'} m-4 rounded-3xl shadow-inner`}>
+      <h1 className={`text-2xl font-semibold mb-4 ${theme=='dark'?'text-gray-200':'text-indigo-900'}  ps-1`}>
         Create Auction
       </h1>
       <div className="flex flex-col  h-full">
         <div className="w-[95%] h-[8.4rem] border-2 border-dashed rounded-xl border-[#5b4baeaf]">
           <div className="flex h-full">
-            <div className="w-[70%] h-full flex justify-center items-center text-[#cbcacf] text-xl">
+            <div className={`w-[70%] h-full flex justify-center items-center ${theme=='dark'?'text-[#cbcacf]':'text-black'} text-xl`}>
               <h5 className="font-light">
                 Click the Button
                 <span className="text-[#7664cf]"> "Create Auction!"</span> To
@@ -161,7 +163,7 @@ const ListAuction = () => {
             <div className="w-[30%] flex justify-center flex-1 items-center">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="py-3 px-8 rounded-lg border border-[#5b4bae] flex gap-2 text-white bg-transparent hover:bg-[#5b4bae]">
+                  <Button className="py-3 px-8 rounded-lg border border-[#5b4bae] flex gap-2 text-white bg-indigo-800 hover:bg-[#5b4bae]">
                     <FaPlusCircle /> Create Auction
                   </Button>
                 </DialogTrigger>

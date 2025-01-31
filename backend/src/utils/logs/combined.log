@@ -726,3 +726,664 @@
 [31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:46"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-23 23:09:44"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-23 23:09:54"}[39m
+[31m{"level":"error","message":"Address validation failed: postalCode: Path `postalCode` is required.","timestamp":"2025-01-24 14:32:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:17:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:17:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:17:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:51:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:51:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:51:30"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-24 16:51:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-27 11:05:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-27 11:05:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 08:39:54"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 09:23:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:12"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:16"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:47"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:24:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:51"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 09:28:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:28:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:28:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:28:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:28:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:28:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:28:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:28:29"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 09:29:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:29:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:30:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:12"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:30:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:14"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:30:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:30:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:38:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:39"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:38:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:39:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:39:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:41:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:05"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:41:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:42:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:42:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:42:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:44:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:44:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:44:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:48:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:48:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:48:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:08"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 09:48:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:06:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:06:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:06:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:24"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:06:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:06:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:40"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:09:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:41"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:09:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:43"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:09:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:47"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:09:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:08"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:13:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:12"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:13:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:16"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:13:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:27:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:27:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:47"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:27:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:27:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:52"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:31"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:31:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:31:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:31:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:31:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:40:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:40:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:40:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:58:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:58:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:58:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:58:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 10:58:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:05:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:05:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:40"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:05:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:05:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:09:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:09:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:09:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:09:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:40"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:17:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:17:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:17:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:17:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:17:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:31"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:29:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:29:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:29:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:29:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:38"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 11:48:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:51:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:51:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:51:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:52:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:52:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 11:52:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:19:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:19:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:19:19"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 12:25:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:25:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:54"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:25:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:25:55"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:55"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:25:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:59"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:25:59"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:16"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 12:26:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:19"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 14:33:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 14:34:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 14:34:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 14:34:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:30"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 14:34:30"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:30"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 15:36:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 15:36:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 15:36:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 15:36:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 15:36:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:33:52"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 16:33:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:33:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:56:29"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 16:56:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:56:30"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:27:29"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 17:27:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:27:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:47:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 17:47:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:47:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:00:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 18:00:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:00:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:14:14"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 18:14:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:14:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 19:31:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:31:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 19:31:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:45:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:45:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:03"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 19:46:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:54"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:46:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:47:01"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-28 19:49:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:15"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:16"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-28 19:49:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 09:35:38"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-29 10:08:36"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 10:08:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 10:08:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 10:08:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 10:08:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:54"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-29 10:25:34"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-29 10:42:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 11:06:36"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-29 11:06:36"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 09:44:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:24"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:44:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:36"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:44:36"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:36"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:44:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:48"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:46:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:46:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:53:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:53:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:53:03"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 09:54:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:54:27"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 09:54:35"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:54:35"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 09:54:43"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 09:54:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:12:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:12:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:05"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:13:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:13"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 10:48:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:05"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:48:25"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 10:58:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:58:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:58:56"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:58:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:58:56"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:58:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:58:59"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 10:59:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:06:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:06:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:06:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:06:57"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:24"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:29"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:22:59"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:19"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:22"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:23:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:24:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:24:28"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 11:36:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:49:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:49:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 11:49:27"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 12:00:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:00:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:00:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:00:34"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:00:36"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:00:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:24"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 12:01:49"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 14:44:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 14:44:35"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 14:44:36"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 14:44:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 14:44:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 14:45:38"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 15:41:08"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 18:39:47"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:39:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:39:52"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:39:54"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:39:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:40:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:40:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:40:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 18:40:13"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 18:52:33"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 18:55:58"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 18:57:32"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 19:01:38"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 19:10:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 19:55:46"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-30 19:56:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 19:56:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-30 19:56:51"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-31 09:23:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:23"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:27"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:27"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:33"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:33"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:35"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:39"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:43"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:23:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:50"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-31 09:41:33"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:41:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:41:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:41:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:41:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:20"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:21"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:28"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:43:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:46:32"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:47:48"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:47:49"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:47:51"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:47:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:48:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:48:40"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:48:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:48:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:49:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:49:08"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:49:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 09:49:14"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:03:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:03:44"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:03:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:03:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:06:45"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:06:46"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:06:48"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:06:52"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:07:52"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:07:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:07:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:07:59"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:08:52"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:08:53"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:08:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:08:59"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-31 10:18:47"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:19:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:19:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:02"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:19:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:19:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:08"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:19:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:08"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:23:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:23:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:23:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:23:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:17"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-31 10:38:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:40:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:40:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:40:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:40:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:17"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:46:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:48"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:50"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:46:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:54"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 10:46:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:54"}[39m
+[34m{"level":"debug","message":"reached tp verify","timestamp":"2025-01-31 14:59:55"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:01"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:07"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:29"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-01-31 15:06:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:29"}[39m
