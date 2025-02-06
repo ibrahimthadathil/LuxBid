@@ -27,7 +27,8 @@ export class paymentRepository extends BasRepository<IPayment>{
     async getUserTransactionHistory(userId: string) {
         return await Payment.find({ userId })
             .sort({ paymentDate: -1 })
-            .populate('auctionId', 'title');
+            .populate('auctionId', 'title')
+            
     }
 
     async findPendingEntryFees(auctionId: string) {

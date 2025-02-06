@@ -7,6 +7,7 @@ import { upload } from '@/utils/multer_Utils';
 import { authorizationAccess } from '@/middleware/user/AuthorizationMiddleware';
 import { buyerAuthMiddleware } from '@/middleware/user/BuyerAuthMiddleware';
 import { OrganizerAuthMiddleware } from '@/middleware/user/organizerAuthmiddleware';
+import { transaction_Controller } from '@/controller/implements/user/transactionController';
 
 const userRoute = Router()
 
@@ -26,7 +27,7 @@ userRoute.post('/webhook',
     express.raw({type: 'application/json'}),
     userController.webhook_Handler.bind(userController)
   );
-
+userRoute.get('/transactionHistory',AuthMiddleWare,transaction_Controller.getTransactionHistory.bind(transaction_Controller))
 
 
 export default userRoute

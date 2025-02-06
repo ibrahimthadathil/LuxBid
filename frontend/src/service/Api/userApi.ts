@@ -139,3 +139,14 @@ export const getSessionStatus = async (sessionId:string,auctionId:string)=>{
     toast.error('failed to complete payment')
   }
 }
+
+//get transaction history 
+
+export const getTransactionHistory = async()=>{
+  try {
+    return await api.get('/transactionHistory')
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
