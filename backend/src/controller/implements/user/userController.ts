@@ -13,7 +13,7 @@ import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 class user_Controller implements IuserContrller {
   private stripe: Stripe;
   constructor(
-    private userServide: userService,
+    private userService: userService,
     private stripeService: stripeService
   ) {
     this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -21,7 +21,7 @@ class user_Controller implements IuserContrller {
   async find_User(req: AuthRequest, res: Response) {
     try {
       const user = req.user;
-      const {success,data,message} = await this.userServide.findUser(user as string)
+      const {success,data,message} = await this.userService.findUser(user as string)
       if (success) {
         res.status(HttpStatus.OK).json({ success: true, data });
       } else res.status(HttpStatus.BAD_REQUEST).json({ success: false, message:responseMessage.ACCESS_DENIED });
@@ -36,7 +36,7 @@ class user_Controller implements IuserContrller {
     try {
       const userId = req.user;
       if (req.file && userId) {
-        const { message, success } = await this.userServide.upload_Profile(
+        const { message, success } = await this.userService.upload_Profile(
           userId as string,
           req.file
         );
@@ -59,7 +59,7 @@ class user_Controller implements IuserContrller {
       const userId = req.user;
 
       if (userId) {
-        const { message, success } = await this.userServide.edit_Profile(
+        const { message, success } = await this.userService.edit_Profile(
           req.body,
           userId as string
         );
@@ -75,9 +75,8 @@ class user_Controller implements IuserContrller {
 
   async make_Payment(req:AuthRequest,res:Response){        
     try {      
-      if(!req.user)res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.LOGIN_REQUIRED,success:false})
-      const {success,message,session} =  await this.userServide.auction_JoinPayment(req.body,req.user as string)      
-      if(success)res.status(HttpStatus.OK).json({success,clientSecret: session.client_secret})
+      const {success,message,session} =  await this.userService.auction_JoinPayment(req.body,req.user as string)      
+      if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
       else res.status(401).json({success:false , message:responseMessage.ERROR_MESSAGE})
     } catch (error) {
       logError(error)
@@ -89,7 +88,7 @@ class user_Controller implements IuserContrller {
   async payment_Status(req:AuthRequest,res:Response){
     const userId = req.user 
   try {
-    const {success,data,message} = await this.userServide.auction_Join(req.query,userId as string)
+    const {success,data,message} = await this.userService.auction_Join(req.query,userId as string)
     if(success)res.status(HttpStatus.OK).json({success,data})
       else res.status(HttpStatus.BAD_REQUEST).json({success,message})
   } catch (error) {
@@ -98,10 +97,11 @@ class user_Controller implements IuserContrller {
   }
 }
 
-async webhook_Handler(req: Request, res: Response) {
+async webhook_Handler(req:Request, res: Response) {
   const sig = req.headers['stripe-signature'];
 
   try {
+    console.log('webhookHandler worked')    
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
       throw new Error('Missing Stripe webhook secret');
     }
@@ -110,18 +110,14 @@ async webhook_Handler(req: Request, res: Response) {
       req.body,
       sig as string,
       process.env.STRIPE_WEBHOOK_SECRET
-    );
+    ); 
+      // Handle the webhook event
+      await this.stripeService.handleWebhook(event);
+      res.json({ received: true });
 
-    // Log the event for debugging
-    console.log('Webhook received:', event.type);
-
-    // Handle the event
-    await this.stripeService.handleWebhook(event);
-
-    res.json({ received: true });
   } catch (err) {
-    logError(err)
-    return res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
+    logError(err);    
+     res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
   }
 }
 

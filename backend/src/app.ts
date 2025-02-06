@@ -33,6 +33,7 @@ const httpServer = createServer(app);
 initializeSocket(httpServer)
 
 app.use(cors(target));
+app.use('/Luxbid/webhook', express.raw({ type: 'application/json' })); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

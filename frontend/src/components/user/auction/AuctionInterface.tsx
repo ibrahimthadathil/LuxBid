@@ -321,24 +321,24 @@ const AuctionInterface = () => {
               >
                 <div className="flex items-center gap-2">
                   <Avatar className="w-6 h-6 bg-slate-700">
-                    {user.user.profile ? (
+                    {user?.user?.profile ? (
                       <img
-                        src={user.user.profile}
-                        alt={`${user.user.firstName}'s profile`}
+                        src={user?.user?.profile}
+                        alt={`${user?.user?.firstName}'s profile`}
                         className="w-full h-full object-cover rounded-full"
                       />
                     ) : (
                       <span className="text-s ps-[7px]">
-                        {user.user.firstName[0].toUpperCase()}
+                        {user?.user?.firstName[0].toUpperCase()}
                       </span>
                     )}
                   </Avatar>
                   <span className="text-sm text-slate-300">
-                    {user.user.firstName}
+                    {user?.user?.firstName}
                   </span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm">₹{user.amount}</span>
+                  <span className="text-sm">₹{user?.amount}</span>
                   <span className="text-xs text-slate-500">
                     {moment(user?.bidTime).format("LT")}
                   </span>
@@ -346,12 +346,12 @@ const AuctionInterface = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className={`${user.isAccept ? "rounded-full text-gray-500 opacity-90 border-gray-500 hover:bg-gray-500/20":"rounded-full text-green-400 border-green-400 hover:bg-green-400/20"}`}
-                      onClick={() => handleAccept(user.user._id, user.amount,user.user.firstName)}
-                      disabled={user.isAccept}
+                      className={`${user?.isAccept ? "rounded-full text-gray-500 opacity-90 border-gray-500 hover:bg-gray-500/20":"rounded-full text-green-400 border-green-400 hover:bg-green-400/20"}`}
+                      onClick={() => handleAccept(user?.user?._id, user?.amount,user?.user?.firstName)}
+                      disabled={user?.isAccept}
                     >
                       <Check className="w-4 h-4 mr-1" />
-                    {user.isAccept ? 'Accepted':'Accept'}
+                    {user?.isAccept ? 'Accepted':'Accept'}
                     </Button>
                   )}
                 </div>

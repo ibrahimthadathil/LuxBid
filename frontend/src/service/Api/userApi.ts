@@ -124,7 +124,6 @@ return await api.post('/editprofile',data)
 export const joinPayment=async(data:{price:string,title:string,img:string,id:string})=>{
   try {
     const response = await api.post('/create-checkout-session',data)
-    console.log(response,'88888');
     return response.data.clientSecret
   } catch (error) {
   toast.error(((error as AxiosError).response?.data as Record<string,any>).message)
@@ -132,9 +131,9 @@ export const joinPayment=async(data:{price:string,title:string,img:string,id:str
   }
 }
 // get status of the payment after the request
-export const getSessionStatus = async (sessionId:string,id:string)=>{
+export const getSessionStatus = async (sessionId:string,auctionId:string)=>{
   try {
-    const response = await api.get(`/session-status?session_id=${sessionId}&aid=${id}`)
+    const response = await api.get(`/session-status?session_id=${sessionId}&aid=${auctionId}`)
     return response.data
   } catch (error) {
     toast.error('failed to complete payment')

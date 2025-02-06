@@ -52,7 +52,9 @@ export class auctionService {
       const response = await this.auctionRepo.update(auctionId, {
         isActive: false,
       });
-      if (response) return { success: true, message: "Deal closed" };
+      if (response){ 
+        
+        return { success: true, message: "Deal is closed" };}
       else throw new Error("failed to update");
     } catch (error) {
       return {
@@ -119,13 +121,8 @@ export class auctionService {
     try {
       const response = await this.auctionRepo.auction_Participants(auctionId);
       response?.bidders.sort((a, b) => b.amount - a.amount);
-      console.log(response);
       if (response) {
         const organizer = await this.auctionRepo.findById(auctionId);
-        console.log(
-          "&*&*&*",
-          organizer?.seller.toString() == userId.toString()
-        );
         if (organizer?.seller.toString() == userId.toString())
           return { success: true, organizer: true, auction: response };
         else return { success: true, organizer: false, auction: response };
@@ -148,7 +145,6 @@ export class auctionService {
   async acceptBidAmt(user:string,bidamt:number,auction:string){
     try {
       const response = await this.auctionRepo.accept_currentBid(user,bidamt,auction)
-      console.log(response,'@@@');
       
       if(response)return {success:true,message:'Deal granted'}
       else throw new Error('failed to Accept the deal')

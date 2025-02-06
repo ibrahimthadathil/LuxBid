@@ -1,4 +1,3 @@
-import { Iuser } from "../../models/userModel";
 
 
 export interface IBaseRepository<T>{

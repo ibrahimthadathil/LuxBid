@@ -36,7 +36,7 @@ const AuctionPage = React.memo(() => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const joinedUser = data?.bidders?.find((user:any)=>user.user.email==email&&user.paymentStatus=='completed')
+  const joinedUser = data?.bidders?.find((user:any)=>user?.user?.email==email&&user.paymentStatus=='completed')
   console.log('****',data);
   
   const toggleSection = useCallback((section: string) => {

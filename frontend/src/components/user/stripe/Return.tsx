@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { getSessionStatus } from "@/service/Api/userApi";
 import { CheckCircle } from "lucide-react";
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Return = () => {
@@ -13,6 +13,13 @@ const Return = () => {
   const urlParams = new URLSearchParams(queryString);
   const sessionId = urlParams.get('session_id');
   const AuctionId = urlParams.get('aid');
+
+  useEffect(() => {
+    if (!sessionId || !AuctionId) {
+      navigate('/');
+      return;
+    }
+  }, [sessionId,AuctionId,navigate])
 
   const fetchSessionStatus = useCallback(async () => {
     try {

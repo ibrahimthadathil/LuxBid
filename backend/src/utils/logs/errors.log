@@ -394,3 +394,45 @@
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:18:39"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:18:39"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:21:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-04 08:57:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:06:08"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 20:32:02"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:24"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:42"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:43"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:44"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:54"}[39m
