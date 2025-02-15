@@ -436,3 +436,4 @@
 [31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:44"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-08 11:03:33"}[39m

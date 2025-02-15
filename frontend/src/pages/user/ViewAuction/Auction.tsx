@@ -274,7 +274,7 @@ const AuctionPage = React.memo(() => {
           </div>
 
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid  gap-4">
               <Button
                 variant="outline"
                 className="w-full bg-transparent border-zinc-700 text-white hover:bg-zinc-800 hover:text-white"
@@ -283,13 +283,7 @@ const AuctionPage = React.memo(() => {
                 <CreditCard className="mr-2 h-4 w-4" />
                 Card payment
               </Button>
-              <Button
-                variant="outline"
-                className="w-full bg-transparent border-zinc-700 text-white hover:bg-zinc-800 hover:text-white"
-              >
-                <Wallet className="mr-2 h-4 w-4" />
-                Wallet
-              </Button>
+              
             </div>
 
             <div className="relative">

@@ -87,6 +87,7 @@ export class auctionService {
       return { success: false, message: "Internal server error , try later" };
     }
   }
+
   async view_Auction(id: string) {
     try {
       const response = await this.auctionRepo.viewAuction(id);

@@ -108,7 +108,7 @@ export class auctionController {
       const {amt,auctionId}= req.body
       const {message,success} = await this.auctionService.raiseBidAMT(amt,auctionId,userId as string)
       if(success){
-        this.socketService.emitToRoom(auctionId, "bidUpdated", { amt, userId });
+        // this.socketService.emitToRoom(auctionId, "bidUpdated", { amt, userId });
         res.status(HttpStatus.OK).json({message,success})}
         else res.status(HttpStatus.BAD_REQUEST).json({message,success})
     } catch (error) {
@@ -122,7 +122,7 @@ export class auctionController {
       const {userid,amt,auctionId}= req.body      
       const  {message,success}=await this.auctionService.acceptBidAmt(userid,amt,auctionId)      
       if(success){
-        this.socketService.emitToRoom(auctionId, "bidAccepted", { userid, amt });
+        // this.socketService.emitToRoom(auctionId, "bidAccepted", { userid, amt });
         res.status(HttpStatus.OK).json({message,success})}
         else res.status(HttpStatus.UNAUTHORIZED).json({message,success})
     } catch (error) {

@@ -11,6 +11,9 @@ export const initializeSocket =(server:http.Server)=>{
     try {
         const socketService = Container.get(AuctionSocketService);
         const chatsocket = Container.get(chatSocketService)
+        console.log(`[initializeSocket] AuctionSocketService instance: ${socketService.constructor.name}`);
+        console.log(`[initializeSocket] chatSocketService instance: ${chatsocket.constructor.name}`);
+
         socketService.initialize(server)
         chatsocket.initialize(server)
     } catch (error) {

@@ -20,7 +20,7 @@ createRoot(document.getElementById("root")!).render(
       <SocketProvider>
         <PersistGate persistor={persister}>
           <QueryClientProvider client={queryClient}>
-            <RouterProvider router={Router} />
+            <RouterProvider router={Router}/>
           </QueryClientProvider>
         </PersistGate>
       </SocketProvider>

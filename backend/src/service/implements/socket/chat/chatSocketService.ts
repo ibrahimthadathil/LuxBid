@@ -11,7 +11,7 @@ export class chatSocketService extends BasesocketService{
         socket.on('joinChatRoom',(roomId:string)=>{
             console.log(`Socket ${socket.id} joined chat room: ${roomId}`);
             socket.join(roomId)
-            this.emitToRoom(roomId,'user joined',{roomId,userId:socket.id})
+            this.emitToRoom(roomId,'userJoined',{roomId,userId:socket.id})
             this.usersCount(roomId)
         
         })

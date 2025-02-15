@@ -3,6 +3,7 @@ import { Buyer, IBuyer } from "../../models/buyerModel";
 import { BasRepository } from "./baseRepository";
 import { logError } from "@/utils/logger_utils";
 import { IAuction } from "@/models/auctionModel";
+import mongoose from "mongoose";
 
 @Service()
 export class BuyerRepository extends BasRepository<IBuyer> {
@@ -76,5 +77,52 @@ export class BuyerRepository extends BasRepository<IBuyer> {
     }
   
   
+  }
+  async findWonAuction(userId:string){
+    try {
+      return await Buyer.aggregate([
+      { 
+          $match: { user: new mongoose.Types.ObjectId(userId) } 
+      },
+      { 
+          $unwind: "$committedBids"
+      },
+      { 
+          $match: { "committedBids.bidStatus": "WIN" } 
+      },
+      {
+        $lookup: {
+          from: "auctions", 
+          localField: "committedBids.auction",
+          foreignField: "_id",
+          as: "committedBids.auction"
+        }
+      },
+      {
+        $unwind: "$committedBids.auction"
+      },
+      {
+        $lookup: {
+          from: "products", 
+          localField: "committedBids.auction.post",
+          foreignField: "_id",
+          as: "committedBids.auction.post"
+        }
+      },
+      {
+        $group: {
+          _id: null, 
+          committedBids: { $push: "$committedBids" } 
+        }
+      },
+      {
+        $project: {
+          _id: 0
+        }
+      }  
+    ]);
+    } catch (error) {
+      console.log((error as Error).message)
+    }
   }
 }

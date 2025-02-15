@@ -14,20 +14,24 @@ export class BasesocketService{
                 }
             })
         }
-
+        
         this.io.on('connection',(socket:Socket)=>{
-            console.log(`Socket connected: ${socket.id} from chat`);
+            console.log(`Socket connected: ${socket.id} from base`);
 
-            this.registerHandlers(socket)
-            
+           
+    console.log(`[BaseSocketService] Before calling registerHandlers for socket: ${socket.id}`);
+    this.registerHandlers(socket);
+    console.log(`[BaseSocketService] After calling registerHandlers for socket: ${socket.id}`);
+
             socket.on("disconnect", () => {
                 console.log(`Socket disconnected: ${socket.id}`);
               });
         })
     }
     protected registerHandlers(socket: Socket): void {
-
+        console.log(`[BaseSocketService] registerHandlers called for socket: ${socket.id}`);
     }
+    
     emitToRoom(room:string,event:string,data?:any){
         try {
             if(this.io)this.io?.to(room).emit(event,data)

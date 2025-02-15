@@ -149,4 +149,15 @@ export const getTransactionHistory = async()=>{
     console.log(error);
     
   }
-}
+} 
+
+// get won history
+ 
+export const getWonAuction = async()=>{
+  try {
+      return await api.get('/find-won-auction')
+      
+  } catch (error) {
+    console.log(error);    
+  }
+}   

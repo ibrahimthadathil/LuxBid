@@ -76,6 +76,19 @@ class BuyerController implements IbuyerContoller {
         .json({ success: false, message: responseMessage.ERROR_MESSAGE });
     }
   }
+  async getWonAuctions(req: AuthRequest, res: Response){
+    try {
+      
+     const { success , data , message } = await this.buyerService.findWonAuctions(req.user as string)
+    if(success)res.status(HttpStatus.OK).json({success,data})
+      else res.status(HttpStatus.NOT_FOUND).json({message,success})
+    } catch (error) {
+      logError(error);
+      res
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({ success: false, message: responseMessage.INTERNAL_ERROR});
+    }
+  }
 }
 
 export const buyer_controller = Container.get(BuyerController);

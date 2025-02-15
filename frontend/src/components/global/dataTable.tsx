@@ -65,7 +65,7 @@ export default function DataTable<T extends Record<string ,any>>({data,columns,i
               </TableRow>
             )) : <TableRow>
             <TableCell colSpan={columns.length} className="h-14 text-center text-yellow-800 ">
-             No data available
+             No data available 
             </TableCell>
           </TableRow>
           }

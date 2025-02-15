@@ -55,37 +55,31 @@ const AuctionInterface = () => {
 
     socket.emit("joinAuctionRoom", AuctionId);
 
-    socket.on("userJoined", () => {
-      queryClient.invalidateQueries({ queryKey: ["auction"] });
+    socket.on("bidUpdated", ({ message }) => {
+        toast.info(message);
+        queryClient.invalidateQueries({ queryKey: ["auction"] });
     });
 
-    socket.on("bidUpdated", () => {
-      queryClient.invalidateQueries({queryKey:["auction"]});
+    socket.on("bidAccepted", ({ message }) => {
+        toast.success(message);
+        queryClient.invalidateQueries({ queryKey: ["auction"] });
+        showConfetti();
     });
 
-    socket.on("bidAccepted", () => {
-      queryClient.invalidateQueries({queryKey:["auction"]});
-    });
-
-  socket.on("auctionUpdated", ({ message}) => {
-    toast.success(message);
-    queryClient.invalidateQueries({ queryKey: ["auction"] });
-  });
-
-    socket.on("notifyBidAccepted", ({ message }) => {
-      toast.info(message);
-      queryClient.invalidateQueries({queryKey:["auction"]});
-      showConfetti()
-
+    socket.on("auctionClosed", ({ message }) => {
+        toast.warning(message);
+        queryClient.invalidateQueries({ queryKey: ["auction"] });
+        showFireworkConfetti();
     });
 
     return () => {
-      socket.off("bidUpdated");
-      socket.off("bidAccepted");
-      socket.off("notifyBidAccepted");
-      socket.emit("leaveAuctionRoom", AuctionId);
+        socket.off("bidUpdated");
+        socket.off("bidAccepted");
+        socket.off("auctionClosed");
+        socket.emit("leaveAuctionRoom", AuctionId);
     };
-  }, [socket, AuctionId, queryClient]);
+}, [socket, AuctionId, queryClient]);
+
 
   useEffect(() => {
     if (!data?.auction?.startTime) return;
@@ -119,39 +113,66 @@ const AuctionInterface = () => {
         return;
       }
       await raiseBidAmount(Number(bidAmount), AuctionId);
-      setBidAmount("");
+      socket.emit("newBid", {
+          auctionId: AuctionId,
+          amount: bidAmount,
+          bidderName: data?.auction?.bidders[0]?.user?.firstName || "User"
+      });
       queryClient.invalidateQueries({queryKey:["auction"]});
-      
-
-    } catch (error) {
+      setBidAmount("");
+  } catch (error) {
       toast.error("Failed to place bid. Please try again.");
       console.error(error);
-    }
+  }
   };
 
-  const handleAccept = async (bidder: string, amount: number,user:string) => {
+  // const handleAccept = async (bidder: string, amount: number,user:string) => {
+  //   try {
+  //     await handleRaisedBid(bidder, amount, AuctionId);
+  //     toast.success('Bid accepted');
+  //     socket.emit('bidAccepted',{AuctionId,amount,user})
+  //     queryClient.invalidateQueries({queryKey:["auction"]});
+  //   } catch (error) {
+  //     console.error("Failed to accept bid:", error);
+  //     toast.error("Failed to accept bid. Please try again.");
+  //   }
+  // };
+  const handleAccept = async (bidder: string, amount: number, user: string) => {
     try {
-      await handleRaisedBid(bidder, amount, AuctionId);
-      toast.success('Bid accepted');
-      queryClient.invalidateQueries({queryKey:["auction"]});
-      socket.emit('bidAccepted',{AuctionId,amount,user})
+        await handleRaisedBid(bidder, amount, AuctionId);
+        socket.emit("bidAccepted", {
+            auctionId: AuctionId,
+            amount,
+            bidderName: user
+        });
     } catch (error) {
-      console.error("Failed to accept bid:", error);
-      toast.error("Failed to accept bid. Please try again.");
+        console.error("Failed to accept bid:", error);
+        toast.error("Failed to accept bid. Please try again.");
     }
-  };
+};
 
-  const handleDeal = async(id:string) => {
-    try {
-     const {data} = await finalizeDeal(id)
-    if(data.success){
-      socket.emit('close Auction', {id}); 
-    }
+const handleDeal = async (id: string) => {
+  try {
+      const { data } = await finalizeDeal(id);
+      if (data.success) {
+          socket.emit("closeAuction", { auctionId: id });
+      }
+  } catch (error) {
+      toast.error("Failed to close auction");
+      console.error(error);
+  }
+};
+  // const handleDeal = async(id:string) => {
+  //   try {
+  //    const {data} = await finalizeDeal(id)
+  //   if(data.success){
+  //     socket.emit('close Auction', {id}); 
+  //   }
      
-    } catch (error) {
+  //   } catch (error) {
       
-    }
-  };
+  //   }
+  // };
 
   const renderBidder = ({ bidder, size, accept}: avatarofBidder) => {
     const avatarSizes = {

@@ -4,7 +4,10 @@ import { userRepository } from "../../../repositories/implimentation/userReposit
 import { IBuyerService } from "../../interface/buyerService_Interface";
 import { Iuser } from "../../../models/userModel";
 import { tokenService } from "./tokenService";
-import { logDebug } from "@/utils/logger_utils";
+import { logDebug, logError } from "@/utils/logger_utils";
+import { Message } from "@/models/chatModel";
+import { responseMessage } from "@/enums/http_StatusCode";
+import { json } from "stream/consumers";
 
 @Service()
 export class buyer_service implements IBuyerService {
@@ -68,4 +71,19 @@ export class buyer_service implements IBuyerService {
       return {success:false , message :(error as Error).message}
     }
   }
+
+  async findWonAuctions(userId:string){
+    try {
+      const response = await this.buyerRepo.findWonAuction(userId)
+      console.log('$$$$',response);
+      
+      if(response)return { success:true , data : response[0]?.committedBids }
+      else return { success:false , message : responseMessage.NOT_FOUND }
+    } catch (error) {
+      console.log(error)
+      logError(error)
+      return { success: false , message : responseMessage.ERROR_MESSAGE}
+    }
+  }
+  
 }

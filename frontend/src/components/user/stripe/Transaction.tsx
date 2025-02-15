@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Loader2 } from "lucide-react"
 import moment from "moment"
 import { useNavigate } from "react-router-dom"
+import { Button } from "@/components/ui/Button"
 
 interface Transaction {
   _id: string
@@ -133,11 +134,15 @@ const Transaction = () => {
               <TableCell>{transaction.paymentType}</TableCell>
               <TableCell>{formatDate(transaction.paymentDate)}</TableCell>
             </TableRow>
-          )): <TableRow aria-colspan={5}>
-            <div className="flex justify-center gap-4 p-4">
-              <p>Not commited any of Deal. Join Now...</p>
-              <button onClick={()=>navigate('/AllDeals')} className="border p-2 rounded-lg">View Deal</button>
-            </div>
+          )): <TableRow >
+            <TableCell colSpan={5} className="h-24 text-center">
+              <div className="flex  items-center justify-center gap-4">
+                <p>Not committed to any deals. Join Now...</p>
+                <Button onClick={() => navigate("/AllDeals")} variant="outline">
+                  View Deals
+                </Button>
+              </div>
+            </TableCell>
             </TableRow>}
         </TableBody>
       </Table>

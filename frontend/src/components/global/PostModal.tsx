@@ -86,8 +86,10 @@ export function PostModal<T extends Record<string, any>>({
           {/* {right side of the imgae view div} */}
           <ScrollArea className="max-h-[400px]  w-full  rounded-md  p-6">
             <div className="flex flex-col space-y-4 pr-4">
-              {sideContent.map((item, index) => (
-                <div key={index} className="space-y-2">
+              {sideContent.map((item, index) => {
+                console.log(item ,'from 3333');
+                
+               return <div key={index} className="space-y-2">
                   <h2 className={`text-lg font-bold  ${theme=='dark'?"text-graytext-gray-100":'text-indigo-900'} `}>
                     {item.header ? item.header+' :':''} 
                   </h2>
@@ -96,7 +98,7 @@ export function PostModal<T extends Record<string, any>>({
                     {item.render ? item?.render(data, index) : null}
                   </div>
                 </div>
-              ))}
+})}
             </div>
           </ScrollArea>
         </div>
