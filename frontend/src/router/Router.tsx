@@ -42,6 +42,7 @@ import Winnnings from "@/components/user/profile/winnings/winnnings";
 import OrdersStatus from "@/components/user/profile/orders/orders";
 import Transactions from "@/pages/user/Home/payment/Transactions";
 import SetRole from "@/components/user/profile/Landing/SetRole";
+import OrderDispatches from "@/components/user/profile/orders/orderDispatches";
 const UserProfile = React.lazy(
   () => import("@/pages/user/Home/profile/UserProfile")
 );
@@ -185,11 +186,19 @@ export const Router = createBrowserRouter([
         element: <Orders />,
         children: [
           {
+            path:'',
+            element:<Navigate to='history'/>
+          },
+          {
+            path:'dispatch',
+            element:<OrderDispatches/>
+          },
+          {
             path: "winnings",
             element:<Winnnings/>
           },
           {
-            path:"status",
+            path:"history",
             element:<OrdersStatus/>
           }
         ],

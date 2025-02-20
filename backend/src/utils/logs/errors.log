@@ -437,3 +437,10 @@
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:44"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:54"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-08 11:03:33"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 19:37:20"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:03:04"}[39m
+[31m{"level":"error","message":"Order validation failed: shippingAddress: Path `shippingAddress` is required.","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:48"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:49"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:51"}[39m

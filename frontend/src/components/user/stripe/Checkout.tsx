@@ -1,4 +1,4 @@
-import  { useCallback, useEffect } from "react";
+import  { useCallback } from "react";
 import {loadStripe} from '@stripe/stripe-js';
 import {
   EmbeddedCheckoutProvider,
@@ -6,21 +6,24 @@ import {
 } from '@stripe/react-stripe-js';
 import { joinPayment } from "@/service/Api/userApi";
 import { useLocation, useNavigate } from "react-router-dom";
-import Loader from "@/components/global/Loader"; // Import your loader component
+import { orderPlacePayment } from "@/service/Api/orderApi";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
 const Checkout = () => {
 const location = useLocation()
 const navigate = useNavigate()
-const {price,title,img,id} = location.state 
+const {price,title,img,id,placeOrder,address} = location.state 
 
       if(!location.state){
         navigate('/')
         return 
       }
 
-const fetchClientSecret = useCallback(async() => await joinPayment({price,title,img,id}), []);
+const fetchClientSecret = useCallback(async() => {
+  if(placeOrder)return await orderPlacePayment({ price, title, img, id, address })
+    else return await joinPayment({ price, title, img, id })
+  }, []);
 const options = {fetchClientSecret};
 
   return (

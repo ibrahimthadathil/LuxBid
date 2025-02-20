@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { PlusCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import {
@@ -19,11 +19,19 @@ import { useRQ } from "@/hooks/userRQ";
 import { TAddress } from "@/types/types";
 import Loader from "@/components/global/Loader";
 import { useQueryClient } from "@tanstack/react-query";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, Rootstate } from "@/redux/store/store";
+import { selectedAddress } from "@/redux/slice/authSlice";
+
 
 const Address = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { data, isLoading } = useRQ(fetchAddress, "address");
   const queryClient = useQueryClient();
+  const dispatch = useDispatch<AppDispatch>()
+  const selectedAddressId = useSelector((state: Rootstate) => state.user.address);
+
   const {
     register,
     handleSubmit,
@@ -32,7 +40,6 @@ const Address = () => {
   } = useForm<TZAddress>({
     resolver: zodResolver(ZAddress),
   });
-
   const handleAddAddress = async (datas: TZAddress) => {
     const { data } = await createAddress(datas);
     if (data.success) {
@@ -42,6 +49,14 @@ const Address = () => {
     }
   };
 
+
+    const handleCheckboxChange = (choosenAddressId: string) => {
+      if (selectedAddressId === choosenAddressId) {
+        dispatch(selectedAddress(null)); 
+      } else {
+        dispatch(selectedAddress(choosenAddressId));
+      }
+    };
   const handleDeleteAddress = (id: string) => {};
 
   return (
@@ -141,23 +156,29 @@ const Address = () => {
             (data as TAddress[]).map((address) => (
               <div
                 key={address._id}
-                className="flex-shrink-0 w-64 p-4 border rounded-lg shadow-sm"
+                className={`flex-shrink-0 w-64 p-4 border rounded-lg shadow-sm ${
+                  selectedAddressId === address._id ? "border-blue-500" : ""
+                }`}
               >
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <p className="font-semibold">{address.propertyName}</p>
-                    <p>{address.street}</p>
-                    <p>{address.pincode}</p>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleDeleteAddress(address._id as string)}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
+  <div className="flex justify-between items-start mb-2">
+    <div className="flex items-start gap-3">
+    <Checkbox checked={selectedAddressId === address._id}
+                      onCheckedChange={() => handleCheckboxChange(address._id as string)} />
+    <div>
+        <p className="font-semibold">{address.propertyName}</p>
+        <p>{address.street}</p>
+        <p>{address.pincode}</p>
+      </div>
+    </div>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => handleDeleteAddress(address._id as string)}
+    >
+      <Trash2 className="h-4 w-4" />
+    </Button>
+  </div>
+</div>
             ))
           )}
         </div>

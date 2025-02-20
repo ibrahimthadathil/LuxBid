@@ -2,6 +2,7 @@ import { TZprofile } from "@/utils/validation/user";
 import axios, { AxiosError } from "axios";
 import { axiosInstance } from "../axiosInstance/intercepters";
 import { toast } from "sonner";
+import { TAddress } from "@/types/types";
 
 type Tuser = {
   email: string;
@@ -161,3 +162,4 @@ export const getWonAuction = async()=>{
     console.log(error);    
   }
 }   
+

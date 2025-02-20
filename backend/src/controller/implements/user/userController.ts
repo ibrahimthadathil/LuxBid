@@ -87,6 +87,7 @@ class user_Controller implements IuserContrller {
   }
   async payment_Status(req:AuthRequest,res:Response){
     const userId = req.user 
+    
   try {
     const {success,data,message} = await this.userService.auction_Join(req.query,userId as string)
     if(success)res.status(HttpStatus.OK).json({success,data})

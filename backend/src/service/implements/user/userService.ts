@@ -82,7 +82,7 @@ export class userService implements IuserService {
 
   async auction_Join(query: any, userId: string) {
     try {
-      const response = await this.stripeService.payment_Status(query, userId);      
+      const response = await this.stripeService.payment_Status(query);      
       const data = {
         status: response.status,
         customer_email: response.customer_details.email,

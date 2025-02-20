@@ -74,3 +74,13 @@ export type TAddress = {
     state: string;
     pincode: string;
 }
+export type TOrder = {
+    user: string | Iuser;
+    shippingAddress: string | TAddress;
+    paymentStatus: 'Success' | 'Failed' | 'Pending';
+    orderStatus: 'Pending' | 'Shipped' | 'Delivered' | 'Canceled';
+    auction: Tauction|string;
+    orderAmt: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+}

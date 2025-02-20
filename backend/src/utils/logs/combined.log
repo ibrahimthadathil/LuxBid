@@ -1493,3 +1493,20 @@
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-12 20:56:43"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-14 11:31:11"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-14 11:31:11"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-16 12:29:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-16 12:29:13"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-17 13:00:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-17 13:00:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-17 13:00:37"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-19 09:16:31"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-19 09:16:31"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-20 09:26:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-20 09:26:38"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-02-20 09:26:38"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 19:37:20"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:03:04"}[39m
+[31m{"level":"error","message":"Order validation failed: shippingAddress: Path `shippingAddress` is required.","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:48"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:49"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:51"}[39m

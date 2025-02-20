@@ -18,6 +18,7 @@ import "./utils/logger_utils";
 import { initializeSocket } from "./config/socketConfig";
 import chatRoute from "./routes/chat/chatRoutes";
 import addressRoute from "./routes/user/addressRoute";
+import orderRoute from "./routes/order/orderRoute";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 connectDB();
@@ -43,6 +44,7 @@ app.use("/Luxbid", auctionRoute);
 app.use("/LB/api", adminRoute);
 app.use("/Luxbid",chatRoute)
 app.use("/LuxBid",addressRoute)
+app.use("/LuxBid",orderRoute)
 app.use(
   "/Luxbid",
   AuthMiddleWare,

@@ -1,10 +1,12 @@
+import { TAddress } from "@/types/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface userState {
     userName:string | null,
     email:string |null ,
     role:string |null ,
-    isAuthenticated:boolean|null
+    isAuthenticated:boolean|null,
+    address:string|null
 }
 
 
@@ -12,7 +14,9 @@ const initialState:userState ={
     userName: null, 
     email: null,
     role :  null,
-    isAuthenticated :null
+    isAuthenticated :null,
+    address:null
+
 }
 const userSlice = createSlice({
     name: 'user',
@@ -29,13 +33,17 @@ const userSlice = createSlice({
             state.userName = null 
             state.role = null
             state.isAuthenticated = null
+            state.address = null
             localStorage.removeItem("access-token");
         },
         setRole :(state , action :PayloadAction<string>)=>{
             state.role = action.payload
+        },
+        selectedAddress :(state,action:PayloadAction<string|null>)=>{
+            state.address = action.payload
         }
     }
 })
 
-export const {loaginSuccess,logout,setRole} = userSlice.actions
+export const {loaginSuccess,logout,setRole,selectedAddress} = userSlice.actions
 export default userSlice.reducer

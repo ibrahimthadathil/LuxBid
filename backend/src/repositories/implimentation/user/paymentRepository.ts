@@ -11,12 +11,12 @@ export class paymentRepository extends BasRepository<IPayment>{
         super(Payment)
     }
 
-    async updatePaymentStatus(sessionId: string, status: paymentStatus): Promise<IPayment | null> {
+    async updatePaymentStatus(sessionId: string,updateData: Partial<IPayment>): Promise<IPayment | null> {
         try {
           return await Payment.findOneAndUpdate(
             { transactionId: sessionId },
-            { status },
-            { new: true }
+             updateData ,
+            { upsert: true ,new:true}
           );
         } catch (error) {
           logError(error);
@@ -37,6 +37,15 @@ export class paymentRepository extends BasRepository<IPayment>{
             paymentType: paymentType.ENTRY_FEE,
             status: paymentStatus.COMPLETED
         });
+    }
+
+    async updatePayment(userId:string,auctionId:string,updateData:Partial<IPayment>){
+      try {
+        return await Payment.findOneAndUpdate({auctionId,userId},updateData)
+      } catch (error) {
+        logError(error);
+          throw new Error('Failed to update payment status q ');
+      }
     }
 
 

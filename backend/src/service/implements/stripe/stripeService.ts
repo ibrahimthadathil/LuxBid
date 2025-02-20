@@ -16,7 +16,7 @@ export class stripeService {
     this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   }
 
-  async makePaymentSession(data: any,userId:string) {
+  async  makePaymentSession(data: any,userId:string) {
     try {
       const paymentItems = [
         {
@@ -36,7 +36,7 @@ export class stripeService {
         ui_mode: "embedded",
         line_items: paymentItems,
         mode: "payment",
-        return_url: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
+        return_url: data.address ?`${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}&order=${true}`: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
         metadata: {
           aid: data.id,
           userId: userId,
@@ -50,7 +50,7 @@ export class stripeService {
     }
   }
 
-  async payment_Status(query: any, userId: string) {
+  async payment_Status(query: any) {
     try {
       const session = await stripe.checkout.sessions.retrieve(query.session_id);
       return session;
@@ -108,7 +108,7 @@ export class stripeService {
       // Update payment record
       const f=await this.paymentRepo.updatePaymentStatus(
         session.id,
-        paymentStatus.COMPLETED
+        {status:paymentStatus.COMPLETED}
       );
       console.log(f,'@@ from the successpayment');
       
@@ -153,7 +153,7 @@ export class stripeService {
       const refundId = charge?.refunds?.data[0].id;
       await this.paymentRepo.updatePaymentStatus(
         refundId as string,
-        paymentStatus.REFUNDED
+        {status:paymentStatus.REFUNDED}
       );
     } catch (error) {
       logError(error);

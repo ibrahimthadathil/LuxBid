@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { getOrderStatus } from "@/service/Api/orderApi";
 import { getSessionStatus } from "@/service/Api/userApi";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Return = () => {
   const [status, setStatus] = useState(null);
@@ -13,6 +15,9 @@ const Return = () => {
   const urlParams = new URLSearchParams(queryString);
   const sessionId = urlParams.get('session_id');
   const AuctionId = urlParams.get('aid');
+  const order = urlParams.get('order');
+
+  
 
   useEffect(() => {
     if (!sessionId || !AuctionId) {
@@ -23,14 +28,22 @@ const Return = () => {
 
   const fetchSessionStatus = useCallback(async () => {
     try {
-        if (sessionId && AuctionId) {
-        const response = await getSessionStatus(sessionId, AuctionId);   
-        
+      alert(order)
+        if(order){
+          const response = await getOrderStatus(sessionId as string,AuctionId as string)
+          if (response.success) {
+            setStatus(response.data.status);
+            setCustomerEmail(response.data.customer_email);
+            toast.success(response.message)
+          } 
+        }
+        else if (sessionId && AuctionId&& !order) {
+        const response = await getSessionStatus(sessionId, AuctionId);  
         if (response.success) {
           setStatus(response.data.status);
           setCustomerEmail(response.data.customer_email);
+        }   
         }
-      }
     } catch (error) {
       console.error('Failed to fetch session status:', error);
     }
@@ -63,7 +76,7 @@ const Return = () => {
           </p>
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
-          <Button className="w-full" variant="outline" onClick={() => navigate('/deals/auction/bids',{state:{AuctionId}})}>
+          <Button className="w-full" variant="outline" onClick={() => !order?navigate('/deals/auction/bids',{state:{AuctionId}}):navigate('/user/orders/winnings')}>
             Continue
           </Button>
           <p className="text-sm text-center text-gray-500">

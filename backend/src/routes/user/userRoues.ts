@@ -29,6 +29,7 @@ userRoute.post('/webhook',
     userController.webhook_Handler.bind(userController)
   );
 userRoute.get('/transactionHistory',AuthMiddleWare,transaction_Controller.getTransactionHistory.bind(transaction_Controller))
+userRoute.post('/winning-bid-payment',AuthMiddleWare,)
 
 
 export default userRoute
