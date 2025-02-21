@@ -19,5 +19,22 @@ export class OrderRepository extends BasRepository<IOrder>{
             
         }
     }
+
+    async getDispatchOrders(sellerId:string){
+        try {
+           return await Order.find()
+            .populate({
+                path: 'auction',
+                match: { seller: sellerId },
+                populate:{path:'post'}
+            })
+            .populate('shippingAddress')
+            
+        } catch (error) {
+            console.log('ooo');
+            logError(error)
+            
+        }
+    }
     
 }

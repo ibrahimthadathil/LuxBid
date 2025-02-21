@@ -16,7 +16,21 @@ orderRoute
     AuthMiddleWare,
     authorizationAccess,
     order_Contoller.paymentStatus.bind(order_Contoller)
+  );
+orderRoute
+  .route("/orders")
+  .get(
+    AuthMiddleWare,
+    authorizationAccess,
+    order_Contoller.fetchOrders.bind(order_Contoller)
+  );
+orderRoute
+  .route("/place-order")
+  .get(
+    AuthMiddleWare,
+    authorizationAccess,
+    order_Contoller.dispatchOrders.bind(order_Contoller)
   )
-orderRoute.route('/orders').get(AuthMiddleWare,authorizationAccess,order_Contoller.fetchOrders.bind(order_Contoller))
+  .put(AuthMiddleWare, authorizationAccess,order_Contoller.placeOrder.bind(order_Contoller));
 
 export default orderRoute;

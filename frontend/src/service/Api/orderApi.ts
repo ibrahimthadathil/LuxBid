@@ -25,8 +25,26 @@ export const getOrderStatus =async (sessionId:string,auctionId:string)=>{
 
 export const fetchAllOrders = async ()=>{
   try {
-    return api.get('/orders')
+    return await api.get('/orders')
   } catch (error) {
     console.log(error); 
+  }
+}
+
+export const fetchDispatchOrders = async()=>{
+  try {
+    return api.get('/place-order')
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
+export const  dispatchOrder = async(value:string,order:string)=>{
+  try {
+    const response = await api.put('/place-order',{value,order})
+    return response.data
+  } catch (error) {
+    console.log(error);
   }
 }

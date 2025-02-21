@@ -75,6 +75,7 @@ export type TAddress = {
     pincode: string;
 }
 export type TOrder = {
+    _id:string
     user: string | Iuser;
     shippingAddress: string | TAddress;
     paymentStatus: 'Success' | 'Failed' | 'Pending';

@@ -7,6 +7,7 @@ import { IAuction } from "@/models/auctionModel";
 import { paymentRepository } from "@/repositories/implimentation/user/paymentRepository";
 import { paymentStatus, paymentType } from "@/models/paymentModel";
 import { responseMessage } from "@/enums/http_StatusCode";
+import { Message } from "@/models/chatModel";
 
  
 
@@ -77,5 +78,22 @@ export class OrderService{
             return {success:false , message:(error as Error).message }
         }
     }
-
+    async getDispatchOrders(userId:string){
+        try {
+            const response = await this.orderRepo.getDispatchOrders(userId)
+            if(response)return {success:true,data:response}
+            else return {success:false,Message:responseMessage.INVALID_REQUEST}
+        } catch (error) {
+            return {success:false,Message:responseMessage.ERROR_MESSAGE}
+        }
+    }
+    async changeOrderStatus(data:{value:any,order:string}){
+        try {
+            const response = await this.orderRepo.update(data.order,{orderStatus:data.value})
+            if(response)return {success:true}
+            else return {success:false}
+        } catch (error) {
+            return {success:false,Message:responseMessage.ERROR_MESSAGE}
+        }
+    }
 }
