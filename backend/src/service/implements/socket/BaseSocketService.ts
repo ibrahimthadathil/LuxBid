@@ -5,6 +5,7 @@ import { Service } from "typedi";
 @Service()
 export class BasesocketService{
     protected io:Server|null =null
+    private handlers: BasesocketService[] = [];
     initialize(server:any){
         if(!this.io){
             this.io=new Server(server,{
@@ -17,18 +18,25 @@ export class BasesocketService{
         
         this.io.on('connection',(socket:Socket)=>{
             console.log(`Socket connected: ${socket.id} from base`);
-
-           
-    console.log(`[BaseSocketService] Before calling registerHandlers for socket: ${socket.id}`);
-    this.registerHandlers(socket);
-    console.log(`[BaseSocketService] After calling registerHandlers for socket: ${socket.id}`);
+                                
+            this.handlers.forEach(handler => {
+                handler.registerHandlers(socket);
+            });
+    // console.log(`[BaseSocketService] Before calling registerHandlers for socket: ${socket.id}`);
+    // this.registerHandlers(socket);
+    // console.log(`[BaseSocketService] After calling registerHandlers for socket: ${socket.id}`);
 
             socket.on("disconnect", () => {
                 console.log(`Socket disconnected: ${socket.id}`);
               });
         })
     }
+    addHandlers(service: BasesocketService) {
+        this.handlers.push(service);
+        service.io = this.io; // Share the socket.io instance
+    }
     protected registerHandlers(socket: Socket): void {
+        console.log('encoutered 2112123');
         console.log(`[BaseSocketService] registerHandlers called for socket: ${socket.id}`);
     }
     

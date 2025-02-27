@@ -7,6 +7,7 @@ export interface ISeller extends Document{
     {
       clint: string;
       rate: number;
+      auction:string
     }
   ];
   products: string,
@@ -17,7 +18,8 @@ const OrganizerSchema = new Schema({
     user : { type : mongoose.Schema.Types.ObjectId , ref : 'User' ,required :true},
     rating :[{
       clint: { type: mongoose.Schema.Types.ObjectId , ref : 'User' },
-      rate : { type : Number , default : 0 }
+      rate : { type : Number , default : 0 },
+      auction:{ type: mongoose.Schema.Types.ObjectId , ref : 'Auction' }
     }],
     products:{type: mongoose.Schema.Types.ObjectId } ,
     auctions:{type: mongoose.Schema.Types.ObjectId , 'ref' : 'Auction' }

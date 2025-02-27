@@ -41,10 +41,12 @@ export class paymentRepository extends BasRepository<IPayment>{
 
     async updatePayment(userId:string,auctionId:string,updateData:Partial<IPayment>){
       try {
-        return await Payment.findOneAndUpdate({auctionId,userId},updateData)
+        const test = await Payment.findOne({auctionId,userId}) 
+        const reponse = await Payment.findOneAndUpdate({auctionId,userId},updateData,{upsert:true})
+        return reponse 
       } catch (error) {
         logError(error);
-          throw new Error('Failed to update payment status q ');
+          throw new Error('Failed to update payment status ');
       }
     }
 

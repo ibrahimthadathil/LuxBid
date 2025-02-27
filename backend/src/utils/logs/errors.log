@@ -444,3 +444,9 @@
 [31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:48"}[39m
 [31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:49"}[39m
 [31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 11:12:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 11:12:29"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"organizerid\" (type string) at path \"_id\" for model \"Organizer\"","timestamp":"2025-02-21 14:01:14"}[39m

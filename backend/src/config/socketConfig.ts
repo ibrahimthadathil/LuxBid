@@ -9,13 +9,16 @@ import Container from "typedi";
 
 export const initializeSocket =(server:http.Server)=>{
     try {
-        const socketService = Container.get(AuctionSocketService);
+        const auctionSocket = Container.get(AuctionSocketService);
         const chatsocket = Container.get(chatSocketService)
-        console.log(`[initializeSocket] AuctionSocketService instance: ${socketService.constructor.name}`);
+        const baseSocket = Container.get(BasesocketService);
+        console.log(`[initializeSocket] AuctionSocketService instance: ${auctionSocket.constructor.name}`);
         console.log(`[initializeSocket] chatSocketService instance: ${chatsocket.constructor.name}`);
 
-        socketService.initialize(server)
-        chatsocket.initialize(server)
+        baseSocket.initialize(server)
+        baseSocket.addHandlers(auctionSocket);
+        baseSocket.addHandlers(chatsocket);
+        // chatsocket.initialize(server)
     } catch (error) {
         console.log('error from socket config');
         logError(error)

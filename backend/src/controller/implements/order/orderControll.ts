@@ -67,6 +67,17 @@ export class orderController{
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE}) 
         }
     }
+    async rateSeller(req:AuthRequest,res:Response){
+        try {
+            const { orderId , rating } = req.body
+            const {success,message} = await this.orderService.addRating( orderId , rating , req.user as string )
+            if(success) res.status(HttpStatus.OK).json({success,message}) 
+            else res.status(HttpStatus.UNAUTHORIZED).json({success,message})
+        } catch (error) {
+            logError(error)
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE}) 
+        }
+    }
 }
 
 export const order_Contoller = Container.get(orderController)

@@ -32,5 +32,6 @@ orderRoute
     order_Contoller.dispatchOrders.bind(order_Contoller)
   )
   .put(AuthMiddleWare, authorizationAccess,order_Contoller.placeOrder.bind(order_Contoller));
+ orderRoute.route('/rating').post(AuthMiddleWare,authorizationAccess,order_Contoller.rateSeller.bind(order_Contoller)) 
 
 export default orderRoute;

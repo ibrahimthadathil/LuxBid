@@ -48,3 +48,12 @@ export const  dispatchOrder = async(value:string,order:string)=>{
     console.log(error);
   }
 }
+
+export const addSellerRating = async(orderId:string,rating:number)=>{
+  try {
+    const response = await api.post('/rating',{orderId,rating})
+     return response
+  } catch (error) {
+    console.log(error);
+  }
+} 

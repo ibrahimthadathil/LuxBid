@@ -83,9 +83,9 @@ const ChatUI: React.FC = () => {
     queryclient.invalidateQueries({ queryKey: ["chats"] });
   }, [page]);
 
-  // useEffect(() => {
-  //   chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages]);
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const handleSendMessage = async (datas: { message: string }) => {
   

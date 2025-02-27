@@ -8,6 +8,8 @@ import { paymentRepository } from "@/repositories/implimentation/user/paymentRep
 import { paymentStatus, paymentType } from "@/models/paymentModel";
 import { responseMessage } from "@/enums/http_StatusCode";
 import { Message } from "@/models/chatModel";
+import { organizerRepository } from "@/repositories/implimentation/organizerRepository";
+import { IOrder } from "@/models/orderModel";
 
  
 
@@ -17,7 +19,8 @@ export class OrderService{
         private orderRepo : OrderRepository,
         private stripeService : stripeService,
         private auctionRepo : auctionRepository,
-        private paymentRepo : paymentRepository
+        private paymentRepo : paymentRepository,
+        private organizerRepo :organizerRepository
     ){}
 
     async createOrderPayment(data:{price:string,title:string,img:string,id:string,address: string},userId:string){
@@ -29,7 +32,7 @@ export class OrderService{
             }
             const session = await this.stripeService.makePaymentSession(paymentData, userId);
             if(session){
-                const exist = await this.orderRepo.findByField('user',userId)
+                const exist = await this.orderRepo.findByField('auction',data.id)
                 if(!exist){
                     await this.orderRepo.create({user:userId,auction:data.id,orderAmt:finalPrice,paymentStatus:'Pending',orderStatus:'Pending',shippingAddress:data.address})
                     await this.paymentRepo.create({transactionId:session.id,amount:finalPrice,paymentType:paymentType.WINNING_BID,userId,auctionId:data.id})
@@ -52,16 +55,21 @@ export class OrderService{
                 status: response.status,
                 customer_email: response.customer_details.email,
               };
+              console.log(data);
+              
             if(response.status=='complete'){
                 const commitedAuction = await this.auctionRepo.findById(query.aid) as IAuction
-                const deductionAmout:number = commitedAuction?.baseAmount-commitedAuction?.entryAmt
-                const updatePaymentStatus = await this.paymentRepo.updatePayment(userId,query.aid,{status:paymentStatus.COMPLETED})
+                const deductionAmout = commitedAuction?.baseAmount-commitedAuction?.entryAmt
+                console.log(`userid : - ${userId} , auctionid:- ${query.aid} `);
+                const updatePaymentStatus = await this.paymentRepo.updatePayment(userId,query.aid,{status:paymentStatus.COMPLETED,amount:deductionAmout})
+                console.log(updatePaymentStatus,'payment')
                 const updateOrder = await this.orderRepo.findByField('auction',query.aid)
                 if(updateOrder){
+                    console.log(updatePaymentStatus,'11',)
                     await this.orderRepo.update(updateOrder._id as string,{paymentStatus:'Success'})
                     return {success:true,data,message:'Order Placed'} 
                 }else throw new Error('Failed to complete payment')
-            }else throw new Error("Failed to complete The Order");
+            }else throw new Error("Failed to complete The Order");  
              
         } catch (error) {
             console.log((error as Error).message);
@@ -71,6 +79,7 @@ export class OrderService{
     async getAllOrders(userId:string){
         try {
             const response = await this.orderRepo.findOrdersByUser(userId)
+            
             if(response) return {success:true , data:response}
             else return {success:false , message: responseMessage.NOT_FOUND}            
         } catch (error) {
@@ -94,6 +103,16 @@ export class OrderService{
             else return {success:false}
         } catch (error) {
             return {success:false,Message:responseMessage.ERROR_MESSAGE}
+        }
+    }
+    async addRating(orderId:string,rating:number,clintId:string){
+        try {
+            const order = await this.orderRepo.findById(orderId,'auction') as IOrder            
+            const response = await this.organizerRepo.addRating( (order.auction as IAuction).seller ,clintId,rating,orderId)            
+            if(response)return {  success : true ,message:'Rating updated'}
+            else return {success:false , message : 'failed' }
+        } catch (error) {       
+            return {success:false,message:responseMessage.ERROR_MESSAGE}
         }
     }
 }
