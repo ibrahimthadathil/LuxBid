@@ -10,20 +10,27 @@ import { useRQ } from "@/hooks/userRQ"
 import { Rootstate } from "@/redux/store/store"
 import { addSellerRating, fetchAllOrders } from "@/service/Api/orderApi"
 import { TAddress, Tauction, TOrder, Tproduct } from "@/types/types"
+import { useQueryClient } from "@tanstack/react-query"
 import { Star } from "lucide-react"
 import moment from "moment"
 import { useMemo, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 
 const OrdersStatus = () => {
   const {isLoading,data} = useRQ(fetchAllOrders,'orders')
+  const queryClient = useQueryClient()  
   const organizer =useSelector((state:Rootstate)=>state.user.role) 
   const {theme}=useTheme()
   const navigate = useNavigate()
   const handleRating =async(orderId:string,rating:number)=>{
     try {
       const data = await addSellerRating(orderId,rating)
+      if(data.success){
+        queryClient.invalidateQueries({queryKey:['orders']})
+        toast.success(data.message)
+      }else toast.error('Somthing went wrong, Try later')
     } catch (error) {
       
     } 
@@ -89,39 +96,50 @@ const OrdersStatus = () => {
       render:(order:TOrder)=>{
         const [rating, setRating] = useState(0);
         const [hover, setHover] = useState(0);
-      return(  <Dialog>
-        <DialogTrigger asChild>
-          <Button disabled={order.orderStatus !== "Delivered"}>Rate Organizer</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Review</DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col items-center space-y-4">
-            <p>How would you rate your experience?</p>
-            <div className="flex">
-              {[...Array(5)].map((_, index) => {
-                const ratingValue = index + 1
-                return (
-                  <Star
-                    key={index}
-                    className={`h-8 w-8 cursor-pointer ${
-                      ratingValue <= (hover || rating) ? "text-yellow-400" : "text-gray-300"
-                    }`}
-                    onClick={() => setRating(ratingValue)}
-                    onMouseEnter={() => setHover(ratingValue)}
-                    onMouseLeave={() => setHover(0)}
-                    fill={ratingValue <= (hover || rating) ? "currentColor" : "none"}
-                  />
-                )
-              })}
-            </div>
-            <Button onClick={() => handleRating(order._id,rating)}>Submit Rating</Button>
+        return order?.rating && Array.isArray(order?.rating) && order.rating.length > 0 ? (
+          <div className="flex justify-center">
+            {[...Array(5)].map((_, index) => (
+              <Star
+                key={index}
+                className={`h-5 w-5 ${index < (order?.rating?.[0]?.rate ?? 0) ? "text-yellow-400" : "text-gray-300"}`}
+                fill={index < (order?.rating?.[0]?.rate ?? 0) ? "currentColor" : "none"}
+              />
+            ))}
           </div>
-        </DialogContent>
-      </Dialog>
-       
-      )
+        ) : (
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button disabled={order?.orderStatus !== "Delivered"}>Rate Organizer</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Review</DialogTitle>
+              </DialogHeader>
+              <div className="flex flex-col items-center space-y-4">
+                <p>How would you rate your experience?</p>
+                <div className="flex">
+                  {[...Array(5)].map((_, index) => {
+                    const ratingValue = index + 1;
+                    return (
+                      <Star
+                        key={index}
+                        className={`h-8 w-8 cursor-pointer ${
+                          ratingValue <= (hover || rating) ? "text-yellow-400" : "text-gray-300"
+                        }`}
+                        onClick={() => setRating(ratingValue)}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(0)}
+                        fill={ratingValue <= (hover || rating) ? "currentColor" : "none"}
+                      />
+                    );
+                  })}
+                </div>
+                <Button onClick={() => handleRating(order._id, rating)}>Submit Rating</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        );
+        
     }}
 
   ],[data])

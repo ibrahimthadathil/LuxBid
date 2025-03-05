@@ -35,10 +35,10 @@ import { setCookie } from "@/utils/cookie_utils";
             
             const userId = req.user
            if(userId){
-            const {success,message,buyer,seller}= await this.orgService.get_Seller(userId as string)            
+            const {success,message,buyer,seller,avgRating}= await this.orgService.get_Seller(userId as string)   
            if(success){
-            res.status(HttpStatus.OK).json({data:[seller,buyer]})
-           }else res.status(HttpStatus.BAD_REQUEST).json({ message })
+            res.status(HttpStatus.OK).json({data:[seller,buyer,avgRating]})
+           }else res.status(HttpStatus.BAD_REQUEST).json({ message }) 
            }else {
             console.log('kkk');
             res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})}
@@ -59,7 +59,7 @@ import { setCookie } from "@/utils/cookie_utils";
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
         }
-      }
+    }
 }
 
 export const Organizer_Controller = Container.get(organizerController)

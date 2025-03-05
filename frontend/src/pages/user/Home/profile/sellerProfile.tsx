@@ -8,6 +8,7 @@ import  AverageRating  from "@/components/user/profile/myProfile/Ratings";
 
 const SellerProfile = () => {
   const {data,isLoading,isSuccess}=useRQ(fetchSeller,'Seller')
+    console.log('actualdata',data);
     
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
@@ -18,7 +19,7 @@ const SellerProfile = () => {
          <div className="grid grid-cols-3 gap-8">
           <UserForm user={data[0]?.user} />
           <div>
-              <AverageRating rating={4.7} totalReviews={data[0]?.rating?.length} reviews={data[0]?.rating}/>
+              <AverageRating rating={data[2]} totalReviews={data[0]?.rating?.length} reviews={data[0]?.rating}/>
             </div>
         </div>
       </div> : 

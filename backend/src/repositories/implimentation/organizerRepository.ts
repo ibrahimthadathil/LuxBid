@@ -31,7 +31,7 @@ export class organizerRepository extends BasRepository<ISeller>{
                         rating: {
                             clint: clientId,
                             rate: rate,
-                            auction: auctionId
+                            orderId: auctionId
                         }
                     }
                 },

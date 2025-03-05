@@ -7,11 +7,11 @@ export interface ISeller extends Document{
     {
       clint: string;
       rate: number;
-      auction:string
+      orderId:string
     }
   ];
-  products: string,
-  auctions: string
+  // products: string,
+  // auctions: string
 }
 
 const OrganizerSchema = new Schema({
@@ -19,10 +19,10 @@ const OrganizerSchema = new Schema({
     rating :[{
       clint: { type: mongoose.Schema.Types.ObjectId , ref : 'User' },
       rate : { type : Number , default : 0 },
-      auction:{ type: mongoose.Schema.Types.ObjectId , ref : 'Auction' }
+      orderId:{ type: mongoose.Schema.Types.ObjectId , ref : 'Order' }
     }],
-    products:{type: mongoose.Schema.Types.ObjectId } ,
-    auctions:{type: mongoose.Schema.Types.ObjectId , 'ref' : 'Auction' }
+    // products:{type: mongoose.Schema.Types.ObjectId } ,
+    // auctions:{type: mongoose.Schema.Types.ObjectId , 'ref' : 'Auction' }
 },{timestamps:true})
 
 export const Organizer = mongoose.model<ISeller>('Organizer',OrganizerSchema)

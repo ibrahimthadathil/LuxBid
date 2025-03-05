@@ -84,4 +84,5 @@ export type TOrder = {
     orderAmt: number;
     createdAt?: Date;
     updatedAt?: Date;
+    rating?:[{rate:number}]
 }

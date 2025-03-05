@@ -14,6 +14,8 @@ import { toast } from "sonner"
 const OrderDispatches = () => {
 const {theme}=useTheme()
 const {isLoading,data}=useRQ(fetchDispatchOrders,'dispatchOrder')
+console.log(data,'from order');
+
 const queryclient = useQueryClient()
 const shipmentOptions = [
   "Pending",
@@ -58,8 +60,8 @@ const columns = useMemo(() =>[
         <div className="flex items-center justify-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">
             <AvatarImage
-              src={auction?.auction?.post?.images[0]}
-              alt={auction?.auction?.title}
+              src={auction?.auctionData?.post?.images[0]}
+              alt={auction?.auctionDAta?.title}
               className="object-cover w-8 h-8 rounded-full"
             />
           </Avatar>
@@ -81,13 +83,13 @@ const columns = useMemo(() =>[
   {
     header:'Shipment ',
     render: (order: TOrder) => (
-      <div className="justify-center flex">
-        <Select
+      <div className="justify-center flex ">
+        <Select disabled={order.orderStatus=='Delivered' }
       
       defaultValue={order.orderStatus || "Processing"}
       onValueChange={(value) => handleShipmentChange(value, order._id)}
     >
-      <SelectTrigger className="w-40">
+      <SelectTrigger className={`w-40 ${order.orderStatus=='Canceled'? 'border-red-500':''}`}>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -108,7 +110,7 @@ const columns = useMemo(() =>[
     <h1 className={`text-2xl text-center font-bold mb-4 ${theme=='dark'? 'text-gray-200':'text-indigo-900'} `}>
     Order Dispatches
     </h1>
-      {isLoading?<Loader/>:<DataTable data={data} columns={columns}/>}
+      {isLoading?<Loader/>:<DataTable data={data?data:[]} columns={columns}/>}
     </div>
   )
 }

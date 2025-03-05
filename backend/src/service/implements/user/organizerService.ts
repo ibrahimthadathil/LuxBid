@@ -44,7 +44,11 @@ export class organizerService implements IorgaizerService{
      const Organizer = await this.sellerRepo.findUserById(userId) 
      const Buyer = await this.buyerRepo.findByUserId(userId)     
      if(Organizer&&Buyer){
-        return {success:true , buyer:Buyer , seller:Organizer}
+      const totalRatings = Organizer.rating.length||0;
+      const sumRatings = Organizer.rating.reduce((sum, r) => sum + r.rate, 0);
+      const avgRating = totalRatings > 0 ? sumRatings / totalRatings : 0;
+      
+        return {success:true , buyer:Buyer , seller:Organizer ,avgRating}
      }else{
       return {success:false , message:'Approval failed'}
      }

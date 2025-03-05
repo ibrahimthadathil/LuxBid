@@ -78,9 +78,8 @@ export class OrderService{
     }
     async getAllOrders(userId:string){
         try {
-            const response = await this.orderRepo.findOrdersByUser(userId)
-            
-            if(response) return {success:true , data:response}
+            const response = await this.orderRepo.findOrdersByUser(userId)            
+            if(response) return { success:true , data:response }
             else return {success:false , message: responseMessage.NOT_FOUND}            
         } catch (error) {
             console.log((error as Error).message);
@@ -108,8 +107,10 @@ export class OrderService{
     async addRating(orderId:string,rating:number,clintId:string){
         try {
             const order = await this.orderRepo.findById(orderId,'auction') as IOrder            
-            const response = await this.organizerRepo.addRating( (order.auction as IAuction).seller ,clintId,rating,orderId)            
-            if(response)return {  success : true ,message:'Rating updated'}
+            const response = await this.organizerRepo.addRating( (order.auction as IAuction).seller ,clintId,rating,orderId)                        
+            if(response){
+                return {  success : true ,message:'Rating updated'}
+            }
             else return {success:false , message : 'failed' }
         } catch (error) {       
             return {success:false,message:responseMessage.ERROR_MESSAGE}

@@ -35,8 +35,7 @@ export const fetchDispatchOrders = async()=>{
   try {
     return api.get('/place-order')
   } catch (error) {
-    console.log(error);
-    
+    console.log(error);  
   }
 }
 
@@ -52,7 +51,7 @@ export const  dispatchOrder = async(value:string,order:string)=>{
 export const addSellerRating = async(orderId:string,rating:number)=>{
   try {
     const response = await api.post('/rating',{orderId,rating})
-     return response
+     return response.data
   } catch (error) {
     console.log(error);
   }

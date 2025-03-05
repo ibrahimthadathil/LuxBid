@@ -40,7 +40,7 @@ export class orderController{
           const {success,data,message} =await this.orderService.getAllOrders(userId)
           if(success)res.status(HttpStatus.OK).json({success,data})
             else res.status(HttpStatus.BAD_REQUEST).json({success,message})
-        } catch (error) {
+        } catch (error) { 
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE}) 
         }
@@ -49,9 +49,8 @@ export class orderController{
         try {
             const {success,Message,data} = await this.orderService.getDispatchOrders(req.user as string)
             if(success)res.status(HttpStatus.OK).json({data,success})
-            else res.status(HttpStatus.SERVICE_UNAVAILABLE)
+            else res.status(HttpStatus.SERVICE_UNAVAILABLE).json({success,message:responseMessage.NOT_FOUND})
         } catch (error) {
-            
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE}) 
         }
