@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../../public/Logo.png";
 import IconBar from "./IconBar";
 import Mode from "./Mode";
@@ -6,6 +6,7 @@ import { useTheme } from "../theme/theme-provider";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate()
   const {theme}=useTheme()
   const showIconBar =
     location.pathname !== "/auth/signup" &&
@@ -18,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className="flex">
       {/* Left Section: Logo */}
-      <div className="ps-8 w-[10%]  ">
+      <div className="ps-8 w-[10%]" onClick={()=>navigate('/')}>
         <img src={Logo} alt="Logo" className="w-28"/>
       </div>
 

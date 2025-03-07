@@ -120,7 +120,7 @@ export const Router = createBrowserRouter([
       },
       {
         path: "/community",
-        element: <Chat />,
+        element: <ProtectedRoute element={<Chat />}/>,
         children: [
           {
             path: "", // Default path showing the group list

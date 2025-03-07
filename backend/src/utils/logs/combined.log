@@ -1544,3 +1544,63 @@
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-03 10:27:34"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-04 10:28:00"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-04 10:28:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:54:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:03"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:54:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:54:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:06"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:54:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:10"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:56:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:56:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-05 16:56:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:56:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-06 09:52:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-06 09:52:42"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-06 09:52:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-06 09:52:42"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:11"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:11"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27undefined\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:34"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:34"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:37"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:37"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:40"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:40"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:41"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:41"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:43"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:43"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:47"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:47"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:50"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:50"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:51"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:51"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:52"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:52"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27undefined\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:55"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:55"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:59"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:59"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:12:00"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:12:00"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-06 17:38:24"}[39m
+[31m{"level":"error","message":"Could not find path \"0.$set.emojis.0.emoji\" in schema","timestamp":"2025-03-06 23:49:42"}[39m

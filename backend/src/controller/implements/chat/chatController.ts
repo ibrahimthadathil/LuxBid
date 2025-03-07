@@ -34,13 +34,39 @@ export class chatController{
     async sendMessage(req:AuthRequest,res:Response){
         try {
             const {text} = req.body
-            const {success} = await this.chatService.send_Message(req.params.id,text,req.user as string)
+            const files = req.files as Express.Multer.File[];
+            const {success} = await this.chatService.send_Message(req.params.id,text,req.user as string,files)
             if(success)res.status(HttpStatus.OK).json({success:true})
         } catch (error) {
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
         }
     }
+    
+    async addReaction(req: AuthRequest, res: Response) {
+        try {
+            const { messageId } = req.params;
+            const { emoji } = req.body;
+            const userId = req.user as string;
+
+            const { success, data } = await this.chatService.addReaction(messageId, emoji, userId);
+            
+            if (success) {
+                res.status(HttpStatus.OK).json({ success: true, data });
+            } else {
+                res.status(HttpStatus.BAD_REQUEST).json({ 
+                    success: false, 
+                    message: responseMessage.ERROR_MESSAGE 
+                });
+            }
+        } catch (error) {
+            logError(error);
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                message: responseMessage.ERROR_MESSAGE
+            });
+        }
+    }
+
 }
 
 export const chat_Controller = Container.get(chatController)

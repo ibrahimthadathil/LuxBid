@@ -25,15 +25,22 @@ const GroupList: React.FC = () => {
 
   useEffect(() => {
     if (socket) {
-      socket.on("onlineUsers", (data: { roomId: string; count: number }) => {        
-        setOnlineUsers((prev) => ({ ...prev, [data.roomId]: data.count }));
+      // Only listen for updates
+      socket.on('onlineUsers', ({ roomId, count }) => {
+        setOnlineUsers(prev => ({
+          ...prev,
+          [roomId]: count
+        }));
       });
 
+      // Request current counts for all rooms
+      socket.emit('getRoomCounts');
+
       return () => {
-        socket.off("onlineUsers");
+        socket.off('onlineUsers');
       };
     }
-  }, [socket]);
+  }, [socket, data]);
 
   const handleSelectGroup = (groupId: string, category: string) => {
     navigate(`/community/${groupId}`, { state: { category } });
@@ -57,7 +64,7 @@ const GroupList: React.FC = () => {
                 <MessageSquare className="h-8 w-8 text-white" />
                 <div className="flex items-center text-white text-sm">
                   <Users className="h-4 w-4 mr-1" />
-                  <span>{onlineUsers[group?.recentMessage?.category] || 0} active</span>
+                  <span>{onlineUsers[group._id] || 0 } active</span>
                 </div>
               </div>
               <div className="p-4">

@@ -140,7 +140,24 @@ const OrdersStatus = () => {
           </Dialog>
         );
         
-    }}
+    }},
+    // {
+    //   header:'Trakings',
+    //   render:(order:TOrder)=>(
+    //     <Dialog>
+    //         <DialogTrigger asChild>
+    //     <Button>
+    //       Track Order
+    //     </Button>
+    //         </DialogTrigger>
+    //     <DialogContent className="sm:max-w-[425px]">
+    //     <DialogHeader>
+    //             <DialogTitle>Order Status</DialogTitle>
+    //           </DialogHeader>
+    //     </DialogContent>
+    //     </Dialog>
+    //   )
+    // }
 
   ],[data])
 

@@ -27,10 +27,7 @@ export interface IMessage extends Document {
   user: mongoose.Types.ObjectId | 'Admin' | string; 
   content?: string; 
   timestamp: Date; 
-  attachments?: {
-    type: 'image' | 'video';
-    url: string;
-  }[];
+  attachments?: string[];
   replyTo?: mongoose.Types.ObjectId | null; 
   emojis?: {
     emoji: string; 
@@ -44,15 +41,7 @@ const MessageSchema: Schema = new Schema<IMessage>({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
   content: { type: String }, 
   timestamp: { type: Date, default: Date.now, index: true },  
-  attachments: [
-    {
-      type: {
-        type: String,
-        enum: ['image', 'video'],
-      },
-      url: { type: String, required: true }
-    }
-  ],
+  attachments:[String],
   replyTo: { type: mongoose.Schema.Types.ObjectId, ref: "Message", default: null }, 
   emojis: [
     {

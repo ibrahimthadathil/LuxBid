@@ -16,15 +16,13 @@ export class BasesocketService{
             })
         }
         
+        
         this.io.on('connection',(socket:Socket)=>{
             console.log(`Socket connected: ${socket.id} from base`);
                                 
             this.handlers.forEach(handler => {
                 handler.registerHandlers(socket);
             });
-    // console.log(`[BaseSocketService] Before calling registerHandlers for socket: ${socket.id}`);
-    // this.registerHandlers(socket);
-    // console.log(`[BaseSocketService] After calling registerHandlers for socket: ${socket.id}`);
 
             socket.on("disconnect", () => {
                 console.log(`Socket disconnected: ${socket.id}`);
