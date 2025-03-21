@@ -3,7 +3,7 @@ import { AdminRequest } from "../types/api";
 import { Admin, Iadmin } from "../models/admin/adminModal";
 import { verifyToken } from "../utils/jwt_util";
 import { JwtPayload } from "jsonwebtoken";
-import { responseMessage } from "@/enums/http_StatusCode";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 
 
 
@@ -20,6 +20,6 @@ export const AdminMiddleware =async(req:AdminRequest,res:Response,next:NextFunct
         }else  throw new Error(responseMessage.TOKEN_ACCESS)
     } catch (error) {
         console.log('from admin middle ware',error);
-        res.status(400).json({message:(error as Error).message})
+        res.status(HttpStatus.BAD_REQUEST).json({message:(error as Error).message})
     }
 }

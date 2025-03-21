@@ -50,7 +50,6 @@ export class chatSocketService extends BasesocketService{
             }
         });
 
-        // Handle getting all room counts
         socket.on('getRoomCounts', () => {
             this.userRooms.forEach((users, roomId) => {
                 this.updateUsersCount(roomId);
@@ -61,7 +60,7 @@ export class chatSocketService extends BasesocketService{
         socket.on('joinChatRoom', (roomId: string) => {
             console.log(`Socket ${socket.id} joined chat room: ${roomId}`);
             
-            // Remove user from any previous rooms
+            // Remove user from anyof previous rooms
             this.userRooms.forEach((users, room) => {
                 if (users.has(socket.id)) {
                     users.delete(socket.id);

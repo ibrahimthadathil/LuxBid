@@ -1,4 +1,3 @@
-"use client";
 
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
@@ -244,7 +243,7 @@ const ChatUI = () => {
       }
     });
     // Focus on the input field
-    const input = document.querySelector("input[name='message']") as any
+    const input = document.querySelector("input[name='message']") as HTMLInputElement 
     if (input) input.focus();
       };
 

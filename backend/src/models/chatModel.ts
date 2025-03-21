@@ -23,22 +23,24 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IMessage extends Document {
-  category: mongoose.Types.ObjectId | string; 
-  user: mongoose.Types.ObjectId | 'Admin' | string; 
-  content?: string; 
-  timestamp: Date; 
-  attachments?: string[];
-  replyTo?: mongoose.Types.ObjectId | null; 
+  category: mongoose.Types.ObjectId | string ; 
+  isAdmin: boolean ;
+  user: mongoose.Types.ObjectId | string ;
+  content?: string ; 
+  timestamp: Date ; 
+  attachments?: string[] ;
+  replyTo?: mongoose.Types.ObjectId | null ; 
   emojis?: {
-    emoji: string; 
-    count: number;
-    users: mongoose.Types.ObjectId[]; 
-  }[];
+    emoji: string ; 
+    count: number ;
+    users: mongoose.Types.ObjectId[] ; 
+  }[] ;
 }
 
 const MessageSchema: Schema = new Schema<IMessage>({
   category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true }, 
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
+  isAdmin:{type:Boolean},
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User"}, 
   content: { type: String }, 
   timestamp: { type: Date, default: Date.now, index: true },  
   attachments:[String],

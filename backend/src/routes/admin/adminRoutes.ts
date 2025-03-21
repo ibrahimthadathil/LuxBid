@@ -1,31 +1,37 @@
-import {Router} from "express";
+import { Router } from "express";
 import { adminController } from "../../controller/implements/admin/adminController";
-import {  category_Controller } from "../../controller/implements/admin/categoryController";
-import { product_Controller } from "../../controller/implements/product/productController";
+import { categoryController } from "../../controller/implements/admin/categoryController";
+import { productController } from "../../controller/implements/product/productController";
 import { AdminMiddleware } from "../../middleware/adminMiddleware";
-import { auction_Controller } from "../../controller/implements/auction/auctionController";
+import { auctionController } from "../../controller/implements/auction/auctionController";
 
+const adminRoute = Router();
 
-const adminRoute = Router() 
+// Admin authentication
+adminRoute
+  .post("/auth/signin", adminController.adminSignIn.bind(adminController))
+  .post("/auth/logout", adminController.adminLogout.bind(adminController));
 
-adminRoute.post('/auth/signin',adminController.adminSignIn.bind(adminController))
-// adminRoute.get('/users',AdminMiddleware,adminController.fetchUsers.bind(adminController))
-adminRoute.put('/updateuser/:id',AdminMiddleware,adminController.updateUser.bind(adminController))
+// User management
+adminRoute
+  .put("/users/:id", AdminMiddleware, adminController.updateUser.bind(adminController))
+  .get("/users/role/:role", AdminMiddleware, adminController.fetchUsers.bind(adminController));
 
-adminRoute.post('/addcategory',AdminMiddleware,category_Controller.add_Category.bind(category_Controller))
-adminRoute.get('/getAllcategory',AdminMiddleware,category_Controller.get_Category.bind(category_Controller))
-adminRoute.delete('/categoryremove/:id',AdminMiddleware,category_Controller.remove_Category.bind(category_Controller))
-adminRoute.put('/categoryupdate/:id',AdminMiddleware,category_Controller.update_Category.bind(category_Controller))
+// Category management
+adminRoute
+  .post("/categories", AdminMiddleware, categoryController.addCategory.bind(categoryController))
+  .get("/categories", AdminMiddleware, categoryController.getCategory.bind(categoryController))
+  .delete("/categories/:id", AdminMiddleware, categoryController.removeCategory.bind(categoryController))
+  .put("/categories/:id", AdminMiddleware, categoryController.updateCategory.bind(categoryController));
 
-adminRoute.get('/findByRole/:role',AdminMiddleware,adminController.fetchUsers.bind(adminController))
-// post
-adminRoute.get('/products/:status',AdminMiddleware,product_Controller.findAll_Products.bind(product_Controller))
-adminRoute.delete('/removepost/:id',AdminMiddleware,product_Controller.remove_Post.bind(product_Controller))
-adminRoute.put('/updatepost/:id',AdminMiddleware,product_Controller.update_PostStatus.bind(product_Controller))
-adminRoute.put('/rejectpost/:id',AdminMiddleware,product_Controller.reject_Post.bind(product_Controller))
-//auction
-adminRoute.get('/list-by-type/:type',auction_Controller.listBy_Type.bind(auction_Controller))
+// Product (post) management
+adminRoute
+  .get("/products/status/:status", AdminMiddleware, productController.findAllProducts.bind(productController))
+  .delete("/products/:id", AdminMiddleware, productController.removePost.bind(productController))
+  .put("/products/:id/status", AdminMiddleware, productController.updatePostStatus.bind(productController))
+  .put("/products/:id/reject", AdminMiddleware, productController.rejectPost.bind(productController));
 
-adminRoute.post('/adminlogout',adminController.adminLogout.bind(adminController))
+// Auction management
+adminRoute.get("/auctions/type/:type", auctionController.listByType.bind(auctionController));
 
-export default adminRoute
+export default adminRoute;

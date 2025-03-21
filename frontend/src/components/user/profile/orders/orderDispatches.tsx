@@ -11,6 +11,12 @@ import { useQueryClient } from "@tanstack/react-query"
 import { useMemo } from "react"
 import { toast } from "sonner"
 
+type TOrderWithAuction = TOrder & {
+  auctionData?: {
+    post?: { images: string[] };
+    title?: string;
+  };}
+
 const OrderDispatches = () => {
 const {theme}=useTheme()
 const {isLoading,data}=useRQ(fetchDispatchOrders,'dispatchOrder')
@@ -53,19 +59,19 @@ const columns = useMemo(() =>[
   {
     
     header: "No",
-    render: (_item: any, i: number) => `LBA 00${i + 1}`,
+    render: (_item: TOrder, i: number) => `LBA 00${i + 1}`,
   },{
     header: "Auction",
-      render: (auction: any) => (
+      render: (auction: TOrderWithAuction) => (
         <div className="flex items-center justify-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">
             <AvatarImage
               src={auction?.auctionData?.post?.images[0]}
-              alt={auction?.auctionDAta?.title}
+              alt={auction?.auctionData?.title}
               className="object-cover w-8 h-8 rounded-full"
             />
           </Avatar>
-          <span>{auction?.auction?.title}</span>
+          <span>{auction?.auctionData?.title}</span>
         </div>)
   },
   {

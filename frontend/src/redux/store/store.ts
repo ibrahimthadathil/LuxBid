@@ -2,12 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from '../slice/authSlice'
 import adminReducer from '../slice/adminSlice'
 import storage from "redux-persist/lib/storage"
-import {persistReducer} from 'redux-persist'
+import {PersistConfig, persistReducer} from 'redux-persist'
 import { combineReducers } from "@reduxjs/toolkit";
 import { encryptor } from "@/utils/persister/persister_utils";
 
 
-const persistconfig:any =({
+const persistconfig:PersistConfig<RootState> =({
     key:'root',
     version:1,
     whitelist:['user','admin'],
@@ -15,12 +15,13 @@ const persistconfig:any =({
     transforms:[encryptor]
     
 }) 
-const reducer = combineReducers({
+const rootReducer  = combineReducers({
     user : userReducer,
     admin : adminReducer 
 }) 
+type RootState = ReturnType<typeof rootReducer>;
 
-const PersisitedReducer = persistReducer(persistconfig,reducer)
+const PersisitedReducer = persistReducer(persistconfig,rootReducer )
 
 const store = configureStore({  
     reducer:PersisitedReducer,

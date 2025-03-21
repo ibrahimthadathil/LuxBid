@@ -14,9 +14,8 @@ export const fetchBuyer =async()=>{
 }
 
 // raise bid 
-
 export const raiseBidAmount = async(amt:number,auctionId:string)=>{
-  return await api.post('/raise-bid-amt',{amt,auctionId})
+  return await api.post('/bids/raise',{amt,auctionId})
 }
 
 // show all commited bids

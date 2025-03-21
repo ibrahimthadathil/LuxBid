@@ -70,7 +70,7 @@ const GroupList: React.FC = () => {
               <div className="p-4">
                 <h2 className="font-semibold text-gray-800 mb-2 truncate">{group.name}</h2>
                 <p className="text-sm text-gray-600 mb-2 h-10 overflow-hidden">
-                  {group.recentMessage.content}
+                  {group.recentMessage?.content}
                 </p>
                 <button
                   onClick={() => handleSelectGroup(group._id, group.name)}

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { auction_Controller } from "@/controller/implements/auction/auctionController";
+import { auctionController } from "@/controller/implements/auction/auctionController";
 import { AuthMiddleWare } from "@/middleware/user/AuthMiddleware";
 import { authorizationAccess } from "@/middleware/user/AuthorizationMiddleware";
 import { OrganizerAuthMiddleware } from "@/middleware/user/organizerAuthmiddleware";
@@ -7,17 +7,23 @@ import { Organizer_Controller } from "@/controller/implements/user/organizerCont
 
 const auctionRoute = Router()
 
-auctionRoute.post('/createAuction',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auction_Controller.create_Auction.bind(auction_Controller))
-auctionRoute.get('/auctions',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auction_Controller.get_Auctions.bind(auction_Controller))
-auctionRoute.put('/closeAuction/:id',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auction_Controller.close_Auction.bind(auction_Controller))
-auctionRoute.delete('/deleteAuction/:id',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auction_Controller.delete_Auction.bind(auction_Controller))
-auctionRoute.get('/displayAuction',auction_Controller.getTopAndDisplayAuctions.bind(auction_Controller))
-auctionRoute.get('/viewAuction/:id',auction_Controller.view_Auction.bind(auction_Controller))
-auctionRoute.get('/auctionInterface/:id',AuthMiddleWare,auction_Controller.auctoion_Interface.bind(auction_Controller))
-auctionRoute.post('/raise-bid-amt',AuthMiddleWare,auction_Controller.raiseBid_AMT.bind(auction_Controller))
-auctionRoute.post('/accept-bidAmt',AuthMiddleWare,auction_Controller.accept_BidAmt.bind(auction_Controller))
-auctionRoute.get('/AllDeals',auction_Controller.filtered_auction.bind(auction_Controller))
+// Auction management
+auctionRoute
+ .post('/auctions',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auctionController.create_Auction.bind(auctionController))
+ .get('/auctions',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auctionController.get_Auctions.bind(auctionController))
+ .put('/auctions/:id/close',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auctionController.close_Auction.bind(auctionController))
+ .delete('/auctions/:id',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,auctionController.delete_Auction.bind(auctionController))
+ .get('/auctions/display',auctionController.getTopAndDisplayAuctions.bind(auctionController))
+ .get('/auctions/:id',auctionController.view_Auction.bind(auctionController))
+ .get('/auctions/:id/interface',AuthMiddleWare,auctionController.auctoion_Interface.bind(auctionController))
+// bidding routes
+auctionRoute
+ .post('/bids/raise',AuthMiddleWare,auctionController.raiseBid_AMT.bind(auctionController))
+ .post('/bids/accept',AuthMiddleWare,auctionController.accept_BidAmt.bind(auctionController))
+auctionRoute
+ .get('/AllDeals',auctionController.filtered_auction.bind(auctionController))
+ .post('/auctions/:id/finalize',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,Organizer_Controller.finalize_Deal.bind(Organizer_Controller))
 
-auctionRoute.post('/finalize-deal/:id',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware ,Organizer_Controller.finalize_Deal.bind(Organizer_Controller))
+
 
 export default auctionRoute

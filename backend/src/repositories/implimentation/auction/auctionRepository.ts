@@ -194,8 +194,12 @@ export class auctionRepository extends BasRepository<IAuction> {
           } 
         })
         .skip(page * limit) 
-        .limit(limit)
-        return filterdData.filter(item => (item.post as any)?.category !== null);
+        .limit(limit)        
+        return filterdData.filter(item => {
+          const postWithCategory = item.post as { category?: string | null };
+          return postWithCategory.category !== null;
+      });
+      
     } catch (error) {
       console.log('err f  query');
       console.log((error as Error).message);
@@ -219,4 +223,6 @@ export class auctionRepository extends BasRepository<IAuction> {
       logError(error)
     }
   }
+
+
 }

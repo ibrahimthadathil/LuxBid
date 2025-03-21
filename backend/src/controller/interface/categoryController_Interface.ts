@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
 export interface IcategoryController{
-    add_Category(req:Request,res:Response):Promise<void>;
-    get_Category(req:Request,res:Response):Promise<void>;
-    remove_Category(req:Request,res:Response):Promise<void>;
-    update_Category(req:Request,res:Response):Promise<void>
+    addCategory(req:Request,res:Response):Promise<void>;
+    getCategory(req:Request,res:Response):Promise<void>;
+    removeCategory(req:Request,res:Response):Promise<void>;
+    updateCategory(req:Request,res:Response):Promise<void>
 }

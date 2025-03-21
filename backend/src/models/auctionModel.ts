@@ -20,7 +20,8 @@ export interface IAuction extends Document{
     auctionType : 'Live'| 'Scheduled',
     createdAt?:Date,
     isActive :boolean,
-    entryAmt:number
+    entryAmt:number,
+    isSold:true
 }
 
 const auctionSchema = new Schema({

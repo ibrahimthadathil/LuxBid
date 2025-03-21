@@ -88,7 +88,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
       }else toast.warning(data.message);
     } catch (error) {
       setSpin((pre) => !pre);
-      toast.error(((error as AxiosError).response?.data as Record<string,any>).message)
+      toast.error(((error as AxiosError).response?.data as Record<string,string>).message)
     }
   };
 
@@ -155,7 +155,7 @@ const Modal = <T extends Record<string, any>>({ post }: Props<T>) => {
                       className="hidden"
                       {...register("file", {
                         onChange: handleImageUpload,
-                        value: images as unknown as any,
+                        value: images as unknown as string[],
                       })}
                       accept="image/*"
                       multiple

@@ -6,7 +6,7 @@ interface FlexibleCardProps {
   description: string;
   imageUrl:string,
   _id?:string ,
-  baseAmount:string;
+  baseAmount:number;
   size?: "small" | "medium" | "large";
   className?: string;
   onButtonClick: (id:string) => void;

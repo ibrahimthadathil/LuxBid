@@ -60,6 +60,8 @@ import { setCookie } from "@/utils/cookie_utils";
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
         }
     }
+
+
 }
 
 export const Organizer_Controller = Container.get(organizerController)

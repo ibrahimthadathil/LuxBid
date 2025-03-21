@@ -17,7 +17,7 @@ export class orderController{
             const userId = req.user as string
             const {session,success,message} = await this.orderService.createOrderPayment({ price,title,img,id,address}, userId);
             if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
-            else res.status(401).json({success:false , message:responseMessage.ERROR_MESSAGE})    
+            else res.status(401).json({success:false , message:message})    
         } catch (error) {
             logError(error);
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});
@@ -26,7 +26,8 @@ export class orderController{
     async paymentStatus(req: AuthRequest, res: Response){
         try {
             const userId = req.user as string
-            const {success, data,message} = await this.orderService.placeOrder(req.query,userId)
+            const queryParams = req.query as { session_id: string; aid: string };
+            const { success, data, message } = await this.orderService.placeOrder(queryParams, userId);
             if(success)res.status(HttpStatus.OK).json({success,data,message})
             else res.status(HttpStatus.BAD_REQUEST).json({success,message})
         } catch (error) {

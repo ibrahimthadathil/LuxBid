@@ -67,7 +67,7 @@ class AuthController implements IAuthController {
     } catch (error) {
       logError(error)
       if ((error as Error).message == "Token verification failed") {
-        res.status(HttpStatus.UNAUTHORIZED).json({ message: "Invalid token" });
+        res.status(HttpStatus.UNAUTHORIZED).json({ message: responseMessage.TOKEN_ACCESS });
       }
     }
   }
@@ -208,11 +208,7 @@ class AuthController implements IAuthController {
       res.clearCookie('rftn');
       res.clearCookie('authtkn');
        res.status(HttpStatus.OK).json({message:"loggedOut"})
-      //  req.session.destroy((err) => {
-      //   if (err) {
-      //     console.error('Error during logout:', err);
-      //     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Could not log out');
-      //   } }) 
+    
      } catch (error) {
       logError(error)
       console.log((error as Error).message)

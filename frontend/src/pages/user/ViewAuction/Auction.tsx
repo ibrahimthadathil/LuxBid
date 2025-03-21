@@ -36,9 +36,7 @@ const AuctionPage = React.memo(() => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [openSection, setOpenSection] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const joinedUser = data?.bidders?.find((user:any)=>user?.user?.email==email&&user.paymentStatus=='completed')
-  console.log('****',data);
-  
+  const joinedUser = data?.bidders?.find((user:{user:{email:string},paymentStatus:string})=>user?.user?.email==email&&user.paymentStatus=='completed')  
   const toggleSection = useCallback((section: string) => {
     setOpenSection((prevSection) => (prevSection === section ? null : section));
   }, []);
@@ -298,7 +296,7 @@ const AuctionPage = React.memo(() => {
             <span className="font-semibold text-white">⚠️  </span>
             To participate in bidding, a refundable Security Deposit is required (5%) of The base Amount.
             This deposit ensures a fair and transparent bidding process. Without the
-            deposit, you will not be eligible to join any bids. In if you failed to win the context you will get the amount Refund
+            deposit, you will not be eligible to join anyof bids. In if you failed to win the context you will get the amount Refund
           </div>
 
           <Button className="w-full bg-purple-700 hover:bg-purple-600">

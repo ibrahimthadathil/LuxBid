@@ -1,6 +1,6 @@
 import { logout } from "@/redux/slice/authSlice";
 import store, { AppDispatch } from "@/redux/store/store";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import { toast } from "sonner";
 const USER_URL = import.meta.env.VITE_USER_BASE_URL;
 
@@ -43,20 +43,18 @@ export const axiosInstance = (baseURL: string) => {
       return response;
     },
 
-    async (error: AxiosError | any) => {
+    async (error: AxiosError) => {
       if (!error.config) {
         return Promise.reject(error);
       }
 
       const originalRequest = error.config;
-      const url = originalRequest.url;
+      const url = originalRequest.url ;
       if (error.response) {
         console.log('token not found');
-        if (
-          error.response?.status === 401 &&
-          !(originalRequest as any)._retry
-        ) {
-          (originalRequest as any)._retry = true;
+        if (error.response.status === 401 && !(originalRequest as any)._retry) {
+          (originalRequest as { _retry?: boolean })._retry = true;
+          
           try {
             const newAccessToken = await getNewAccessToken();
             localStorage.setItem("access-token", newAccessToken);
@@ -81,7 +79,7 @@ export const axiosInstance = (baseURL: string) => {
         ) {
           console.log('llll',error.response.data);
                     
-          toast.error(`${error.response.data.message || error.response.data.response||"An error occurred"}`);
+          toast.error(`${(error?.response.data as Error).message || (error.response.data as Error).message||"An error occurred"}`);
         }
       } else if (error.request) {
         toast.error("Network error, please check your connection.");

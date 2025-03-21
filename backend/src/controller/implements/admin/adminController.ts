@@ -2,13 +2,13 @@ import Container, { Service } from "typedi";
 import { admin_Service } from "../../../service/implements/admin/admin_AuthService";
 import { Request, Response } from "express";
 import { admin_userService } from "../../../service/implements/admin/admin_userService";
-import { IadminController } from "../../interface/adminController_Interface";
+import { IAdminController } from "../../interface/adminController_Interface";
 import { setCookie } from "../../../utils/cookie_utils";
-import { HttpStatus } from "@/enums/http_StatusCode";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
 
 @Service()
-class AdminController implements IadminController{
+class AdminController implements IAdminController{
   constructor(
     private adminService: admin_Service,
     private userService : admin_userService,
@@ -26,20 +26,22 @@ class AdminController implements IadminController{
       } else {
         res
           .status(HttpStatus.UNAUTHORIZED)
-          .json({ message: "invalid credentials", success: false });
+          .json({ message: responseMessage.INVALID_REQUEST, success: false });
       }
     } catch (error) {
       logError(error)
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message: (error as Error ).message})
     }
   }
   async fetchUsers(req:Request,res:Response){
     try {
       const role = req.params.role
       const {data,success} = await this.userService.findAll_Users(role)
+      
       if(success){
         res.status(HttpStatus.OK).json({data})
       }else{
-        throw new Error('failed to  fetch user')
+        throw new Error('failed to fetch user')
       }
     } catch (error) {
       logError(error)
@@ -66,10 +68,10 @@ class AdminController implements IadminController{
   async adminLogout(req:Request,res:Response){
     try {
       res.clearCookie('admtkn')
-      res.status(HttpStatus.OK).json({message:'loggedOUt'})
+      res.status(HttpStatus.OK).json({message:'loggedOut'})
     } catch (error) {
       logError(error)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:"Couldn't cleare the the credantial"})
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.INTERNAL_ERROR})
     }
   }
 

@@ -1,4 +1,4 @@
-import { SubmitErrorHandler } from "react-hook-form";
+import { FieldError, FieldErrors, SubmitErrorHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -41,18 +41,13 @@ export const ZresetPass = z.object({
 
 export  type TZresetPass = z.infer<typeof ZresetPass>
 
-export const errorFn: SubmitErrorHandler<any> = (err) => {
-  Object.values(err).forEach((e:any) => {   
-    // if (typeof e === 'object') {
-    //   for(let v in e){
-    //     toast.error(e[v].message)
-    //     // toast.error(v.message)
-    //   }
-    // }
-    toast.error(e.message);
+export const errorFn: SubmitErrorHandler<Record<string, any>> = (err: FieldErrors<Record<string, any>>) => {
+  Object.values(err).forEach((e) => {
+    if (typeof e === "object" && e !== null && "message" in e) {
+      toast.error((e as FieldError).message);
+    }
   });
 };
-
 // for edit form 
 
 

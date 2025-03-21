@@ -31,12 +31,10 @@ export class messageRepository extends BasRepository<IMessage> {
         throw new Error('Message not found');
       }
       
-      // Handle case where message.emojis might not exist
       const emojis = message.emojis || [];
       const existingEmojiIndex = emojis.findIndex(e => e.emoji === emoji);
       
       if (existingEmojiIndex >= 0) {
-        // Emoji exists, check if user has already reacted
         const userHasReacted = emojis[existingEmojiIndex].users.some(
           user => user.toString() === userObjectId.toString()
         );

@@ -5,6 +5,7 @@ import { categoryRepository } from "../../../repositories/implimentation/admin/c
 import { scheduledAuctionService } from "./auctionScheduledService";
 import { save } from "agenda/dist/job/save";
 import { logError } from "@/utils/logger_utils";
+import { AuctionFilterQuery } from "@/types/props";
 
 @Service()
 export class auctionService {
@@ -153,7 +154,7 @@ export class auctionService {
       return {success:false , message:(error as Error).message}
     }
   }
-  async filterd_Auctions(queries:any){
+  async filterd_Auctions(queries:AuctionFilterQuery){
     try {
       const {
         limit = 5,
@@ -181,6 +182,14 @@ export class auctionService {
      else throw new Error('Failed to fetch')
     } catch (error) {
       return {success:false , message :(error as Error).message}
+    }
+  }
+
+  async counts(){
+    try {
+      
+    } catch (error) {
+      
     }
   }
 

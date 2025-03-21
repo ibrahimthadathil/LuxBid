@@ -41,8 +41,7 @@ export class chatController{
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
         }
-    }
-    
+    }  
     async addReaction(req: AuthRequest, res: Response) {
         try {
             const { messageId } = req.params;

@@ -16,7 +16,7 @@ interface categoryProps<T>{
   data:T,
   style?:string,action:Function
 }  
-   function AlertModal<T extends Record<string,any>>({data,contents,style,action}:categoryProps<T>) {
+   function AlertModal<T extends Record<string,T>>({data,contents,style,action}:categoryProps<T>) {
     console.log('rendering');
     
     return (

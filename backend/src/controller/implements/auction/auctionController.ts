@@ -8,7 +8,7 @@ import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
 
 @Service()
-export class auctionController {
+export class AuctionController {
   constructor(private auctionService: auctionService, private socketService : SocketService) {}
   
   async create_Auction(req:AuthRequest,res:Response){
@@ -47,10 +47,10 @@ export class auctionController {
        const {message,success}= await this.auctionService.close_Auction(auctionId)
        if(success)res.status(HttpStatus.OK).json({message,success})
         else res.status(HttpStatus.BAD_REQUEST).json({message,success})
-      }else res.status(HttpStatus.FORBIDDEN).json({message:'Accesss denied'})
+      }else res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})
     } catch (error) {
       logError(error)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:'Intertnal server error'})
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.INTERNAL_ERROR})
     }
   }
   async delete_Auction(req:AuthRequest,res:Response){
@@ -127,21 +127,23 @@ export class auctionController {
         else res.status(HttpStatus.UNAUTHORIZED).json({message,success})
     } catch (error) {
       logError(error)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:'Internal Server Error :-'+(error as Error).message})
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.INTERNAL_ERROR +(error as Error).message})
 
     }
   }
   async filtered_auction(req:Request,res:Response){
     try {
+      
      const {success,category,data,message} = await this.auctionService.filterd_Auctions(req.query)
      if(success)res.status(HttpStatus.OK).json({data:{data,category}})
       else res.status(HttpStatus.UNAUTHORIZED).json({success,message})
     } catch (error) {
+      
       logError(error)
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE +(error as Error).message})
     }
   }
-  async listBy_Type(req:Request,res:Response){
+  async listByType(req:Request,res:Response){
     try {
       const auction = req.params.type      
       const {success, data, message}=await this.auctionService.listBy_Type(auction)
@@ -154,4 +156,4 @@ export class auctionController {
   }
  
 } 
-export const auction_Controller = Container.get(auctionController);
+export const auctionController = Container.get(AuctionController);

@@ -29,7 +29,7 @@ interface FilterState {
 
 export default function PostGrid() {
   const navigate = useNavigate()
-  const [filters, setFilters] = useState<any>({
+  const [filters, setFilters] = useState<FilterState>({
     search: "",
     category: "All",
     types: "All",
@@ -38,10 +38,12 @@ export default function PostGrid() {
   });
 
   const query = new URLSearchParams({
-    ...filters,
-    skip: (filters.page * filters.limit).toString()
+    ...Object.fromEntries(
+      Object.entries(filters).map(([key, value]) => [key, String(value)])
+    ),
+    skip: String(filters.page * filters.limit),
   }).toString();
-
+  
   const { isLoading, data } = useRQ(
     () => viewAllAuctions(query),
     "viewAll",filters
@@ -53,12 +55,13 @@ export default function PostGrid() {
   }, [filters, queryClient]);
 
   const handleFilterChange = (key: keyof FilterState, value: string | number) => {
-    setFilters((prev:any) => ({
+    setFilters((prev: FilterState) => ({
       ...prev,
       [key]: value,
       page: key === "page" ? (value as number) : 0,
     }));
   };
+  
   const handlePageChange = (newPage: number) => {
     handleFilterChange("page", newPage - 1);
   };

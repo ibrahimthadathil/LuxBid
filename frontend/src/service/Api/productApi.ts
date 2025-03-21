@@ -23,7 +23,7 @@ export const fetchCategory=async()=>{
 }
 
 // add post
-export const createPost = async(data:any)=>{
+export const createPost = async(data:FormData)=>{
   
    return  await api.post('/addpost',data) 
 }

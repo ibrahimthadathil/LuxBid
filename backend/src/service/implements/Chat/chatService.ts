@@ -29,7 +29,7 @@ export class chatService {
       return { success: false, message: responseMessage.ERROR_MESSAGE };
     }
   }
-  async getAllMessages(groupId: string, queries: any) {
+  async getAllMessages(groupId: string, queries: {page?:number}) {
     try {
       const { page = 1 } = queries;
       const response = await this.chatRepo.findAllChatsByCategory(

@@ -17,7 +17,7 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
   // accept the biddAMT
   export const handleRaisedBid =async(userid:string,amt:number,auctionId:string)=>{
     try {
-      return await api.post('/accept-bidAmt',{userid,amt,auctionId})
+      return await api.post('/bids/accept',{userid,amt,auctionId})
     } catch (error) {
       console.log('error from handle raise amt',);
 
@@ -27,5 +27,5 @@ const api = axiosInstance(import.meta.env.VITE_USER_BASE_URL)
   // finalize bid 
 
   export const finalizeDeal =async(id:string)=>{
-    return await api.post(`/finalize-deal/${id}`)
+    return await api.post(`/auctions/${id}/finalize`)
   }

@@ -99,7 +99,7 @@ export class productService implements IproductService{
             return{success:false,message:(error as Error).message}
         }
     }
-    async update_post(id:string,data:Partial<any|Iproduct>,img?:Express.Multer.File[]){
+    async update_post(id:string,data:Partial<Iproduct>&{preImg:string},img?:Express.Multer.File[]){
        try {
         const findCategory = await this.categoryService.find_Category(data.category as string)
         const existingImg = data.preImg ? data.preImg.split(','): []   

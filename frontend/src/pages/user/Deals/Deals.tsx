@@ -9,8 +9,14 @@ import { topAuctions } from "@/service/Api/auctionApi";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { Tauction, Tproduct } from "@/types/types";
+interface TAuctionWithPosts extends Tauction {
+  posts: Tproduct[]
+}
 const Deals = () => {
   const { isLoading, data } = useRQ(topAuctions, "topauction");
+  console.log('yyyyyyy',data);
+  
   const navigate = useNavigate()
   const handleClick =(id:string)=>{
     if(id)navigate('/deals/auction',{state:{id}})
@@ -100,11 +106,11 @@ const Deals = () => {
         <div className="container mx-auto px-4 py-8 relative mb-10 ">
           <h2 className="text-2xl mb-6 text-gray-400">Scheduled Aucions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
-            {isLoading ?<Skeleton/>:(data.Scheduled as any[]).map((card, index) => (
+            {isLoading ?<Skeleton/>:(data.Scheduled as TAuctionWithPosts[]).map((card, index) => (
               <FlexibleCard
                 key={index}
                 {...card}
-                imageUrl={card?.posts[0]?.images[0]}
+                imageUrl={(card?.posts)[0]?.images[0]}
                 size="small"
                 onButtonClick={handleClick}
               />
@@ -133,7 +139,7 @@ const Deals = () => {
         <div className="container mx-auto px-4 py-8 relative mb-10 ">
           {/* <h2 className="text-2xl mb-6 text-gray-400">Live Aucions</h2> */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 ">
-            {isLoading ?<Skeleton/>:(data.Live as any[]).map((card, index) => (
+            {isLoading ?<Skeleton/>:(data.Live as TAuctionWithPosts[]).map((card, index) => (
               <FlexibleCard
                 key={index}
                 {...card}

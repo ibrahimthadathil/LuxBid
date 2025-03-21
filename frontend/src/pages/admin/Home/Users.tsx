@@ -29,7 +29,7 @@ const Users = () => {
       }
     } catch (error) {
       toast.error(
-        ((error as AxiosError).response?.data as Record<string, any>).message
+        ((error as AxiosError).response?.data as Record<string, string>).message
       );
     }
   };

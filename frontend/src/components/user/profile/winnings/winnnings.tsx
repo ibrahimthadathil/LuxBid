@@ -21,7 +21,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import { Rootstate } from "@/redux/store/store";
-
+type AuctionPost = {
+  images: string[]; 
+}[];
 const Winnnings = () => {
   const { theme } = useTheme();
   const { isLoading, data } = useRQ(getWonAuction, "winnings");
@@ -36,7 +38,7 @@ const Winnnings = () => {
         navigate("/payment", {
           state: {
             price: auction?.baseAmount,
-            img: (auction.post as any)[0]?.images[0],
+            img: (auction?.post as any)[0]?.images[0],
             title: auction?.title,
             id:auction._id,
             address,
@@ -51,15 +53,15 @@ const Winnnings = () => {
     () => [
       {
         header: "No",
-        render: (_item: any, i: number) => `LBA 00${i + 1}`,
+        render: (_item:{auction:Tauction}, i: number) => `LBA 00${i + 1}`,
       },
       {
         header: "Auction",
-        render: (auction: any) => (
+        render: (auction: {auction:Tauction}) => (
           <div className="flex items-center gap-2">
             <Avatar className="h-8 w-8 border rounded-full ">
               <AvatarImage
-                src={auction?.auction?.post[0]?.images[0]}
+                src={(auction?.auction?.post as any)[0]?.images[0]}
                 alt={auction?.auction?.title}
                 className="object-cover w-8 h-8 rounded-full"
               />
@@ -70,7 +72,7 @@ const Winnnings = () => {
       },
       {
         header: "Auction Type",
-        render: (auction: any) => (
+        render: (auction: {auction:Tauction}) => (
           <div className="flex justify-center items-center">
             {auction?.auction?.auctionType == "Live" ? (
               <div className="flex gap-2 items-center">
@@ -88,7 +90,7 @@ const Winnnings = () => {
       },
       {
         header: "Total Participents",
-        render: (auction: any) => (
+        render: (auction: {auction:Tauction}) => (
           <div className="flex justify-center gap-2">
             <User2 size="20" />
             <p>{auction?.auction?.bidders?.length}</p>
@@ -97,17 +99,17 @@ const Winnnings = () => {
       },
       {
         header: "Details",
-        render: (content: any) => (
+        render: (content: {auction:Tauction}) => (
           <PostModal
             data={content?.auction}
-            images={(content?.auction?.post[0] as Tproduct).images}
+            images={(content?.auction?.post as any)[0] .images}
             sideContent={viewContent}
           />
         ),
       },
       {
         header: "Order Payment",
-        render: (content: any) => (
+        render: (content: {auction:Tauction}) => (
           <>
             <Dialog>
               <DialogTrigger asChild>
@@ -129,7 +131,7 @@ const Winnnings = () => {
                 <div className="space-y-6">
                   <div className="relative h-48 w-full overflow-hidden rounded-lg">
                     <img
-                      src={content?.auction?.post[0]?.images[0]}
+                      src={(content?.auction?.post as any)[0]?.images[0]}
                       alt="Auction Item"
                       className="object-cover w-full h-full"
                     />

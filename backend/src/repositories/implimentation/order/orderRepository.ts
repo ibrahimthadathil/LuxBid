@@ -53,8 +53,8 @@ export class OrderRepository extends BasRepository<IOrder>{
                 },
                 {
                   $lookup: {
-                    from: "organizers", // Lookup Organizer collection
-                    let: { orderId: "$_id" }, // Define orderId as the current Order's _id
+                    from: "organizers", 
+                    let: { orderId: "$_id" }, 
                     pipeline: [
                       {
                         $match: {
@@ -65,7 +65,7 @@ export class OrderRepository extends BasRepository<IOrder>{
                                   $filter: {
                                     input: "$rating",
                                     as: "ratingItem",
-                                    cond: { $eq: ["$$ratingItem.orderId", "$$orderId"] } // Match orderId
+                                    cond: { $eq: ["$$ratingItem.orderId", "$$orderId"] } 
                                   }
                                 }
                               },
@@ -80,7 +80,7 @@ export class OrderRepository extends BasRepository<IOrder>{
                             $filter: {
                               input: "$rating",
                               as: "ratingItem",
-                              cond: { $eq: ["$$ratingItem.orderId", "$$orderId"] } // Extract matching rating
+                              cond: { $eq: ["$$ratingItem.orderId", "$$orderId"] } 
                             }
                           }
                         }
@@ -91,11 +91,11 @@ export class OrderRepository extends BasRepository<IOrder>{
                 },
                 {
                   $addFields: {
-                    rating: { $arrayElemAt: ["$matchedRatings.rating", 0] } // Extract rating if exists
+                    rating: { $arrayElemAt: ["$matchedRatings.rating", 0] } 
                   }
                 },
                 {
-                  $project: { matchedRatings: 0 } // Remove unnecessary field
+                  $project: { matchedRatings: 0 } 
                 }
               ]);
               

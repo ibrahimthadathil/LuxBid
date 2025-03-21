@@ -25,6 +25,10 @@ export class OrderService{
 
     async createOrderPayment(data:{price:string,title:string,img:string,id:string,address: string},userId:string){
         try {
+            const exists = await this.orderRepo.findByField('auction',data.id)
+            console.log(exists,'exists');
+            
+            if(exists)return {success:false,message:'Already made the payment'}
             const deductionAmount = await this.auctionRepo.findById(data.id) as IAuction
             const finalPrice = parseInt(data.price) - deductionAmount.entryAmt
             const paymentData = {
@@ -47,7 +51,7 @@ export class OrderService{
             return { success: false, message: (error as Error).message };
         }
     }
-    async placeOrder(query:any,userId:string){
+    async placeOrder(query:{session_id:string,aid:string},userId:string){
         try {
             
             const response = await this.stripeService.payment_Status(query);
@@ -63,6 +67,7 @@ export class OrderService{
                 console.log(`userid : - ${userId} , auctionid:- ${query.aid} `);
                 const updatePaymentStatus = await this.paymentRepo.updatePayment(userId,query.aid,{status:paymentStatus.COMPLETED,amount:deductionAmout})
                 console.log(updatePaymentStatus,'payment')
+                await this.auctionRepo.update(query.aid,{isSold:true})
                 const updateOrder = await this.orderRepo.findByField('auction',query.aid)
                 if(updateOrder){
                     console.log(updatePaymentStatus,'11',)
@@ -95,7 +100,7 @@ export class OrderService{
             return {success:false,Message:responseMessage.ERROR_MESSAGE}
         }
     }
-    async changeOrderStatus(data:{value:any,order:string}){
+    async changeOrderStatus(data:{value:"Pending" | "Shipped" | "Delivered" | "Canceled" ,order:string}){
         try {
             const response = await this.orderRepo.update(data.order,{orderStatus:data.value})
             if(response)return {success:true}

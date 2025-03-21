@@ -26,9 +26,7 @@ export class addressController {
        } 
     }
     async createAddress(req:AuthRequest,res:Response){
-        try {
-            console.log('entered');
-            
+        try {            
           const {message,success} = await this.addressService.createAddress(req.user as string ,req.body)
           if(success)res.status(HttpStatus.OK).json({message,success})
             else res.status(HttpStatus.BAD_REQUEST).json({message,success})

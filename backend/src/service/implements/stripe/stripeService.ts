@@ -16,7 +16,7 @@ export class stripeService {
     this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   }
 
-  async  makePaymentSession(data: any,userId:string) {
+  async  makePaymentSession(data:Record<string,number |string>,userId:string) {
     try {
       const paymentItems = [
         {
@@ -26,10 +26,10 @@ export class stripeService {
               name: data.title,
               images: data.img ? [data.img] : [],
             },
-            unit_amount: data.price * 100,
+            unit_amount: (data.price as number) * 100,
           },
           quantity: data.quantity || 1,
-        },
+        }, 
       ];
 
       const session = await stripe.checkout.sessions.create({
@@ -50,7 +50,7 @@ export class stripeService {
     }
   }
 
-  async payment_Status(query: any) {
+  async payment_Status(query: {session_id:string,aid:string}) {
     try {
       const session = await stripe.checkout.sessions.retrieve(query.session_id);
       return session;
@@ -177,7 +177,7 @@ export class stripeService {
       }
 
       const bidderIndex = auction.bidders.findIndex(
-        (bidder: any) => bidder.user.toString() === userId
+        (bidder: {user:string}) => bidder.user.toString() === userId
       );
 
       if (bidderIndex !== -1) {

@@ -64,7 +64,7 @@ export class userService implements IuserService {
     }
   }
 
-  async auction_JoinPayment(data: any,userId:string) {
+  async auction_JoinPayment(data: {id:string,price:number},userId:string) {
     try {
       const session = await this.stripeService.makePaymentSession(data,userId);
       if (session) {
@@ -80,7 +80,7 @@ export class userService implements IuserService {
     }
   }
 
-  async auction_Join(query: any, userId: string) {
+  async auction_Join(query: {aid:string,session_id:string}, userId: string) {
     try {
       const response = await this.stripeService.payment_Status(query);      
       const data = {

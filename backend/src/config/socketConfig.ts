@@ -1,7 +1,7 @@
 import { AuctionSocketService } from "@/service/implements/socket/auction/auctionSocketService";
 import { BasesocketService } from "@/service/implements/socket/BaseSocketService";
 import { chatSocketService } from "@/service/implements/socket/chat/chatSocketService";
-import { SocketService } from "@/service/implements/socket/socket_Service";
+// import { SocketService } from "@/service/implements/socket/socket_Service";
 import { logError } from "@/utils/logger_utils";
 import http from "http";
 import Container from "typedi";
@@ -10,14 +10,12 @@ import Container from "typedi";
 export const initializeSocket =(server:http.Server)=>{
     try {
         const auctionSocket = Container.get(AuctionSocketService);
-        const chatsocket = Container.get(chatSocketService)
+        const chatSocket = Container.get(chatSocketService)
         const baseSocket = Container.get(BasesocketService);
-        console.log(`[initializeSocket] AuctionSocketService instance: ${auctionSocket.constructor.name}`);
-        console.log(`[initializeSocket] chatSocketService instance: ${chatsocket.constructor.name}`);
-
+      
         baseSocket.initialize(server)
         baseSocket.addHandlers(auctionSocket);
-        baseSocket.addHandlers(chatsocket);
+        baseSocket.addHandlers(chatSocket);
         // chatsocket.initialize(server)
     } catch (error) {
         console.log('error from socket config');

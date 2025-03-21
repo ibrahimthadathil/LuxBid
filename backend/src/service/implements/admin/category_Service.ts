@@ -15,11 +15,11 @@ export class categoryService implements IcategoryService{
         try {
             const exist = await this.cateRepo.findByName(name)
             if(exist) return { success:false , message:'Already exist'}
-          const response = await this.cateRepo.create({name,isActive:status})
-          if(response) await this.chatRepo.create({category:response.id,user:'Admin',content: `Welcome to the ${name} group chat! Feel free to share your thoughts.`})
-           else throw new Error('Group chat Execution failed') 
-          if(response) return {success:true , message:'Created succesfully'}
-          else throw new Error('Failed to Add category')
+            const response = await this.cateRepo.create({name,isActive:status})
+            if(response) await this.chatRepo.create({category:response.id,isAdmin:true,content: `Welcome to the ${name} group chat! Feel free to share your thoughts.`})
+            else throw new Error('Group chat Execution failed') 
+            if(response) return {success:true , message:'Created succesfully'}
+            else throw new Error('Failed to Add category')
         } catch (error) {
             throw new Error((error as Error).message)
         }

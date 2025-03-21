@@ -8,7 +8,7 @@ import { logError } from "@/utils/logger_utils";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 
 @Service()
-export class productController implements IproductController{
+export class ProductController implements IproductController{
   constructor(private product_Service: productService) {}
   async create_Post(req: AuthRequest, res: Response) {
     try {
@@ -41,8 +41,7 @@ export class productController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE });
     }
   }
-
-  async findAll_Products(req: Request, res: Response) {
+  async findAllProducts(req: Request, res: Response) {
     try {
       const status = req.params.status;
       const { success, data, message } =
@@ -54,7 +53,7 @@ export class productController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE });
     }
   }
-  async remove_Post(req:Request,res:Response){
+  async removePost(req:Request,res:Response){
     const id = req.params.id
     try {
       if(id){
@@ -67,7 +66,7 @@ export class productController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: (error as Error).message + responseMessage.ERROR_MESSAGE});
     }
   }
-  async update_PostStatus(req:Request,res:Response){
+  async updatePostStatus(req:Request,res:Response){
     try {
       const id =req.params.id
       if(id){
@@ -80,7 +79,7 @@ export class productController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE });
     }
   }
-  async reject_Post(req:Request,res:Response){
+  async rejectPost(req:Request,res:Response){
     try {
       const id = req.params.id
       if(id){
@@ -121,4 +120,4 @@ export class productController implements IproductController{
 
 
 
-export const product_Controller = Container.get(productController);
+export const productController = Container.get(ProductController);

@@ -101,6 +101,9 @@ export class BuyerRepository extends BasRepository<IBuyer> {
       {
         $unwind: "$committedBids.auction"
       },
+      { 
+        $match: { "committedBids.auction.isSold": false } 
+      },
       {
         $lookup: {
           from: "products", 

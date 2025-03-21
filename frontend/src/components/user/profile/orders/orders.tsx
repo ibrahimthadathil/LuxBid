@@ -52,20 +52,21 @@ const OrdersStatus = () => {
   const columns = useMemo(() => [
     {
       header: "No",
-        render: (_item: any, i: number) => `LBO 00${i + 1}`,
+        render: (item: any, i: number) => `LBO 00${i + 1}`,
     },
     {
       header: "Auction",
-      render: (auction: any) => (
+      render: (order: TOrder) => (
         <div className="flex items-center justify-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">
             <AvatarImage
-              src={auction?.auction?.post?.images[0]}
-              alt={auction?.auction?.title}
+              src={((order?.auction as Tauction)?.post as Tproduct)?.images?.[0]}
+
+              alt={(order?.auction as Tauction)?.title}
               className="object-cover w-8 h-8 rounded-full"
             />
           </Avatar>
-          <span>{auction?.auction?.title}</span>
+          <span>{(order?.auction as Tauction)?.title}</span>
         </div>
       ),
     },
@@ -93,54 +94,24 @@ const OrdersStatus = () => {
     },
     {
       header:'Review',
-      render:(order:TOrder)=>{
-        const [rating, setRating] = useState(0);
-        const [hover, setHover] = useState(0);
-        return order?.rating && Array.isArray(order?.rating) && order.rating.length > 0 ? (
-          <div className="flex justify-center">
-            {[...Array(5)].map((_, index) => (
-              <Star
-                key={index}
-                className={`h-5 w-5 ${index < (order?.rating?.[0]?.rate ?? 0) ? "text-yellow-400" : "text-gray-300"}`}
-                fill={index < (order?.rating?.[0]?.rate ?? 0) ? "currentColor" : "none"}
-              />
-            ))}
-          </div>
-        ) : (
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button disabled={order?.orderStatus !== "Delivered"}>Rate Organizer</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Review</DialogTitle>
-              </DialogHeader>
-              <div className="flex flex-col items-center space-y-4">
-                <p>How would you rate your experience?</p>
-                <div className="flex">
-                  {[...Array(5)].map((_, index) => {
-                    const ratingValue = index + 1;
-                    return (
-                      <Star
-                        key={index}
-                        className={`h-8 w-8 cursor-pointer ${
-                          ratingValue <= (hover || rating) ? "text-yellow-400" : "text-gray-300"
-                        }`}
-                        onClick={() => setRating(ratingValue)}
-                        onMouseEnter={() => setHover(ratingValue)}
-                        onMouseLeave={() => setHover(0)}
-                        fill={ratingValue <= (hover || rating) ? "currentColor" : "none"}
-                      />
-                    );
-                  })}
-                </div>
-                <Button onClick={() => handleRating(order._id, rating)}>Submit Rating</Button>
-              </div>
-            </DialogContent>
-          </Dialog>
-        );
-        
-    }},
+      render: (order: TOrder) => {
+    const auction = order.auction as Tauction | undefined;
+    return auction ? (
+      <div className="flex items-center justify-center gap-2">
+        <Avatar className="h-8 w-8 border rounded-full ">
+          <AvatarImage
+            src={(auction?.post as Tproduct)?.images?.[0] || ""}
+            alt={auction?.title}
+            className="object-cover w-8 h-8 rounded-full"
+          />
+        </Avatar>
+        <span>{auction?.title}</span>
+      </div>
+    ) : (
+      <span>No Auction Data</span>
+    );
+  },
+  },
     // {
     //   header:'Trakings',
     //   render:(order:TOrder)=>(

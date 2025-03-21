@@ -6,9 +6,9 @@ import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
 
 @Service()
-export class categoryController implements IcategoryController{
+export class CategoryController implements IcategoryController{
   constructor(private cate_Service: categoryService) {}
-  async add_Category(req: Request, res: Response) {
+  async addCategory(req: Request, res: Response) {
     try {
       const { name,isActive } = req.body;
       if (name) {
@@ -25,7 +25,7 @@ export class categoryController implements IcategoryController{
     }
   }
 
-  async get_Category(req: Request, res: Response) {
+  async getCategory(req: Request, res: Response) {
     try {      
       const { success, data, message } = await this.cate_Service.get_Category();
       if (success) res.status(HttpStatus.OK).json({ data, success });
@@ -42,11 +42,11 @@ export class categoryController implements IcategoryController{
       else res.status(HttpStatus.UNAUTHORIZED).json({ success, message });
     } catch (error) {
       logError(error)
-      res.status(500).json({ message: "Internal error, Try later" });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.INTERNAL_ERROR });
     }
   }
 
-  async remove_Category(req:Request,res:Response){
+  async removeCategory(req:Request,res:Response){
     const id = req.params.id    
     try {
      const {message,success}= await this.cate_Service.remove_Category(id)
@@ -54,18 +54,18 @@ export class categoryController implements IcategoryController{
       else res.status(HttpStatus.UNAUTHORIZED).json({message,success})
     } catch (error) {
       logError(error)
-      res.status(500).json({message:responseMessage.ERROR_MESSAGE})
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
     }
   }
 
-  async update_Category(req:Request,res:Response){
+  async updateCategory(req:Request,res:Response){
     const id = req.params.id
     try {
       if(id){
        const {success,message}= await this.cate_Service.category_Update(id)
         if(success) res.status(HttpStatus.OK).json({message,success})
           else res.status(HttpStatus.BAD_REQUEST).json({message,success})
-      }else throw new Error('Match not found ')
+      }else throw new Error('Match not found')
     } catch (error) {
       logError(error)
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
@@ -73,4 +73,4 @@ export class categoryController implements IcategoryController{
   }
 }
 
-export const category_Controller = Container.get(categoryController);
+export const categoryController = Container.get(CategoryController);
