@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom"
 import NavBar from "../../../components/global/NavBar"
+import { HeroHighlight } from "@/components/ui/hero-highlight"
+import { useTheme } from "@/components/theme/theme-provider"
+
 
 const Auth = () => {
+  const {theme} = useTheme()
   return (
     <>
-      <div className="flex flex-col h-screen w-full bg-black">
+    <HeroHighlight bg={`${theme=='dark'?"bg-black":"bg-white"}`}>
+      <div className="flex flex-col h-screen w-full bg-transparent">
         <div className="flex-shrink-0">
           <NavBar />
         </div>
@@ -13,6 +18,7 @@ const Auth = () => {
           <Outlet />
         </div>
       </div>
+      </HeroHighlight>
     </>
   )
 }

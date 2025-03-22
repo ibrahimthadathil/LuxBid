@@ -1,15 +1,15 @@
 import { Service } from "typedi";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
-import { Iusermangament } from "../../../controller/interface/controller_Interface";
+import { IadminUser } from "../../interface/adminService_Interface";
 
 @Service()
-export class userManagement implements Iusermangament{
+export class admin_userService implements IadminUser{
     constructor(private userRepo : userRepository){
 
     }
-    async findAllUsers (){
+    async findAll_Users(role:string){
         try {
-            const users = await this.userRepo.findAll()
+            const users = await this.userRepo.finduserByRole(role)            
             if(users){
                 return {success :true , data :users}
             }else{
@@ -23,14 +23,14 @@ export class userManagement implements Iusermangament{
         }
     }
     
-    async update_user(email:string){ 
+    async update_User(email:string){ 
         try {
           const user=await this.userRepo.findUserByEmail(email);
           if(user) {
             user.isActive=!user.isActive;
              await user?.save()
             return {success: true , message:' status changed'}
-          }else{
+          }else{            
             return {success : false ,message :'action failed'}  
           }
         } catch (error) {

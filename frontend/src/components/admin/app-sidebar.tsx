@@ -1,158 +1,110 @@
 import * as React from "react"
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
+  Layers3,
+  User,
+  LogOut,
+
   SquareTerminal,
+  StickyNote,
+  GavelIcon,
 } from "lucide-react"
 
 import { NavMain } from "@/components/admin/nav-main"
-import { NavProjects } from "@/components/admin/nav-projects"
-import { NavUser } from "@/components/admin/nav-user"
 import { TeamSwitcher } from "@/components/admin/team-switcher"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
-  SidebarProvider,
   SidebarRail,
 } from "@/components/ui/sidebar"
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+ 
   teams: [
+   
     {
-      name: "ibrahim",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
+      name: "LogOut",
+      logo: LogOut,
+      
     },
   ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Dashboard",
+      url: "/admin/LB/dashboard",
       icon: SquareTerminal,
       isActive: true,
+      // items: [
+      //   {
+      //     title: "History",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Starred",
+      //     url: "#",
+      //   },
+      //   {
+      //     title: "Settings",
+      //     url: "#",
+      //   },
+      // ],
+    },
+    {
+      title: "Users",
+      url: "/admin/LB/users/Buyer",
+      icon: User,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Organizer",
+          url: "/admin/LB/users/Seller",
+          // icon : 
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Buyer",
+          url: "/admin/LB/users/Buyer",
         },
-        {
-          title: "Settings",
-          url: "#",
-        },
+        
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title : 'Category',
+      url:'/admin/LB/category',
+      icon :Layers3
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
+      title : 'Posts',
+      url:'/admin/LB/Posts/Approved',
+      icon :StickyNote,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+            {
+              title: "Approved",
+              url: "/admin/LB/Posts/Approved",
+            },
+            {
+              title: "Requestes",
+              url: "/admin/LB/Posts/request",
+            },
+      ]
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
+      title:'Auctions',
+      url:'/admin/LB/Auction/Live',
+      icon:GavelIcon,
+      items :[
         {
-          title: "General",
-          url: "#",
+          title:'Live',
+          url:'/admin/LB/Auction/Live',
         },
         {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+          title:'scheduled',
+          url:'/admin/LB/Auction/Scheduled'
+        }
+      ]
+    }
+  
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -164,11 +116,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
+      
       <SidebarRail />
     </Sidebar>
     // </SidebarProvider>

@@ -1,187 +1,127 @@
+import Container, { Service } from "typedi";
+import { userService } from "@/service/implements/user/userService";
+import { IuserContrller } from "@/controller/interface/userController_Interface";
 import { Request, Response } from "express";
-import { Iuser } from "../../../models/userModel";
-import { Iopt } from "../../../models/otpModel";
-import { Container, Service } from "typedi";
-import { authService } from "../../../service/implements/user/authService";
-import { IUserController } from "../../interface/controller_Interface";
-import { setCookie } from "../../../utils/cookie_utils";
-import { set } from "mongoose";
+import { AuthRequest } from "@/types/api";
+import { stripeService } from "@/service/implements/stripe/stripeService";
+import Stripe from "stripe";
+import { logError } from "@/utils/logger_utils";
+import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
+
 
 @Service()
-class UserController implements IUserController {
-  constructor(private userservice: authService) {}
-
-  async Signup(req: Request, res: Response) {
-    try {
-      const userData: Iuser = req.body;
-      const { message, token, success } = await this.userservice.createUser(
-        userData.email
-      );
-      if (!token && !success) {
-        res.status(409).json({ response: message, success: false });
-        console.log(message);
-      } else {
-        res.status(200).json({ token: token, response: message, success });
-      }
-    } catch (error) {
-      console.log((error as Error).message);
-      res
-        .status(500)
-        .json({
-          response: "Internal server error",
-          error: (error as Error).message,
-        });
-    }
+class user_Controller implements IuserContrller {
+  private stripe: Stripe;
+  constructor(
+    private userService: userService,
+    private stripeService: stripeService
+  ) {
+    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   }
-
-  async verifyOTP(req: Request, res: Response) {
+  async find_User(req: AuthRequest, res: Response) {
     try {
-      
-      const { otp } = req.body;
-      console.log('dfgh' , otp);
-      const token = req.headers.authorization as string; 
-      if(otp){
-        const response = await this.userservice.verifyotp(otp, token);
-        if (!response.success){
-          res.status(401).json({ message: response.message });
-  
-        }else{
-          setCookie(res, "rftn", response.refresh as string);
-          res
-            .status(200)
-            .json({
-              success: true,
-              token: response.token,
-              message: response.message,
-              name: response.name,
-              email: response.email,
-            });
-  
-        }
-      }else res.status(401).json({ message: "OTP Required..!" });
-    } catch (error) {
-      console.log((error as Error).message);
-      if ((error as Error).message == "Token verification failed") {
-        res.status(401).json({ message: "Invalid token" });
-      }
-    }
-  }
-
-  async register(req: Request, res: Response) {
-    try {
-      const userDetails: Iuser = req.body;
-      const token = req.headers.authorization as string;
-      const response = await this.userservice.registerUser(userDetails, token);
-      if (response.success) {
-        res
-          .status(200)
-          .json({ token: response.token, message: response.message });
-      } else {
-        res.status(403).json({ message: response.message });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async signIn(req: Request, res: Response) {
-    try {
-      const { email, password } = req.body;
-      const response = await this.userservice.verifySignIn(email, password);
-      if (response?.success) {
-        setCookie(res, "rftn", response.refresh as string);
-        res
-          .status(200)
-          .json({
-            token: response.token,
-            success: true,
-            message: response.message,
-            email: response.email,
-            name: response.name,
-          });
-      } else {
-        console.log("check");
-        res.status(401).json(response);
-      }
-    } catch (error) {
-      res.status(500).json({ message: (error as Error).message });
-    }
-  }
-
-  async googleAuth(req: Request, res: Response) {
-    const userDetails: Iuser = req.body;
-    try {
-      const { success, message, token, refresh } =
-        await this.userservice.verifyGoogle(userDetails);
+      const user = req.user;
+      const {success,data,message} = await this.userService.findUser(user as string)
       if (success) {
-        setCookie(res, "rftn", refresh as string);
-        res
-          .status(200)
-          .json({ AccessToken: token, message: message, success: true });
-      } else {
-        res.status(500).json({ message: message });
-      }
+        res.status(HttpStatus.OK).json({ success: true, data });
+      } else res.status(HttpStatus.BAD_REQUEST).json({ success: false, message:responseMessage.ACCESS_DENIED });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: (error as Error).message });
+      logError(error)
+      console.log("from error", (error as Error).message);
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});
     }
   }
 
-  async forgetPassword(req: Request, res: Response) {
+  async upload_Profile(req: AuthRequest, res: Response) {
     try {
-      const { email } = req.body;
-      const { success, message, token } =
-        await this.userservice.forget_Password(email);
-      console.log(success);
-      if (!success) res.status(401).json({ message });
-      else res.status(200).json({ message, token });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: (error as Error).message });
-    }
-  }
-
-  async resetOTP(req: Request, res: Response) {
-    try {
-      const { otp } = req.body;
-      const Token = req.headers.authorization as string;
-      
-      if(otp){
-        const { success, message, token } = await this.userservice.reset_otp(
-          Token,
-          otp
+      const userId = req.user;
+      if (req.file && userId) {
+        const { message, success } = await this.userService.upload_Profile(
+          userId as string,
+          req.file
         );
-        if (!success) {
-          res.status(401).json({ message });
-        }else{
-          res.status(200).json({ message, token });
-        }
-      }else res.status(401).json({message :'OTP is required'})      
+        if (success) res.status(HttpStatus.OK).json({ success, message });
+        else res.status(HttpStatus.UNAUTHORIZED).json({ success, message });
+      } else
+        res
+          .status(HttpStatus.BAD_REQUEST)
+          .json({ success: false, message: responseMessage.UPLOAD_FAILED });
     } catch (error) {
-      console.log(error, "from reset password");
-      res.status(500).json({ message: "server error , try after some time" });
+      logError(error)
+      res
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({ success: false, message: responseMessage.ERROR_MESSAGE });
     }
   }
 
-  async resetPassword(req: Request, res: Response) {
+  async edit_Profile(req: AuthRequest, res: Response) {
     try {
-      const { password, newPassword } = req.body;
-      const Token = req.headers.authorization as string;
-      const { message, success} = await this.userservice.reset_Password(
-        password,
-        newPassword,
-        Token
-      );
-      if (success) {
-        res.status(200).json({ success :true, message:message,});
-      }else{
-        res.status(401).json({ success:false,message:message})
-      }
+      const userId = req.user;
+
+      if (userId) {
+        const { message, success } = await this.userService.edit_Profile(
+          req.body,
+          userId as string
+        );
+        if (success) {
+          res.status(HttpStatus.OK).json({ success, message });
+        } else res.status(HttpStatus.BAD_REQUEST).json({ message, success });
+      } else
+        res.status(HttpStatus.UNAUTHORIZED).json({ success: false, message: responseMessage.ACCESS_DENIED});
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server error, try again later" });
+      logError(error)
     }
+  }
+
+  async make_Payment(req:AuthRequest,res:Response){        
+    try {      
+      const {success,message,session} =  await this.userService.auction_JoinPayment(req.body,req.user as string)      
+      if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
+      else res.status(HttpStatus.UNAUTHORIZED).json({success:false , message:responseMessage.ERROR_MESSAGE})
+    } catch (error) {
+      logError(error)
+        console.log('errr from stripe 121212');
+        console.log((error as Error).message);
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});       
+    }
+  }
+  async payment_Status(req:AuthRequest,res:Response){
+    const userId = req.user 
+    const queryParams = req.query as {session_id:string,aid:string}
+  try {
+    const {success,data,message} = await this.userService.auction_Join(queryParams,userId as string)
+    if(success)res.status(HttpStatus.OK).json({success,data})
+      else res.status(HttpStatus.BAD_REQUEST).json({success,message})
+  } catch (error) {
+    logError(error)
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
   }
 }
 
-export const userController = Container.get(UserController);
+async webhook_Handler(req:Request, res: Response) {
+  const sig = req.headers['stripe-signature'];
+
+  try {
+    console.log('webhookHandler worked')    
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+      throw new Error('Missing Stripe webhook secret');
+    }
+
+    const event = this.stripe.webhooks.constructEvent(
+      req.body,
+      sig as string,
+      process.env.STRIPE_WEBHOOK_SECRET
+    ); 
+      // Handle the webhook event
+      await this.stripeService.handleWebhook(event);
+      res.json({ received: true });
+
+  } catch (err) {
+    logError(err);    
+     res.status(HttpStatus.BAD_REQUEST).send(`Webhook Error: ${(err as Error).message}`);
+  }
+}
+
+}
+
+export const userController = Container.get(user_Controller);

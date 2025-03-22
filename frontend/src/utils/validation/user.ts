@@ -1,8 +1,6 @@
-import { Phone } from "lucide-react";
-import { SubmitErrorHandler } from "react-hook-form";
+import { FieldError, FieldErrors, SubmitErrorHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import errorMap from "zod/locales/en.js";
 
 // for signup
 export const ZsignUp =z.object({email:z.string().min(1,'Email is required').email('Enter valid format')}) 
@@ -43,8 +41,34 @@ export const ZresetPass = z.object({
 
 export  type TZresetPass = z.infer<typeof ZresetPass>
 
-export const errorFn: SubmitErrorHandler<any> = (err) => {
-  Object.values(err).forEach((e:any) => {
-    toast.error(e.message);
+export const errorFn: SubmitErrorHandler<Record<string, any>> = (err: FieldErrors<Record<string, any>>) => {
+  Object.values(err).forEach((e) => {
+    if (typeof e === "object" && e !== null && "message" in e) {
+      toast.error((e as FieldError).message);
+    }
   });
 };
+// for edit form 
+
+
+export const ZeditProfile = z.object({
+  firstName : z.string().min(3,'Minimum 3 character is required'),
+  lastName:z.string().optional(),
+  phone : z.string().min(10,'Enter valid phone number').max(10,'Not a valid number'),
+  email : z.string().min(1,'Email is required').email(),
+})
+
+export type TZprofile = z.infer<typeof ZeditProfile> 
+
+
+// for address 
+
+export const ZAddress = z.object({
+  propertyName: z.string().min(1, { message: 'Property Name is required' }),
+  street: z.string().min(1, { message: 'Street is required' }),
+  city: z.string().min(1, { message: 'City is required' }),
+  state: z.string().min(1, { message: 'State is required' }),
+  pincode: z.string().min(1, { message: 'Pincode is required' }).length(6, { message: 'Pincode must be 6 digits' }),
+});
+
+export type TZAddress = z.infer<typeof ZAddress>;

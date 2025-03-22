@@ -1,7 +1,7 @@
 import { Service } from "typedi";
 import { otpRepository } from "../../../repositories/implimentation/otpRepository";
 import { generate_OTP } from "../../../utils/otp_util";
-import { IOtpService } from "../../interface/service_Interface";
+import { IOtpService } from "../../interface/utilService_Interface";
 @Service()
 export class otpService implements IOtpService{
     constructor( private otpRepo : otpRepository){}

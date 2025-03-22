@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import { sendOTPMail } from "../../../utils/Gmail_utils";
-import { IEmailService } from "../../interface/service_Interface";
+import { IEmailService } from "../../interface/utilService_Interface";
 
 @Service()
 export class emailService implements IEmailService{

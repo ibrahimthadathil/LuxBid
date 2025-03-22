@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Logo from "../../../../public/Logo.png";
 import { adminSignin } from "../../../service/Api/adminApi";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +10,8 @@ import { adminSignIn, TsignupSchem } from "@/utils/validation/admin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
 const SignInAdmin = () => {
+  console.log("avhavhahac");
+  
   const navigate = useNavigate();
   const { register , handleSubmit, formState :{errors ,isSubmitting}  ,reset } = useForm<TsignupSchem>({resolver:zodResolver(adminSignIn)});
   const disaptch = useDispatch<AppDispatch>();
@@ -20,10 +21,6 @@ const SignInAdmin = () => {
         const { data } = await adminSignin({ email:datas.email, password:datas.password });
         if (data.success) {
             localStorage.setItem("accessToken", data.token);
-            localStorage.setItem(
-                "admin",
-                JSON.stringify({ email: data.email, name: data.name })
-              );
               disaptch(
                   signInSuccess({
                       adminName: String(data.name),
@@ -31,7 +28,7 @@ const SignInAdmin = () => {
                     })
                   );
                   reset()
-        navigate("/api/admin/users");
+        navigate("/admin/LB/dashboard");
         toast.success(data.message);
       } else {
         toast.error("invalid credential");

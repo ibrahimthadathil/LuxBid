@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import AboutIcon from '../../assets/icons/About';
-import Deals from '../../assets/icons/Deals';
-import GuideIcon from '../../assets/icons/Guide';
-import HomeIcon from '../../assets/icons/Home';
-import CommunityIcon from '../../assets/icons/Pepole';
 import CustomButton from '@/components/ux/customButon';
+import { useNavigate } from 'react-router-dom';
+import { CircleAlert, Handshake } from 'lucide-react';
+import { FaGuilded, FaHouseDamage } from 'react-icons/fa';
+import { MdPeople } from 'react-icons/md';
+import { useTheme } from '../theme/theme-provider';
 
 const IconBar = () => {
   const [activeIcon, setActiveIcon] = useState<string>('home');
   const [sliderPosition, setSliderPosition] = useState<number>(0);
   const [sliderWidth, setSliderWidth] = useState<number>(0);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]); 
+  const navigate = useNavigate();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const activeIndex = ['home', 'guide', 'deals', 'about', 'community'].indexOf(activeIcon);
@@ -23,92 +25,68 @@ const IconBar = () => {
     }
   }, [activeIcon]);
 
-  const handleIconClick = (icon: string) => {
-    setActiveIcon(icon);
-  }
+  const handleIconClick = (route: string) => {
+    setActiveIcon(route);
+    navigate(`/${route}`);
+  };
 
   const isActive = (icon: string) => icon === activeIcon;
 
+  const getTextColor = (icon: string) => {
+    if (isActive(icon)) {
+      return theme !== 'dark' ? '#fff' : '#ffff'; // Active text color
+    }
+    return theme === 'dark' ? '#ffff' : '#5b4bae'; // Inactive text color
+  };
+
+  const getIconColor = (icon: string) => {
+    if (isActive(icon)) {
+      return theme !== 'dark' ? '#fff' : '#5b4bae'; // Active icon color
+    }
+    return theme === 'dark' ? '#ffff ' : '#5b4bae'; // Inactive icon color
+  };
+
   return (
-    
-      <div className="relative flex justify-between  h-[4.2rem] w-[40rem] rounded-lg bg-[#4241414b] shadow-inner p-2">
-        
-        {/* Slider */}
-        <div
-          className="absolute ms-[-5px] h-[3.1rem] bg-[#4c4c5246] rounded-lg shadow-2xl transition-all duration-500 ease-in-out"
-          style={{
-            transform: `translateX(${sliderPosition}px)`,
-            width: `${sliderWidth}px`, 
-          }}
-        />
+    <div className={`relative flex justify-between h-[4.2rem] w-[40rem] rounded-lg ${theme==='dark'?'bg-[#4241414b]':'bg-gray-100'}  shadow-inner p-2`}>
+      {/* Slider */}
+      <div
+        className={`absolute ms-[-5px] h-[3.1rem] ${
+          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#321e94]'
+        } rounded-lg transition-all duration-500 ease-in-out`}
+        style={{
+          transform: `translateX(${sliderPosition}px)`,
+          width: `${sliderWidth}px`,
+        }}
+      />
 
-        {/* Home Icon */}
+      {/* Icons */}
+      {[
+        { icon: FaHouseDamage, name: 'home' },
+        { icon: FaGuilded, name: 'guide' },
+        { icon: Handshake, name: 'deals' },
+        { icon: CircleAlert, name: 'about' },
+        { icon: MdPeople, name: 'community' },
+      ].map(({ icon: Icon, name }, index) => (
         <div
-          ref={(el) => (iconRefs.current[0] = el)} // Store reference
-          onClick={() => handleIconClick('home')}
-          className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
+          key={name}
+          ref={(el) => (iconRefs.current[index] = el)} // Store reference
+          onClick={() => handleIconClick(name)}
+          className={`ps-3 pe-2 pt-3 flex gap-3 font- text-[15px] cursor-pointer relative z-10`}
+          style={{ color: getTextColor(name) }} // Apply text color
         >
           <span className="pt-1">
-            <HomeIcon color={isActive('home') ? '#5B4BAE' : 'white'} />
+            <Icon size={18} color={getIconColor(name)} /> {/* Apply icon color */}
           </span>
-          Home
+          {name.charAt(0).toUpperCase() + name.slice(1)}
         </div>
+      ))}
 
-        {/* Guide Icon */}
-        <div
-          ref={(el) => (iconRefs.current[1] = el)} // Store reference
-          onClick={() => handleIconClick('guide')}
-          className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
-        >
-          <span className="pt-1">
-            <GuideIcon color={isActive('guide') ? '#5B4BAE' : 'white'} />
-          </span>
-          Guide
-        </div>
-
-        {/* Deals Icon */}
-        <div
-          ref={(el) => (iconRefs.current[2] = el)} // Store reference
-          onClick={() => handleIconClick('deals')}
-          className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
-        >
-          <span className="pt-1">
-            <Deals color={isActive('deals') ? '#5B4BAE' : 'white'} />
-          </span>
-          Deals
-        </div>
-
-        {/* About Icon */}
-        <div
-          ref={(el) => (iconRefs.current[3] = el)} // Store reference
-          onClick={() => handleIconClick('about')}
-          className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
-        >
-          <span className="pt-1">
-            <AboutIcon color={isActive('about') ? '#5B4BAE' : 'white'} />
-          </span>
-          About
-        </div>
-
-        {/* Community Icon */}
-        <div
-          ref={(el) => (iconRefs.current[4] = el)} // Store reference
-          onClick={() => handleIconClick('community')}
-          className={`ps-3 pe-2 pt-3 flex gap-3 text-white font-thin text-[15px] cursor-pointer relative z-10`}
-        >
-          <span className="pt-1">
-            <CommunityIcon color={isActive('community') ? '#5B4BAE' : 'white'} />
-          </span>
-          Community
-        </div>
-
-        {/* Custom Button */}
-        <div className=" mt-[-4px] relative z-10">
-          <CustomButton />
-        </div>
+      {/* Custom Button */}
+      <div className="mt-[-4px] relative z-10">
+        <CustomButton />
       </div>
-    
+    </div>
   );
-}
+};
 
 export default IconBar;

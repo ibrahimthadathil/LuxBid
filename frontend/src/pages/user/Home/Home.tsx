@@ -1,18 +1,26 @@
-import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "../../../components/global/NavBar";
-import axios from "axios";
+import Footer from "@/components/Layout/Footer";
+import BottomBar from "@/components/Layout/BottomBar";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const Home = () => {
-
+const {theme} =useTheme()
+  const backgroundClass = theme === 'dark' 
+  ? 'from-black via-black to-[#201c34ea]'
+  : 'from-white via-white to-[#d4cef6]';
   return (
     <>
-      <div className="bg-gradient-to-b flex flex-col  from-black via-black to-[#201c34ea] w-full h-screen">
+      
+      <div className={`bg-gradient-to-b flex flex-col  ${backgroundClass} w-full h-full min-h-screen`}>
         <Navbar />
-        <div className=" w-full flex flex-1">
-          <h1 className=""></h1>
+        <div className="w-full flex-1 flex  flex-col items-center h-auto">
+          
+          <Outlet/>
         </div>
-
-      </div>
+        </div>
+        <Footer/>
+        <BottomBar/>
     </>
   );
 };

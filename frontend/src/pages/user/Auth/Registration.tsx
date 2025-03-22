@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TZregister, Zregister } from "@/utils/validation/user";
 import { AxiosError } from "axios";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const Registration = () => {
   const {
@@ -14,6 +15,8 @@ const Registration = () => {
     reset,
   } = useForm<TZregister>({ resolver: zodResolver(Zregister) });
   const navigate = useNavigate();
+  const {theme}= useTheme()
+
   const handleRegisterSubmit = async (datas: TZregister) => {
     console.log(datas);
     try {
@@ -36,40 +39,41 @@ const Registration = () => {
     }
   };
   return (
-    <div className="container mx-auto px-4 py-8 ">
-      <div className="max-w-xl mx-auto rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-white mb-6">Registration </h2>
+    <div className=" px-4 py-8 h-full flex justify-center items-center mx-auto ">
+      <div className="max-w-xl mx-auto rounded-lg  p-8 flex flex-col h-[400px]
+       ">
+        <h2 className={`text-2xl font-semibold ${theme=='dark'?"text-white ":'text-indigo-800'} mb-6 text-center`}>Registration </h2>
         <form onSubmit={handleSubmit(handleRegisterSubmit)}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 ">
             <input
               type="text"
               placeholder="First Name"
               {...register("firstName")}
-              className="p-3 rounded-lg bg-zinc-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+              className={`p-2 rounded-lg ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-800 w-full`}
             />
             <input
               type="text"
               placeholder="Last Name (Optional)"
               {...register("lastName")}
-              className="p-3 rounded-lg bg-zinc-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+              className={`p-2 rounded-lg ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-800 w-full`}
             />
             {errors.firstName && (
               <p className="text-red-500">{`${errors.firstName.message}`}</p>
             )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
             <input
               type="password"
               placeholder="Password"
               {...register("password")}
-              className="p-3 rounded-lg bg-zinc-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+              className={`p-2 rounded-lg ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-800 w-full`}
             />
             <input
               type="text"
               placeholder="Phone"
               {...register("Phone")}
-              className="p-3 rounded-lg bg-zinc-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+              className={`p-2 rounded-lg ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-800 w-full`}
             />
             {(errors.password && (
               <p className="text-red-500">{`${errors.password.message}`}</p>
@@ -79,10 +83,10 @@ const Registration = () => {
               ))}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-3">
             <select
               {...register("gender")}
-              className="p-3 rounded-lg bg-zinc-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+              className={`p-2 rounded-lg ${theme=='dark'?"text-white bg-zinc-800":'text-black bg-gray-100'} placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-800 w-full`}
             >
               <option value="" disabled>
                 Gender
@@ -96,10 +100,10 @@ const Registration = () => {
             )}
           </div>
 
-          <div className="flex items-center mb-4 gap-2">
+          <div className="flex items-center mb-3 gap-2">
             <input
               type="checkbox"
-              className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2"
+              className="w-3 h-3 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-1"
               {...register("policy")}
             />
             <label className="ml-2 text-sm text-gray-400">
@@ -115,7 +119,7 @@ const Registration = () => {
 
           <button
             type="submit"
-            className={`w-full p-3 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 `}
+            className={`w-full p-2 text-white bg-indigo-700 rounded-lg hover:bg-indigo-900 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-2 `}
           >
             Proceed
           </button>

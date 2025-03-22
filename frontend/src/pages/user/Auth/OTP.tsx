@@ -1,6 +1,5 @@
 import { useState } from "react";
 import OTPInput from "../../../components/global/OTPBox";
-import SideTextSection from "../../../components/global/SideTextSection";
 import { otpVerification, resetOTP } from "../../../service/Api/userApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +7,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../redux/store/store";
 import { loaginSuccess } from "../../../redux/slice/authSlice";
 import { AxiosError } from "axios";
+import { useTheme } from "@/components/theme/theme-provider";
 
 const OTP = () => {
   const navigate = useNavigate();
   const [otp, setOTP] = useState("");
   const dispatch = useDispatch<AppDispatch>();
+  const {theme}= useTheme()
+  
   const handleClick = async () => {
     try {
       const token = localStorage.getItem("otp-token") as string;
@@ -22,14 +24,11 @@ const OTP = () => {
         localStorage.setItem("access-token", data.token) 
         toast.success(data.message)
         localStorage.removeItem("otp-token");
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ name: data.name, email: data.email })
-        );
         dispatch(
           loaginSuccess({
             userName: String(data.name),
             email: String(data.email),
+            role:'Guest'
           })
         );
         navigate("/");
@@ -60,7 +59,7 @@ const OTP = () => {
         {/* <p className="text-slate-400 mb-4">Remaining time : 90 sec</p> */}
         <button
           type="submit"
-          className="w-[75%] sm:w-[50%] text-white p-2 rounded-md bg-zinc-800"
+          className={`w-[75%] sm:w-[50%] ${theme=='dark'?" bg-zinc-800":'bg-indigo-700 ' } text-white p-2 rounded-md `}
           onClick={handleClick}
         >
           Verify

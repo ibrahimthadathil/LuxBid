@@ -1,0 +1,544 @@
+[31m{"level":"error","message":"gokul","timestamp":"2024-12-28 15:46:02"}[39m
+[31m{"level":"error","message":"gokul","timestamp":"2024-12-28 20:23:42"}[39m
+[31m{"level":"error","message":"gokul","timestamp":"2024-12-28 20:26:42"}[39m
+[31m{"level":"error","message":"gokul","timestamp":"2024-12-29 12:01:28"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:05:49"}[39m
+[31m{"level":"error","message":"Path \"$.auction\" is not in schema, strict mode is `true`, and upsert is `true`.","timestamp":"2025-01-01 20:16:56"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:43"}[39m
+[31m{"level":"error","message":"The positional operator did not find the match needed from the query.","timestamp":"2025-01-01 22:25:49"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: The path 'committedBids' must exist in the document in order to apply array updates.","timestamp":"2025-01-01 22:29:43"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:53:57"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 22:58:40"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:06:42"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:08:34"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:09:18"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:12:53"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:14:56"}[39m
+[31m{"level":"error","message":"Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.","timestamp":"2025-01-01 23:16:59"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:45:56"}[39m
+[31m{"level":"error","message":"Plan executor error during findAndModify :: caused by :: Cannot create field 'auction' in element {committedBids: [ { auction: ObjectId('67758176dcfcbea6cca6f178'), bidAmt: 120, bideDate: new Date(1735753881941), _id: ObjectId('677585b3dcfcbea6cca6f2c4') } ]}","timestamp":"2025-01-01 23:48:04"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:48:19"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:49:58"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'findIndex')","timestamp":"2025-01-02 01:50:58"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:17:41"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:20:10"}[39m
+[31m{"level":"error","message":"Failed to process refund","timestamp":"2025-01-02 11:22:12"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:46:41"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:47:13"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:48:41"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:49:50"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-14 09:52:36"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-19 19:58:22"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-20 09:35:53"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-20 09:39:04"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-20 09:40:22"}[39m
+[31m{"level":"error","message":"Cannot set properties of undefined (setting 'userId')","timestamp":"2025-01-20 09:42:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:56"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-20 09:49:56"}[39m
+[31m{"level":"error","message":"alert is not defined","timestamp":"2025-01-21 12:40:23"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Path `user` is required.","timestamp":"2025-01-22 10:53:47"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-01-22 10:54:06"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:04:30"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:08:44"}[39m
+[31m{"level":"error","message":"(0 , logger_utils_1.default) is not a function","timestamp":"2025-01-22 19:10:03"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:16"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:16"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:17"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:17"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:19"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:19"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:20"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:20"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:22"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:22"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:42:34"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:42:34"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:43:01"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:43:01"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"Admin\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-01-23 01:43:02"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 01:43:02"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3$\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:01"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:01"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:02"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:02"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:04"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:04"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:08"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:08"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3pp\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:19"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:19"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746cdd02b3dd192633c6ad3$\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-01-23 19:18:46"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-01-23 19:18:46"}[39m
+[31m{"level":"error","message":"Address validation failed: postalCode: Path `postalCode` is required.","timestamp":"2025-01-24 14:32:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:24:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:28:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:28:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:30:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:38:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:39:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:41:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:42:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:42:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:44:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:44:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 09:48:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:06:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:09:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:13:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:27:52"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:31:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:22"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 10:58:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:05:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:09:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:17:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:29:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:51:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:51:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 11:52:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:19:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:19:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:55"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:55"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:25:59"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:16"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 12:26:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:30"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 14:34:30"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 15:36:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:33:52"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:33:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:56:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 16:56:30"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:27:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:27:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:47:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 17:47:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:00:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:00:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:14:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 18:14:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 19:31:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-28 19:31:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-29 10:08:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:36"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:36"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:44:37"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 09:46:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:12:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:13:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:58:56"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-30 10:58:56"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:21"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:23"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:27"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:27"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:28"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:33"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:33"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:43"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:45"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:23:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:18"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 09:43:20"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:19:08"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:23:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:40:17"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 10:46:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:07"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 15:06:29"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:18:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:18:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-01-31 17:21:13"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-04 08:57:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:05:53"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 18:06:08"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:34:12"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:43:05"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 18:44:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-05 20:32:02"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:33:30"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-05 20:35:53"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 09:08:37"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:24"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:42"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:43"}[39m
+[31m{"level":"error","message":"Invalid URL: undefined/return?session_id={CHECKOUT_SESSION_ID}&aid=679f12fdeb05bceaf3b51a89. URLs must begin with http or https.","timestamp":"2025-02-06 14:42:44"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:31:07"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:38:13"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 20:46:11"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Missing metadata in session","timestamp":"2025-02-06 21:00:48"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:44"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-06 23:42:54"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-08 11:03:33"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 19:37:20"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:03:04"}[39m
+[31m{"level":"error","message":"Order validation failed: shippingAddress: Path `shippingAddress` is required.","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'client_secret')","timestamp":"2025-02-20 20:28:47"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:48"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:49"}[39m
+[31m{"level":"error","message":"Cannot populate path `address` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-02-21 03:12:51"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:02"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 10:30:24"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 11:12:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-02-21 11:12:29"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"organizerid\" (type string) at path \"_id\" for model \"Organizer\"","timestamp":"2025-02-21 14:01:14"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-03 10:27:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-03 10:27:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-03 10:27:26"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-03 10:27:34"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:03"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:54:10"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:56:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-05 16:56:25"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-06 09:52:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-06 09:52:42"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:11"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:11"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:23"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27undefined\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:34"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:34"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:37"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:37"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:40"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:40"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:41"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:41"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:43"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:43"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:47"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:47"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:50"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:50"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:51"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:51"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27function String() { [native code] }\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:52"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:52"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f27undefined\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:54"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:55"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:55"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:56"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:58"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:11:59"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:11:59"}[39m
+[31m{"level":"error","message":"Cast to ObjectId failed for value \"6746d8b31012fc86cd320f271\" (type string) at path \"category\" for model \"Message\"","timestamp":"2025-03-06 14:12:00"}[39m
+[31m{"level":"error","message":"An error has occurred. Please try again later.","timestamp":"2025-03-06 14:12:00"}[39m
+[31m{"level":"error","message":"Could not find path \"0.$set.emojis.0.emoji\" in schema","timestamp":"2025-03-06 23:49:42"}[39m
+[31m{"level":"error","message":"Already made the payment","timestamp":"2025-03-07 09:43:47"}[39m
+[31m{"level":"error","message":"Already made the payment","timestamp":"2025-03-07 09:43:47"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:52:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:53:00"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:54:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:54:04"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:54:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 09:54:11"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:16:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:21:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:46:06"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:47:41"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:53:57"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:54:39"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 10:54:40"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:01:46"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:02:35"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:06:49"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:08:50"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:20:38"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 11:50:42"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 14:10:31"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 14:11:32"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-08 14:14:46"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"Admin\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-12 09:53:56"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-03-12 09:54:05"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-03-12 09:58:01"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"Admin\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-12 09:58:23"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"Admin\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-12 10:56:51"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-03-12 10:57:04"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"Admin\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-12 14:49:58"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"Admin\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-12 14:56:31"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Path `user` is required.","timestamp":"2025-03-14 15:47:58"}[39m
+[31m{"level":"error","message":"Already exist","timestamp":"2025-03-14 15:48:57"}[39m
+[31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"no user\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-14 15:49:01"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-17 10:23:12"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-17 10:23:19"}[39m

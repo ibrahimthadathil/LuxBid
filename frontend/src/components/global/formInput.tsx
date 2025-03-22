@@ -1,5 +1,6 @@
 import React from "react";
-import { FieldError, FieldValues, useForm, UseFormRegister } from "react-hook-form";
+import { FieldError, useForm,  } from "react-hook-form";
+import { useTheme } from "../theme/theme-provider";
 
 interface props{
     // value:string;
@@ -10,7 +11,7 @@ interface props{
     error?: string | undefined | FieldError;
 }
 const FormInput = ({type ,holder ,validation , FormState,error }:props) => {
-
+const {theme}= useTheme()
   return (
     <>
     <input
@@ -18,7 +19,7 @@ const FormInput = ({type ,holder ,validation , FormState,error }:props) => {
             type={type}
             placeholder={holder}
             {...FormState(validation)}
-            className={` p-2 w-[55%] ${error&&"errInput"} sm:w-[65%] mb-3 text-gray-50 bg-zinc-900 border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700`}
+            className={` p-2 w-[55%] ${error&&"errInput"} sm:w-[65%] mb-3  ${theme=='dark'?'bg-zinc-900 text-gray-50':'bg-gray-100 text-black'} border-white rounded-md placeholder-zinc-500  focus:outline-none focus:ring-1 focus:ring-neutral-700`}
           />
     </>
   )

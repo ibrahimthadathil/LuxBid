@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import { Iopt, otpModel } from "../../models/otpModel";
-import { BasRepository } from "./basre_repository";
+import { BasRepository } from "./baseRepository";
 
 @Service()
 export class otpRepository extends BasRepository<Iopt>{

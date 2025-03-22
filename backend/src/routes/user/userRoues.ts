@@ -1,16 +1,36 @@
-import  { Router } from 'express'
-import { userController } from "../../controller/implements/user/userController";
+import  express,{ Router } from 'express'
+import { AuthMiddleWare } from '@/middleware/user/AuthMiddleware';
+import { userController } from '@/controller/implements/user/userController';
+import { buyer_controller } from '@/controller/implements/user/buyerController';
+import { Organizer_Controller } from '@/controller/implements/user/organizerController';
+import { upload } from '@/utils/multer_Utils';
+import { authorizationAccess } from '@/middleware/user/AuthorizationMiddleware';
+import { buyerAuthMiddleware } from '@/middleware/user/BuyerAuthMiddleware';
+import { OrganizerAuthMiddleware } from '@/middleware/user/organizerAuthmiddleware';
+import { transaction_Controller } from '@/controller/implements/user/transactionController';
 
 const userRoute = Router()
 
-userRoute.post('/signup',userController.Signup.bind(userController))
-userRoute.post('/register',userController.register.bind(userController))
-userRoute.post('/otpverify',userController.verifyOTP.bind(userController))
-userRoute.post('/signin',userController.signIn.bind(userController))
-userRoute.post('/auth/google',userController.googleAuth.bind(userController))
-userRoute.post('/forget/password',userController.forgetPassword.bind(userController))
-userRoute.post('/reset/otp',userController.resetOTP.bind(userController))
-userRoute.post('/reset/password',userController.resetPassword.bind(userController))
+userRoute.get('/user',AuthMiddleWare,authorizationAccess,userController.find_User.bind(userController))
+userRoute.put('/setbuyer',AuthMiddleWare,authorizationAccess,buyer_controller.set_Buyer.bind(buyer_controller))
+userRoute.put('/setseller',AuthMiddleWare,authorizationAccess,Organizer_Controller.set_Organizer.bind(Organizer_Controller))
+userRoute.get('/buyer',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,buyer_controller.get_Buyer.bind(buyer_controller))
+userRoute.get('/seller',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddleware,Organizer_Controller.get_Organizer.bind(Organizer_Controller))
+userRoute.post('/uploadprofile',AuthMiddleWare,authorizationAccess,upload.single('image'),userController.upload_Profile.bind(userController))
+userRoute.post('/editprofile',AuthMiddleWare,authorizationAccess,userController.edit_Profile.bind(userController))
+userRoute.get('/allBids',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,buyer_controller.committed_Auction.bind(buyer_controller))
+userRoute.get('/find-won-auction',AuthMiddleWare,buyerAuthMiddleware,buyer_controller.getWon_Auctions.bind(buyer_controller))
+
+// stripe route 
+userRoute.post('/create-checkout-session',AuthMiddleWare,userController.make_Payment.bind(userController))
+userRoute.get('/session-status',AuthMiddleWare,userController.payment_Status.bind(userController)) 
+userRoute.post('/webhook', 
+    express.raw({type: 'application/json'}),
+    userController.webhook_Handler.bind(userController)
+  );
+userRoute.get('/transactionHistory',AuthMiddleWare,transaction_Controller.getTransactionHistory.bind(transaction_Controller))
+userRoute.post('/winning-bid-payment',AuthMiddleWare,)
+
 
 export default userRoute
 

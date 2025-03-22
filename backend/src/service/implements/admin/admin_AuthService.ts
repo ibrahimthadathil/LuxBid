@@ -5,13 +5,14 @@ import {
   generateAccessToken,
   generateRefreshToken,
 } from "../../../utils/jwt_util";
+import { IadminAuth } from "../../interface/adminService_Interface";
 
 
 @Service()
-export class admin_Service {
+export class admin_Service implements IadminAuth{
   constructor(private adminRepo: adminRepository) {}
 
-  async admin_signin(email: string, Password: string) {
+  async admin_Signin(email: string, Password: string) {
     try {
       const exist = await this.adminRepo.findByEmail(email);
       if (exist) {

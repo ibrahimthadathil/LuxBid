@@ -6,18 +6,18 @@ import { useNavigate } from "react-router-dom";
 import { SubmitErrorHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTheme } from "@/components/theme/theme-provider";
 const Zemail = z.object({ email: z.string().email() });
 type Tzemail = z.infer<typeof Zemail>;
 const Forgetpassword = () => {
   const navigate = useNavigate();
+  const {theme} = useTheme()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Tzemail>({ resolver: zodResolver(Zemail) });
-  const handleVerify = async (datas: Tzemail) => {
-    console.log('llll');
-    
+  const handleVerify = async (datas: Tzemail) => {    
     console.log(datas);
     
     try {
@@ -61,7 +61,7 @@ const Forgetpassword = () => {
           <br />
           <button
             type="submit"
-            className="mt-3 w-[35%] sm:w-[35%] text-white p-2 rounded-md bg-zinc-800"
+            className={`mt-3 w-[35%] sm:w-[35%] text-white ${theme==='dark'?" bg-zinc-800":"bg-indigo-700" } p-2 rounded-md bg-zinc-800`}
           >
             Verify
           </button>

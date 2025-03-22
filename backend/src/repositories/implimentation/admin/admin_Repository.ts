@@ -1,6 +1,6 @@
 import { Service } from "typedi";
 import { Admin, Iadmin } from "../../../models/admin/adminModal";
-import { BasRepository } from "../basre_repository";
+import { BasRepository } from "../baseRepository";
 
 @Service()
 export class adminRepository extends BasRepository<Iadmin>{
