@@ -1,16 +1,12 @@
 import DataTable from "@/components/global/dataTable";
 import Loader from "@/components/global/Loader";
 import { PostModal } from "@/components/global/PostModal";
-import { AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/Button";
-import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { useRQ } from "@/hooks/userRQ";
 import { showCommittedBids } from "@/service/Api/buyerApi";
 import { Tauction, Tbuyer, Tproduct } from "@/types/types";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
-import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
-import { CalendarClock, Radio, Users, X } from "lucide-react";
+import { CalendarClock, Radio, Users } from "lucide-react";
 import moment from "moment";
 import { useMemo } from "react";
 import { BidHistoryDialog } from "./BidHistory";
@@ -25,7 +21,7 @@ const MyBids = () => {
     () => [
       {
         header: "No",
-        render: (item: Tbuyer, i: number) => `LBMB 00${i + 1}`,
+        render: (_item: Tbuyer, i: number) => `LBMB 00${i + 1}`,
       },
       {
         header: "Auction Title",

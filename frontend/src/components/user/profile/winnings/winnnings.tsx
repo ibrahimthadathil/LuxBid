@@ -3,11 +3,11 @@ import Address from "./address/address";
 import { getWonAuction } from "@/service/Api/userApi";
 import { useRQ } from "@/hooks/userRQ";
 import DataTable from "@/components/global/dataTable";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { CalendarClock, CreditCard, Radio, User2 } from "lucide-react";
 import { PostModal } from "@/components/global/PostModal";
-import { TAddress, Tauction, Tproduct } from "@/types/types";
+import {  Tauction } from "@/types/types";
 import moment from "moment";
 import { Button } from "@/components/ui/Button";
 import {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { PlusCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import {
@@ -57,7 +57,7 @@ const Address = () => {
         dispatch(selectedAddress(choosenAddressId));
       }
     };
-  const handleDeleteAddress = (id: string) => {};
+  const handleDeleteAddress = (_id: string) => {};
 
   return (
     <div className="p-4">

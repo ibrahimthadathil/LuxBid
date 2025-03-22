@@ -35,7 +35,7 @@ const Posts = () => {
     await handler(rejectPost,id,'product')
   }
     const columns = useMemo(()=>[
-    {header:'No',render:(post:Tproduct,i:number)=>`LBPNO ${i+101}`},
+    {header:'No',render:(_post:Tproduct,i:number)=>`LBPNO ${i+101}`},
     {key:'title',header:'Title' ,render:(post:Tproduct)=>(
       <div className="flex items-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">

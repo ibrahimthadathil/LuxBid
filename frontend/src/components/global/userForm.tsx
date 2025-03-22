@@ -1,5 +1,4 @@
-import { useRQ } from '@/hooks/userRQ'
-import { fetchBuyer } from '@/service/Api/buyerApi'
+
 import { saveEdit } from '@/service/Api/userApi'
 import { Iuser } from '@/types/types'
 import { errorFn, TZprofile, ZeditProfile } from '@/utils/validation/user'

@@ -44,7 +44,7 @@ export default function DeliveryTracker({
   ]
 
   // For demo purposes
-  const [status, setStatus] = useState<OrderStatus>(currentStatus)
+  const [status] = useState<OrderStatus>(currentStatus)
 
   // Helper to determine if a step is completed
   const isCompleted = (stepId: string) => {
@@ -78,7 +78,7 @@ export default function DeliveryTracker({
       <div className="relative">
         {/* Status steps */}
         <div className="flex flex-col md:flex-row justify-between mb-8 relative">
-          {steps.map((step, index) => (
+          {steps.map((step) => (
             <div key={step.id} className="flex flex-col items-center relative z-10 mb-8 md:mb-0">
               {/* Status circle */}
               <div

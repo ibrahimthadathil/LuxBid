@@ -7,7 +7,6 @@ import {
   SquareTerminal,
   StickyNote,
   GavelIcon,
-  Radio,
 } from "lucide-react"
 
 import { NavMain } from "@/components/admin/nav-main"
@@ -18,7 +17,6 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { title } from "process"
 
 // This is sample data.
 const data = {

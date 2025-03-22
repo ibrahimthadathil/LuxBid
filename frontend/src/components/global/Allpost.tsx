@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Search, User, Users } from "lucide-react";
+import  { useEffect, useState } from "react";
+import { Search, Users } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Select,

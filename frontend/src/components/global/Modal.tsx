@@ -5,7 +5,7 @@ import {
   updatePost,
 } from "@/service/Api/productApi";
 import { Tcategory } from "@/types/types";
-import { TZpost, TZpostEditing, ZPost, ZPostEditing } from "@/utils/validation/post";
+import { TZpost, TZpostEditing, ZPostEditing } from "@/utils/validation/post";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CloudUpload, Loader2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";

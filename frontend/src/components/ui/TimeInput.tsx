@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Clock, Calendar } from 'lucide-react';
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
@@ -28,7 +28,7 @@ const DateTimeSelect = ({
   onValidate,
   label,
   onChange,
-  error
+ 
 }: DateTimeSelectProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(value || null);
   const [selectedTime, setSelectedTime] = useState<string>("");

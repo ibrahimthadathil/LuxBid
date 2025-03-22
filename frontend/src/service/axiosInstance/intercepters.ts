@@ -1,6 +1,6 @@
 import { logout } from "@/redux/slice/authSlice";
-import store, { AppDispatch } from "@/redux/store/store";
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import store from "@/redux/store/store";
+import axios, { AxiosError} from "axios";
 import { toast } from "sonner";
 const USER_URL = import.meta.env.VITE_USER_BASE_URL;
 

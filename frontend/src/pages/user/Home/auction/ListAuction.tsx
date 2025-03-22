@@ -33,7 +33,7 @@ const ListAuction = () => {
   }
   const Columns = useMemo(()=>[
     {
-    header:'No',render:(item:Tauction,i:number)=>`LBA 00${i+1}`
+    header:'No',render:(_item:Tauction,i:number)=>`LBA 00${i+1}`
     },
     {
       key:'title',

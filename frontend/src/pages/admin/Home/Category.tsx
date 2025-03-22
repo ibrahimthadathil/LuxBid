@@ -51,7 +51,7 @@ const Category = () => {
     {
       key: "NO",
       header: "ItemID",
-      render: (e: Tcategory, i: number) => `#LBCY${i + 101}`,
+      render: (_e: Tcategory, i: number) => `#LBCY${i + 101}`,
     },
     { key: "name", header: "Name" },
     { key: "createdAt", header: "Created",render:(item:Tcategory)=>(
@@ -60,7 +60,7 @@ const Category = () => {
     {
       key: "isActive",
       header: "Status",
-      render: (item: Tcategory, i: number) => (
+      render: (item: Tcategory, ) => (
         <span
           className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
             item.isActive ? "text-green-700" : "text-red-700"
@@ -72,7 +72,7 @@ const Category = () => {
     },
     {
       header: "Delete",
-      render: (item:Tcategory,i:number) => (
+      render: (item:Tcategory) => (
         <div className="flex justify-center items-center">
           <AlertModal
             contents={[
@@ -87,7 +87,7 @@ const Category = () => {
     },
     {
       header: "List / Un-list",
-      render: (item: Tcategory, i: number) => (
+      render: (item: Tcategory) => (
         <AlertModal
           contents={[
             <>

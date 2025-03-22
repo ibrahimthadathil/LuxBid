@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ChevronsUpDown, Plus } from "lucide-react"
+import { ChevronsUpDown } from "lucide-react"
 import { Logout } from "@/redux/slice/adminSlice"
 import {
   DropdownMenu,
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/redux/store/store"
-import { Navigate, useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 import { logoutAdmin } from "@/service/Api/adminApi"
 
@@ -69,7 +69,7 @@ try {
             sideOffset={4}
           >
             
-            {teams.map((team, index) => (
+            {teams.map((team) => (
               <DropdownMenuItem
                 key={team.name}
                 onClick={LogoutAdmin}

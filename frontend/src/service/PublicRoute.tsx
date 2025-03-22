@@ -1,6 +1,6 @@
 import { Rootstate } from '@/redux/store/store'
 import { useSelector } from 'react-redux'
-import { Navigate, replace } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const PublicRoute = ({element,route}:{element:JSX.Element,route:string}) => {
   const authenticated = useSelector((state:Rootstate)=>state.user.isAuthenticated)

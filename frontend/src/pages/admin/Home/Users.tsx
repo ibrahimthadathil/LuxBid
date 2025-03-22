@@ -36,7 +36,7 @@ const Users = () => {
   const columns = [
     {
       header: "No",
-      render: (e: Iuser, i: number) => `LB${i + 101}`,
+      render: (_e: Iuser, i: number) => `LB${i + 101}`,
     },
     {
       key: "firstName",

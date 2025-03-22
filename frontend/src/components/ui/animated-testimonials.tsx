@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tproduct } from "@/types/types";
 import moment from "moment-timezone";
 import {
-  ArrowDownRight,
   ArrowRight,
   CalendarClock,
   Radio,

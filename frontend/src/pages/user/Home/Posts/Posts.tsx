@@ -1,7 +1,7 @@
 import Modal from "@/components/global/Modal";
 import { useRQ } from "@/hooks/userRQ";
 import {  fetchPost, removePost } from "@/service/Api/productApi";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import Loader from "@/components/global/Loader";
 import { Tcategory, Tproduct } from "@/types/types";
@@ -28,7 +28,7 @@ const Products = () => {
   const {theme} =useTheme() 
 
   const Columns = useMemo(()=>[
-    {header:'No',render:(post:Tproduct,i:number)=>`LBP 0${i+1}`},
+    {header:'No',render:(_post:Tproduct,i:number)=>`LBP 0${i+1}`},
     {key:'title',header:'Title' ,render:(post:Tproduct)=>(
       <div className="flex items-center gap-2">
           <Avatar className="h-8 w-8 border rounded-full ">

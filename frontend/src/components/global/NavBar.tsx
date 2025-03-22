@@ -2,12 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../../public/Logo.png";
 import IconBar from "./IconBar";
 import Mode from "./Mode";
-import { useTheme } from "../theme/theme-provider";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate()
-  const {theme}=useTheme()
   const showIconBar =
     location.pathname !== "/auth/signup" &&
     location.pathname !== "/auth/signin" &&

@@ -4,7 +4,7 @@ import { Iuser, Tauction, Tproduct } from "@/types/types";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Calendar, CalendarClock, Phone, Radio, Users } from "lucide-react";
 import moment from "moment";
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import DataTable from "../global/dataTable";
 import Loader from "../global/Loader";
@@ -25,7 +25,7 @@ const AllAuctions = () => {
     () => [
       {
         header: "No",
-        render: (auction: Tauction, i: number) => `LBANO ${i + 101}`,
+        render: (_auction: Tauction, i: number) => `LBANO ${i + 101}`,
       },
       {
         key: "title",
