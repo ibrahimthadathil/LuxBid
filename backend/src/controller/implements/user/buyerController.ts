@@ -76,7 +76,7 @@ class BuyerController implements IbuyerContoller {
         .json({ success: false, message: responseMessage.ERROR_MESSAGE });
     }
   }
-  async getWonAuctions(req: AuthRequest, res: Response){
+  async getWon_Auctions(req: AuthRequest, res: Response){
     try {
       
      const { success , data , message } = await this.buyerService.findWonAuctions(req.user as string)

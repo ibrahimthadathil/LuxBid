@@ -44,7 +44,7 @@ export class chatService {
     }
   }
 
-  async send_Message(groupId: string, content: string, user: string,files:Express.Multer.File[]) {
+  async send_Message(groupId: string, content: string, user: string, files: Express.Multer.File[]) {
     try {
       let attachments: string[] = [];
     
@@ -59,15 +59,18 @@ export class chatService {
       const response = await this.chatRepo.create({
         category: groupId,
         user,
-        content,attachments
+        content,
+        attachments
       });
-      console.log(response)
       
-      if(response)return{success:true}
-      else return {success:false}
+      if (response) return {
+        success: true,
+        attachments
+      };
+      else return { success: false };
     } catch (error) {
       logError(error);
-      return {success:false}
+      return { success: false };
     }
   }
   async addReaction(messageId: string, emoji: string, userId: string) {

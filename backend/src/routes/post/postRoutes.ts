@@ -11,7 +11,7 @@ postRoute.get('/findcategory',categoryController.get_ListedCategory.bind(categor
 postRoute.post('/addpost',AuthMiddleWare,upload.array('images',5),productController.create_Post.bind(productController))
 postRoute.get('/getpost',productController.get_Post.bind(productController))
 postRoute.put('/updatepost/:id',upload.array('images',5),productController.update_Post.bind(productController))
-postRoute.delete('/removepost/:id',productController.removePost.bind(productController))
+postRoute.delete('/removepost/:id',productController.remove_Post.bind(productController))
 postRoute.get('/approvedpost',productController.approved_Post.bind(productController))
 
 export default postRoute

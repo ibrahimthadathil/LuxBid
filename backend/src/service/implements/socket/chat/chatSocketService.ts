@@ -96,8 +96,14 @@ export class chatSocketService extends BasesocketService{
             });
         });
 
-        socket.on("sendMessage", ({ roomId, user, message,replayTo }) => {
-            this.emitToRoom(roomId, "newMessage", { user, message ,replayTo});
+        socket.on("sendMessage", ({ roomId, user, message, replyTo, attachments }) => {
+            this.emitToRoom(roomId, "newMessage", { 
+                user, 
+                message,
+                replyTo,
+                attachments,
+                timestamp: new Date()
+            });
         });
         socket.on('typing', ({ roomId, userName }) => {
             if (!this.typingUsers.has(roomId)) {

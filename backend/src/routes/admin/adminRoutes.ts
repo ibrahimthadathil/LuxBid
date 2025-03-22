@@ -27,7 +27,7 @@ adminRoute
 // Product (post) management
 adminRoute
   .get("/products/status/:status", AdminMiddleware, productController.findAllProducts.bind(productController))
-  .delete("/products/:id", AdminMiddleware, productController.removePost.bind(productController))
+  .delete("/products/:id", AdminMiddleware, productController.remove_Post.bind(productController))
   .put("/products/:id/status", AdminMiddleware, productController.updatePostStatus.bind(productController))
   .put("/products/:id/reject", AdminMiddleware, productController.rejectPost.bind(productController));
 

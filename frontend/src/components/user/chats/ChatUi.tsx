@@ -1,4 +1,3 @@
-
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -207,30 +206,34 @@ const ChatUI = () => {
   }, [selectedFiles]);
 
   const handleSendMessage = async (datas: { message: string }) => {
-
-    const files = selectedFiles.map(file => file.file);
-
-    // Add replyTo to the message data if replying to a message
-    socket.emit("sendMessage", {
-      roomId: groupId,
-      message: datas.message,
-      user: userName,
-      replyTo: replyTo?._id || null,
-    });
-    
-    // Update API call to include replyTo
-    const { data } = await sendMessage(
-      groupId as string, 
-      datas.message, 
-      replyTo?._id || null,
-      files
-    );
-    
-    if (data.success) {
-      reset();
-      setInputValue("");
-      setReplyTo(null);
-      setSelectedFiles([]);
+    try {
+      const files = selectedFiles.map(file => file.file);
+      
+      // First send the message and files to backend
+      const { data } = await sendMessage(
+        groupId as string, 
+        datas.message, 
+        replyTo?._id || null,
+        files
+      );
+      
+      if (data.success) {
+        // Only emit socket event after backend confirms success and provides file URLs
+        socket.emit("sendMessage", {
+          roomId: groupId,
+          message: datas.message,
+          user: userName,
+          replyTo: replyTo?._id || null,
+          attachments: data.attachments 
+        });
+        
+        reset();
+        setInputValue("");
+        setReplyTo(null);
+        setSelectedFiles([]);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
     }
   };
 

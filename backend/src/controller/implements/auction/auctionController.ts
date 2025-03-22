@@ -69,8 +69,8 @@ export class AuctionController {
   async getTopAndDisplayAuctions(req:Request,res:Response){
     try {
       const {success,data,message} =await this.auctionService.getDisplay_Auctions()
-      if(success)res.status(200).json({success,data})
-        else res.status(400).json({success,message})
+      if(success)res.status(HttpStatus.OK).json({success,data})
+        else res.status(HttpStatus.BAD_REQUEST).json({success,message})
     } catch (error) {
       logError(error)
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:(error as Error).message})

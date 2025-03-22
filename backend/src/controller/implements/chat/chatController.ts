@@ -35,8 +35,13 @@ export class chatController{
         try {
             const {text} = req.body
             const files = req.files as Express.Multer.File[];
-            const {success} = await this.chatService.send_Message(req.params.id,text,req.user as string,files)
-            if(success)res.status(HttpStatus.OK).json({success:true})
+            const response = await this.chatService.send_Message(req.params.id,text,req.user as string,files)
+            if(response.success) {
+                res.status(HttpStatus.OK).json({
+                    success: true,
+                    attachments: response.attachments
+                });
+            }
         } catch (error) {
             logError(error)
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})

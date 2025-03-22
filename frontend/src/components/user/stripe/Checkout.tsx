@@ -21,9 +21,14 @@ const {price,title,img,id,placeOrder,address} = location.state
       }
 
 const fetchClientSecret = useCallback(async() => {
-  if(placeOrder)return await orderPlacePayment({ price, title, img, id, address })
+try {
+  if(placeOrder)return  await orderPlacePayment({ price, title, img, id, address })
     else return await joinPayment({ price, title, img, id })
+} catch (error) {
+  navigate('/user/orders/winnings')
+}  
   }, []);
+ 
 const options = {fetchClientSecret};
 
   return (

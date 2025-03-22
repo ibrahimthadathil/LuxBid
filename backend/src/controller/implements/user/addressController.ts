@@ -7,7 +7,7 @@ import Container, { Service } from "typedi";
 
 
 @Service()
-export class addressController {
+export class AddressController  {
 
     constructor(
         private addressService :addressService
@@ -41,4 +41,4 @@ export class addressController {
 
 }
 
-export const address_Controller = Container.get(addressController)
+export const address_Controller = Container.get(AddressController )

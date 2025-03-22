@@ -16,8 +16,9 @@ export class orderController{
             const { price, title, img, id, address } = req.body;
             const userId = req.user as string
             const {session,success,message} = await this.orderService.createOrderPayment({ price,title,img,id,address}, userId);
+            console.log(success,message,'😶‍🌫️😶‍🌫️');
             if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
-            else res.status(401).json({success:false , message:message})    
+            else res.status(HttpStatus.BAD_REQUEST).json({success:false , message:message})    
         } catch (error) {
             logError(error);
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE});

@@ -123,7 +123,7 @@ return await api.post('/editprofile',data)
 
 export const joinPayment=async(data:{price:string,title:string,img:string,id:string})=>{
   try {
-    const response = await api.post('/create-checkout-session',data)
+    const response = await api.post('/create-checkout-session',data)    
     return response.data.clientSecret
   } catch (error) {
   toast.error(((error as AxiosError).response?.data as Record<string,any>).message)

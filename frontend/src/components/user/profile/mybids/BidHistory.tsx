@@ -4,6 +4,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useState } from "react";
+import Pagination from "@/components/ux/Pagination";
 
 export interface BidHistoryDialogProps {
   bidders: {
@@ -18,6 +20,19 @@ export interface BidHistoryDialogProps {
 }
 
 export function BidHistoryDialog({ bidders }: BidHistoryDialogProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  
+  // Calculate pagination
+  const totalPages = Math.ceil(bidders.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentBidders = bidders.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -39,9 +54,9 @@ export function BidHistoryDialog({ bidders }: BidHistoryDialogProps) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {bidders?.map((bidder, index) => (
+              {currentBidders?.map((bidder, index) => (
                 <TableRow key={`${bidder.user.firstName}-${index}`}>
-                  <TableCell>{index + 1}</TableCell>
+                  <TableCell>{startIndex + index + 1}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
                       <Avatar className="h-8 w-8 border">
@@ -63,6 +78,13 @@ export function BidHistoryDialog({ bidders }: BidHistoryDialogProps) {
             </TableBody>
           </Table>
         </ScrollArea>
+        {/* {totalPages > 1 && ( */}
+          <Pagination 
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        {/* )} */}
       </DialogContent>
     </Dialog>
   );

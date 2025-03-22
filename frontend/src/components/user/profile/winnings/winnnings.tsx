@@ -21,9 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import { Rootstate } from "@/redux/store/store";
-type AuctionPost = {
-  images: string[]; 
-}[];
+
 const Winnnings = () => {
   const { theme } = useTheme();
   const { isLoading, data } = useRQ(getWonAuction, "winnings");

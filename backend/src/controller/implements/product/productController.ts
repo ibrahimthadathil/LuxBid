@@ -25,7 +25,6 @@ export class ProductController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})
     }
   }
-
   async get_Post(req: AuthRequest, res: Response) {
     try {
       const userId = req.user;
@@ -53,7 +52,7 @@ export class ProductController implements IproductController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: responseMessage.ERROR_MESSAGE });
     }
   }
-  async removePost(req:Request,res:Response){
+  async remove_Post(req:Request,res:Response){
     const id = req.params.id
     try {
       if(id){

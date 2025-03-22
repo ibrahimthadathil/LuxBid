@@ -19,7 +19,7 @@ userRoute.get('/seller',AuthMiddleWare,authorizationAccess,OrganizerAuthMiddlewa
 userRoute.post('/uploadprofile',AuthMiddleWare,authorizationAccess,upload.single('image'),userController.upload_Profile.bind(userController))
 userRoute.post('/editprofile',AuthMiddleWare,authorizationAccess,userController.edit_Profile.bind(userController))
 userRoute.get('/allBids',AuthMiddleWare,authorizationAccess,buyerAuthMiddleware,buyer_controller.committed_Auction.bind(buyer_controller))
-userRoute.get('/find-won-auction',AuthMiddleWare,buyerAuthMiddleware,buyer_controller.getWonAuctions.bind(buyer_controller))
+userRoute.get('/find-won-auction',AuthMiddleWare,buyerAuthMiddleware,buyer_controller.getWon_Auctions.bind(buyer_controller))
 
 // stripe route 
 userRoute.post('/create-checkout-session',AuthMiddleWare,userController.make_Payment.bind(userController))

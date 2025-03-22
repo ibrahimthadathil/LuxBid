@@ -77,7 +77,7 @@ class user_Controller implements IuserContrller {
     try {      
       const {success,message,session} =  await this.userService.auction_JoinPayment(req.body,req.user as string)      
       if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
-      else res.status(401).json({success:false , message:responseMessage.ERROR_MESSAGE})
+      else res.status(HttpStatus.UNAUTHORIZED).json({success:false , message:responseMessage.ERROR_MESSAGE})
     } catch (error) {
       logError(error)
         console.log('errr from stripe 121212');
