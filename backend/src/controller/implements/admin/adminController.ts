@@ -74,6 +74,7 @@ class AdminController implements IAdminController{
       res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.INTERNAL_ERROR})
     }
   }
+  
 
 }
 

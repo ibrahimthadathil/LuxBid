@@ -14,9 +14,12 @@ export class messageRepository extends BasRepository<IMessage> {
   
   async findAllChatsByCategory(groupId: string,page:number,limit=20) {
     try {
+
       return await Message.find({ category: groupId })
-        .populate({path:"user",select:'firstName profile'})
-        .limit(limit*page);
+      .populate({ path: "user", select: "firstName profile" }) 
+      .populate({ path: "replyTo.user", select: "firstName profile" })
+      .limit(limit * page);
+
     } catch (error) {
       logError(error);
       throw new Error(responseMessage.ERROR_MESSAGE);

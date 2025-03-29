@@ -5,8 +5,14 @@ import { CircleAlert, Handshake } from 'lucide-react';
 import { FaGuilded, FaHouseDamage } from 'react-icons/fa';
 import { MdPeople } from 'react-icons/md';
 import { useTheme } from '../theme/theme-provider';
+import { motion } from "framer-motion";
 
-const IconBar = () => {
+interface IconBarProps {
+  isMobile?: boolean;
+  onCloseSidebar?: () => void;
+}
+
+const IconBar = ({ isMobile = false, onCloseSidebar }: IconBarProps) => {
   const [activeIcon, setActiveIcon] = useState<string>('home');
   const [sliderPosition, setSliderPosition] = useState<number>(0);
   const [sliderWidth, setSliderWidth] = useState<number>(0);
@@ -28,36 +34,57 @@ const IconBar = () => {
   const handleIconClick = (route: string) => {
     setActiveIcon(route);
     navigate(`/${route}`);
+    if (isMobile && onCloseSidebar) {
+      onCloseSidebar();
+    }
   };
 
   const isActive = (icon: string) => icon === activeIcon;
 
   const getTextColor = (icon: string) => {
-    if (isActive(icon)) {
-      return theme !== 'dark' ? '#fff' : '#ffff'; // Active text color
+    if (isMobile) {
+      return '#fff'; // White text for mobile sidebar
     }
-    return theme === 'dark' ? '#ffff' : '#5b4bae'; // Inactive text color
+    if (isActive(icon)) {
+      return theme !== 'dark' ? '#fff' : '#ffff'; // Original active text color
+    }
+    return theme === 'dark' ? '#ffff' : '#5b4bae'; // Original inactive text color
   };
 
   const getIconColor = (icon: string) => {
-    if (isActive(icon)) {
-      return theme !== 'dark' ? '#fff' : '#5b4bae'; // Active icon color
+    if (isMobile) {
+      return '#fff'; // White icons for mobile sidebar
     }
-    return theme === 'dark' ? '#ffff ' : '#5b4bae'; // Inactive icon color
+    if (isActive(icon)) {
+      return theme !== 'dark' ? '#fff' : '#5b4bae'; // Original active icon color
+    }
+    return theme === 'dark' ? '#ffff' : '#5b4bae'; // Original inactive icon color
   };
 
   return (
-    <div className={`relative flex justify-between h-[4.2rem] w-[40rem] rounded-lg ${theme==='dark'?'bg-[#4241414b]':'bg-gray-100'}  shadow-inner p-2`}>
-      {/* Slider */}
-      <div
-        className={`absolute ms-[-5px] h-[3.1rem] ${
-          theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#321e94]'
-        } rounded-lg transition-all duration-500 ease-in-out`}
-        style={{
-          transform: `translateX(${sliderPosition}px)`,
-          width: `${sliderWidth}px`,
-        }}
-      />
+    <motion.div 
+      initial={isMobile ? { x: 20, opacity: 0 } : false}
+      animate={isMobile ? { x: 0, opacity: 1 } : {}}
+      transition={{ staggerChildren: 0.1 }}
+      className={`relative ${
+        isMobile 
+          ? 'flex flex-col gap-4 w-full' 
+          : `flex justify-between h-[4.2rem] w-full max-w-[40rem] rounded-lg ${theme === 'dark' ? 'bg-[#4241414b]' : 'bg-gray-100'} shadow-inner p-2`
+      }`}
+    >
+      {/* Slider - Only show on desktop */}
+      {!isMobile && (
+        <motion.div
+          layout
+          className={`absolute ms-[-5px] h-[3.1rem] ${
+            theme === 'dark' ? 'bg-[#a098981c]' : 'bg-[#321e94]'
+          } rounded-lg transition-all duration-500 ease-in-out`}
+          style={{
+            transform: `translateX(${sliderPosition}px)`,
+            width: `${sliderWidth}px`,
+          }}
+        />
+      )}
 
       {/* Icons */}
       {[
@@ -67,25 +94,36 @@ const IconBar = () => {
         { icon: CircleAlert, name: 'about' },
         { icon: MdPeople, name: 'community' },
       ].map(({ icon: Icon, name }, index) => (
-        <div
+        <motion.div
           key={name}
-          ref={(el) => (iconRefs.current[index] = el)} // Store reference
+          ref={(el) => (iconRefs.current[index] = el)}
           onClick={() => handleIconClick(name)}
-          className={`ps-3 pe-2 pt-3 flex gap-3 font- text-[15px] cursor-pointer relative z-10`}
-          style={{ color: getTextColor(name) }} // Apply text color
+          whileHover={isMobile ? { scale: 1.05 } : {}}
+          whileTap={isMobile ? { scale: 0.95 } : {}}
+          initial={isMobile ? { x: 20, opacity: 0 } : false}
+          animate={isMobile ? { x: 0, opacity: 1 } : {}}
+          transition={{ delay: index * 0.1 }}
+          className={`${
+            isMobile 
+              ? 'p-3 flex gap-3 hover:bg-indigo-600/20 text-white rounded-lg transition-colors duration-200'
+              : 'ps-3 pe-2 pt-3 flex gap-3 font-medium'
+          } text-[15px] cursor-pointer relative z-10`}
+          style={{ color: getTextColor(name) }}
         >
-          <span className="pt-1">
-            <Icon size={18} color={getIconColor(name)} /> {/* Apply icon color */}
+          <span className={isMobile ? '' : 'pt-1'}>
+            <Icon size={18} color={getIconColor(name)} />
           </span>
           {name.charAt(0).toUpperCase() + name.slice(1)}
-        </div>
+        </motion.div>
       ))}
 
       {/* Custom Button */}
-      <div className="mt-[-4px] relative z-10">
-        <CustomButton />
-      </div>
-    </div>
+      {!isMobile && (
+        <div className="mt-[-4px] relative z-10">
+          <CustomButton />
+        </div>
+      )}
+    </motion.div>
   );
 };
 

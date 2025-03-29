@@ -1677,3 +1677,19 @@
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-21 09:56:02"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-21 09:57:17"}[39m
 [34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-21 10:06:40"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-24 10:12:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-24 10:12:25"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-25 10:12:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-25 10:12:27"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-25 10:22:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:22:58"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-25 10:23:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:05"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-25 10:23:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:09"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-26 12:35:26"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-27 13:41:18"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-28 10:51:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-28 10:51:05"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-29 11:01:04"}[39m
+[34m{"level":"debug","message":"entered into set new token","timestamp":"2025-03-29 11:01:04"}[39m

@@ -29,6 +29,8 @@ export class userRepository extends BasRepository<Iuser>{
             throw new Error('caught error from find by role ')
         }
     }
+
+    
 }
 
 
