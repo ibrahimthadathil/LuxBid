@@ -31,20 +31,18 @@ const ProfileBar = ({ user, bids }: { user: Iuser; bids: Tbuyer }) => {
     
   };
   return (
-    <div className={` ${theme=='dark'? 'bg-black text-gray-200':'bg-gray-100 '} shadow-inner   py-6 rounded-2xl`}>
-      <div className="px-6">
-        <div className="flex items-center justify-between">
+    <div className={` ${theme=='dark'? 'bg-black text-gray-200':'bg-gray-100 '} shadow-inner py-6 rounded-2xl`}>
+      <div className="px-3 sm:px-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex flex-col items-start">
-            <h1 className={`text-2xl  font-semibold ${theme!=='dark'?'text-gray-800':'text-white'}`}>{user.firstName} {user.lastName}</h1>
-            <span className={` ${theme?'':''}text-sm`}>Email : {user.email}</span>
-            <span className={` ${theme?'':''}text-sm`}>
-              Phone : +91 {user?.phone || "0000000000"}
-            </span>
+            <h1 className={`text-xl sm:text-2xl font-semibold ${theme!=='dark'?'text-gray-800':'text-white'}`}>{user.firstName} {user.lastName}</h1>
+            <span className="text-sm">Email : {user.email}</span>
+            <span className="text-sm">Phone : +91 {user?.phone || "0000000000"}</span>
           </div>
 
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baea2] p-3">
-              <Gavel className="w-5 h-5 text-purple-500" />
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baea2] p-2 sm:p-3">
+              <Gavel className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
               <div>
                 <span className="font-semibold">
                   {bids.CommittedBids ? "100" : "0"}
@@ -53,8 +51,8 @@ const ProfileBar = ({ user, bids }: { user: Iuser; bids: Tbuyer }) => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baeb7] p-3">
-              <Trophy className="w-5 h-5 text-purple-500" />
+            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baeb7] p-2 sm:p-3">
+              <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
               <div>
                 <span className="font-semibold">
                   {bids.CommittedBids ? "100" : "0"}
@@ -63,8 +61,8 @@ const ProfileBar = ({ user, bids }: { user: Iuser; bids: Tbuyer }) => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baec7] p-3">
-              <Star className="w-5 h-5 text-purple-500" />
+            <div className="flex items-center space-x-2 border-2 rounded-xl border-[#5b4baec7] p-2 sm:p-3">
+              <Star className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
               <div>
                 <span className="font-semibold">12</span>
                 <p className={`text-xs ${theme=='dark'?'text-gray-400':'text-black'}`}>Favorites</p>

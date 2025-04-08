@@ -118,11 +118,11 @@ const IconBar = ({ isMobile = false, onCloseSidebar }: IconBarProps) => {
       ))}
 
       {/* Custom Button */}
-      {!isMobile && (
-        <div className="mt-[-4px] relative z-10">
+      
+        <div className={`mt-[-4px] relative z-10 ${isMobile ? 'border-indigo-900 border rounded-xl':''}`}>
           <CustomButton />
         </div>
-      )}
+      
     </motion.div>
   );
 };

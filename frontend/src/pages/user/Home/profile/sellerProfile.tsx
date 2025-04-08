@@ -16,7 +16,7 @@ const SellerProfile = () => {
         {/* {profile bar}     */} 
         <ProfileBar user={data[0]?.user}  bids={data[1]?.committedBids} />
         {/* {details box} */}
-         <div className="grid grid-cols-3 gap-8">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           <UserForm user={data[0]?.user} />
           <div>
               <AverageRating rating={data[2]} totalReviews={data[0]?.rating?.length} reviews={data[0]?.rating}/>

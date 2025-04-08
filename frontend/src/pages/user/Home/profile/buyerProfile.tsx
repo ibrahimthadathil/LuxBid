@@ -12,15 +12,15 @@ const ProfileDashboard = () => {
   const {theme} =useTheme()
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :
-    isSuccess?<div className="p-3 space-y-6  ">
+    isSuccess?<div className="p-3 space-y-6">
       {/* {profile bar}     */}
 
       <ProfileBar user={data?.user} bids={data?.committedBids}/>
 
       {/* { profile details } */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
         <UserForm user={data?.user}/>
-        <div className={`${theme=='dark'? 'bg-[#35333357]':'bg-gray-50'} shadow-xl rounded-2xl p-8 h-fit`}>
+        <div className={`${theme=='dark'? 'bg-[#35333357]':'bg-gray-50'} shadow-xl rounded-2xl p-4 sm:p-8 h-fit`}>
           <h2 className="text-xl font-semibold text-gray-300 mb-6">
             To get access to Organize an auction? 
           </h2>
