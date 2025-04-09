@@ -17,7 +17,6 @@ export const getAllMessages =async(groupId?:string,query?:string)=>{
 export const sendMessage = async(groupId:string,text:string,replay:any,files:File[]) =>{
     const formData = new FormData();
     formData.append('text', text);
-    
     if (replay) {
       formData.append('replay', replay);
     }

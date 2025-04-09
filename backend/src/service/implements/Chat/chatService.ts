@@ -4,14 +4,14 @@ import { messageRepository } from "@/repositories/implimentation/chat/messageRep
 import { logError } from "@/utils/logger_utils";
 import Container, { Service } from "typedi";
 import { s3Service } from "../user/uploadService";
-import { log } from "node:console";
+
 
 @Service()
 export class chatService {
   constructor(
     private categoryRepo: categoryRepository,
     private chatRepo: messageRepository,
-    private s3Service:s3Service
+    private uploadService:s3Service
   ) {}
 
   async fetchAllGroups() {
@@ -35,7 +35,7 @@ export class chatService {
       const response = await this.chatRepo.findAllChatsByCategory(
         groupId,
         page
-      );
+      );      
       if (response) return { success: true, data: response };
       else return { success: false, message: responseMessage.ERROR_MESSAGE };
     } catch (error) {
@@ -44,25 +44,35 @@ export class chatService {
     }
   }
 
-  async send_Message(groupId: string, content: string, user: string, files: Express.Multer.File[]) {
+  async send_Message(groupId: string, content: string, user: string, files: Express.Multer.File[],replayTo?:string) {
     try {
       let attachments: string[] = [];
     
       if (files && files.length > 0) {
-        const s = Container.get(s3Service);
-        const uploadResult = await s.upload_File(files, 'chat-attachments');
+        const uploadResult = await this.uploadService.upload_File(files, 'chat-attachments');
         attachments = Array.isArray(uploadResult) 
           ? uploadResult.map(result => result.Location)
           : [uploadResult.Location];
       }
-      
+      let replayMessage = null
+      if(replayTo){
+        const parentMessage = await this.chatRepo.findById(replayTo)
+        if(parentMessage){
+          replayMessage = {
+            messageId: parentMessage._id as string,
+            content: parentMessage.content || '',
+            attachments:parentMessage.attachments || [],
+            user:parentMessage.user as string
+          }
+        }
+      }
       const response = await this.chatRepo.create({
         category: groupId,
         user,
         content,
-        attachments
-      });
-      
+        attachments,
+        replyTo:replayMessage
+      });      
       if (response) return {
         success: true,
         attachments

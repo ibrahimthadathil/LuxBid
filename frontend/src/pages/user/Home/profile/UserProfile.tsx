@@ -17,17 +17,18 @@ const UserProfile = () => {
     
   return (
     <>
-      <div className={`flex w-full flex-col bg-gradient-to-b h-screen ${backgroundClass}`}>
-        <div className=" w-full h-[18.5%] flex justify-between ">
+      <div className={`flex flex-col min-h-screen h-screen ${backgroundClass}`}>
+        <div className="w-full py-4 px-4 flex justify-between items-center">
           <img
             src={Logo}
-            className=" sm:max-w-[10%] md:max-w-[9%] lg:max-w-[10%]"
-            onClick={()=>navigate('/')}         />
-          <div className="w-[10%] items-center justify-center flex ">
+            className="h-12 w-auto object-contain cursor-pointer"
+            onClick={() => navigate('/')}
+          />
+          <div className="flex items-center">
             <Mode />
           </div>
         </div>
-        <div className=" flex-1">
+        <div className="flex-1 w-full">
           <Sidebars />
         </div>
       </div>

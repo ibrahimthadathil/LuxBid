@@ -60,7 +60,7 @@ const GroupList: React.FC = () => {
               key={group._id}
               className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg"
             >
-              <div className="bg-indigo-600 p-4 flex justify-between items-center">
+              <div className="bg-indigo-900 p-4 flex justify-between items-center">
                 <MessageSquare className="h-8 w-8 text-white" />
                 <div className="flex items-center text-white text-sm">
                   <Users className="h-4 w-4 mr-1" />
@@ -74,7 +74,7 @@ const GroupList: React.FC = () => {
                 </p>
                 <button
                   onClick={() => handleSelectGroup(group._id, group.name)}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-3 py-1 rounded transition-colors duration-200"
+                  className="bg-indigo-800 hover:bg-indigo-700 text-white text-sm font-semibold px-3 py-1 rounded transition-colors duration-200"
                 >
                   Join Chat
                 </button>

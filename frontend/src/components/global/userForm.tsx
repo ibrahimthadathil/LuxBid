@@ -40,7 +40,7 @@ const editProfile =async(datas:TZprofile)=>{
     <div className={`col-span-2 ${theme=='dark'?'bg-black':'bg-gray-100'} shadow-inner rounded-2xl p-4`}>
       <h2 className={`text-xl font-bold  mb-3 ${theme=='dark'?'text-gray-200':'text-indigo-900'}`}>Change details</h2>
       <form className="space-y-4" onSubmit={(handleSubmit(editProfile,errorFn))}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>First name</label>
             <input
@@ -61,7 +61,7 @@ const editProfile =async(datas:TZprofile)=>{
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={`block text-sm ${theme=='dark'?'text-gray-400':'text-black'} mb-1`}>Email</label>
             <input

@@ -542,3 +542,7 @@
 [31m{"level":"error","message":"Message validation failed: user: Cast to ObjectId failed for value \"no user\" (type string) at path \"user\" because of \"BSONError\"","timestamp":"2025-03-14 15:49:01"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-17 10:23:12"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-17 10:23:19"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:22:58"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:05"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:09"}[39m
+[31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-28 10:51:05"}[39m

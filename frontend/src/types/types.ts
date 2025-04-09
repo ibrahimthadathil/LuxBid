@@ -86,3 +86,36 @@ export type TOrder = {
     updatedAt?: Date;
     rating?:[{rate:number}]
 }
+
+// chat 
+export type IEmoji = {
+    emoji: string;
+    count: number;
+    users: string[];
+    _id: string;
+  }
+
+export type Message = {
+    _id: string;
+    category: string;
+    user: { 
+      _id: string;
+      firstName: string;
+      profile: string;
+    };
+    content: string;
+    timestamp: Date;
+    replyTo?: {
+      messageId: string;
+      content: string;
+      attachments?:string[]
+      user: {
+        _id: string;
+        firstName: string;
+        profile: string;
+      };
+    } | null;
+    emojis: IEmoji[];
+    attachments: string[];
+    __v: number;
+  }

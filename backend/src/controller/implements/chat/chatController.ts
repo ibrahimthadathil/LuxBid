@@ -33,9 +33,9 @@ export class chatController{
     }
     async sendMessage(req:AuthRequest,res:Response){
         try {
-            const {text} = req.body
+            const {text,replay} = req.body
             const files = req.files as Express.Multer.File[];
-            const response = await this.chatService.send_Message(req.params.id,text,req.user as string,files)
+            const response = await this.chatService.send_Message(req.params.id,text,req.user as string,files,replay)
             if(response.success) {
                 res.status(HttpStatus.OK).json({
                     success: true,
