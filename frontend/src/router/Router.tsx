@@ -43,6 +43,7 @@ import OrdersStatus from "@/components/user/profile/orders/orders";
 import Transactions from "@/pages/user/Home/payment/Transactions";
 import SetRole from "@/components/user/profile/Landing/SetRole";
 import OrderDispatches from "@/components/user/profile/orders/orderDispatches";
+import AboutPage from "@/pages/user/About/about";
 const UserProfile = React.lazy(
   () => import("@/pages/user/Home/profile/UserProfile")
 );
@@ -105,6 +106,10 @@ export const Router = createBrowserRouter([
       {
         path: "guide",
         element: <Guide />,
+      },
+      {
+        path:"about",
+        element:<AboutPage/>
       },
       {
         path: "AllDeals",
