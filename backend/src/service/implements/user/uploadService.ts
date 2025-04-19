@@ -44,9 +44,12 @@ export class s3Service implements IuploadServise{
       images.forEach(img => this.validate_Files(img));
       const results = await Promise.all(
         images.map(async (img) => {
+          const randomString = `LBP${Math.floor(100 + Math.random() * 900)}`; 
+          const extension = img.originalname.split('.').pop(); // Keep original file extension
+          const fileName = `${randomString}.${extension}`;
           const params = {
             Bucket: process.env.BUCKET_NAME,
-            Key: `${folder}/${Date.now()}-${img.originalname}`,
+            Key: `${folder}/${Date.now()}-${fileName}`,
             Body: img.buffer,
             ContentType: img.mimetype,
           };
