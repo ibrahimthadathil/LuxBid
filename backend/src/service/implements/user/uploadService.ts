@@ -9,9 +9,8 @@ import {
 import { IuploadServise } from "../../interface/s3Service_Interface";
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
 
-
 @Service()
-export class s3Service implements IuploadServise{
+export class s3Service implements IuploadServise { 
   private s3Service: S3Client;
   constructor() {
     this.s3Service = new S3Client({
@@ -23,29 +22,27 @@ export class s3Service implements IuploadServise{
       requestHandler: new NodeHttpHandler({
         connectionTimeout: 300000, // Set connection timeout (5 minutes)
         socketTimeout: 300000, // Set socket timeout (5 minutes)
-      }),    });
+      }),
+    });
   }
-  private validate_Files(file:Express.Multer.File){
+  private validate_Files(file: Express.Multer.File) {
     if (file.size > 2 * 1024 * 1024)
       throw new Error("File size too large. Maximum size is 2MB");
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/gif",
-      "image/webp",
-    ];
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.mimetype))
       throw new Error("Only image files are allowed");
   }
-  async upload_File(file: Express.Multer.File |Express.Multer.File[], folder: string) {
+  async upload_File(
+    file: Express.Multer.File | Express.Multer.File[],
+    folder: string
+  ) {
     try {
-
-      const images = Array.isArray(file) ?file : [file]
-      images.forEach(img => this.validate_Files(img));
+      const images = Array.isArray(file) ? file : [file];
+      images.forEach((img) => this.validate_Files(img));
       const results = await Promise.all(
         images.map(async (img) => {
-          const randomString = `LBP${Math.floor(100 + Math.random() * 900)}`; 
-          const extension = img.originalname.split('.').pop(); // Keep original file extension
+          const randomString = `LBP${Math.floor(100 + Math.random() * 900)}`;
+          const extension = img.originalname.split(".").pop(); // Keep original file extension
           const fileName = `${randomString}.${extension}`;
           const params = {
             Bucket: process.env.BUCKET_NAME,
@@ -67,37 +64,36 @@ export class s3Service implements IuploadServise{
           //   getObjectCommand,
           //   { expiresIn: 604800 }
           // );
-          
+
           return {
             success: true,
             Location: `https://${process.env.BUCKET_NAME}.s3.${process.env.BUCKET_REGION}.amazonaws.com/${params.Key}`,
-          }
+          };
         })
-      )
-        return Array.isArray(file) ? results : results[0];
+      );
+      return Array.isArray(file) ? results : results[0];
     } catch (error) {
       throw new Error((error as Error).message);
     }
   }
-  async delete_File(files:string[]){
+  async delete_File(files: string[]) {
+    try {
+      for (let url of files) {
+        let key = url.split(".com/")[1];
+        const params = {
+          Bucket: process.env.BUCKET_NAME,
+          Key: key,
+        };
+        const command = new DeleteObjectCommand(params);
         try {
-          for(let url of files){
-            let key = url.split('.com/')[1]            
-            const params ={
-              Bucket: process.env.BUCKET_NAME,
-              Key: key,
-            }
-            const command = new DeleteObjectCommand(params);
-            try {
-              await this.s3Service.send(command);
-            } catch (sendError) {
-              throw new Error('Faield to delete')
-            }
-          }
-          return true
-        } catch (error) {
-          throw new Error('Error occured in delete file')
+          await this.s3Service.send(command);
+        } catch (sendError) {
+          throw new Error("Faield to delete");
         }
+      }
+      return true;
+    } catch (error) {
+      throw new Error("Error occured in delete file");
+    }
   }
-  
 }

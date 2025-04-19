@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { TZAddress, ZAddress } from "@/utils/validation/user";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createAddress, fetchAddress } from "@/service/Api/addressApi";
+import { createAddress, deleteAddress, fetchAddress } from "@/service/Api/addressApi";
 import { toast } from "sonner";
 import { useRQ } from "@/hooks/userRQ";
 import { TAddress } from "@/types/types";
@@ -23,6 +23,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Rootstate } from "@/redux/store/store";
 import { selectedAddress } from "@/redux/slice/authSlice";
+import useActionHook from "@/hooks/actionHook";
 
 
 const Address = () => {
@@ -31,6 +32,7 @@ const Address = () => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch<AppDispatch>()
   const selectedAddressId = useSelector((state: Rootstate) => state.user.address);
+  const {handler} = useActionHook()
 
   const {
     register,
@@ -57,7 +59,11 @@ const Address = () => {
         dispatch(selectedAddress(choosenAddressId));
       }
     };
-  const handleDeleteAddress = (_id: string) => {};
+  const handleDeleteAddress = async (_id: string) => {
+    await handler(deleteAddress,_id,'address')
+    // const {data} = await deleteAddress(_id)
+    // if(data.s)
+  };
 
   return (
     <div className="p-4">

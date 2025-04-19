@@ -546,3 +546,9 @@
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:05"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-25 10:23:09"}[39m
 [31m{"level":"error","message":"Cannot set headers after they are sent to the client","timestamp":"2025-03-28 10:51:05"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressService')","timestamp":"2025-04-19 12:01:15"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressService')","timestamp":"2025-04-19 12:02:11"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressService')","timestamp":"2025-04-19 12:04:13"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressService')","timestamp":"2025-04-19 12:05:47"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressService')","timestamp":"2025-04-19 12:07:16"}[39m
+[31m{"level":"error","message":"Cannot read properties of undefined (reading 'addressServices')","timestamp":"2025-04-19 12:43:54"}[39m

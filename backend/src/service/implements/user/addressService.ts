@@ -32,5 +32,19 @@ export class addressService{
             return {success:false , message:responseMessage.ERROR_MESSAGE}
         }
     }
+    async deleteAddress(addressId:string){
+        try {
+            console.log(addressId,'ppp');
+            
+          const response= await this.addressRepo.delete(addressId)
+          if(response) return {success:true,message:'Deleted successfully'}
+          else return {success:false , message:responseMessage.ERROR_MESSAGE}
+        } catch (error) {
+            console.log(';l;;;');
+            
+            logError(error)
+            return {success:false , message:responseMessage.ERROR_MESSAGE}
+        }
+    }
 }
 
