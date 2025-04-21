@@ -16,7 +16,7 @@ const location = useLocation()
       
       <div className={`bg-gradient-to-b flex flex-col  ${backgroundClass} w-full h-full min-h-screen`}>
         <Navbar />
-        <div className="w-full flex-1 flex  flex-col items-center h-auto">
+        <div className="w-full flex-1 flex flex-col items-center h-auto">
           {location.pathname==='/' ? <LandingPage/>:<Outlet/>}
         </div>
         </div>
