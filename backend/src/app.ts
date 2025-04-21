@@ -19,12 +19,13 @@ import { initializeSocket } from "./config/socketConfig";
 import chatRoute from "./routes/chat/chatRoutes";
 import addressRoute from "./routes/user/addressRoute";
 import orderRoute from "./routes/order/orderRoute";
+import helmet from "helmet";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 connectDB();
 
 const target = {
-  origin: process.env.server_URL, // 5001
+  origin: process.env.server_URL,
   changeOrigin: true,
   credentials: true,
 };
@@ -33,6 +34,7 @@ const app = express();
 const httpServer = createServer(app);
 initializeSocket(httpServer)
 
+app.use(helmet())
 app.use(cors(target));
 app.use('/Luxbid/webhook', express.raw({ type: 'application/json' })); 
 app.use(express.json());
