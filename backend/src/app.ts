@@ -9,7 +9,6 @@ import adminRoute from "./routes/admin/adminRoutes";
 import authRoute from "./routes/user/authRoutes";
 import postRoute from "./routes/post/postRoutes";
 import auctionRoute from "./routes/auction/auctionRoutes";
-
 import { AuthMiddleWare } from "./middleware/user/AuthMiddleware";
 import { authorizationAccess } from "./middleware/user/AuthorizationMiddleware";
 import { OrganizerAuthMiddleware } from "./middleware/user/organizerAuthmiddleware";
