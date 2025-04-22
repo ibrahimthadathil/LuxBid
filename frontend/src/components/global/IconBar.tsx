@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import CustomButton from '@/components/ux/customButon';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { CircleAlert, Handshake } from 'lucide-react';
 import { FaGuilded, FaHouseDamage } from 'react-icons/fa';
 import { MdPeople } from 'react-icons/md';
@@ -14,14 +14,47 @@ interface IconBarProps {
 
 const IconBar = ({ isMobile = false, onCloseSidebar }: IconBarProps) => {
   const [activeIcon, setActiveIcon] = useState<string>('home');
+  const location = useLocation();
   const [sliderPosition, setSliderPosition] = useState<number>(0);
   const [sliderWidth, setSliderWidth] = useState<number>(0);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]); 
   const navigate = useNavigate();
   const { theme } = useTheme();
 
+  // useEffect(() => {
+  //   const activeIndex = ['home', 'guide', 'deals', 'about', 'community'].indexOf(activeIcon);
+  //   if (iconRefs.current[activeIndex]) {
+  //     const iconElement = iconRefs.current[activeIndex];
+  //     const iconOffset = iconElement?.offsetLeft || 0;
+  //     const iconWidth = iconElement?.offsetWidth || 0;
+  //     setSliderPosition(iconOffset); 
+  //     setSliderWidth(iconWidth); 
+  //   }
+  // }, [activeIcon]);
+
+  // const handleIconClick = (route: string) => {
+  //   setActiveIcon(route);
+  //   navigate(`/${route}`);
+  //   if (isMobile && onCloseSidebar) {
+  //     onCloseSidebar();
+  //   }
+  // };
+
+  const routeIcons = ['home', 'guide', 'deals', 'about', 'community'];
+
+  // get active route name from pathname
+  const getRouteName = (pathname: string) => {
+    const match = routeIcons.find(route => pathname.includes(route));
+    return match || 'home';
+  }; 
+
   useEffect(() => {
-    const activeIndex = ['home', 'guide', 'deals', 'about', 'community'].indexOf(activeIcon);
+    // update activeIcon when route changes
+    setActiveIcon(getRouteName(location.pathname));
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const activeIndex = routeIcons.indexOf(activeIcon);
     if (iconRefs.current[activeIndex]) {
       const iconElement = iconRefs.current[activeIndex];
       const iconOffset = iconElement?.offsetLeft || 0;
@@ -32,13 +65,11 @@ const IconBar = ({ isMobile = false, onCloseSidebar }: IconBarProps) => {
   }, [activeIcon]);
 
   const handleIconClick = (route: string) => {
-    setActiveIcon(route);
     navigate(`/${route}`);
     if (isMobile && onCloseSidebar) {
       onCloseSidebar();
     }
   };
-
   const isActive = (icon: string) => icon === activeIcon;
 
   const getTextColor = (icon: string) => {
