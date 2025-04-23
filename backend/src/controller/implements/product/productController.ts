@@ -32,6 +32,7 @@ export class ProductController implements IproductController{
         const { success, message, data } = await this.product_Service.findUser_Post(
           userId as string
         );
+        
         if (success) res.status(HttpStatus.OK).json({ success, data });
         else res.status(HttpStatus.UNAUTHORIZED).json({ message });
       } else res.status(HttpStatus.FORBIDDEN).json({ message:responseMessage.ACCESS_DENIED});
@@ -44,7 +45,7 @@ export class ProductController implements IproductController{
     try {
       const status = req.params.status;
       const { success, data, message } =
-        await this.product_Service.findAll_Products(status === "true");
+      await this.product_Service.findAll_Products(status === "true");
       if (success) res.status(HttpStatus.OK).json({ success, data });
       else res.status(HttpStatus.UNAUTHORIZED).json({ success, message });
     } catch (error) {

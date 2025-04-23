@@ -9,7 +9,7 @@ import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class AuctionController {
-  constructor(private auctionService: auctionService, private socketService : SocketService) {}
+  constructor(private auctionService: auctionService) {}
   
   async create_Auction(req:AuthRequest,res:Response){
     const organizer = req.user 
@@ -29,7 +29,7 @@ export class AuctionController {
     try {
       const organizer = req.user
       if(organizer){
-       const {success,data,message}= await this.auctionService.getUserAll_Auction(organizer as string)
+       const {success,data,message}= await this.auctionService.getUserAll_Auction(organizer as string)       
        if(success)res.status(HttpStatus.OK).json({success,data})
         else res.status(HttpStatus.UNAUTHORIZED).json({success,message})
       }

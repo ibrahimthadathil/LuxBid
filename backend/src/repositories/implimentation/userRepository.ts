@@ -29,7 +29,17 @@ export class userRepository extends BasRepository<Iuser>{
             throw new Error('caught error from find by role ')
         }
     }
-
+    async usersByGender(){
+        try {
+           return await User.aggregate([
+                {$facet:{
+                    totalUsers:[{$group:{_id:"$gender",count:{$sum:1}}}],
+                }}
+            ])
+        } catch (error) {
+            throw new Error('failed to fetch')
+        }
+    }
     
 }
 

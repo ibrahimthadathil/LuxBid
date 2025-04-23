@@ -1,22 +1,22 @@
 import { Service } from "typedi";
 import { adminRepository } from "../../../repositories/implimentation/admin/admin_Repository";
-import { comparePassword} from "../../../utils/hash_utils";
+import { comparePassword } from "../../../utils/hash_utils";
 import {
   generateAccessToken,
   generateRefreshToken,
 } from "../../../utils/jwt_util";
 import { IadminAuth } from "../../interface/adminService_Interface";
-
+import { userRepository } from "@/repositories/implimentation/userRepository";
 
 @Service()
-export class admin_Service implements IadminAuth{
+export class admin_Service implements IadminAuth {
   constructor(private adminRepo: adminRepository) {}
 
   async admin_Signin(email: string, Password: string) {
     try {
       const exist = await this.adminRepo.findByEmail(email);
       if (exist) {
-        const password = await comparePassword(Password, exist.password);        
+        const password = await comparePassword(Password, exist.password);
         if (!password)
           return { success: false, message: "Invalid Credentials" };
         const AccessToken = generateAccessToken({

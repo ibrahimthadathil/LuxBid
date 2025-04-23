@@ -43,7 +43,7 @@ import OrdersStatus from "@/components/user/profile/orders/orders";
 import Transactions from "@/pages/user/Home/payment/Transactions";
 import SetRole from "@/components/user/profile/Landing/SetRole";
 import OrderDispatches from "@/components/user/profile/orders/orderDispatches";
-import AboutPage from "@/pages/user/About/about";
+import AboutPage from "@/pages/user/About/About";
 const UserProfile = React.lazy(
   () => import("@/pages/user/Home/profile/UserProfile")
 );

@@ -4,6 +4,7 @@ import { categoryController } from "../../controller/implements/admin/categoryCo
 import { productController } from "../../controller/implements/product/productController";
 import { AdminMiddleware } from "../../middleware/adminMiddleware";
 import { auctionController } from "../../controller/implements/auction/auctionController";
+import { dashboardController } from "@/controller/implements/admin/dashboardController";
 
 const adminRoute = Router();
 
@@ -33,5 +34,7 @@ adminRoute
 
 // Auction management
 adminRoute.get("/auctions/type/:type", auctionController.listByType.bind(auctionController));
+// Dashboard 
+adminRoute.get("/dashboard",dashboardController.dashboard)
 
 export default adminRoute;
