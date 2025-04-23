@@ -13,9 +13,12 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 
 export default function Page() {
+  const location = useLocation()
+  const pathnames = location.pathname.split("/").filter((x) => x)
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -24,24 +27,39 @@ export default function Page() {
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
-            {/* nav brudcrumb */}
+            {/* nav breadcrumb */}
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink >
-                    Building Your Application
+                <BreadcrumbItem>
+                  <BreadcrumbLink>
+                    LuxBid Home
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
+                {pathnames.map((name, index) => {
+                  const isLast = index === pathnames.length - 1
+                  return (
+                    <div key={name} className="flex items-center">
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        {isLast ? (
+                          <BreadcrumbPage>
+                            {name.charAt(0).toUpperCase() + name.slice(1)}
+                          </BreadcrumbPage>
+                        ) : (
+                          <BreadcrumbLink >
+                            {name.charAt(0).toUpperCase() + name.slice(1)}
+                          </BreadcrumbLink>
+                        )}
+                      </BreadcrumbItem>
+                    </div>
+                  )
+                })}
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex  flex-1 flex-col gap-4 p-4 pt-0 ">
-          <Outlet/>
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 ">
+          <Outlet />
         </div>
       </SidebarInset>
     </SidebarProvider>
