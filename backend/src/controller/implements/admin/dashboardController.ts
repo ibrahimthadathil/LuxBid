@@ -1,5 +1,6 @@
 import { HttpStatus } from "@/enums/http_StatusCode";
 import { adminDashboardService } from "@/service/implements/admin/adminDashboardService";
+import { logError } from "@/utils/logger_utils";
 import { Request, Response } from "express";
 import Container, { Service } from "typedi";
 
@@ -9,10 +10,13 @@ export class DasboardController{
         private adminDashboardService : adminDashboardService
     ){}
 async dashboard(req:Request,res:Response){
-    try {
-      const data=  await this.adminDashboardService.dashboardDatas();
-    
+    try { 
+      const {success,...rest}=  await this.adminDashboardService.dashboardDatas();
+      if(success) res.status(HttpStatus.OK).json({data:rest})
+      else res.status(HttpStatus.NOT_FOUND) 
     } catch (error) {
+      logError(error)
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
 }

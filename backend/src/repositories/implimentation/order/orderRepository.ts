@@ -156,5 +156,18 @@ export class OrderRepository extends BasRepository<IOrder>{
             
         }
     }
+
+    async totalSales(){
+      try {
+        return await Order.aggregate([
+          {$match:{orderStatus:'Delivered'}},
+          {$group:{_id:null,totalRevenue:{$sum:'$orderAmt'}}},
+          {$project:{_id:0,totalRevenue:1}}
+        ])
+      } catch (error) {
+        logError(error)
+        throw new Error('failed to get the orders count')
+      }
+    }
     
 }

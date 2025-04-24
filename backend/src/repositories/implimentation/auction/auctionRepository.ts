@@ -224,6 +224,46 @@ export class auctionRepository extends BasRepository<IAuction> {
     }
   }
 
+  async topAuctionsBuyUser(){
+    try {
+      return await Auction.aggregate([
+        {$group:{_id:'$seller',auctionCount:{$sum:1}}},
+        { $sort: { auctionCount: -1 } },
+        { $limit: 5 },
+        {
+          $lookup:{
+            from:'users',
+            localField:'_id',
+            foreignField:'_id',
+            as :'seller'
+          }
+        },
+        {$unwind:'$seller'},
+        {
+         $project:{
+          _id:0,
+          sellerId:'$seller._id',
+          name:'$seller.firstName',
+          profile:'$seller.profile',
+          auctionCount:1,
+
+         } 
+        } 
+      ])
+      
+    } catch (error) {
+      throw new Error('Failed to fetch the top sellers')
+    }
+  }
+  async groupAuctionsByType(){
+    try {
+     return Auction.aggregate([
+      {$group:{_id:'$auctionType',count:{$sum:1}}}
+     ])
+    } catch (error) {
+      
+    }
+  }
   
 
 }

@@ -20,6 +20,6 @@ export const AdminMiddleware =async(req:AdminRequest,res:Response,next:NextFunct
         }else  throw new Error(responseMessage.TOKEN_ACCESS)
     } catch (error) {
         console.log('from admin middle ware',error);
-        res.status(HttpStatus.BAD_REQUEST).json({message:(error as Error).message})
+        res.status(HttpStatus.UNAUTHORIZED).json({message:(error as Error).message})
     }
 }

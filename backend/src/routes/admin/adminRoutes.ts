@@ -35,6 +35,6 @@ adminRoute
 // Auction management
 adminRoute.get("/auctions/type/:type", auctionController.listByType.bind(auctionController));
 // Dashboard 
-adminRoute.get("/dashboard",dashboardController.dashboard)
+adminRoute.get("/dashboard",AdminMiddleware,dashboardController.dashboard.bind(dashboardController))
 
 export default adminRoute;
