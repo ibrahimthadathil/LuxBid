@@ -67,3 +67,9 @@ export const logoutAdmin =async()=>{
   return await api.post('/auth/logout')
 }
 
+// get the dashboard
+
+export const dashboardData = async()=>{
+  return await api.get('/dashboard')
+}
+

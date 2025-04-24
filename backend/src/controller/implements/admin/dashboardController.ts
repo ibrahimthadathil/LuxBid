@@ -12,6 +12,7 @@ export class DasboardController{
 async dashboard(req:Request,res:Response){
     try { 
       const {success,...rest}=  await this.adminDashboardService.dashboardDatas();
+      console.log(rest);  
       if(success) res.status(HttpStatus.OK).json({data:rest})
       else res.status(HttpStatus.NOT_FOUND) 
     } catch (error) {

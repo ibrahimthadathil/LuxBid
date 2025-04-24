@@ -18,8 +18,12 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Users, ShoppingCart, DollarSign } from "lucide-react"
+import { useRQ } from "@/hooks/userRQ"
+import { dashboardData } from "@/service/Api/adminApi"
+import Loader from "../global/Loader"
 
 export default function AdminDashboard() {
+  const {isLoading,data}= useRQ(dashboardData,'dashboard')
   // Sample data for the dashboard
   const statsData = [
     {
@@ -95,7 +99,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="flex flex-col p-4 md:p-6 space-y-6 max-w-7xl mx-auto w-full">
+    isLoading?<Loader/>:<div className="flex flex-col p-4 md:p-6 space-y-6 max-w-7xl mx-auto w-full">
       <h1 className="text-2xl md:text-3xl font-bold">Admin Dashboard</h1>
 
       {/* First Row - Stat Cards */}
@@ -241,22 +245,24 @@ export default function AdminDashboard() {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead>No</TableHead>
                 <TableHead>Seller</TableHead>
                 <TableHead>Sales</TableHead>
                 <TableHead>Revenue</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {topSellers.map((seller) => (
+              {data.topSellers.map((seller:any,index:number) => (
                 <TableRow key={seller.id}>
+                  <TableCell>{index+1}</TableCell>
                   <TableCell className="flex items-center gap-2">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src={`/placeholder.svg?height=32&width=32`} alt={seller.name} />
-                      <AvatarFallback>{seller.avatar}</AvatarFallback>
+                      <AvatarImage src={seller.profile} alt={seller.name} />
+                      <AvatarFallback>{seller.name[0]}</AvatarFallback>
                     </Avatar>
                     <span className="font-medium">{seller.name}</span>
                   </TableCell>
-                  <TableCell>{seller.sales}</TableCell>
+                  <TableCell>{seller.auctionCount}</TableCell>
                   <TableCell>{seller.revenue}</TableCell>
                 </TableRow>
               ))}
