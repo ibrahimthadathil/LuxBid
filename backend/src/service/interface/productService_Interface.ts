@@ -1,5 +1,4 @@
 import { Iproduct } from "../../models/productModel";
-import { Iuser } from "../../models/userModel";
 
 
 export interface IproductService{

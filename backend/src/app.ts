@@ -19,7 +19,7 @@ import chatRoute from "./routes/chat/chatRoutes";
 import addressRoute from "./routes/user/addressRoute";
 import orderRoute from "./routes/order/orderRoute";
 import helmet from "helmet";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 dotenv.config();
 connectDB();
 

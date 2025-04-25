@@ -57,7 +57,7 @@ export class OrderService{
             const response = await this.stripeService.payment_Status(query);
             const data = {
                 status: response.status,
-                customer_email: response.customer_details.email,
+                customer_email: response.customer_details?.email,
               };
               console.log(data);
               

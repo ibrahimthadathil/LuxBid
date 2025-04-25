@@ -24,7 +24,7 @@ export class userService implements IuserService {
     try {
      const currentUser = await this.userRepo.findById(userId)
      if(currentUser){
-       const {password,...rest} = currentUser.toObject()
+      const { password, ...rest } = currentUser.toObject();
        return {success:true , data:rest}
      }else throw new Error('failed to fetch') 
     } catch (error) {
@@ -85,7 +85,7 @@ export class userService implements IuserService {
       const response = await this.stripeService.payment_Status(query);      
       const data = {
         status: response.status,
-        customer_email: response.customer_details.email,
+        customer_email: response.customer_details?.email,
       };
       if(response.status=='complete'){
       const currentAuction = await this.auctionRepo.findById(query.aid)

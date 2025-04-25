@@ -2,12 +2,9 @@ import { Service } from "typedi";
 import { BuyerRepository } from "../../../repositories/implimentation/buyerRepository";
 import { userRepository } from "../../../repositories/implimentation/userRepository";
 import { IBuyerService } from "../../interface/buyerService_Interface";
-import { Iuser } from "../../../models/userModel";
 import { tokenService } from "./tokenService";
-import { logDebug, logError } from "@/utils/logger_utils";
-import { Message } from "@/models/chatModel";
+import {logError } from "@/utils/logger_utils";
 import { responseMessage } from "@/enums/http_StatusCode";
-import { json } from "stream/consumers";
 
 @Service()
 export class buyer_service implements IBuyerService {

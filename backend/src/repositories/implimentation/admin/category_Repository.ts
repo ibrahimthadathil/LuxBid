@@ -15,6 +15,7 @@ export class categoryRepository extends BasRepository<Icategory>{
             return await Category.findOne({name: { $regex: new RegExp("^" + name + "$", "i") },}
         )
         } catch (error) {
+            logger(error)
             throw new Error('Failed to find')
         }
     }
@@ -23,6 +24,7 @@ export class categoryRepository extends BasRepository<Icategory>{
             const category =await this.findById(id) as Icategory
             return await Category.findByIdAndUpdate(id,{isActive:!category.isActive})
         } catch (error) {
+            logger(error)
             throw new Error('Failed to update category')
         }
     }
@@ -30,6 +32,7 @@ export class categoryRepository extends BasRepository<Icategory>{
         try {
             return await Category.find({isActive:true})
         } catch (error) {
+            logger(error)
             throw new Error('Failed to find')
 
         }
@@ -38,7 +41,7 @@ export class categoryRepository extends BasRepository<Icategory>{
         try {
             return await Category.find({isActive:true},{_id:0,name:1})
         } catch (error) {
-            console.log();
+            logger(error)
             throw new Error('From find  category')
         }
     }

@@ -1,5 +1,4 @@
 import { Request } from "express";
-import { Iuser } from "../models/userModel";
 import { Iadmin } from "../models/admin/adminModal";
 
 

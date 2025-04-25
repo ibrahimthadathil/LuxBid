@@ -4,8 +4,9 @@ import { paymentRepository } from "@/repositories/implimentation/user/paymentRep
 import { logError } from "@/utils/logger_utils";
 import Stripe from "stripe";
 import { Service } from "typedi";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+  apiVersion: "2024-11-20.acacia",
+});
 @Service()
 export class stripeService {
   private stripe: Stripe;
@@ -23,12 +24,16 @@ export class stripeService {
           price_data: {
             currency: "usd",
             product_data: {
-              name: data.title,
-              images: data.img ? [data.img] : [],
+              name: String(data.title),
+              images: data.img ? [String(data.img)] : [],
             },
             unit_amount: (data.price as number) * 100,
           },
-          quantity: data.quantity || 1,
+          // quantity: data.quantity || 1,
+          quantity:
+          typeof data.quantity === "number"
+            ? data.quantity
+            : parseInt(String(data.quantity)) || 1,
         }, 
       ];
 
@@ -38,7 +43,7 @@ export class stripeService {
         mode: "payment",
         return_url: data.address ?`${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}&order=${true}`: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
         metadata: {
-          aid: data.id,
+          aid:String(data.id),
           userId: userId,
         },
       });

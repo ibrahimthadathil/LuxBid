@@ -1,9 +1,10 @@
 
 import jwt from "jsonwebtoken";
+import logger from "./logger_utils";
 
 export const generateAccessToken =<T>(data:Partial<T>):string =>{
 
-        let skey = process.env.JWT_KEY as string
+        const skey = process.env.JWT_KEY as string
 
         return jwt.sign(data,skey,{expiresIn:'24h'})
 
@@ -11,12 +12,13 @@ export const generateAccessToken =<T>(data:Partial<T>):string =>{
 
 export const verifyToken=(token:string)=>{
 
-let skey = process.env.JWT_KEY as string
+const skey = process.env.JWT_KEY as string
         try {
                 
         return jwt.verify(token,skey)
         
         } catch (error) {
+        logger(error)
          console.log('error from jwt' , 'invalid token');
          return {success : false , message:'invalid token'}
         }
@@ -26,7 +28,7 @@ let skey = process.env.JWT_KEY as string
 
 export const generateRefreshToken =<T>(data:Partial<T>):string =>{
 
-        let skey = process.env.JWT_KEY as string
+        const skey = process.env.JWT_KEY as string
 
         return jwt.sign(data,skey,{expiresIn:'7d'})
 

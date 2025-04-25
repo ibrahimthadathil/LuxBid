@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export const sendOTPMail = async( email:string ,matter:string , otp:string )=>{
-    let transporter = nodemailer.createTransport({  
+    const transporter = nodemailer.createTransport({  
     
         service : 'gmail' ,
         auth :{
@@ -11,7 +11,7 @@ export const sendOTPMail = async( email:string ,matter:string , otp:string )=>{
     
     })
     
-    let mailOptions = {
+    const mailOptions = {
         from : process.env.EMAIL_USER ,
         to : email,
         subject : 'Verify Your Email to Complete The process on LuxBid' ,

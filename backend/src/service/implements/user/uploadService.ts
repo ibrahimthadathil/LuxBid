@@ -1,13 +1,12 @@
 import { Service } from "typedi";
 import {
   DeleteObjectCommand,
-  DeleteObjectsCommand,
-  GetObjectCommand,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
 import { IuploadServise } from "../../interface/s3Service_Interface";
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class s3Service implements IuploadServise { 
@@ -78,8 +77,8 @@ export class s3Service implements IuploadServise {
   }
   async delete_File(files: string[]) {
     try {
-      for (let url of files) {
-        let key = url.split(".com/")[1];
+      for (const url of files) {
+        const key = url.split(".com/")[1];
         const params = {
           Bucket: process.env.BUCKET_NAME,
           Key: key,
@@ -87,12 +86,14 @@ export class s3Service implements IuploadServise {
         const command = new DeleteObjectCommand(params);
         try {
           await this.s3Service.send(command);
-        } catch (sendError) {
+        } catch (error) {
+          logError(error)
           throw new Error("Faield to delete");
         }
       }
       return true;
     } catch (error) {
+      logError(error)
       throw new Error("Error occured in delete file");
     }
   }

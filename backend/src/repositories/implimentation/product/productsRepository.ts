@@ -10,7 +10,7 @@ export class productRepository extends BasRepository<Iproduct>{
     }
     async findByUser(id:string){
         try {
-            let f= await Product.find({seller:id}).populate({path:'category',match: { isActive: true }})            
+            const f= await Product.find({seller:id}).populate({path:'category',match: { isActive: true }})            
             return f
         } catch (error) {
             throw new Error('errofrom fetching the products')

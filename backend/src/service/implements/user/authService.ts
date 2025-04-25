@@ -36,7 +36,7 @@ export class authService implements IauthService {
       await this.emailservice.sendOtpEmail(email, "Registration", OTP);
       return { token, success: false, message: "OTP hasbeen send" };
     }
-    let Accesstoken = generateAccessToken<Iuser>({ email });
+    const Accesstoken = generateAccessToken<Iuser>({ email });
     return { token: Accesstoken, success: true, message: "Complete Profile" };
   }
 
@@ -79,7 +79,7 @@ export class authService implements IauthService {
 
   async register_User(userDetails: Iuser, token: string) {
     try {
-      let { email } = this.tokenservice.verify_Token(token) as JwtPayload;
+      const { email } = this.tokenservice.verify_Token(token) as JwtPayload;
       if (email) {
         const hashedPass = await hashPassword(userDetails.password);
         userDetails.email = email;
@@ -277,7 +277,7 @@ export class authService implements IauthService {
         Token
       ) as JwtPayload;
 
-      if (email) {
+      if (success) {
         const user = await this.userRepo.findUserByEmail(email);
         if (!user) return { success: false, message: "Invalid user email" };
         await this.userRepo.update(user?._id as string, {

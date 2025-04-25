@@ -8,6 +8,6 @@ export const hashPassword = async ( password:string ):Promise<string> => {
 
 export const RandomPassword =async()=> await bcrypt.hash(Math.random().toString(36).slice(-8),10)
 
-export const comparePassword=async(inputPassword:string,actualPass:string):Promise<Boolean>=>{
+export const comparePassword=async(inputPassword:string,actualPass:string):Promise<boolean>=>{
     return await bcrypt.compare(inputPassword,actualPass)
 }
