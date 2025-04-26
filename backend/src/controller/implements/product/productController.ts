@@ -2,7 +2,6 @@ import Container, { Service } from "typedi";
 import { productService } from "../../../service/implements/product/productService";
 import { AuthRequest } from "../../../types/api";
 import { Request, Response } from "express";
-import { Iuser } from "../../../models/userModel";
 import { IproductController } from "../../interface/productController_Interface";
 import { logError } from "@/utils/logger_utils";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";

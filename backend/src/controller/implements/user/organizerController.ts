@@ -4,7 +4,6 @@ import { Response } from "express";
 import { AuthRequest } from "../../../types/api";
 import { IsellerController } from "../../interface/sellerController";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
-import { json } from "stream/consumers";
 import { logError } from "@/utils/logger_utils";
 import { setCookie } from "@/utils/cookie_utils";
 
@@ -30,9 +29,7 @@ import { setCookie } from "@/utils/cookie_utils";
         }
     }
     async get_Organizer(req:AuthRequest,res:Response){
-        try {
-            console.log('reached here');
-            
+        try {            
             const userId = req.user
            if(userId){
             const {success,message,buyer,seller,avgRating}= await this.orgService.get_Seller(userId as string)   
@@ -51,7 +48,7 @@ import { setCookie } from "@/utils/cookie_utils";
         try {
           const organizer = req?.user
           const auctionId = req.params.id
-          const {success,message}=  await this.orgService.finalize_Auction(organizer as string,auctionId)
+          const {success}=  await this.orgService.finalize_Auction(organizer as string,auctionId)
           if(success)res.status(HttpStatus.OK).json({success})
             else res.status(HttpStatus.SERVICE_UNAVAILABLE).json({success})
           

@@ -2,7 +2,7 @@ import { responseMessage } from "@/enums/http_StatusCode";
 import { categoryRepository } from "@/repositories/implimentation/admin/category_Repository";
 import { messageRepository } from "@/repositories/implimentation/chat/messageRepositury";
 import { logError } from "@/utils/logger_utils";
-import Container, { Service } from "typedi";
+import  { Service } from "typedi";
 import { s3Service } from "../user/uploadService";
 
 

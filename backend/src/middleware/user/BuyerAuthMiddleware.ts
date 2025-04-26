@@ -1,9 +1,9 @@
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
-import { Iuser, User } from "@/models/userModel";
+import {  User } from "@/models/userModel";
 import { AuthRequest } from "@/types/api";
 import { setCookie } from "@/utils/cookie_utils";
 import { generateAccessToken, verifyToken } from "@/utils/jwt_util";
-import { logDebug, logError } from "@/utils/logger_utils";
+import { logError } from "@/utils/logger_utils";
 import { NextFunction, Response } from "express";
 import { JwtPayload } from "jsonwebtoken";
 

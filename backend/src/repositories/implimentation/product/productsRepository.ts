@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { Iproduct, Product } from "../../../models/productModel";
 import { BasRepository } from "../baseRepository";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class productRepository extends BasRepository<Iproduct>{
@@ -13,6 +14,7 @@ export class productRepository extends BasRepository<Iproduct>{
             const f= await Product.find({seller:id}).populate({path:'category',match: { isActive: true }})            
             return f
         } catch (error) {
+            logError(error)
             throw new Error('errofrom fetching the products')
         }
     }
@@ -20,6 +22,7 @@ export class productRepository extends BasRepository<Iproduct>{
         try {
             return await Product.find({isApproved:status}).populate('seller','-password').populate('category')
         } catch (error) {
+            logError(error)
             throw new Error('failed to find  post')
         }
     }
@@ -27,6 +30,7 @@ export class productRepository extends BasRepository<Iproduct>{
         try {
             return await Product.find({ seller:id , isApproved:true})
         } catch (error) {
+            logError(error)
             throw new Error('failed to findApproved post')
         }
     }

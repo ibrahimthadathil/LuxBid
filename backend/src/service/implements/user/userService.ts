@@ -24,6 +24,7 @@ export class userService implements IuserService {
     try {
      const currentUser = await this.userRepo.findById(userId)
      if(currentUser){
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...rest } = currentUser.toObject();
        return {success:true , data:rest}
      }else throw new Error('failed to fetch') 

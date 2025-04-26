@@ -7,7 +7,6 @@ import { IAuction } from "@/models/auctionModel";
 import { paymentRepository } from "@/repositories/implimentation/user/paymentRepository";
 import { paymentStatus, paymentType } from "@/models/paymentModel";
 import { responseMessage } from "@/enums/http_StatusCode";
-import { Message } from "@/models/chatModel";
 import { organizerRepository } from "@/repositories/implimentation/organizerRepository";
 import { IOrder } from "@/models/orderModel";
 
@@ -97,6 +96,7 @@ export class OrderService{
             if(response)return {success:true,data:response}
             else return {success:false,Message:responseMessage.INVALID_REQUEST}
         } catch (error) {
+            logError(error)
             return {success:false,Message:responseMessage.ERROR_MESSAGE}
         }
     }
@@ -106,6 +106,7 @@ export class OrderService{
             if(response)return {success:true}
             else return {success:false}
         } catch (error) {
+            logError(error)
             return {success:false,Message:responseMessage.ERROR_MESSAGE}
         }
     }
@@ -117,7 +118,8 @@ export class OrderService{
                 return {  success : true ,message:'Rating updated'}
             }
             else return {success:false , message : 'failed' }
-        } catch (error) {       
+        } catch (error) {  
+            logError(error)     
             return {success:false,message:responseMessage.ERROR_MESSAGE}
         }
     }

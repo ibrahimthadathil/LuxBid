@@ -1,7 +1,7 @@
 import { paymentStatus, paymentType } from "@/models/paymentModel";
 import { auctionRepository } from "@/repositories/implimentation/auction/auctionRepository";
 import { paymentRepository } from "@/repositories/implimentation/user/paymentRepository";
-import { logError } from "@/utils/logger_utils";
+import  { logError } from "@/utils/logger_utils";
 import Stripe from "stripe";
 import { Service } from "typedi";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -60,6 +60,7 @@ export class stripeService {
       const session = await stripe.checkout.sessions.retrieve(query.session_id);
       return session;
     } catch (error) {
+      logError(error)
       throw new Error("Failed to complee the payment");
     }
   }
@@ -68,10 +69,10 @@ export class stripeService {
     try {
       console.log("Received webhook event:", event.type);
       switch (event.type) {
-        case "checkout.session.completed":
+        case "checkout.session.completed":{
           const session = event.data.object as Stripe.Checkout.Session;
           await this.handleSuccessfulPayment(session);
-          break;
+          break;}
         case "checkout.session.expired":
           await this.handleFailedPayment(
             event.data.object as Stripe.Checkout.Session
@@ -80,7 +81,7 @@ export class stripeService {
         case "charge.refunded":
           await this.handleRefundComplete(event.data.object as Stripe.Charge);
           break;
-        case "charge.updated": // Add this case
+        case "charge.updated": 
         
           break;
         default:

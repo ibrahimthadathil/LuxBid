@@ -14,10 +14,11 @@ export class chatController{
     async fetchChatGroups(req:Request,res:Response){
         try {
             
-       const {message,success,data}= await this.chatService.fetchAllGroups()
+       const {success,data}= await this.chatService.fetchAllGroups()
        if(success)res.status(HttpStatus.OK).json({data,success})
         else res.status(HttpStatus.NOT_FOUND).json({success,message:responseMessage.NOT_FOUND})
         } catch (error) {
+            logError(error)
          res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({message:responseMessage.ERROR_MESSAGE})   
         }
     }

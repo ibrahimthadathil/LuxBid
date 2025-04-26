@@ -1,11 +1,12 @@
 import { Service } from "typedi";
 import { Server, Socket } from "socket.io";
+import { Server as HttpServer } from "http"; // add this at the top
 
 @Service()
 export class SocketService {
   private io: Server | null = null;
 
-  initialize(server: any) {
+  initialize(server: HttpServer) {
     try {
       if (!this.io) {
         this.io = new Server(server, {
@@ -56,7 +57,7 @@ export class SocketService {
     }
   }
 
-  emitToRoom(room: string, event: string, data?: any) {
+  emitToRoom(room: string, event: string, data?: unknown) {
     try {
       if (this.io) {
         this.io.to(room).emit(event, data);
@@ -68,7 +69,7 @@ export class SocketService {
     }
   }
 
-  emitToAll(event: string, data: any) {
+  emitToAll(event: string, data: unknown) {
     try {
       if (this.io) {
         this.io.emit(event, data);

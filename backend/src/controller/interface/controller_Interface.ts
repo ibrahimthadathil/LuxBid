@@ -1,6 +1,4 @@
-import { Request, Response } from "express";
 import { Iuser } from "../../models/userModel";
-import { AuthRequest } from "../../types/api";
 
 
 export interface Iusermangament{

@@ -3,7 +3,6 @@ import { buyer_service } from "../../../service/implements/user/buyerService";
 import { AuthRequest } from "../../../types/api";
 import { Response } from "express";
 import { IbuyerContoller } from "../../interface/buyerController";
-import { Iuser } from "../../../models/userModel";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
 import { setCookie } from "@/utils/cookie_utils";

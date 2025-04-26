@@ -6,7 +6,7 @@ import {
   generateRefreshToken,
 } from "../../../utils/jwt_util";
 import { IadminAuth } from "../../interface/adminService_Interface";
-import { userRepository } from "@/repositories/implimentation/userRepository";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class admin_Service implements IadminAuth {
@@ -39,7 +39,7 @@ export class admin_Service implements IadminAuth {
         return { success: false, message: "Invalid Credentials" };
       }
     } catch (error) {
-      console.log(error);
+      logError(error);
       throw new Error((error as Error).message);
     }
   }

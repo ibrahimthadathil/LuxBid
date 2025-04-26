@@ -13,6 +13,8 @@ export class auctionRepository extends BasRepository<IAuction> {
     try {
       return await Auction.findOne({ post: id });
     } catch (error) {
+      logError(error);
+
       throw new Error("Failed to find auction");
     }
   }
@@ -21,6 +23,8 @@ export class auctionRepository extends BasRepository<IAuction> {
     try {
       return Auction.find({ seller: userId }).populate("post");
     } catch (error) {
+      logError(error);
+
       throw new Error("Failed to Fetch auction");
     }
   }
@@ -46,6 +50,8 @@ export class auctionRepository extends BasRepository<IAuction> {
         },
       ]);
     } catch (error) {
+      logError(error);
+
       throw new Error("Error from finding Top 5");
     }
   }
@@ -95,6 +101,8 @@ export class auctionRepository extends BasRepository<IAuction> {
         },
       ]);
     } catch (error) {
+      logError(error);
+
       throw new Error("Failed to retrive the data");
     }
   }
@@ -108,21 +116,36 @@ export class auctionRepository extends BasRepository<IAuction> {
           path: "bidders.user",
           select: "email",
         });
-    } catch (error) {}
+    } catch (error) {
+      logError(error);
+    }
   }
 
-  async join_Auction(auctionId: string, userId: string, bidAmt: number,paymentSessionId: string) {
+  async join_Auction(
+    auctionId: string,
+    userId: string,
+    bidAmt: number,
+    paymentSessionId: string
+  ) {
     try {
-    return  await Auction.findOneAndUpdate(
+      return await Auction.findOneAndUpdate(
         { _id: auctionId, "bidders.user": { $ne: userId } },
         {
           $addToSet: {
-            bidders: { user: userId, bidTime: Date.now(), amount: bidAmt , paymentSessionId ,paymentStatus: "pending"},
-        }},
+            bidders: {
+              user: userId,
+              bidTime: Date.now(),
+              amount: bidAmt,
+              paymentSessionId,
+              paymentStatus: "pending",
+            },
+          },
+        },
         { new: true }
       );
-      
     } catch (error) {
+      logError(error);
+
       console.log("from bidcreatye");
       console.log((error as Error).message);
     }
@@ -135,6 +158,8 @@ export class auctionRepository extends BasRepository<IAuction> {
         select: "firstName profile",
       });
     } catch (error) {
+      logError(error);
+
       console.log("error from participents");
       console.log((error as Error).message);
     }
@@ -148,6 +173,8 @@ export class auctionRepository extends BasRepository<IAuction> {
         { new: true }
       );
     } catch (error) {
+      logError(error);
+
       console.log("error from updateAmt");
       throw new Error("failed to raise the bid");
     }
@@ -155,115 +182,122 @@ export class auctionRepository extends BasRepository<IAuction> {
 
   async accept_currentBid(user: string, amt: number, auction: string) {
     try {
-      
-      
-    return await Auction.bulkWrite([
-      {
-        
-        updateOne: {
-          filter: { _id: auction },
-          update: { $set: { "bidders.$[].isAccept": false } }, 
+      return await Auction.bulkWrite([
+        {
+          updateOne: {
+            filter: { _id: auction },
+            update: { $set: { "bidders.$[].isAccept": false } },
+          },
         },
-      },
-      {
-        updateOne: {
-          filter: { _id: auction, "bidders.user": user },
-          update: { $set: { "bidders.$.isAccept": true } , baseAmount:amt }, 
+        {
+          updateOne: {
+            filter: { _id: auction, "bidders.user": user },
+            update: { $set: { "bidders.$.isAccept": true }, baseAmount: amt },
+          },
         },
-      },
       ]);
-           
     } catch (error) {
-      console.log('error fom bulkwrite');
-      
+      logError(error);
+
+      console.log("error fom bulkwrite");
     }
   }
 
-  async filterd_Auctions(limit:number,skip:number,page:number,search:string,category:string[],auctionType:string[]){
+  async filterd_Auctions(
+    limit: number,
+    skip: number,
+    page: number,
+    search: string,
+    category: string[],
+    auctionType: string[]
+  ) {
     try {
-      
       const filterdData = await Auction.find({
-        title: { $regex: search, $options: 'i' },
+        title: { $regex: search, $options: "i" },
         auctionType: { $in: auctionType },
       })
         .populate({
-          path: 'post',populate:{
-            path:'category',
-            select:'name',
+          path: "post",
+          populate: {
+            path: "category",
+            select: "name",
             match: { name: { $in: category } },
-          } 
+          },
         })
-        .skip(page * limit) 
-        .limit(limit)        
-        return filterdData.filter(item => {
-          const postWithCategory = item.post as { category?: string | null };
-          return postWithCategory.category !== null;
+        .skip(page * limit)
+        .limit(limit);
+      return filterdData.filter((item) => {
+        const postWithCategory = item.post as { category?: string | null };
+        return postWithCategory.category !== null;
       });
-      
     } catch (error) {
-      console.log('err f  query');
+      logError(error);
+
+      console.log("err f  query");
       console.log((error as Error).message);
-      
     }
   }
 
-  async findAllByType(auctionType: string){
+  async findAllByType(auctionType: string) {
     try {
-      return await Auction.find({auctionType:auctionType}).populate('seller','-password').populate('post')
+      return await Auction.find({ auctionType: auctionType })
+        .populate("seller", "-password")
+        .populate("post");
     } catch (error) {
-      console.log('error from find by type :-'+ (error as Error).message);
+      logError(error);
+
+      console.log("error from find by type :-" + (error as Error).message);
     }
   }
 
-  async updatePaymentStatus(auctionId: string, userId: string, status: string){
+  async updatePaymentStatus(auctionId: string, userId: string, status: string) {
     try {
-     return await Auction.updateOne( { _id: auctionId, "bidders.user": userId },
-        { $set: { "bidders.$.paymentStatus": status } })
+      return await Auction.updateOne(
+        { _id: auctionId, "bidders.user": userId },
+        { $set: { "bidders.$.paymentStatus": status } }
+      );
     } catch (error) {
-      logError(error)
+      logError(error);
     }
   }
 
-  async topAuctionsBuyUser(){
+  async topAuctionsBuyUser() {
     try {
       return await Auction.aggregate([
-        {$group:{_id:'$seller',auctionCount:{$sum:1}}},
+        { $group: { _id: "$seller", auctionCount: { $sum: 1 } } },
         { $sort: { auctionCount: -1 } },
         { $limit: 5 },
         {
-          $lookup:{
-            from:'users',
-            localField:'_id',
-            foreignField:'_id',
-            as :'seller'
-          }
+          $lookup: {
+            from: "users",
+            localField: "_id",
+            foreignField: "_id",
+            as: "seller",
+          },
         },
-        {$unwind:'$seller'},
+        { $unwind: "$seller" },
         {
-         $project:{
-          _id:0,
-          sellerId:'$seller._id',
-          name:'$seller.firstName',
-          profile:'$seller.profile',
-          auctionCount:1,
-
-         } 
-        } 
-      ])
-      
+          $project: {
+            _id: 0,
+            sellerId: "$seller._id",
+            name: "$seller.firstName",
+            profile: "$seller.profile",
+            auctionCount: 1,
+          },
+        },
+      ]);
     } catch (error) {
-      throw new Error('Failed to fetch the top sellers')
+      logError(error);
+      throw new Error("Failed to fetch the top sellers");
     }
   }
-  async groupAuctionsByType(){
+  async groupAuctionsByType() {
     try {
-     return Auction.aggregate([
-      {$group:{_id:'$auctionType',count:{$sum:1}}}
-     ])
+      return Auction.aggregate([
+        { $group: { _id: "$auctionType", count: { $sum: 1 } } },
+      ]);
     } catch (error) {
-      
+      logError(error);
     }
   }
-  
-
 }

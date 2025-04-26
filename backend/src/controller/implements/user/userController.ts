@@ -21,7 +21,7 @@ class user_Controller implements IuserContrller {
   async find_User(req: AuthRequest, res: Response) {
     try {
       const user = req.user;
-      const {success,data,message} = await this.userService.findUser(user as string)
+      const {success,data} = await this.userService.findUser(user as string)
       if (success) {
         res.status(HttpStatus.OK).json({ success: true, data });
       } else res.status(HttpStatus.BAD_REQUEST).json({ success: false, message:responseMessage.ACCESS_DENIED });
@@ -75,7 +75,7 @@ class user_Controller implements IuserContrller {
 
   async make_Payment(req:AuthRequest,res:Response){        
     try {      
-      const {success,message,session} =  await this.userService.auction_JoinPayment(req.body,req.user as string)      
+      const {success,session} =  await this.userService.auction_JoinPayment(req.body,req.user as string)      
       if(success)res.status(HttpStatus.OK).json({success,clientSecret: session?.client_secret})
       else res.status(HttpStatus.UNAUTHORIZED).json({success:false , message:responseMessage.ERROR_MESSAGE})
     } catch (error) {

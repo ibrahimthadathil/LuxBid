@@ -1,6 +1,7 @@
 import path from "path";
-
-const { createLogger, format, transports, addColors } = require("winston");
+import winston from "winston";
+import { TransformableInfo } from "logform"; 
+const { createLogger, format, transports, addColors } = winston;
 
 addColors({
   error: "red",
@@ -9,16 +10,9 @@ addColors({
   http: "magenta",
   debug: "blue",
 });
-
-interface LogEntry {
-  level: string;
-  message: string;
-  timestamp: string;
-}
-
 const customFormat = format.combine(
   format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-  format.printf((info: LogEntry) => {
+  format.printf((info: TransformableInfo) => {
     return ` ${info.timestamp} ${info.level} : ${info.message}`;
   }),
   format.json(),

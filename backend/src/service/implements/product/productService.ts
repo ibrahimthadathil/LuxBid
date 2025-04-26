@@ -1,13 +1,9 @@
 import { Service } from "typedi";
 import { productRepository } from "../../../repositories/implimentation/product/productsRepository"
 import { s3Service } from "../user/uploadService";
-import { Iuser } from "../../../models/userModel";
 import { Iproduct } from "../../../models/productModel";
 import { categoryService } from "../admin/category_Service";
-import { response } from "express";
 import { IproductService } from "../../interface/productService_Interface";
-import { Icategory } from "../../../models/categoryModel";
-import { title } from "process";
 import { logError } from "@/utils/logger_utils";
 
 @Service()
@@ -91,7 +87,7 @@ export class productService implements IproductService{
     }
     async reject_Post(id:string){
         try {
-           const respondse = await this.productrepo.update(id,{status:'Rejected',isApproved:false})
+           const response = await this.productrepo.update(id,{status:'Rejected',isApproved:false})
            if(response){
             return {success:true ,message:'Post Rejected'}
            }else throw new Error('Failed to Reject')

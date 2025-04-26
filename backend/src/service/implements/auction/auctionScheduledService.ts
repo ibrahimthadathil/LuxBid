@@ -13,7 +13,7 @@ export class scheduledAuctionService {
             const { auctionId } = job.attrs.data;
             await this.auctionRepo.update(auctionId,{isActive:false})
         } catch (error) {
-            logError('error in close auction')
+            logError('error in close auction ' + (error as Error).message)
         }
         
     })

@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { User , Iuser } from "../../models/userModel";
 import { BasRepository } from "./baseRepository";
+import { logError } from "@/utils/logger_utils";
 
 
 @Service()
@@ -16,7 +17,7 @@ export class userRepository extends BasRepository<Iuser>{
             return await User.findOne({email})
 
         } catch (error) {
-
+            logError(error)
             throw new Error('caught error from exist user check')
 
         }
@@ -26,6 +27,7 @@ export class userRepository extends BasRepository<Iuser>{
         try {
             return await User.find({role:role},'-password')
         } catch (error) {
+            logError(error)
             throw new Error('caught error from find by role ')
         }
     }
@@ -38,6 +40,7 @@ export class userRepository extends BasRepository<Iuser>{
                 }}
             ])
         } catch (error) {
+            logError(error)
             throw new Error('failed to fetch')
         }
     }

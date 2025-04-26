@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
 import { Iuser } from "../../../models/userModel";
-import { Iopt } from "../../../models/otpModel";
 import { Container, Service } from "typedi";
 import { authService } from "../../../service/implements/user/authService";
 import { IAuthController } from "../../interface/authController_Interface"
 import { setCookie } from "../../../utils/cookie_utils";
 import { AuthRequest } from "../../../types/api";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
-import logger, { logDebug, logError } from "@/utils/logger_utils";
+import logger, { logError } from "@/utils/logger_utils";
 
 @Service()
 class AuthController implements IAuthController {

@@ -41,7 +41,6 @@ export class paymentRepository extends BasRepository<IPayment>{
 
     async updatePayment(userId:string,auctionId:string,updateData:Partial<IPayment>){
       try {
-        const test = await Payment.findOne({auctionId,userId}) 
         const reponse = await Payment.findOneAndUpdate({auctionId,userId},updateData,{upsert:true})
         return reponse 
       } catch (error) {

@@ -2,6 +2,7 @@ import { Service } from "typedi";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
 import { IcategoryService } from "../../interface/categoryServices_Interface";
 import { messageRepository } from "@/repositories/implimentation/chat/messageRepositury";
+import { logError } from "@/utils/logger_utils";
 
 
 @Service()
@@ -21,6 +22,7 @@ export class categoryService implements IcategoryService{
             if(response) return {success:true , message:'Created succesfully'}
             else throw new Error('Failed to Add category')
         } catch (error) {
+            logError(error)
             throw new Error((error as Error).message)
         }
     }
@@ -30,6 +32,7 @@ export class categoryService implements IcategoryService{
             if(response)return {success:true ,data:response}
             else throw new Error('failed to fetch')
         } catch (error) {
+            logError(error)
             return {success:false,message:(error as Error).message}
         }
     }
@@ -39,6 +42,7 @@ export class categoryService implements IcategoryService{
             if(response)return {success:true ,data:response}
             else throw new Error('failed to fetch')
         } catch (error) {
+            logError(error)
             return {success:false,message:(error as Error).message}
         }
     }
@@ -48,6 +52,7 @@ export class categoryService implements IcategoryService{
            if(response) return {success:true,data:response}
            else throw new Error('failed to fetch category')
         } catch (error) {
+            logError(error)
            throw new Error('error from finding category') 
         }
     }
@@ -58,6 +63,7 @@ export class categoryService implements IcategoryService{
             if(response)return {success:true,message:'Deleted succesfully'}
             else throw new Error('failed to delete')
         } catch (error) {
+            logError(error)
             throw new Error('Error from category Deletion')
         }
     }
@@ -67,6 +73,7 @@ export class categoryService implements IcategoryService{
           if(response)return {success:true,message:response.isActive ? 'Item Blocked':'Item listed'}
           else return {success:false , message:'failed to update'}
         } catch (error) {
+            logError(error)
             return {success:false , message:'Internal Error, Try Later'}
         }
     }

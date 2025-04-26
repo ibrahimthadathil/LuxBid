@@ -2,7 +2,6 @@ import { IMessage, Message } from "@/models/chatModel";
 import { BasRepository } from "../baseRepository";
 import { Service } from "typedi";
 import { logError } from "@/utils/logger_utils";
-import { log, timeStamp } from "console";
 import { responseMessage } from "@/enums/http_StatusCode";
 import { Types } from "mongoose";
 

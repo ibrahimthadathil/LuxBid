@@ -49,7 +49,7 @@ export class orderController{
     }
     async dispatchOrders(req:AuthRequest,res:Response){
         try {
-            const {success,Message,data} = await this.orderService.getDispatchOrders(req.user as string)
+            const {success,data} = await this.orderService.getDispatchOrders(req.user as string)
             if(success)res.status(HttpStatus.OK).json({data,success})
             else res.status(HttpStatus.SERVICE_UNAVAILABLE).json({success,message:responseMessage.NOT_FOUND})
         } catch (error) {
@@ -59,7 +59,7 @@ export class orderController{
     }
     async placeOrder(req:AuthRequest,res:Response){
         try {
-            const {success,Message} =await this.orderService.changeOrderStatus(req.body)
+            const {success} =await this.orderService.changeOrderStatus(req.body)
             if(success)res.status(HttpStatus.OK).json({success,message:`order has been ${req.body.value}`})
             else res.status(HttpStatus.UNAUTHORIZED).json({message:responseMessage.ERROR_MESSAGE})
         } catch (error) {

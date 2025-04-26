@@ -3,9 +3,8 @@ import { auctionRepository } from "../../../repositories/implimentation/auction/
 import { IAuction } from "../../../models/auctionModel";
 import { categoryRepository } from "../../../repositories/implimentation/admin/category_Repository";
 import { scheduledAuctionService } from "./auctionScheduledService";
-import { save } from "agenda/dist/job/save";
-import { logError } from "@/utils/logger_utils";
 import { AuctionFilterQuery } from "@/types/props";
+import { logError } from "@/utils/logger_utils";
 
 @Service()
 export class auctionService {
@@ -15,8 +14,6 @@ export class auctionService {
 
   async create_Auction(auction: IAuction, userId: string) {
     try {
-      console.log("111", auction);
-
       const entryAmt =
         (auction.baseAmount * 10) / 100 <= 1
           ? 1
@@ -85,6 +82,7 @@ export class auctionService {
       if (res) return { success: true, data: res[0] };
       else return { success: false, message: "failed to load" };
     } catch (error) {
+      logError(error)
       return { success: false, message: "Internal server error , try later" };
     }
   }
@@ -185,12 +183,5 @@ export class auctionService {
     }
   }
 
-  async counts(){
-    try {
-      
-    } catch (error) {
-      
-    }
-  }
 
 }

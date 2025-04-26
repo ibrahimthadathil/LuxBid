@@ -66,7 +66,7 @@ export class BuyerRepository extends BasRepository<IBuyer> {
         }
       }));
   
-      const result = await Buyer.bulkWrite(bulkOps);
+       await Buyer.bulkWrite(bulkOps);
       
         return true
       

@@ -1,7 +1,6 @@
 import { Service } from "typedi";
 import { ISeller, Organizer } from "../../models/organizerModel";
 import { BasRepository } from "./baseRepository";
-import { networkInterfaces } from "os";
 import { logError } from "@/utils/logger_utils";
 
 @Service()
@@ -19,6 +18,7 @@ export class organizerRepository extends BasRepository<ISeller>{
                 select: 'firstName profile', 
               });
         } catch (error) {
+            logError(error)
             throw new Error('Error from finding Seller')
         }
     }

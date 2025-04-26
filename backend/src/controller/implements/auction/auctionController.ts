@@ -3,7 +3,6 @@ import { auctionService } from "../../../service/implements/auction/auctionServi
 import { AuthRequest } from "../../../types/api";
 import { Request, Response } from "express";
 import { IAuction } from "../../../models/auctionModel";
-import { SocketService } from "@/service/implements/socket/socket_Service";
 import { HttpStatus, responseMessage } from "@/enums/http_StatusCode";
 import { logError } from "@/utils/logger_utils";
 

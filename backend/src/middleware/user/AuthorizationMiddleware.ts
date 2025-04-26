@@ -1,4 +1,3 @@
-import { redisClient } from "@/config/redisConfig";
 import { HttpStatus } from "@/enums/http_StatusCode";
 import { User } from "@/models/userModel";
 import { AuthRequest } from "@/types/api";
