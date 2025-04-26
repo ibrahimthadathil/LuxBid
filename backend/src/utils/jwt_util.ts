@@ -1,6 +1,6 @@
 
 import jwt from "jsonwebtoken";
-import logger from "./logger_utils";
+import { logError } from "./logger_utils";
 
 export const generateAccessToken =<T>(data:Partial<T>):string =>{
 
@@ -18,7 +18,7 @@ const skey = process.env.JWT_KEY as string
         return jwt.verify(token,skey)
         
         } catch (error) {
-        logger(error)
+        logError(error)
          console.log('error from jwt' , 'invalid token');
          return {success : false , message:'invalid token'}
         }

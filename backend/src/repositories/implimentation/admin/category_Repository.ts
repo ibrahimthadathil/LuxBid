@@ -1,7 +1,7 @@
 import { Service } from "typedi";
 import { BasRepository } from "../baseRepository";
 import { Category, Icategory } from "../../../models/categoryModel";
-import logger from "@/utils/logger_utils";
+import  { logError } from "@/utils/logger_utils";
 
 
 @Service()
@@ -15,7 +15,7 @@ export class categoryRepository extends BasRepository<Icategory>{
             return await Category.findOne({name: { $regex: new RegExp("^" + name + "$", "i") },}
         )
         } catch (error) {
-            logger(error)
+            logError(error)
             throw new Error('Failed to find')
         }
     }
@@ -24,7 +24,7 @@ export class categoryRepository extends BasRepository<Icategory>{
             const category =await this.findById(id) as Icategory
             return await Category.findByIdAndUpdate(id,{isActive:!category.isActive})
         } catch (error) {
-            logger(error)
+            logError(error)
             throw new Error('Failed to update category')
         }
     }
@@ -32,7 +32,7 @@ export class categoryRepository extends BasRepository<Icategory>{
         try {
             return await Category.find({isActive:true})
         } catch (error) {
-            logger(error)
+            logError(error)
             throw new Error('Failed to find')
 
         }
@@ -41,7 +41,7 @@ export class categoryRepository extends BasRepository<Icategory>{
         try {
             return await Category.find({isActive:true},{_id:0,name:1})
         } catch (error) {
-            logger(error)
+            logError(error)
             throw new Error('From find  category')
         }
     }
@@ -64,7 +64,7 @@ export class categoryRepository extends BasRepository<Icategory>{
        
         } catch (error) {
             console.log('error from meeeee');
-            logger(error)
+            logError(error)
         }
     }
 }
