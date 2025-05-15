@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-
+      "outDir": "dist", // <--- this is critical
+    "rootDir": "src", // your source code
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
@@ -25,5 +26,6 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
 
   },
-  "include": ["src/**/*.ts", "src/utils/session_utils.ts"]
+  "include": ["src/**/*.ts", "src/utils/session_utils.ts"],
+  "exclude": ["dist", "node_modules"]
 }

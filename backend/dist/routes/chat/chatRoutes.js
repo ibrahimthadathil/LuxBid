@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const chatController_1 = require("@/controller/implements/chat/chatController");
+const AuthMiddleware_1 = require("@/middleware/user/AuthMiddleware");
+const express_1 = require("express");
+const multer_Utils_1 = require("@/utils/multer_Utils");
+const chatRoute = (0, express_1.Router)();
+chatRoute.get('/chatGroups', AuthMiddleware_1.AuthMiddleWare, chatController_1.chat_Controller.fetchChatGroups.bind(chatController_1.chat_Controller));
+chatRoute.get('/messages/:categoryId', AuthMiddleware_1.AuthMiddleWare, chatController_1.chat_Controller.getMessagesBycategory.bind(chatController_1.chat_Controller));
+chatRoute.post('/sendMessage/:id', AuthMiddleware_1.AuthMiddleWare, multer_Utils_1.upload.array('attachments', 5), chatController_1.chat_Controller.sendMessage.bind(chatController_1.chat_Controller));
+chatRoute.put('/messages/:messageId/reaction', AuthMiddleware_1.AuthMiddleWare, chatController_1.chat_Controller.addReaction.bind(chatController_1.chat_Controller));
+exports.default = chatRoute;

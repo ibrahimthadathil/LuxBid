@@ -4,7 +4,6 @@ import {
   Send,
   ArrowLeft,
   User,
-  Mic,
   Smile,
   Paperclip,
   Reply,
@@ -29,7 +28,6 @@ import type { Rootstate } from "@/redux/store/store";
 import Loader from "@/components/global/Loader";
 import { useQueryClient } from "@tanstack/react-query";
 import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
-import { useTheme } from "@/components/theme/theme-provider";
 import { Message } from "@/types/types";
 
 interface ReplyMessageType {
@@ -66,7 +64,6 @@ const ChatUI = () => {
   const queryclient = useQueryClient();
   const chatEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { theme } = useTheme();
   const { isLoading, data } = useRQ(
     () => getAllMessages(groupId as string, `?page=${page}`),
     "chats",

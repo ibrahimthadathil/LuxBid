@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r tsconfig-paths/register src/app.ts"
+    "dev": "nodemon -r tsconfig-paths/register src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,7 @@
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "mongoose": "^8.7.1",
     "multer": "^1.4.5-lts.1",
     "multer-s3": "^3.0.1",

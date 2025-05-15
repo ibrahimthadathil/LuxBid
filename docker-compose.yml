@@ -1,0 +1,28 @@
+services:
+ backend:
+  build: ./backend
+  ports:
+   - "4001:4001"
+  env_file:
+   - ./backend/.env
+  environment:
+   - MONGO_URL=mongodb://database:27017/LuxBid 
+  depends_on:
+   - database 
+ frontend:
+  build: ./frontend
+  ports:
+   - "5001:80"
+  env_file:
+   - ./frontend/.env 
+  depends_on:
+   - backend 
+ database:
+  image: mongo:latest    
+  ports:
+   - "27017:27017"
+  volumes:
+   - db_data:/data/db
+
+volumes:
+  db_data:   

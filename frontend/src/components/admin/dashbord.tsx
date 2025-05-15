@@ -76,17 +76,10 @@ export default function AdminDashboard() {
     { month: "Dec", male: 480, female: 400 },
   ]
 
-  const topSellers = [
-    { id: 1, name: "Sarah Johnson", sales: 145, revenue: "$24,500", avatar: "SJ" },
-    { id: 2, name: "Michael Chen", sales: 132, revenue: "$21,800", avatar: "MC" },
-    { id: 3, name: "Emily Rodriguez", sales: 118, revenue: "$19,200", avatar: "ER" },
-    { id: 4, name: "David Kim", sales: 105, revenue: "$17,900", avatar: "DK" },
-    { id: 5, name: "Jessica Williams", sales: 98, revenue: "$16,400", avatar: "JW" },
-  ]
 
   // Add this custom 3D pie chart rendering function
   const RADIAN = Math.PI / 180
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, _index }:any) => {
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent}:any) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5
     const x = cx + radius * Math.cos(-midAngle * RADIAN)
     const y = cy + radius * Math.sin(-midAngle * RADIAN)
