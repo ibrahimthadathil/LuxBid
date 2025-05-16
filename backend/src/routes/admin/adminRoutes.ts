@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { adminController } from "../../controller/implements/admin/adminController";
-import { categoryController } from "../../controller/implements/admin/categoryController";
-import { productController } from "../../controller/implements/product/productController";
-import { AdminMiddleware } from "../../middleware/adminMiddleware";
-import { auctionController } from "../../controller/implements/auction/auctionController";
+import { adminController } from "@/controller/implements/admin/adminController";
+import { categoryController } from "@/controller/implements/admin/categoryController";
+import { productController } from "@/controller/implements/product/productController";
+import { AdminMiddleware } from "@/middleware/adminMiddleware";
+import { auctionController } from "@/controller/implements/auction/auctionController";
 import { dashboardController } from "@/controller/implements/admin/dashboardController";
 
 const adminRoute = Router();

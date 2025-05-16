@@ -24,6 +24,7 @@ const chatRoutes_1 = __importDefault(require("./routes/chat/chatRoutes"));
 const addressRoute_1 = __importDefault(require("./routes/user/addressRoute"));
 const orderRoute_1 = __importDefault(require("./routes/order/orderRoute"));
 const helmet_1 = __importDefault(require("helmet"));
+require("module-alias/register");
 dotenv_1.default.config();
 (0, DB_1.default)();
 const target = {

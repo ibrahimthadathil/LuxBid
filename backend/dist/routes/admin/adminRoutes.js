@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const adminController_1 = require("../../controller/implements/admin/adminController");
-const categoryController_1 = require("../../controller/implements/admin/categoryController");
-const productController_1 = require("../../controller/implements/product/productController");
-const adminMiddleware_1 = require("../../middleware/adminMiddleware");
-const auctionController_1 = require("../../controller/implements/auction/auctionController");
+const adminController_1 = require("@/controller/implements/admin/adminController");
+const categoryController_1 = require("@/controller/implements/admin/categoryController");
+const productController_1 = require("@/controller/implements/product/productController");
+const adminMiddleware_1 = require("@/middleware/adminMiddleware");
+const auctionController_1 = require("@/controller/implements/auction/auctionController");
 const dashboardController_1 = require("@/controller/implements/admin/dashboardController");
 const adminRoute = (0, express_1.Router)();
 // Admin authentication

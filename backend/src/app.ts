@@ -19,6 +19,8 @@ import chatRoute from "./routes/chat/chatRoutes";
 import addressRoute from "./routes/user/addressRoute";
 import orderRoute from "./routes/order/orderRoute";
 import helmet from "helmet";
+import 'module-alias/register';
+
 
 dotenv.config();
 connectDB();
