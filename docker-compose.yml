@@ -5,8 +5,6 @@ services:
    - "4001:4001"
   env_file:
    - ./backend/.env
-  environment:
-   - MONGO_URL=mongodb://database:27017/LuxBid 
   depends_on:
    - database 
  frontend:
