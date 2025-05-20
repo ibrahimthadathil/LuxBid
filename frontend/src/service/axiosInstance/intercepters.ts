@@ -17,9 +17,7 @@ export const axiosInstance = (baseURL: string) => {
   instance.interceptors.request.use(
     async (config) => {
       const token = localStorage.getItem("access-token");
-      if (token) {
-        console.log('token found');
-        
+      if (token) {        
         config.headers.Authorization = `${token}`;
       }
       if (!config.signal) {
@@ -51,7 +49,6 @@ export const axiosInstance = (baseURL: string) => {
       const originalRequest = error.config;
       const url = originalRequest.url ;
       if (error.response) {
-        console.log('token not found');
         if (error.response.status === 401 && !(originalRequest as any)._retry) {
           (originalRequest as { _retry?: boolean })._retry = true;
           
@@ -76,9 +73,7 @@ export const axiosInstance = (baseURL: string) => {
           error.response.status >= 400 &&
           error.response.status < 500 &&
           error.response.status !== 401
-        ) {
-          console.log('llll',error.response.data);
-                    
+        ) {                    
           toast.error(`${(error?.response.data as Error).message || (error.response.data as Error).message||"An error occurred"}`);
         }
       } else if (error.request) {

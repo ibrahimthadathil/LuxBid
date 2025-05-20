@@ -32,7 +32,6 @@ export const AnimatedTestimonials = React.memo(
     autoplay?: boolean;
     isLoading?: boolean;
   }) => {
-    console.log('from test',testimonials);
     
     const [active, setActive] = useState<number>(() => 0);
     const navigate = useNavigate()

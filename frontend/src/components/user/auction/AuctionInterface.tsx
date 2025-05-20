@@ -32,9 +32,7 @@ interface avatarofBidder {
   accept?:boolean
 }       
 
-const AuctionInterface = () => {
-  console.log('rendering');
-  
+const AuctionInterface = () => {  
   useAuth();
   const [bidAmount, setBidAmount] = useState("");
   const [countdown, setCountdown] = useState("");

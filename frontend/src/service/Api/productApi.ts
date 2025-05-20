@@ -37,7 +37,6 @@ export const fetchPost=async()=>{
 // update post 
 
 export const updatePost =async(id:string,data:FormData)=>{
-    console.log(id,data);
     
     return await api.put(`/updatepost/${id}`,data)
 }

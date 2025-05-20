@@ -26,7 +26,6 @@ export const authorizationAccess = async (
     const currentuser = await User.findById(userId, "-password");
     if (currentuser?.isActive) next();
     else {
-      console.log('reached here with problems');
       
       res.clearCookie("rftn");
       res

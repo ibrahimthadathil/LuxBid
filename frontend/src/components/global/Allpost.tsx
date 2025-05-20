@@ -67,7 +67,6 @@ export default function PostGrid() {
   };
 
   const totalPages = Math.ceil((data?.total || 0) / filters.limit);
-  console.log(data);
   return (
     <div className="container mx-auto p-10 space-y-6">
       {/* Filters */}

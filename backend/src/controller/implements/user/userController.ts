@@ -102,7 +102,6 @@ async webhook_Handler(req:Request, res: Response) {
   const sig = req.headers['stripe-signature'];
 
   try {
-    console.log('webhookHandler worked')    
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
       throw new Error('Missing Stripe webhook secret');
     }

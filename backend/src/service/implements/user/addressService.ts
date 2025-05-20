@@ -23,7 +23,6 @@ export class addressService{
     async createAddress(userId:string,address:Partial<IAddress>){
         try {
             address.user = userId
-            console.log('after user add :-',address);
             const response = await this.addressRepo.create(address)
             if(response)return {success:true,message:responseMessage.SUCCESS_MESSAGE}
             else return {success:false , message:responseMessage.ERROR_MESSAGE}
@@ -34,13 +33,11 @@ export class addressService{
     }
     async deleteAddress(addressId:string){
         try {
-            console.log(addressId,'ppp');
             
           const response= await this.addressRepo.delete(addressId)
           if(response) return {success:true,message:'Deleted successfully'}
           else return {success:false , message:responseMessage.ERROR_MESSAGE}
         } catch (error) {
-            console.log(';l;;;');
             
             logError(error)
             return {success:false , message:responseMessage.ERROR_MESSAGE}

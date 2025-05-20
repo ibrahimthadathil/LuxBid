@@ -42,7 +42,6 @@ export class authService implements IauthService {
 
   async verify_otp(otp: string, token: string) {
     try {
-      logDebug('reached tp verify')
       const { email, id } = this.tokenservice.verify_Token(token) as JwtPayload;
       if (email) {
         const isValidOTP = await this.otpService.verifyOTP(email, otp);
@@ -50,7 +49,6 @@ export class authService implements IauthService {
         const updatedUser = await this.userRepo.update(id, {
           isVerified: true,
         });
-        console.log("updated user", updatedUser);
         const Accesstoken = this.tokenservice.generate_AccessToken({
           email,
           id,
@@ -59,7 +57,6 @@ export class authService implements IauthService {
           email,
           id,
         });
-        console.log('000');
         
         return {
           success: true,
@@ -112,12 +109,9 @@ export class authService implements IauthService {
   async verify_SignIn(email: string, password: string) {
     try {
       const exist = await this.userRepo.findUserByEmail(email)
-      console.log(exist);
       if (exist) {
-        console.log(email,password,exist.password,'88');
         
         const passwordCheck = await comparePassword(password, exist.password);
-        console.log('reached here');
         
         if (!passwordCheck) {
           return { success: false, message: "Invalid password...!" };
@@ -213,11 +207,8 @@ export class authService implements IauthService {
 
   async forget_Password(email: string) {
     try {
-      console.log(email, "12345");
 
       const existUser = await this.userRepo.findUserByEmail(email);
-      console.log(existUser, "us");
-
       if (!existUser)
         return { success: false, message: "you are not a verified user" };
       const OTP = await this.otpService.createOTP(email);
@@ -285,8 +276,6 @@ export class authService implements IauthService {
         });
         return { success: true, message: "password hasbeen changed" };
       }
-      console.log("jjj");
-
       return { success: false, message: "Invalid access" };
     } catch (error) {
       console.log(error);

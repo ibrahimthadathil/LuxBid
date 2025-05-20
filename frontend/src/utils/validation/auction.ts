@@ -28,9 +28,6 @@ export const Zauction = z
         // Convert startDateTime and endDateTime to IST
         const startDateTime = moment.utc(data.startTime).tz('Asia/Kolkata');
         const endDateTime = moment.utc(data.endTime).tz('Asia/Kolkata');
-        console.log('startTime :- ',startDateTime);
-        console.log('endtTime :- ',endDateTime);
-        
         // Validation checks
         if (startDateTime.isBefore(now)) {
           return false; // Start time is in the past

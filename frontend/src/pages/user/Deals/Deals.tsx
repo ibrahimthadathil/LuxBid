@@ -14,9 +14,7 @@ interface TAuctionWithPosts extends Tauction {
   posts: Tproduct[]
 }
 const Deals = () => {
-  const { isLoading, data } = useRQ(topAuctions, "topauction");
-  console.log('yyyyyyy',data);
-  
+  const { isLoading, data } = useRQ(topAuctions, "topauction");  
   const navigate = useNavigate()
   const handleClick =(id:string)=>{
     if(id)navigate('/deals/auction',{state:{id}})

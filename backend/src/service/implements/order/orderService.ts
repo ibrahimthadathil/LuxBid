@@ -24,9 +24,7 @@ export class OrderService{
 
     async createOrderPayment(data:{price:string,title:string,img:string,id:string,address: string},userId:string){
         try {
-            const exists = await this.orderRepo.findByField('auction',data.id)
-            console.log(exists,'exists');
-            
+            const exists = await this.orderRepo.findByField('auction',data.id)            
             if(exists)return {success:false,message:'Already made the payment'}
             const deductionAmount = await this.auctionRepo.findById(data.id) as IAuction
             const finalPrice = parseInt(data.price) - deductionAmount.entryAmt
@@ -46,7 +44,7 @@ export class OrderService{
                                 
         } catch (error) {
             logError(error)
-            console.log("11111", (error as Error).message);
+            console.log( (error as Error).message);
             return { success: false, message: (error as Error).message };
         }
     }
@@ -57,19 +55,14 @@ export class OrderService{
             const data = {
                 status: response.status,
                 customer_email: response.customer_details?.email,
-              };
-              console.log(data);
-              
+              };              
             if(response.status=='complete'){
                 const commitedAuction = await this.auctionRepo.findById(query.aid) as IAuction
                 const deductionAmout = commitedAuction?.baseAmount-commitedAuction?.entryAmt
-                console.log(`userid : - ${userId} , auctionid:- ${query.aid} `);
                 const updatePaymentStatus = await this.paymentRepo.updatePayment(userId,query.aid,{status:paymentStatus.COMPLETED,amount:deductionAmout})
-                console.log(updatePaymentStatus,'payment')
                 await this.auctionRepo.update(query.aid,{isSold:true})
                 const updateOrder = await this.orderRepo.findByField('auction',query.aid)
                 if(updateOrder){
-                    console.log(updatePaymentStatus,'11',)
                     await this.orderRepo.update(updateOrder._id as string,{paymentStatus:'Success'})
                     return {success:true,data,message:'Order Placed'} 
                 }else throw new Error('Failed to complete payment')

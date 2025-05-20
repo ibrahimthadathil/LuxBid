@@ -47,7 +47,6 @@ export class stripeService {
           userId: userId,
         },
       });
-      // console.log("payent details :-", session);
       return session;
     } catch (error) {
       console.log("11111", (error as Error).message);
@@ -67,7 +66,6 @@ export class stripeService {
 
   async handleWebhook(event: Stripe.Event) {
     try {
-      console.log("Received webhook event:", event.type);
       switch (event.type) {
         case "checkout.session.completed":{
           const session = event.data.object as Stripe.Checkout.Session;
@@ -109,14 +107,12 @@ export class stripeService {
         userId,
         "completed"
       );
-        console.log(`userid :- ${userId} auctionid :- ${auctionId} , sessionid :-${session.id}` );
         
       // Update payment record
       const f=await this.paymentRepo.updatePaymentStatus(
         session.id,
         {status:paymentStatus.COMPLETED}
       );
-      console.log(f,'@@ from the successpayment');
       
     } catch (error) {
       logError(error);
@@ -171,7 +167,6 @@ export class stripeService {
     try {
       const auctionId = session.metadata?.aid;
       const userId = session.metadata?.userId;
-      console.log("metadatas:-", auctionId, userId);
 
       if (!auctionId || !userId) {
         throw new Error("Missing metadata in session");

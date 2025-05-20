@@ -75,9 +75,7 @@ class AuthController implements IAuthController {
     try {
       const userDetails: Iuser = req.body;
       const token = req.headers.authorization as string;
-      const response = await this.authService.register_User(userDetails, token);
-      console.log(response.success);
-      
+      const response = await this.authService.register_User(userDetails, token);      
       if (response.success) {
         res
           .status(HttpStatus.OK)
@@ -94,11 +92,7 @@ class AuthController implements IAuthController {
   async signIn(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      console.log(email,password,'lll');
-      
       const response = await this.authService.verify_SignIn(email, password);
-      console.log('000',response);
-      
       if (response?.success) {
         setCookie(res, "rftn", response.refresh as string);
         setCookie(res,'authtkn',response.roleAccess as string)
@@ -113,7 +107,6 @@ class AuthController implements IAuthController {
             role:response.role
           });
       } else {
-        console.log("check",response.message);
         res.status(HttpStatus.UNAUTHORIZED).json({success:response.success,message:response.message});
       }
     } catch (error) {
@@ -148,7 +141,6 @@ class AuthController implements IAuthController {
       const { email } = req.body;
       const { success, message, token } =
         await this.authService.forget_Password(email);
-      console.log(success);
       if (!success) res.status(HttpStatus.UNAUTHORIZED).json({ message });
       else res.status(HttpStatus.OK).json({ message, token });
     } catch (error) {
@@ -216,17 +208,14 @@ class AuthController implements IAuthController {
   }
 
   async setNewToken(req:Request,res:Response){
-    logger.debug('entered into set new token')
     const token=req.cookies?.rftn;
     if(!token){
         res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ERROR_MESSAGE})
     }
     try {
-      console.log('232323');
       
       const response= await this.authService.checkToken(token)
       if(response?.success){
-        console.log(response.success,' after success');
         res.json({accessToken:response.accessToken})
         
       }else{

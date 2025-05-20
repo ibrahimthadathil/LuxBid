@@ -145,8 +145,6 @@ export class auctionRepository extends BasRepository<IAuction> {
       );
     } catch (error) {
       logError(error);
-
-      console.log("from bidcreatye");
       console.log((error as Error).message);
     }
   }

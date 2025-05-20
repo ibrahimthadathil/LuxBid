@@ -18,17 +18,13 @@ export class productService implements IproductService{
         try {
             const {data} =await this.categoryService.find_Category(datas.category as string)
             if(data){
-                console.log('kkkk');
                 
              const response= await this.s3Service.upload_File(files,'product')
-             console.log('wwwwwwww');
              if(Array.isArray(response)){
-                 console.log('dddddddd');
                 const imagesLink = response.map((file)=>file.Location)
                 datas.category = data._id
                 const post ={...datas,images:imagesLink,seller:user} as Iproduct                
                 const setPost = await this.productrepo.create(post)
-                console.log('$$$$$$$$$',setPost);
                 if(setPost)return {success:true,message:'Post created Successfully'}
                 else return {success:false,message:'Failed to create'}
             }else throw new Error('Server Error , Try later') 
@@ -36,7 +32,6 @@ export class productService implements IproductService{
                         
         } catch (error){
             logError(error)
-            console.log('from create post error');
             return {success:false,message:(error as Error).message}
         }
     }
@@ -109,7 +104,7 @@ export class productService implements IproductService{
             if(response) return {success:true,message:'Post updated'}
             else throw new Error('failed to update')
        } catch (error) {
-            console.log('0000',(error as Error).message);
+            console.log((error as Error).message);
             return {success:false,message:(error as Error).message}
        }
         
@@ -118,7 +113,6 @@ export class productService implements IproductService{
     async approved_Post(userId:string){
         try {
            const approvedPost= await this.productrepo.findByApproved(userId)
-           console.log('approved',approvedPost);
            
            if(approvedPost)return {success:true,data:approvedPost}
            else throw new Error('Failed to fetch post')

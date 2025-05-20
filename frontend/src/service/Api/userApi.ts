@@ -84,7 +84,6 @@ export const fetchuser = async () => {
     const response = await api.get("/user");
     return response;
   } catch (error) {
-    console.log("from api");
     throw new Error("error from fetch user");
   }
 };

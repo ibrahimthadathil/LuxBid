@@ -26,7 +26,6 @@ const Winnnings = () => {
   const { theme } = useTheme();
   const { isLoading, data } = useRQ(getWonAuction, "winnings");
   const address = useSelector((root:Rootstate)=>root.user.address)
-  console.log('### from winnings',address);
   const navigate = useNavigate();
   const cardPaymendHandle = async (auction: Tauction) => {
     try {

@@ -20,8 +20,6 @@ type TOrderWithAuction = TOrder & {
 const OrderDispatches = () => {
 const {theme}=useTheme()
 const {isLoading,data}=useRQ(fetchDispatchOrders,'dispatchOrder')
-console.log(data,'from order');
-
 const queryclient = useQueryClient()
 const shipmentOptions = [
   "Pending",

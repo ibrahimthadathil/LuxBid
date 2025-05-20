@@ -151,7 +151,6 @@ export class OrderRepository extends BasRepository<IOrder>{
             return orders
             
         } catch (error) {
-            console.log('ooo');
             logError(error)
             
         }

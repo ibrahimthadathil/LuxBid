@@ -60,7 +60,6 @@ export class userService implements IuserService {
         return { success: true, message: "Details updated" };
       } else throw new Error("Failed to update");
     } catch (error) {
-      console.log("from update details");
       throw new Error((error as Error).message);
     }
   }
@@ -74,7 +73,6 @@ export class userService implements IuserService {
         return { success: true, session }}
       else return { success: false, message: "Failed to make payment" };
     } catch (error) {
-      console.log('here');
       console.log("11111", (error as Error).message);
 
       return { success: false, message: (error as Error).message };

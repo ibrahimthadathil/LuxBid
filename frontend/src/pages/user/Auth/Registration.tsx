@@ -18,12 +18,9 @@ const Registration = () => {
   const {theme}= useTheme()
 
   const handleRegisterSubmit = async (datas: TZregister) => {
-    console.log(datas);
     try {
       const token = localStorage.getItem("registration-token") as string;
       const { data } = await registration(datas, token);
-      console.log(data);
-
       if (data.token) {
         reset();
         localStorage.removeItem("registration-token");

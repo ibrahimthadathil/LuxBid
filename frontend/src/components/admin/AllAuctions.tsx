@@ -19,8 +19,6 @@ const AllAuctions = () => {
     async () => await listByType(auctionType),
     auctionType
   );
-  console.log(data);
-
   const Columns = useMemo(
     () => [
       {

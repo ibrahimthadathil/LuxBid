@@ -22,7 +22,6 @@ const ResetPassword = () => {
       const token = localStorage.getItem("rptkn");
       if (token) {
         const { data } = await resetPassword(datas.password, datas.confirmPassword, token);
-        console.log(data);
         
         if (data.success) {
 

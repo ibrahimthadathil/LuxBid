@@ -9,9 +9,7 @@ import { useForm } from "react-hook-form";
 import { adminSignIn, TsignupSchem } from "@/utils/validation/admin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
-const SignInAdmin = () => {
-  console.log("avhavhahac");
-  
+const SignInAdmin = () => {  
   const navigate = useNavigate();
   const { register , handleSubmit, formState :{errors ,isSubmitting}  ,reset } = useForm<TsignupSchem>({resolver:zodResolver(adminSignIn)});
   const disaptch = useDispatch<AppDispatch>();

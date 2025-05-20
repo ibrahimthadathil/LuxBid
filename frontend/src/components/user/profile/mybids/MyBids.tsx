@@ -15,7 +15,6 @@ import { useTheme } from "@/components/theme/theme-provider";
 const MyBids = () => {
   const { data, isLoading } = useRQ(showCommittedBids, "mybids");
   const {theme} =useTheme()
-  console.log(data, "oo");
 
   const Columns = useMemo(
     () => [

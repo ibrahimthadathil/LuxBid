@@ -40,7 +40,6 @@ export class BuyerRepository extends BasRepository<IBuyer> {
      const data=  await Buyer.findOne({user:id}).populate({path:'committedBids.auction',populate:[
         { path : 'post' } , { path : 'bidders.user', select:'email profile firstName ' }
       ]})
-      console.log(data);
       
       return data
     } catch (error) {

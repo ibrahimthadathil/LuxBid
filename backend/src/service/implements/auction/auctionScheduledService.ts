@@ -23,7 +23,6 @@ export class scheduledAuctionService {
     try {
 
         await agendaInstance.schedule(endTime, "close auction", { auctionId });
-        console.log(`Scheduled auction will end on time`);
     } catch (error) {
         logError(`${(error as Error).message}`)
     }

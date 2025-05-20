@@ -8,7 +8,6 @@ import  AverageRating  from "@/components/user/profile/myProfile/Ratings";
 
 const SellerProfile = () => {
   const {data,isLoading,isSuccess}=useRQ(fetchSeller,'Seller')
-    console.log('actualdata',data);
     
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :

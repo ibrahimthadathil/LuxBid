@@ -15,7 +15,6 @@ const SignIn = () => {
   const handleSignUpSubmit = async (datas : TzsignUp) => {
     try {
         const { data } = await signUpRequest(datas.email);
-        console.log(data);
 
         if (data.success) {
           localStorage.setItem("registration-token", data.token);

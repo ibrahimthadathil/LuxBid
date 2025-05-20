@@ -86,7 +86,6 @@ export class chatService {
   async addReaction(messageId: string, emoji: string, userId: string) {
     try {
         const response = await this.chatRepo.addReaction(messageId, emoji, userId);
-        console.log(response);
         
         if (response) {
             return { success: true, data: response };

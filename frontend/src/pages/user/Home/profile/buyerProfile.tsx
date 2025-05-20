@@ -8,7 +8,6 @@ import { useTheme } from "@/components/theme/theme-provider";
 
 const ProfileDashboard = () => {
   const{isLoading,data,isSuccess}= useRQ(fetchBuyer,'Buyer') 
-  console.log('from buyer',data);
   const {theme} =useTheme()
   return (
     isLoading ? <div className="p-3 space-y-6 flex w-full h-full "><Loader/></div> :

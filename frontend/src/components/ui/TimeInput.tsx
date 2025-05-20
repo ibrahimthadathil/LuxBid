@@ -97,7 +97,6 @@ const DateTimeSelect = ({
       
       // Convert to Date object
       const finalDate = momentDate.toDate();
-      console.log('232323',finalDate);
       
       onChange(finalDate);
     }

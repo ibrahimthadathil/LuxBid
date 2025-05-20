@@ -37,7 +37,6 @@ import { setCookie } from "@/utils/cookie_utils";
             res.status(HttpStatus.OK).json({data:[seller,buyer,avgRating]})
            }else res.status(HttpStatus.BAD_REQUEST).json({ message }) 
            }else {
-            console.log('kkk');
             res.status(HttpStatus.FORBIDDEN).json({message:responseMessage.ACCESS_DENIED})}
         } catch (error) {
             logError(error)

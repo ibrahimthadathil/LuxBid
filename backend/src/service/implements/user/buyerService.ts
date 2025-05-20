@@ -71,9 +71,7 @@ export class buyer_service implements IBuyerService {
 
   async findWonAuctions(userId:string){
     try {
-      const response = await this.buyerRepo.findWonAuction(userId)
-      console.log('$$$$',response);
-      
+      const response = await this.buyerRepo.findWonAuction(userId)      
       if(response)return { success:true , data : response[0]?.committedBids }
       else return { success:false , message : responseMessage.NOT_FOUND }
     } catch (error) {

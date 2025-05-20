@@ -23,7 +23,6 @@ import { Input } from "@/components/ui/input";
 import { useSelector } from "react-redux";
 import { Rootstate } from "@/redux/store/store";
 const AuctionPage = React.memo(() => {
-  console.log("rendering post");
   const navigate = useNavigate();
   const location = useLocation();
   const {isAuthenticated,email} = useSelector((state:Rootstate)=>state.user)

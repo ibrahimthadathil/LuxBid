@@ -12,7 +12,6 @@ export const OrganizerAuthMiddleware =async(req:AuthRequest,res:Response,next:Ne
     try {
         const organizerId = req.user 
         const token = req.cookies.authtkn 
-        console.log(token ,'from seller authkn')
         if(!token)res.status(HttpStatus.UNAUTHORIZED).json({message:responseMessage.TOKEN_ACCESS})
         else{
           const {role,id}=  verifyToken(token) as JwtPayload
