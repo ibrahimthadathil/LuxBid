@@ -19,7 +19,7 @@ let BasesocketService = class BasesocketService {
         if (!this.io) {
             this.io = new socket_io_1.Server(server, {
                 cors: {
-                    origin: process.env.server_URL,
+                    origin: process.env.SERVER_URL,
                     methods: ['GET', 'POST']
                 }
             });

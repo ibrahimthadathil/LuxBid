@@ -11,7 +11,7 @@ export class SocketService {
       if (!this.io) {
         this.io = new Server(server, {
           cors: {
-            origin: process.env.server_URL, // Frontend URL
+            origin: process.env.SERVER_URL, // Frontend URL
             methods: ["GET", "POST"],
           },
         });

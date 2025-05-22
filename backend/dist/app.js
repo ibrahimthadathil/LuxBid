@@ -28,7 +28,7 @@ require("module-alias/register");
 dotenv_1.default.config();
 (0, DB_1.default)();
 const target = {
-    origin: process.env.server_URL,
+    origin: process.env.SERVER_URL,
     changeOrigin: true,
     credentials: true,
 };

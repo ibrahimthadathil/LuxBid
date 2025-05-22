@@ -11,7 +11,7 @@ export class BasesocketService{
         if(!this.io){
             this.io = new Server(server,{
                 cors:{
-                    origin:process.env.server_URL,
+                    origin:process.env.SERVER_URL,
                     methods:['GET','POST']
                 }
             })

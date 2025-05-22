@@ -36,12 +36,12 @@ export class stripeService {
             : parseInt(String(data.quantity)) || 1,
         }, 
       ];
-      
+
       const session = await stripe.checkout.sessions.create({
         ui_mode: "embedded",
         line_items: paymentItems,
         mode: "payment",
-        return_url: data.address?`${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}&order=${true}`: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
+        return_url: data.address ?`${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}&order=${true}`: `${process.env.SERVER_URL}/return?session_id={CHECKOUT_SESSION_ID}&aid=${data.id}`,
         metadata: {
           aid:String(data.id),
           userId: userId,
