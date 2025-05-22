@@ -26,7 +26,7 @@ dotenv.config();
 connectDB();
 
 const target = {
-  origin: process.env.server_URL,
+  origin: process.env.SERVER_URL,
   changeOrigin: true,
   credentials: true,
 };
