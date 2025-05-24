@@ -5,7 +5,6 @@ const SocketContext = createContext<Socket | null>(null);
 
 export const SocketProvider = ({ children }:{ children: React.ReactNode }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
-// import.meta.env.VITE_SOCKET_URL+'111')
   useEffect(() => {
     const newSocket = io(import.meta.env.VITE_SOCKET_URL)
     setSocket(newSocket);
@@ -26,7 +25,6 @@ export const SocketProvider = ({ children }:{ children: React.ReactNode }) => {
 
 export const useSocket = () => {
   const context = useContext(SocketContext);
-  // console.log("Socket Context:", context); 
   if (!context) {
     throw new Error("error from use socket");
   }
