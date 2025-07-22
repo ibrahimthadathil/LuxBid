@@ -41,7 +41,7 @@ export function FlexibleCard({
       <img
         src={imageUrl}
         alt={title}
-        className="w-full h-56 object-fit transition-transform duration-300 ease-in-out hover:scale-105"
+        className="w-full min-w-64 h-56 object-fit transition-transform duration-300 ease-in-out hover:scale-105"
       />
       <div className="p-4 flex-grow">
         <h3 className="font-semibold text-lg mb-2">{title}</h3>
